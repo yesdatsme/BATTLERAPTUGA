@@ -1,1 +1,24 @@
-battleraptug.html
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Votação de Rappers</title>
+</head>
+<body>
+    <h1>Vote no seu Rapper Favorito!</h1>
+    <form action="https://formsubmit.co/seu-email@example.com" method="POST">
+        <label for="name">Nome do Rapper:</label>
+        <input type="text" id="name" name="name" required><br><br>
+        <label for="flow">Flow (1 a 10):</label>
+        <input type="number" id="flow" name="flow" min="1" max="10" required><br><br>
+        <label for="lyrics">Letras (1 a 10):</label>
+        <input type="number" id="lyrics" name="lyrics" min="1" max="10" required><br><br>
+        <label for="originality">Originalidade (1 a 10):</label>
+        <input type="number" id="originality" name="originality" min="1" max="10" required><br><br>
+        <label for="stage_presence">Presença de Palco (1 a 10):</label>
+        <input type="number" id="stage_presence" name="stage_presence" min="1" max="10" required><br><br>
+        <label for="cultural_impact">Impacto Cultural (1 a 10):</label>
+        <input type="number" id="cultural_impact" name="cultural_impact" min="1" max="10" required><br><br>
+        <button type="submit">Enviar Voto</button>
+    </form>
+</body>
+</html>
