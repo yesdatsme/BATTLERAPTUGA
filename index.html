@@ -1,23 +1,147 @@
 <!DOCTYPE html>
-<html>
+<html lang="pt">
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Votação de Rappers</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 20px;
+        }
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+        form {
+            max-width: 600px;
+            margin: 0 auto;
+            background: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: bold;
+        }
+        select, input[type="number"] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 20px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-size: 16px;
+        }
+        button {
+            width: 100%;
+            padding: 10px;
+            background-color: #28a745;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #218838;
+        }
+    </style>
 </head>
 <body>
-    <h1>Vote no seu Rapper Favorito!</h1>
+    <h1>Votação de Rappers</h1>
     <form action="https://formsubmit.co/falcondexcs@gmail.com" method="POST">
-        <label for="name">Nome do Rapper:</label>
-        <input type="text" id="name" name="name" required><br><br>
-        <label for="flow">Flow (1 a 10):</label>
-        <input type="number" id="flow" name="flow" min="1" max="10" required><br><br>
-        <label for="lyrics">Letras (1 a 10):</label>
-        <input type="number" id="lyrics" name="lyrics" min="1" max="10" required><br><br>
-        <label for="originality">Originalidade (1 a 10):</label>
-        <input type="number" id="originality" name="originality" min="1" max="10" required><br><br>
-        <label for="stage_presence">Presença de Palco (1 a 10):</label>
-        <input type="number" id="stage_presence" name="stage_presence" min="1" max="10" required><br><br>
-        <label for="cultural_impact">Impacto Cultural (1 a 10):</label>
-        <input type="number" id="cultural_impact" name="cultural_impact" min="1" max="10" required><br><br>
+        <label for="rapper">Selecione o Rapper:</label>
+        <select id="rapper" name="rapper" required>
+            <option value="" disabled selected>Escolha um rapper</option>
+            <option value="Sadyko">Sadyko</option>
+            <option value="Wilson">Wilson</option>
+            <option value="Melro">Melro</option>
+            <option value="Flizzi">Flizzi</option>
+            <option value="Rickas">Rickas</option>
+            <option value="Guima">Guima</option>
+            <option value="AM">AM</option>
+            <option value="ZA">ZA</option>
+            <option value="RealPunch">RealPunch</option>
+            <option value="Facto BSJ">Facto BSJ</option>
+            <option value="Mr Burnz">Mr Burnz</option>
+            <option value="Abismal">Abismal</option>
+            <option value="Kenny">Kenny</option>
+            <option value="Strata G">Strata G</option>
+            <option value="Lc">Lc</option>
+            <option value="Spicy Lee">Spicy Lee</option>
+            <option value="9 Miller">9 Miller</option>
+            <option value="Licon">Licon</option>
+            <option value="Jay Ill">Jay Ill</option>
+            <option value="Edi Ventura">Edi Ventura</option>
+            <option value="Xco">Xco</option>
+            <option value="Joker">Joker</option>
+            <option value="Flajo">Flajo</option>
+            <option value="Tomas">Tomas</option>
+            <option value="Shifu">Shifu</option>
+            <option value="Tagi">Tagi</option>
+            <option value="Galeno">Galeno</option>
+            <option value="Reverse">Reverse</option>
+            <option value="Slark">Slark</option>
+            <option value="Eleven">Eleven</option>
+            <option value="Flep">Flep</option>
+            <option value="Tio Pappi">Tio Pappi</option>
+            <option value="Flip">Flip</option>
+            <option value="Zolty">Zolty</option>
+            <option value="Moreira">Moreira</option>
+            <option value="Kuadra">Kuadra</option>
+            <option value="Athal">Athal</option>
+            <option value="Mk">Mk</option>
+            <option value="Rui Costa">Rui Costa</option>
+            <option value="Filtro">Filtro</option>
+            <option value="Max">Max</option>
+            <option value="Vazto">Vazto</option>
+            <option value="Erre K">Erre K</option>
+            <option value="Jonec">Jonec</option>
+            <option value="3ma">3ma</option>
+            <option value="Guigox">Guigox</option>
+            <option value="Riss">Riss</option>
+            <option value="7am">7am</option>
+            <option value="Mandacaru">Mandacaru</option>
+            <option value="Surreal">Surreal</option>
+            <option value="Saooneart">Saooneart</option>
+            <option value="Cpjota">Cpjota</option>
+            <option value="Flays">Flays</option>
+            <option value="Edc">Edc</option>
+            <option value="Quinta">Quinta</option>
+            <option value="Relvas">Relvas</option>
+            <option value="Davinci">Davinci</option>
+            <option value="Gg">Gg</option>
+            <option value="Qvxno">Qvxno</option>
+            <option value="Sanj">Sanj</option>
+            <option value="Poligrafo">Poligrafo</option>
+            <option value="Vazzz">Vazzz</option>
+            <option value="Caden">Caden</option>
+            <option value="Eleven Mc">Eleven Mc</option>
+            <option value="O Tal Guedes">O Tal Guedes</option>
+        </select>
+
+        <label for="consistencia">Consistência (1 a 10):</label>
+        <input type="number" id="consistencia" name="consistencia" min="1" max="10" required>
+
+        <label for="material">Material (1 a 10):</label>
+        <input type="number" id="material" name="material" min="1" max="10" required>
+
+        <label for="performance">Performance (1 a 10):</label>
+        <input type="number" id="performance" name="performance" min="1" max="10" required>
+
+        <label for="calendario">Calendário (1 a 10):</label>
+        <input type="number" id="calendario" name="calendario" min="1" max="10" required>
+
+        <label for="impacto">Impacto (1 a 10):</label>
+        <input type="number" id="impacto" name="impacto" min="1" max="10" required>
+
+        <label for="confronto_direto">Confronto Direto (1 a 10):</label>
+        <input type="number" id="confronto_direto" name="confronto_direto" min="1" max="10" required>
+
         <button type="submit">Enviar Voto</button>
     </form>
 </body>
