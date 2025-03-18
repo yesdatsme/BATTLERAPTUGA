@@ -4,14 +4,15 @@ WHO IS THE MOTHER FKING GOAT?
 
 Este projeto avalia rappers com base em 6 variantes:
 
-#Consistência: 
+# Consistência: 
 Capacidade de manter uma qualidade elevada ao longo do tempo.
-#Material: 
+# Material: 
 A qualidade e a inovação do conteúdo produzido.
-#Performance:
+# Performance:
 Habilidade e presença nas apresentações ao vivo.
-#Adversários:
+# Adversários:
 Adversários contra quem batalhou.
-#Impacto: 
+# Impacto: 
 Influência geral e relevância.
-Confronto Direto: Desempenho em batalhas e disputas diretas com outros artistas.
+# Confronto Direto: 
+Desempenho em batalhas e disputas diretas com outros artistas.
