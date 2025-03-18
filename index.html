@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Votação</title>
+    <title>Votação de Rappers</title>
     <style>
         body {
             font-family: 'Arial', sans-serif;
@@ -21,12 +21,18 @@
             font-size: 2.5em;
             margin-bottom: 20px;
         }
+        .rapper-container {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
         .rapper-card {
             background: #fff;
             border-radius: 15px;
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
             overflow: hidden;
-            width: 300px;
             text-align: center;
             padding: 20px;
         }
@@ -292,8 +298,898 @@
         <input type="number" id="kenny_material" name="kenny_material" min="1" max="10" required>
         <label for="kenny_performance">Performance</label>
         <input type="number" id="kenny_performance" name="kenny_performance" min="1" max="10" required>
-        <label for="kenny_calendario
-        <button type="submit">Enviar Votos</button>
+        <label for="kenny_calendario">Calendário</label>
+        <input type="number" id="kenny_calendario" name="kenny_calendario" min="1" max="10" required>
+        <label for="kenny_impacto">Impacto</label>
+        <input type="number" id="kenny_impacto" name="kenny_impacto" min="1" max="10" required>
+        <label for="kenny_confronto">Confronto Direto</label>
+        <input type="number" id="kenny_confronto" name="kenny_confronto" min="1" max="10" required>
+    </div>
+</div>
+<div class="rapper-card">
+    <img src="https://i.imgur.com/klm012.jpg" alt="Strata G">
+    <div class="voting-options">
+        <label for="strata_g_consistencia">Consistência</label>
+        <input type="number" id="strata_g_consistencia" name="strata_g_consistencia" min="1" max="10" required>
+        <label for="strata_g_material">Material</label>
+        <input type="number" id="strata_g_material" name="strata_g_material" min="1" max="10" required>
+        <label for="strata_g_performance">Performance</label>
+        <input type="number" id="strata_g_performance" name="strata_g_performance" min="1" max="10" required>
+        <label for="strata_g_calendario">Calendário</label>
+        <input type="number" id="strata_g_calendario" name="strata_g_calendario" min="1" max="10" required>
+        <label for="strata_g_impacto">Impacto</label>
+        <input type="number" id="strata_g_impacto" name="strata_g_impacto" min="1" max="10" required>
+        <label for="strata_g_confronto">Confronto Direto</label>
+        <input type="number" id="strata_g_confronto" name="strata_g_confronto" min="1" max="10" required>
+    </div>
+</div>
+<div class="rapper-card">
+    <img src="https://i.imgur.com/nop345.jpg" alt="Lc">
+    <div class="voting-options">
+        <label for="lc_consistencia">Consistência</label>
+        <input type="number" id="lc_consistencia" name="lc_consistencia" min="1" max="10" required>
+        <label for="lc_material">Material</label>
+        <input type="number" id="lc_material" name="lc_material" min="1" max="10" required>
+        <label for="lc_performance">Performance</label>
+        <input type="number" id="lc_performance" name="lc_performance" min="1" max="10" required>
+        <label for="lc_calendario">Calendário</label>
+        <input type="number" id="lc_calendario" name="lc_calendario" min="1" max="10" required>
+        <label for="lc_impacto">Impacto</label>
+        <input type="number" id="lc_impacto" name="lc_impacto" min="1" max="10" required>
+        <label for="lc_confronto">Confronto Direto</label>
+        <input type="number" id="lc_confronto" name="lc_confronto" min="1" max="10" required>
+    </div>
+</div>
+<div class="rapper-card">
+    <img src="https://i.imgur.com/pqr678.jpg" alt="Spicy Lee">
+    <div class="voting-options">
+        <label for="spicy_lee_consistencia">Consistência</label>
+        <input type="number" id="spicy_lee_consistencia" name="spicy_lee_consistencia" min="1" max="10" required>
+        <label for="spicy_lee_material">Material</label>
+        <input type="number" id="spicy_lee_material" name="spicy_lee_material" min="1" max="10" required>
+        <label for="spicy_lee_performance">Performance</label>
+        <input type="number" id="spicy_lee_performance" name="spicy_lee_performance" min="1" max="10" required>
+        <label for="spicy_lee_calendario">Calendário</label>
+        <input type="number" id="spicy_lee_calendario" name="spicy_lee_calendario" min="1" max="10" required>
+        <label for="spicy_lee_impacto">Impacto</label>
+        <input type="number" id="spicy_lee_impacto" name="spicy_lee_impacto" min="1" max="10" required>
+        <label for="spicy_lee_confronto">Confronto Direto</label>
+        <input type="number" id="spicy_lee_confronto" name="spicy_lee_confronto" min="1" max="10" required>
+    </div>
+</div>
+<div class="rapper-card">
+    <img src="https://i.imgur.com/rst901.jpg" alt="9 Miller">
+    <div class="voting-options">
+        <label for="9_miller_consistencia">Consistência</label>
+        <input type="number" id="9_miller_consistencia" name="9_miller_consistencia" min="1" max="10" required>
+        <label for="9_miller_material">Material</label>
+        <input type="number" id="9_miller_material" name="9_miller_material" min="1" max="10" required>
+        <label for="9_miller_performance">Performance</label>
+        <input type="number" id="9_miller_performance" name="9_miller_performance" min="1" max="10" required>
+        <label for="9_miller_calendario">Calendário</label>
+        <input type="number" id="9_miller_calendario" name="9_miller_calendario" min="1" max="10" required>
+        <label for="9_miller_impacto">Impacto</label>
+        <input type="number" id="9_miller_impacto" name="9_miller_impacto" min="1" max="10" required>
+        <label for="9_miller_confronto">Confronto Direto</label>
+        <input type="number" id="9_miller_confronto" name="9_miller_confronto" min="1" max="10" required>
+    </div>
+</div>
+<div class="rapper-card">
+    <img src="https://i.imgur.com/tuv234.jpg" alt="Licon">
+    <div class="voting-options">
+        <label for="licon_consistencia">Consistência</label>
+        <input type="number" id="licon_consistencia" name="licon_consistencia" min="1" max="10" required>
+        <label for="licon_material">Material</label>
+        <input type="number" id="licon_material" name="licon_material" min="1" max="10" required>
+        <label for="licon_performance">Performance</label>
+        <input type="number" id="licon_performance" name="licon_performance" min="1" max="10" required>
+        <label for="licon_calendario">Calendário</label>
+        <input type="number" id="licon_calendario" name="licon_calendario" min="1" max="10" required>
+        <label for="licon_impacto">Impacto</label>
+        <input type="number" id="licon_impacto" name="licon_impacto" min="1" max="10" required>
+        <label for="licon_confronto">Confronto Direto</label>
+        <input type="number" id="licon_confronto" name="licon_confronto" min="1" max="10" required>
+    </div>
+</div>
+<div class="rapper-card">
+    <img src="https://i.imgur.com/wxy567.jpg" alt="Jay Ill">
+    <div class="voting-options">
+        <label for="jay_ill_consistencia">Consistência</label>
+        <input type="number" id="jay_ill_consistencia" name="jay_ill_consistencia" min="1" max="10" required>
+        <label for="jay_ill_material">Material</label>
+        <input type="number" id="jay_ill_material" name="jay_ill_material" min="1" max="10" required>
+        <label for="jay_ill_performance">Performance</label>
+        <input type="number" id="jay_ill_performance" name="jay_ill_performance" min="1" max="10" required>
+        <label for="jay_ill_calendario">Calendário</label>
+        <input type="number" id="jay_ill_calendario" name="jay_ill_calendario" min="1" max="10" required>
+        <label for="jay_ill_impacto">Impacto</label>
+        <input type="number" id="jay_ill_impacto" name="jay_ill_impacto" min="1" max="10" required>
+        <label for="jay_ill_confronto">Confronto Direto</label>
+        <input type="number" id="jay_ill_confronto" name="jay_ill_confronto" min="1" max="10" required>
+    </div>
+</div>
+<div class="rapper-card">
+    <img src="https://i.imgur.com/yza890.jpg" alt="Edi Ventura">
+    <div class="voting-options">
+        <label for="edi_ventura_consistencia">Consistência</label>
+        <input type="number" id="edi_ventura_consistencia" name="edi_ventura_consistencia" min="1" max="10" required>
+        <label for="edi_ventura_material">Material</label>
+        <input type="number" id="edi_ventura_material" name="edi_ventura_material" min="1" max="10" required>
+        <label for="edi_ventura_performance">Performance</label>
+        <input type="number" id="edi_ventura_performance" name="edi_ventura_performance" min="1" max="10" required>
+        <label for="edi_ventura_calendario">Calendário</label>
+        <input type="number" id="edi_ventura_calendario" name="edi_ventura_calendario" min="1" max="10" required>
+        <label for="edi_ventura_impacto">Impacto</label>
+        <input type="number" id="edi_ventura_impacto" name="edi_ventura_impacto" min="1" max="10" required>
+        <label for="edi_ventura_confronto">Confronto Direto</label>
+        <input type="number" id="edi_ventura_confronto" name="edi_ventura_confronto" min="1" max="10" required>
+    </div>
+</div>
+<div class="rapper-card">
+    <img src="https://i.imgur.com/bcd123.jpg" alt="Xco">
+    <div class="voting-options">
+        <label for="xco_consistencia">Consistência</label>
+        <input type="number" id="xco_consistencia" name="xco_consistencia" min="1" max="10" required>
+        <label for="xco_material">Material</label>
+        <input type="number" id="xco_material" name="xco_material" min="1" max="10" required>
+        <label for="xco_performance">Performance</label>
+        <input type="number" id="xco_performance" name="xco_performance" min="1" max="10" required>
+        <label for="xco_calendario">Calendário</label>
+        <input type="number" id="xco_calendario" name="xco_calendario" min="1" max="10" required>
+        <label for="xco_impacto">Impacto</label>
+        <input type="number" id="xco_impacto" name="xco_impacto" min="1" max="10" required>
+        <label for="xco_confronto">Confronto Direto</label>
+        <input type="number" id="xco_confronto" name="xco_confronto" min="1" max="10" required>
+    </div>
+</div>
+<div class="rapper-card">
+    <img src="https://i.imgur.com/efg456.jpg" alt="Joker">
+    <div class="voting-options">
+        <label for="joker_consistencia">Consistência</label>
+        <input type="number" id="joker_consistencia" name="joker_consistencia" min="1" max="10" required>
+        <label for="joker_material">Material</label>
+        <input type="number" id="joker_material" name="joker_material" min="1" max="10" required>
+        <label for="joker_performance">Performance</label>
+        <input type="number" id="joker_performance" name="joker_performance" min="1" max="10" required>
+        <label for="joker_calendario">Calendário</label>
+        <input type="number" id="joker_calendario" name="joker_calendario" min="1" max="10" required>
+        <label for="joker_impacto">Impacto</label>
+        <input type="number" id="joker_impacto" name="joker_impacto" min="1" max="10" required>
+        <label for="joker_confronto">Confronto Direto</label>
+        <input type="number" id="joker_confronto" name="joker_confronto" min="1" max="10" required>
+    </div>
+</div>
+<div class="rapper-card">
+    <img src="https://i.imgur.com/hij789.jpg" alt="Flajo">
+    <div class="voting-options">
+        <label for="flajo_consistencia">Consistência</label>
+        <input type="number" id="flajo_consistencia" name="flajo_consistencia" min="1" max="10" required>
+        <label for="flajo_material">Material</label>
+        <input type="number" id="flajo_material" name="flajo_material" min="1" max="10" required>
+        <label for="flajo_performance">Performance</label>
+        <input type="number" id="flajo_performance" name="flajo_performance" min="1" max="10" required>
+        <label for="flajo_calendario">Calendário</label>
+        <input type="number" id="flajo_calendario" name="flajo_calendario" min="1" max="10" required>
+        <label for="flajo_impacto">Impacto</label>
+        <input type="number" id="flajo_impacto" name="flajo_impacto" min="1" max="10" required>
+        <label for="flajo_confronto">Confronto Direto</label>
+        <input type="number" id="flajo_confronto" name="flajo_confronto" min="1" max="10" required>
+    </div>
+</div>
+<div class="rapper-card">
+    <img src="https://i.imgur.com/klm012.jpg" alt="Tomas">
+    <div class="voting-options">
+        <label for="tomas_consistencia">Consistência</label>
+        <input type="number" id="tomas_consistencia" name="tomas_consistencia" min="1" max="10" required>
+        <label for="tomas_material">Material</label>
+        <input type="number" id="tomas_material" name="tomas_material" min="1" max="10" required>
+        <label for="tomas_performance">Performance</label>
+        <input type="number" id="tomas_performance" name="tomas_performance" min="1" max="10" required>
+        <label for="tomas_calendario">Calendário</label>
+        <input type="number" id="tomas_calendario" name="tomas_calendario" min="1" max="10" required>
+        <label for="tomas_impacto">Impacto</label>
+        <input type="number" id="tomas_impacto" name="tomas_impacto" min="1" max="10" required>
+        <label for="tomas_confronto">Confronto Direto</label>
+        <input type="number" id="tomas_confronto" name="tomas_confronto" min="1" max="10" required>
+    </div>
+</div>
+<div class="rapper-card">
+    <img src="https://i.imgur.com/nop345.jpg" alt="Shifu">
+    <div class="voting-options">
+        <label for="shifu_consistencia">Consistência</label>
+        <input type="number" id="shifu_consistencia" name="shifu_consistencia" min="1" max="10" required>
+        <label for="shifu_material">Material</label>
+        <input type="number" id="shifu_material" name="shifu_material" min="1" max="10" required>
+        <label for="shifu_performance">Performance</label>
+        <input type="number" id="shifu_performance" name="shifu_performance" min="1" max="10" required>
+        <label for="shifu_calendario">Calendário</label>
+        <input type="number" id="shifu_calendario" name="shifu_calendario" min="1" max="10" required>
+        <label for="shifu_impacto">Impacto</label>
+        <input type="number" id="shifu_impacto" name="shifu_impacto" min="1" max="10" required>
+        <label for="shifu_confronto">Confronto Direto</label>
+        <input type="number" id="shifu_confronto" name="shifu_confronto" min="1" max="10" required>
+    </div>
+</div>
+<div class="rapper-card">
+    <img src="https://i.imgur.com/pqr678.jpg" alt="Tagi">
+    <div class="voting-options">
+        <label for="tagi_consistencia">Consistência</label>
+        <input type="number" id="tagi_consistencia" name="tagi_consistencia" min="1" max="10" required>
+        <label for="tagi_material">Material</label>
+        <input type="number" id="tagi_material" name="tagi_material" min="1" max="10" required>
+        <label for="tagi_performance">Performance</label>
+        <input type="number" id="tagi_performance" name="tagi_performance" min="1" max="10" required>
+        <label for="tagi_calendario">Calendário</label>
+        <input type="number" id="tagi_calendario" name="tagi_calendario" min="1" max="10" required>
+        <label for="tagi_impacto">Impacto</label>
+        <input type="number" id="tagi_impacto" name="tagi_impacto" min="1" max="10" required>
+        <label for="tagi_confronto">Confronto Direto</label>
+        <input type="number" id="tagi_confronto" name="tagi_confronto" min="1" max="10" required>
+    </div>
+</div>
+<div class="rapper-card">
+    <img src="https://i.imgur.com/rst901.jpg" alt="Galeno">
+    <div class="voting-options">
+        <label for="galeno_consistencia">Consistência</label>
+        <input type="number" id="galeno_consistencia" name="galeno_consistencia" min="1" max="10" required>
+        <label for="galeno_material">Material</label>
+        <input type="number" id="galeno_material" name="galeno_material" min="1" max="10" required>
+        <label for="galeno_performance">Performance</label>
+        <input type="number" id="galeno_performance" name="galeno_performance" min="1" max="10" required>
+        <label for="galeno_calendario">Calendário</label>
+        <input type="number" id="galeno_calendario" name="galeno_calendario" min="1" max="10" required>
+        <label for="galeno_impacto">Impacto</label>
+        <input type="number" id="galeno_impacto" name="galeno_impacto" min="1" max="10" required>
+        <label for="galeno_confronto">Confronto Direto</label>
+        <input type="number" id="galeno_confronto" name="galeno_confronto" min="1" max="10" required>
+    </div>
+</div>
+<div class="rapper-card">
+    <img src="https://i.imgur.com/tuv234.jpg" alt="Reverse">
+    <div class="voting-options">
+        <label for="reverse_consistencia">Consistência</label>
+        <input type="number" id="reverse_consistencia" name="reverse_consistencia" min="1" max="10" required>
+        <label for="reverse_material">Material</label>
+        <input type="number" id="reverse_material" name="reverse_material" min="1" max="10" required>
+        <label for="reverse_performance">Performance</label>
+        <input type="number" id="reverse_performance" name="reverse_performance" min="1" max="10" required>
+        <label for="reverse_calendario">Calendário</label>
+        <input type="number" id="reverse_calendario" name="reverse_calendario" min="1" max="10" required>
+        <label for="reverse_impacto">Impacto</label>
+        <input type="number" id="reverse_impacto" name="reverse_impacto" min="1" max="10" required>
+        <label for="reverse_confronto">Confronto Direto</label>
+        <input type="number" id="reverse_confronto" name="reverse_confronto" min="1" max="10" required>
+    </div>
+</div>
+<div class="rapper-card">
+    <img src="https://i.imgur.com/wxy567.jpg" alt="Slark">
+    <div class="voting-options">
+        <label for="slark_consistencia">Consistência</label>
+        <input type="number" id="slark_consistencia" name="slark_consistencia" min="1" max="10" required>
+        <label for="slark_material">Material</label>
+        <input type="number" id="slark_material" name="slark_material" min="1" max="10" required>
+        <label for="slark_performance">Performance</label>
+        <input type="number" id="slark_performance" name="slark_performance" min="1" max="10" required>
+        <label for="slark_calendario">Calendário</label>
+        <input type="number" id="slark_calendario" name="slark_calendario" min="1" max="10" required>
+        <label for="slark_impacto">Impacto</label>
+        <input type="number" id="slark_impacto" name="slark_impacto" min="1" max="10" required>
+        <label for="slark_confronto">Confronto Direto</label>
+        <input type="number" id="slark_confronto" name="slark_confronto" min="1" max="10" required>
+    </div>
+</div>
+<div class="rapper-card">
+    <img src="https://i.imgur.com/yza890.jpg" alt="Eleven">
+    <div class="voting-options">
+        <label for="eleven_consistencia">Consistência</label>
+        <input type="number" id="eleven_consistencia" name="eleven_consistencia" min="1" max="10" required>
+        <label for="eleven_material">Material</label>
+        <input type="number" id="eleven_material" name="eleven_material" min="1" max="10" required>
+        <label for="eleven_performance">Performance</label>
+        <input type="number" id="eleven_performance" name="eleven_performance" min="1" max="10" required>
+        <label for="eleven_calendario">Calendário</label>
+        <input type="number" id="eleven_calendario" name="eleven_calendario" min="1" max="10" required>
+        <label for="eleven_impacto">Impacto</label>
+        <input type="number" id="eleven_impacto" name="eleven_impacto" min="1" max="10" required>
+        <label for="eleven_confronto">Confronto Direto</label>
+        <input type="number" id="eleven_confronto" name="eleven_confronto" min="1" max="10" required>
+    </div>
+</div>
+<div class="rapper-card">
+    <img src="https://i.imgur.com/bcd123.jpg" alt="Flep">
+    <div class="voting-options">
+        <label for="flep_consistencia">Consistência</label>
+        <input type="number" id="flep_consistencia" name="flep_consistencia" min="1" max="10" required>
+        <label for="flep_material">Material</label>
+        <input type="number" id="flep_material" name="flep_material" min="1" max="10" required>
+        <label for="flep_performance">Performance</label>
+        <input type="number" id="flep_performance" name="flep_performance" min="1" max="10" required>
+        <label for="flep_calendario">Calendário</label>
+        <input type="number" id="flep_calendario" name="flep_calendario" min="1" max="10" required>
+        <label for="flep_impacto">Impacto</label>
+        <input type="number" id="flep_impacto" name="flep_impacto" min="1" max="10" required>
+        <label for="flep_confronto">Confronto Direto</label>
+        <input type="number" id="flep_confronto" name="flep_confronto" min="1" max="10" required>
+    </div>
+</div>
+<div class="rapper-card">
+    <img src="https://i.imgur.com/efg456.jpg" alt="Tio Pappi">
+    <div class="voting-options">
+        <label for="tio_pappi_consistencia">Consistência</label>
+        <input type="number" id="tio_pappi_consistencia" name="tio_pappi_consistencia" min="1" max="10" required>
+        <label for="tio_pappi_material">Material</label>
+        <input type="number" id="tio_pappi_material" name="tio_pappi_material" min="1" max="10" required>
+        <label for="tio_pappi_performance">Performance</label>
+        <input type="number" id="tio_pappi_performance" name="tio_pappi_performance" min="1" max="10" required>
+        <label for="tio_pappi_calendario">Calendário</label>
+        <input type="number" id="tio_pappi_calendario" name="tio_pappi_calendario" min="1" max="10" required>
+        <label for="tio_pappi_impacto">Impacto</label>
+        <input type="number" id="tio_pappi_impacto" name="tio_pappi_impacto" min="1" max="10" required>
+        <label for="tio_pappi_confronto">Confronto Direto</label>
+        <input type="number" id="tio_pappi_confronto" name="tio_pappi_confronto" min="1" max="10" required>
+    </div>
+</div>
+<div class="rapper-card">
+    <img src="https://i.imgur.com/hij789.jpg" alt="Flip">
+    <div class="voting-options">
+        <label for="flip_consistencia">Consistência</label>
+        <input type="number" id="flip_consistencia" name="flip_consistencia" min="1" max="10" required>
+        <label for="flip_material">Material</label>
+        <input type="number" id="flip_material" name="flip_material" min="1" max="10" required>
+        <label for="flip_performance">Performance</label>
+        <input type="number" id="flip_performance" name="flip_performance" min="1" max="10" required>
+        <label for="flip_calendario">Calendário</label>
+        <input type="number" id="flip_calendario" name="flip_calendario" min="1" max="10" required>
+        <label for="flip_impacto">Impacto</label>
+        <input type="number" id="flip_impacto" name="flip_impacto" min="1" max="10" required>
+        <label for="flip_confronto">Confronto Direto</label>
+        <input type="number" id="flip_confronto" name="flip_confronto" min="1" max="10" required>
+    </div>
+</div>
+<div class="rapper-card">
+    <img src="https://i.imgur.com/klm012.jpg" alt="Zolty">
+    <div class="voting-options">
+        <label for="zolty_consistencia">Consistência</label>
+        <input type="number" id="zolty_consistencia" name="zolty_consistencia" min="1" max="10" required>
+        <label for="zolty_material">Material</label>
+        <input type="number" id="zolty_material" name="zolty_material" min="1" max="10" required>
+        <label for="zolty_performance">Performance</label>
+        <input type="number" id="zolty_performance" name="zolty_performance" min="1" max="10" required>
+        <label for="zolty_calendario">Calendário</label>
+        <input type="number" id="zolty_calendario" name="zolty_calendario" min="1" max="10" required>
+        <label for="zolty_impacto">Impacto</label>
+        <input type="number" id="zolty_impacto" name="zolty_impacto" min="1" max="10" required>
+        <label for="zolty_confronto">Confronto Direto</label>
+        <input type="number" id="zolty_confronto" name="zolty_confronto" min="1" max="10" required>
+    </div>
+</div>
+<div class="rapper-card">
+    <img src="https://i.imgur.com/nop345.jpg" alt="Moreira">
+    <div class="voting-options">
+        <label for="moreira_consistencia">Consistência</label>
+        <input type="number" id="moreira_consistencia" name="moreira_consistencia" min="1" max="10" required>
+        <label for="moreira_material">Material</label>
+        <input type="number" id="moreira_material" name="moreira_material" min="1" max="10" required>
+        <label for="moreira_performance">Performance</label>
+        <input type="number" id="moreira_performance" name="moreira_performance" min="1" max="10" required>
+        <label for="moreira_calendario">Calendário</label>
+        <input type="number" id="moreira_calendario" name="moreira_calendario" min="1" max="10" required>
+        <label for="moreira_impacto">Impacto</label>
+        <input type="number" id="moreira_impacto" name="moreira_impacto" min="1" max="10" required>
+        <label for="moreira_confronto">Confronto Direto</label>
+        <input type="number" id="moreira_confronto" name="moreira_confronto" min="1" max="10" required>
+    </div>
+</div>
+<div class="rapper-card">
+    <img src="https://i.imgur.com/pqr678.jpg" alt="Kuadra">
+    <div class="voting-options">
+        <label for="kuadra_consistencia">Consistência</label>
+        <input type="number" id="kuadra_consistencia" name="kuadra_consistencia" min="1" max="10" required>
+        <label for="kuadra_material">Material</label>
+        <input type="number" id="kuadra_material" name="kuadra_material" min="1" max="10" required>
+        <label for="kuadra_performance">Performance</label>
+        <input type="number" id="kuadra_performance" name="kuadra_performance" min="1" max="10" required>
+        <label for="kuadra_calendario">Calendário</label>
+        <input type="number" id="kuadra_calendario" name="kuadra_calendario" min="1" max="10" required>
+        <label for="kuadra_impacto">Impacto</label>
+        <input type="number" id="kuadra_impacto" name="kuadra_impacto" min="1" max="10" required>
+        <label for="kuadra_confronto">Confronto Direto</label>
+        <input type="number" id="kuadra_confronto" name="kuadra_confronto" min="1" max="10" required>
+    </div>
+</div>
+<div class="rapper-card">
+    <img src="https://i.imgur.com/rst901.jpg" alt="Athal">
+    <div class="voting-options">
+        <label for="athal_consistencia">Consistência</label>
+        <input type="number" id="athal_consistencia" name="athal_consistencia" min="1" max="10" required>
+        <label for="athal_material">Material</label>
+        <input type="number" id="athal_material" name="athal_material" min="1" max="10" required>
+        <label for="athal_performance">Performance</label>
+        <input type="number" id="athal_performance" name="athal_performance" min="1" max="10" required>
+        <label for="athal_calendario">Calendário</label>
+        <input type="number" id="athal_calendario" name="athal_calendario" min="1" max="10" required>
+        <label for="athal_impacto">Impacto</label>
+        <input type="number" id="athal_impacto" name="athal_impacto" min="1" max="10" required>
+        <label for="athal_confronto">Confronto Direto</label>
+        <input type="number" id="athal_confronto" name="athal_confronto" min="1" max="10" required>
+    </div>
+</div>
+<div class="rapper-card">
+    <img src="https://i.imgur.com/tuv234.jpg" alt="Mk">
+    <div class="voting-options">
+        <label for="mk_consistencia">Consistência</label>
+        <input type="number" id="mk_consistencia" name="mk_consistencia" min="1" max="10" required>
+        <label for="mk_material">Material</label>
+        <input type="number" id="mk_material" name="mk_material" min="1" max="10" required>
+        <label for="mk_performance">Performance</label>
+        <input type="number" id="mk_performance" name="mk_performance" min="1" max="10" required>
+        <label for="mk_calendario">Calendário</label>
+        <input type="number" id="mk_calendario" name="mk_calendario" min="1" max="10" required>
+        <label for="mk_impacto">Impacto</label>
+        <input type="number" id="mk_impacto" name="mk_impacto" min="1" max="10" required>
+        <label for="mk_confronto">Confronto Direto</label>
+        <input type="number" id="mk_confronto" name="mk_confronto" min="1" max="10" required>
+    </div>
+</div>
+<div class="rapper-card">
+    <img src="https://i.imgur.com/wxy567.jpg" alt="Rui Costa">
+    <div class="voting-options">
+        <label for="rui_costa_consistencia">Consistência</label>
+        <input type="number" id="rui_costa_consistencia" name="rui_costa_consistencia" min="1" max="10" required>
+        <label for="rui_costa_material">Material</label>
+        <input type="number" id="rui_costa_material" name="rui_costa_material" min="1" max="10" required>
+        <label for="rui_costa_performance">Performance</label>
+        <input type="number" id="rui_costa_performance" name="rui_costa_performance" min="1" max="10" required>
+        <label for="rui_costa_calendario">Calendário</label>
+        <input type="number" id="rui_costa_calendario" name="rui_costa_calendario" min="1" max="10" required>
+        <label for="rui_costa_impacto">Impacto</label>
+        <input type="number" id="rui_costa_impacto" name="rui_costa_impacto" min="1" max="10" required>
+        <label for="rui_costa_confronto">Confronto Direto</label>
+        <input type="number" id="rui_costa_confronto" name="rui_costa_confronto" min="1" max="10" required>
+    </div>
+</div>
+<div class="rapper-card">
+    <img src="https://i.imgur.com/yza890.jpg" alt="Filtro">
+    <div class="voting-options">
+        <label for="filtro_consistencia">Consistência</label>
+        <input type="number" id="filtro_consistencia" name="filtro_consistencia" min="1" max="10" required>
+        <label for="filtro_material">Material</label>
+        <input type="number" id="filtro_material" name="filtro_material" min="1" max="10" required>
+        <label for="filtro_performance">Performance</label>
+        <input type="number" id="filtro_performance" name="filtro_performance" min="1" max="10" required>
+        <label for="filtro_calendario">Calendário</label>
+        <input type="number" id="filtro_calendario" name="filtro_calendario" min="1" max="10" required>
+        <label for="filtro_impacto">Impacto</label>
+        <input type="number" id="filtro_impacto" name="filtro_impacto" min="1" max="10" required>
+        <label for="filtro_confronto">Confronto Direto</label>
+        <input type="number" id="filtro_confronto" name="filtro_confronto" min="1" max="10" required>
+    </div>
+</div>
+<div class="rapper-card">
+    <img src="https://i.imgur.com/bcd123.jpg" alt="Max">
+    <div class="voting-options">
+        <label for="max_consistencia">Consistência</label>
+        <input type="number" id="max_consistencia" name="max_consistencia" min="1" max="10" required>
+        <label for="max_material">Material</label>
+        <input type="number" id="max_material" name="max_material" min="1" max="10" required>
+        <label for="max_performance">Performance</label>
+        <input type="number" id="max_performance" name="max_performance" min="1" max="10" required>
+        <label for="max_calendario">Calendário</label>
+        <input type="number" id="max_calendario" name="max_calendario" min="1" max="10" required>
+        <label for="max_impacto">Impacto</label>
+        <input type="number" id="max_impacto" name="max_impacto" min="1" max="10" required>
+        <label for="max_confronto">Confronto Direto</label>
+        <input type="number" id="max_confronto" name="max_confronto" min="1" max="10" required>
+    </div>
+</div>
+<div class="rapper-card">
+    <img src="https://i.imgur.com/efg456.jpg" alt="Vazto">
+    <div class="voting-options">
+        <label for="vazto_consistencia">Consistência</label>
+        <input type="number" id="vazto_consistencia" name="vazto_consistencia" min="1" max="10" required>
+        <label for="vazto_material">Material</label>
+        <input type="number" id="vazto_material" name="vazto_material" min="1" max="10" required>
+        <label for="vazto_performance">Performance</label>
+        <input type="number" id="vazto_performance" name="vazto_performance" min="1" max="10" required>
+        <label for="vazto_calendario">Calendário</label>
+        <input type="number" id="vazto_calendario" name="vazto_calendario" min="1" max="10" required>
+        <label for="vazto_impacto">Impacto</label>
+        <input type="number" id="vazto_impacto" name="vazto_impacto" min="1" max="10" required>
+        <label for="vazto_confronto">Confronto Direto</label>
+        <input type="number" id="vazto_confronto" name="vazto_confronto" min="1" max="10" required>
+    </div>
+</div>
+<div class="rapper-card">
+    <img src="https://i.imgur.com/hij789.jpg" alt="Erre K">
+    <div class="voting-options">
+        <label for="erre_k_consistencia">Consistência</label>
+        <input type="number" id="erre_k_consistencia" name="erre_k_consistencia" min="1" max="10" required>
+        <label for="erre_k_material">Material</label>
+        <input type="number" id="erre_k_material" name="erre_k_material" min="1" max="10" required>
+        <label for="erre_k_performance">Performance</label>
+        <input type="number" id="erre_k_performance" name="erre_k_performance" min="1" max="10" required>
+        <label for="erre_k_calendario">Calendário</label>
+        <input type="number" id="erre_k_calendario" name="erre_k_calendario" min="1" max="10" required>
+        <label for="erre_k_impacto">Impacto</label>
+        <input type="number" id="erre_k_impacto" name="erre_k_impacto" min="1" max="10" required>
+        <label for="erre_k_confronto">Confronto Direto</label>
+        <input type="number" id="erre_k_confronto" name="erre_k_confronto" min="1" max="10" required>
+    </div>
+</div>
+<div class="rapper-card">
+    <img src="https://i.imgur.com/klm012.jpg" alt="Jonec">
+    <div class="voting-options">
+        <label for="jonec_consistencia">Consistência</label>
+        <input type="number" id="jonec_consistencia" name="jonec_consistencia" min="1" max="10" required>
+        <label for="jonec_material">Material</label>
+        <input type="number" id="jonec_material" name="jonec_material" min="1" max="10" required>
+        <label for="jonec_performance">Performance</label>
+        <input type="number" id="jonec_performance" name="jonec_performance" min="1" max="10" required>
+        <label for="jonec_calendario">Calendário</label>
+        <input type="number" id="jonec_calendario" name="jonec_calendario" min="1" max="10" required>
+        <label for="jonec_impacto">Impacto</label>
+        <input type="number" id="jonec_impacto" name="jonec_impacto" min="1" max="10" required>
+        <label for="jonec_confronto">Confronto Direto</label>
+        <input type="number" id="jonec_confronto" name="jonec_confronto" min="1" max="10" required>
+    </div>
+</div>
+<div class="rapper-card">
+    <img src="https://i.imgur.com/nop345.jpg" alt="3ma">
+    <div class="voting-options">
+        <label for="3ma_consistencia">Consistência</label>
+        <input type="number" id="3ma_consistencia" name="3ma_consistencia" min="1" max="10" required>
+        <label for="3ma_material">Material</label>
+        <input type="number" id="3ma_material" name="3ma_material" min="1" max="10" required>
+        <label for="3ma_performance">Performance</label>
+        <input type="number" id="3ma_performance" name="3ma_performance" min="1" max="10" required>
+        <label for="3ma_calendario">Calendário</label>
+        <input type="number" id="3ma_calendario" name="3ma_calendario" min="1" max="10" required>
+        <label for="3ma_impacto">Impacto</label>
+        <input type="number" id="3ma_impacto" name="3ma_impacto" min="1" max="10" required>
+        <label for="3ma_confronto">Confronto Direto</label>
+        <input type="number" id="3ma_confronto" name="3ma_confronto" min="1" max="10" required>
+    </div>
+</div>
+<div class="rapper-card">
+    <img src="https://i.imgur.com/pqr678.jpg" alt="Guigox">
+    <div class="voting-options">
+        <label for="guigox_consistencia">Consistência</label>
+        <input type="number" id="guigox_consistencia" name="guigox_consistencia" min="1" max="10" required>
+        <label for="guigox_material">Material</label>
+        <input type="number" id="guigox_material" name="guigox_material" min="1" max="10" required>
+        <label for="guigox_performance">Performance</label>
+        <input type="number" id="guigox_performance" name="guigox_performance" min="1" max="10" required>
+        <label for="guigox_calendario">Calendário</label>
+        <input type="number" id="guigox_calendario" name="guigox_calendario" min="1" max="10" required>
+        <label for="guigox_impacto">Impacto</label>
+        <input type="number" id="guigox_impacto" name="guigox_impacto" min="1" max="10" required>
+        <label for="guigox_confronto">Confronto Direto</label>
+        <input type="number" id="guigox_confronto" name="guigox_confronto" min="1" max="10" required>
+    </div>
+</div>
+<div class="rapper-card">
+    <img src="https://i.imgur.com/rst901.jpg" alt="Riss">
+    <div class="voting-options">
+        <label for="riss_consistencia">Consistência</label>
+        <input type="number" id="riss_consistencia" name="riss_consistencia" min="1" max="10" required>
+        <label for="riss_material">Material</label>
+        <input type="number" id="riss_material" name="riss_material" min="1" max="10" required>
+        <label for="riss_performance">Performance</label>
+        <input type="number" id="riss_performance" name="riss_performance" min="1" max="10" required>
+        <label for="riss_calendario">Calendário</label>
+        <input type="number" id="riss_calendario" name="riss_calendario" min="1" max="10" required>
+        <label for="riss_impacto">Impacto</label>
+        <input type="number" id="riss_impacto" name="riss_impacto" min="1" max="10" required>
+        <label for="riss_confronto">Confronto Direto</label>
+        <input type="number" id="riss_confronto" name="riss_confronto" min="1" max="10" required>
+    </div>
+</div>
+<div class="rapper-card">
+    <img src="https://i.imgur.com/tuv234.jpg" alt="7am">
+    <div class="voting-options">
+        <label for="7am_consistencia">Consistência</label>
+        <input type="number" id="7am_consistencia" name="7am_consistencia" min="1" max="10" required>
+        <label for="7am_material">Material</label>
+        <input type="number" id="7am_material" name="7am_material" min="1" max="10" required>
+        <label for="7am_performance">Performance</label>
+        <input type="number" id="7am_performance" name="7am_performance" min="1" max="10" required>
+        <label for="7am_calendario">Calendário</label>
+        <input type="number" id="7am_calendario" name="7am_calendario" min="1" max="10" required>
+        <label for="7am_impacto">Impacto</label>
+        <input type="number" id="7am_impacto" name="7am_impacto" min="1" max="10" required>
+        <label for="7am_confronto">Confronto Direto</label>
+        <input type="number" id="7am_confronto" name="7am_confronto" min="1" max="10" required>
+    </div>
+</div>
+<div class="rapper-card">
+    <img src="https://i.imgur.com/wxy567.jpg" alt="Mandacaru">
+    <div class="voting-options">
+        <label for="mandacaru_consistencia">Consistência</label>
+        <input type="number" id="mandacaru_consistencia" name="mandacaru_consistencia" min="1" max="10" required>
+        <label for="mandacaru_material">Material</label>
+        <input type="number" id="mandacaru_material" name="mandacaru_material" min="1" max="10" required>
+        <label for="mandacaru_performance">Performance</label>
+        <input type="number" id="mandacaru_performance" name="mandacaru_performance" min="1" max="10" required>
+        <label for="mandacaru_calendario">Calendário</label>
+        <input type="number" id="mandacaru_calendario" name="mandacaru_calendario" min="1" max="10" required>
+        <label for="mandacaru_impacto">Impacto</label>
+        <input type="number" id="mandacaru_impacto" name="mandacaru_impacto" min="1" max="10" required>
+        <label for="mandacaru_confronto">Confronto Direto</label>
+        <input type="number" id="mandacaru_confronto" name="mandacaru_confronto" min="1" max="10" required>
+    </div>
+</div>
+<div class="rapper-card">
+    <img src="https://i.imgur.com/yza890.jpg" alt="Surreal">
+    <div class="voting-options">
+        <label for="surreal_consistencia">Consistência</label>
+        <input type="number" id="surreal_consistencia" name="surreal_consistencia" min="1" max="10" required>
+        <label for="surreal_material">Material</label>
+        <input type="number" id="surreal_material" name="surreal_material" min="1" max="10" required>
+        <label for="surreal_performance">Performance</label>
+        <input type="number" id="surreal_performance" name="surreal_performance" min="1" max="10" required>
+        <label for="surreal_calendario">Calendário</label>
+        <input type="number" id="surreal_calendario" name="surreal_calendario" min="1" max="10" required>
+        <label for="surreal_impacto">Impacto</label>
+        <input type="number" id="surreal_impacto" name="surreal_impacto" min="1" max="10" required>
+        <label for="surreal_confronto">Confronto Direto</label>
+        <input type="number" id="surreal_confronto" name="surreal_confronto" min="1" max="10" required>
+    </div>
+</div>
+<div class="rapper-card">
+    <img src="https://i.imgur.com/bcd123.jpg" alt="Saooneart">
+    <div class="voting-options">
+        <label for="saooneart_consistencia">Consistência</label>
+        <input type="number" id="saooneart_consistencia" name="saooneart_consistencia" min="1" max="10" required>
+        <label for="saooneart_material">Material</label>
+        <input type="number" id="saooneart_material" name="saooneart_material" min="1" max="10" required>
+        <label for="saooneart_performance">Performance</label>
+        <input type="number" id="saooneart_performance" name="saooneart_performance" min="1" max="10" required>
+        <label for="saooneart_calendario">Calendário</label>
+        <input type="number" id="saooneart_calendario" name="saooneart_calendario" min="1" max="10" required>
+        <label for="saooneart_impacto">Impacto</label>
+        <input type="number" id="saooneart_impacto" name="saooneart_impacto" min="1" max="10" required>
+        <label for="saooneart_confronto">Confronto Direto</label>
+        <input type="number" id="saooneart_confronto" name="saooneart_confronto" min="1" max="10" required>
+    </div>
+</div>
+<div class="rapper-card">
+    <img src="https://i.imgur.com/efg456.jpg" alt="Cpjota">
+    <div class="voting-options">
+        <label for="cpjota_consistencia">Consistência</label>
+        <input type="number" id="cpjota_consistencia" name="cpjota_consistencia" min="1" max="10" required>
+        <label for="cpjota_material">Material</label>
+        <input type="number" id="cpjota_material" name="cpjota_material" min="1" max="10" required>
+        <label for="cpjota_performance">Performance</label>
+        <input type="number" id="cpjota_performance" name="cpjota_performance" min="1" max="10" required>
+        <label for="cpjota_calendario">Calendário</label>
+        <input type="number" id="cpjota_calendario" name="cpjota_calendario" min="1" max="10" required>
+        <label for="cpjota_impacto">Impacto</label>
+        <input type="number" id="cpjota_impacto" name="cpjota_impacto" min="1" max="10" required>
+        <label for="cpjota_confronto">Confronto Direto</label>
+        <input type="number" id="cpjota_confronto" name="cpjota_confronto" min="1" max="10" required>
+    </div>
+</div>
+<div class="rapper-card">
+    <img src="https://i.imgur.com/hij789.jpg" alt="Flays">
+    <div class="voting-options">
+        <label for="flays_consistencia">Consistência</label>
+        <input type="number" id="flays_consistencia" name="flays_consistencia" min="1" max="10" required>
+        <label for="flays_material">Material</label>
+        <input type="number" id="flays_material" name="flays_material" min="1" max="10" required>
+        <label for="flays_performance">Performance</label>
+        <input type="number" id="flays_performance" name="flays_performance" min="1" max="10" required>
+        <label for="flays_calendario">Calendário</label>
+        <input type="number" id="flays_calendario" name="flays_calendario" min="1" max="10" required>
+        <label for="flays_impacto">Impacto</label>
+        <input type="number" id="flays_impacto" name="flays_impacto" min="1" max="10" required>
+        <label for="flays_confronto">Confronto Direto</label>
+        <input type="number" id="flays_confronto" name="flays_confronto" min="1" max="10" required>
+    </div>
+</div>
+<div class="rapper-card">
+    <img src="https://i.imgur.com/klm012.jpg" alt="Edc">
+    <div class="voting-options">
+        <label for="edc_consistencia">Consistência</label>
+        <input type="number" id="edc_consistencia" name="edc_consistencia" min="1" max="10" required>
+        <label for="edc_material">Material</label>
+        <input type="number" id="edc_material" name="edc_material" min="1" max="10" required>
+        <label for="edc_performance">Performance</label>
+        <input type="number" id="edc_performance" name="edc_performance" min="1" max="10" required>
+        <label for="edc_calendario">Calendário</label>
+        <input type="number" id="edc_calendario" name="edc_calendario" min="1" max="10" required>
+        <label for="edc_impacto">Impacto</label>
+        <input type="number" id="edc_impacto" name="edc_impacto" min="1" max="10" required>
+        <label for="edc_confronto">Confronto Direto</label>
+        <input type="number" id="edc_confronto" name="edc_confronto" min="1" max="10" required>
+    </div>
+</div>
+<div class="rapper-card">
+    <img src="https://i.imgur.com/nop345.jpg" alt="Quinta">
+    <div class="voting-options">
+        <label for="quinta_consistencia">Consistência</label>
+        <input type="number" id="quinta_consistencia" name="quinta_consistencia" min="1" max="10" required>
+        <label for="quinta_material">Material</label>
+        <input type="number" id="quinta_material" name="quinta_material" min="1" max="10" required>
+        <label for="quinta_performance">Performance</label>
+        <input type="number" id="quinta_performance" name="quinta_performance" min="1" max="10" required>
+        <label for="quinta_calendario">Calendário</label>
+        <input type="number" id="quinta_calendario" name="quinta_calendario" min="1" max="10" required>
+        <label for="quinta_impacto">Impacto</label>
+        <input type="number" id="quinta_impacto" name="quinta_impacto" min="1" max="10" required>
+        <label for="quinta_confronto">Confronto Direto</label>
+        <input type="number" id="quinta_confronto" name="quinta_confronto" min="1" max="10" required>
+    </div>
+</div>
+<div class="rapper-card">
+    <img src="https://i.imgur.com/pqr678.jpg" alt="Relvas">
+    <div class="voting-options">
+        <label for="relvas_consistencia">Consistência</label>
+        <input type="number" id="relvas_consistencia" name="relvas_consistencia" min="1" max="10" required>
+        <label for="relvas_material">Material</label>
+        <input type="number" id="relvas_material" name="relvas_material" min="1" max="10" required>
+        <label for="relvas_performance">Performance</label>
+        <input type="number" id="relvas_performance" name="relvas_performance" min="1" max="10" required>
+        <label for="relvas_calendario">Calendário</label>
+        <input type="number" id="relvas_calendario" name="relvas_calendario" min="1" max="10" required>
+        <label for="relvas_impacto">Impacto</label>
+        <input type="number" id="relvas_impacto" name="relvas_impacto" min="1" max="10" required>
+        <label for="relvas_confronto">Confronto Direto</label>
+        <input type="number" id="relvas_confronto" name="relvas_confronto" min="1" max="10" required>
+    </div>
+</div>
+<div class="rapper-card">
+    <img src="https://i.imgur.com/rst901.jpg" alt="Davinci">
+    <div class="voting-options">
+        <label for="davinci_consistencia">Consistência</label>
+        <input type="number" id="davinci_consistencia" name="davinci_consistencia" min="1" max="10" required>
+        <label for="davinci_material">Material</label>
+        <input type="number" id="davinci_material" name="davinci_material" min="1" max="10" required>
+        <label for="davinci_performance">Performance</label>
+        <input type="number" id="davinci_performance" name="davinci_performance" min="1" max="10" required>
+        <label for="davinci_calendario">Calendário</label>
+        <input type="number" id="davinci_calendario" name="davinci_calendario" min="1" max="10" required>
+        <label for="davinci_impacto">Impacto</label>
+        <input type="number" id="davinci_impacto" name="davinci_impacto" min="1" max="10" required>
+        <label for="davinci_confronto">Confronto Direto</label>
+        <input type="number" id="davinci_confronto" name="davinci_confronto" min="1" max="10" required>
+    </div>
+</div>
+<div class="rapper-card">
+    <img src="https://i.imgur.com/tuv234.jpg" alt="Gg">
+    <div class="voting-options">
+        <label for="gg_consistencia">Consistência</label>
+        <input type="number" id="gg_consistencia" name="gg_consistencia" min="1" max="10" required>
+        <label for="gg_material">Material</label>
+        <input type="number" id="gg_material" name="gg_material" min="1" max="10" required>
+        <label for="gg_performance">Performance</label>
+        <input type="number" id="gg_performance" name="gg_performance" min="1" max="10" required>
+        <label for="gg_calendario">Calendário</label>
+        <input type="number" id="gg_calendario" name="gg_calendario" min="1" max="10" required>
+        <label for="gg_impacto">Impacto</label>
+        <input type="number" id="gg_impacto" name="gg_impacto" min="1" max="10" required>
+        <label for="gg_confronto">Confronto Direto</label>
+        <input type="number" id="gg_confronto" name="gg_confronto" min="1" max="10" required>
+    </div>
+</div>
+<div class="rapper-card">
+    <img src="https://i.imgur.com/wxy567.jpg" alt="Qvxno">
+    <div class="voting-options">
+        <label for="qvxno_consistencia">Consistência</label>
+        <input type="number" id="qvxno_consistencia" name="qvxno_consistencia" min="1" max="10" required>
+        <label for="qvxno_material">Material</label>
+        <input type="number" id="qvxno_material" name="qvxno_material" min="1" max="10" required>
+        <label for="qvxno_performance">Performance</label>
+        <input type="number" id="qvxno_performance" name="qvxno_performance" min="1" max="10" required>
+        <label for="qvxno_calendario">Calendário</label>
+        <input type="number" id="qvxno_calendario" name="qvxno_calendario" min="1" max="10" required>
+        <label for="qvxno_impacto">Impacto</label>
+        <input type="number" id="qvxno_impacto" name="qvxno_impacto" min="1" max="10" required>
+        <label for="qvxno_confronto">Confronto Direto</label>
+        <input type="number" id="qvxno_confronto" name="qvxno_confronto" min="1" max="10" required>
+    </div>
+</div>
+<div class="rapper-card">
+    <img src="https://i.imgur.com/yza890.jpg" alt="Sanj">
+    <div class="voting-options">
+        <label for="sanj_consistencia">Consistência</label>
+        <input type="number" id="sanj_consistencia" name="sanj_consistencia" min="1" max="10" required>
+        <label for="sanj_material">Material</label>
+        <input type="number" id="sanj_material" name="sanj_material" min="1" max="10" required>
+        <label for="sanj_performance">Performance</label>
+        <input type="number" id="sanj_performance" name="sanj_performance" min="1" max="10" required>
+        <label for="sanj_calendario">Calendário</label>
+        <input type="number" id="sanj_calendario" name="sanj_calendario" min="1" max="10" required>
+        <label for="sanj_impacto">Impacto</label>
+        <input type="number" id="sanj_impacto" name="sanj_impacto" min="1" max="10" required>
+        <label for="sanj_confronto">Confronto Direto</label>
+        <input type="number" id="sanj_confronto" name="sanj_confronto" min="1" max="10" required>
+    </div>
+</div>
+<div class="rapper-card">
+    <img src="https://i.imgur.com/bcd123.jpg" alt="Poligrafo">
+    <div class="voting-options">
+        <label for="poligrafo_consistencia">Consistência</label>
+        <input type="number" id="poligrafo_consistencia" name="poligrafo_consistencia" min="1" max="10" required>
+        <label for="poligrafo_material">Material</label>
+        <input type="number" id="poligrafo_material" name="poligrafo_material" min="1" max="10" required>
+        <label for="poligrafo_performance">Performance</label>
+        <input type="number" id="poligrafo_performance" name="poligrafo_performance" min="1" max="10" required>
+        <label for="poligrafo_calendario">Calendário</label>
+        <input type="number" id="poligrafo_calendario" name="poligrafo_calendario" min="1" max="10" required>
+        <label for="poligrafo_impacto">Impacto</label>
+        <input type="number" id="poligrafo_impacto" name="poligrafo_impacto" min="1" max="10" required>
+        <label for="poligrafo_confronto">Confronto Direto</label>
+        <input type="number" id="poligrafo_confronto" name="poligrafo_confronto" min="1" max="10" required>
+    </div>
+</div>
+<div class="rapper-card">
+    <img src="https://i.imgur.com/efg456.jpg" alt="Vazzz">
+    <div class="voting-options">
+        <label for="vazzz_consistencia">Consistência</label>
+        <input type="number" id="vazzz_consistencia" name="vazzz_consistencia" min="1" max="10" required>
+        <label for="vazzz_material">Material</label>
+        <input type="number" id="vazzz_material" name="vazzz_material" min="1" max="10" required>
+        <label for="vazzz_performance">Performance</label>
+        <input type="number" id="vazzz_performance" name="vazzz_performance" min="1" max="10" required>
+        <label for="vazzz_calendario">Calendário</label>
+        <input type="number" id="vazzz_calendario" name="vazzz_calendario" min="1" max="10" required>
+        <label for="vazzz_impacto">Impacto</label>
+        <input type="number" id="vazzz_impacto" name="vazzz_impacto" min="1" max="10" required>
+        <label for="vazzz_confronto">Confronto Direto</label>
+        <input type="number" id="vazzz_confronto" name="vazzz_confronto" min="1" max="10" required>
+    </div>
+</div>
+<div class="rapper-card">
+    <img src="https://i.imgur.com/hij789.jpg" alt="Caden">
+    <div class="voting-options">
+        <label for="caden_consistencia">Consistência</label>
+        <input type="number" id="caden_consistencia" name="caden_consistencia" min="1" max="10" required>
+        <label for="caden_material">Material</label>
+        <input type="number" id="caden_material" name="caden_material" min="1" max="10" required>
+        <label for="caden_performance">Performance</label>
+        <input type="number" id="caden_performance" name="caden_performance" min="1" max="10" required>
+        <label for="caden_calendario">Calendário</label>
+        <input type="number" id="caden_calendario" name="caden_calendario" min="1" max="10" required>
+        <label for="caden_impacto">Impacto</label>
+        <input type="number" id="caden_impacto" name="caden_impacto" min="1" max="10" required>
+        <label for="caden_confronto">Confronto Direto</label>
+        <input type="number" id="caden_confronto" name="caden_confronto" min="1" max="10" required>
+    </div>
+</div>
+<div class="rapper-card">
+    <img src="https://i.imgur.com/klm012.jpg" alt="Eleven Mc">
+    <div class="voting-options">
+        <label for="eleven_mc_consistencia">Consistência</label>
+        <input type="number" id="eleven_mc_consistencia" name="eleven_mc_consistencia" min="1" max="10" required>
+        <label for="eleven_mc_material">Material</label>
+        <input type="number" id="eleven_mc_material" name="eleven_mc_material" min="1" max="10" required>
+        <label for="eleven_mc_performance">Performance</label>
+        <input type="number" id="eleven_mc_performance" name="eleven_mc_performance" min="1" max="10" required>
+        <label for="eleven_mc_calendario">Calendário</label>
+        <input type="number" id="eleven_mc_calendario" name="eleven_mc_calendario" min="1" max="10" required>
+        <label for="eleven_mc_impacto">Impacto</label>
+        <input type="number" id="eleven_mc_impacto" name="eleven_mc_impacto" min="1" max="10" required>
+        <label for="eleven_mc_confronto">Confronto Direto</label>
+        <input type="number" id="eleven_mc_confronto" name="eleven_mc_confronto" min="1" max="10" required>
+    </div>
+</div>
+<div class="rapper-card">
+    <img src="https://i.imgur.com/nop345.jpg" alt="O Tal Guedes">
+    <div class="voting-options">
+        <label for="o_tal_guedes_consistencia">Consistência</label>
+        <input type="number" id="o_tal_guedes_consistencia" name="o_tal_guedes_consistencia" min="1" max="10" required>
+        <label for="o_tal_guedes_material">Material</label>
+        <input type="number" id="o_tal_guedes_material" name="o_tal_guedes_material" min="1" max="10" required>
+        <label for="o_tal_guedes_performance">Performance</label>
+        <input type="number" id="o_tal_guedes_performance" name="o_tal_guedes_performance" min="1" max="10" required>
+        <label for="o_tal_guedes_calendario">Calendário</label>
+        <input type="number" id="o_tal_guedes_calendario" name="o_tal_guedes_calendario" min="1" max="10" required>
+        <label for="o_tal_guedes_impacto">Impacto</label>
+        <input type="number" id="o_tal_guedes_impacto" name="o_tal_guedes_impacto" min="1" max="10" required>
+        <label for="o_tal_guedes_confronto">Confronto Direto</label>
+        <input type="number" id="o_tal_guedes_confronto" name="o_tal_guedes_confronto" min="1" max="10" required>
+    </div>
+</div>
     </form>
 </body>
 </html>
