@@ -2,9 +2,16 @@
 WHO IS THE MOTHER FKING GOAT?
 # Avaliação de Rappers
 
-Este projeto avalia rappers com base em 5 variantes:
-1. **Flow**: Qualidade da entrega e cadência.
-2. **Letras**: Profundidade e criatividade das letras.
-3. **Originalidade**: Unicidade no estilo e abordagem.
-4. **Presença de Palco**: Performance ao vivo.
-5. **Impacto Cultural**: Influência na cultura hip-hop.
+Este projeto avalia rappers com base em 6 variantes:
+
+#Consistência: 
+Capacidade de manter uma qualidade elevada ao longo do tempo.
+#Material: 
+A qualidade e a inovação do conteúdo produzido.
+#Performance:
+Habilidade e presença nas apresentações ao vivo.
+#Adversários:
+Adversários contra quem batalhou.
+#Impacto: 
+Influência geral e relevância.
+Confronto Direto: Desempenho em batalhas e disputas diretas com outros artistas.
