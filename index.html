@@ -16,25 +16,31 @@
             color: #333;
         }
         form {
-            max-width: 600px;
+            max-width: 800px;
             margin: 0 auto;
             background: #fff;
             padding: 20px;
             border-radius: 8px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
         }
-        label {
-            display: block;
-            margin-bottom: 8px;
-            font-weight: bold;
-        }
-        select, input[type="number"] {
+        table {
             width: 100%;
-            padding: 10px;
+            border-collapse: collapse;
             margin-bottom: 20px;
+        }
+        th, td {
+            padding: 10px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+        th {
+            background-color: #f8f9fa;
+        }
+        input[type="number"] {
+            width: 60px;
+            padding: 5px;
             border: 1px solid #ccc;
             border-radius: 4px;
-            font-size: 16px;
         }
         button {
             width: 100%;
@@ -53,96 +59,189 @@
 </head>
 <body>
     <h1>Votação de Rappers</h1>
-    <form action="https://formsubmit.co/falcondexcs@gmail.com" method="POST">
-        <label for="rapper">Selecione o Rapper:</label>
-        <select id="rapper" name="rapper" required>
-            <option value="" disabled selected>Escolha um rapper</option>
-            <option value="Sadyko">Sadyko</option>
-            <option value="Wilson">Wilson</option>
-            <option value="Melro">Melro</option>
-            <option value="Flizzi">Flizzi</option>
-            <option value="Rickas">Rickas</option>
-            <option value="Guima">Guima</option>
-            <option value="AM">AM</option>
-            <option value="ZA">ZA</option>
-            <option value="RealPunch">RealPunch</option>
-            <option value="Facto BSJ">Facto BSJ</option>
-            <option value="Mr Burnz">Mr Burnz</option>
-            <option value="Abismal">Abismal</option>
-            <option value="Kenny">Kenny</option>
-            <option value="Strata G">Strata G</option>
-            <option value="Lc">Lc</option>
-            <option value="Spicy Lee">Spicy Lee</option>
-            <option value="9 Miller">9 Miller</option>
-            <option value="Licon">Licon</option>
-            <option value="Jay Ill">Jay Ill</option>
-            <option value="Edi Ventura">Edi Ventura</option>
-            <option value="Xco">Xco</option>
-            <option value="Joker">Joker</option>
-            <option value="Flajo">Flajo</option>
-            <option value="Tomas">Tomas</option>
-            <option value="Shifu">Shifu</option>
-            <option value="Tagi">Tagi</option>
-            <option value="Galeno">Galeno</option>
-            <option value="Reverse">Reverse</option>
-            <option value="Slark">Slark</option>
-            <option value="Eleven">Eleven</option>
-            <option value="Flep">Flep</option>
-            <option value="Tio Pappi">Tio Pappi</option>
-            <option value="Flip">Flip</option>
-            <option value="Zolty">Zolty</option>
-            <option value="Moreira">Moreira</option>
-            <option value="Kuadra">Kuadra</option>
-            <option value="Athal">Athal</option>
-            <option value="Mk">Mk</option>
-            <option value="Rui Costa">Rui Costa</option>
-            <option value="Filtro">Filtro</option>
-            <option value="Max">Max</option>
-            <option value="Vazto">Vazto</option>
-            <option value="Erre K">Erre K</option>
-            <option value="Jonec">Jonec</option>
-            <option value="3ma">3ma</option>
-            <option value="Guigox">Guigox</option>
-            <option value="Riss">Riss</option>
-            <option value="7am">7am</option>
-            <option value="Mandacaru">Mandacaru</option>
-            <option value="Surreal">Surreal</option>
-            <option value="Saooneart">Saooneart</option>
-            <option value="Cpjota">Cpjota</option>
-            <option value="Flays">Flays</option>
-            <option value="Edc">Edc</option>
-            <option value="Quinta">Quinta</option>
-            <option value="Relvas">Relvas</option>
-            <option value="Davinci">Davinci</option>
-            <option value="Gg">Gg</option>
-            <option value="Qvxno">Qvxno</option>
-            <option value="Sanj">Sanj</option>
-            <option value="Poligrafo">Poligrafo</option>
-            <option value="Vazzz">Vazzz</option>
-            <option value="Caden">Caden</option>
-            <option value="Eleven Mc">Eleven Mc</option>
-            <option value="O Tal Guedes">O Tal Guedes</option>
-        </select>
-
-        <label for="consistencia">Consistência (1 a 10):</label>
-        <input type="number" id="consistencia" name="consistencia" min="1" max="10" required>
-
-        <label for="material">Material (1 a 10):</label>
-        <input type="number" id="material" name="material" min="1" max="10" required>
-
-        <label for="performance">Performance (1 a 10):</label>
-        <input type="number" id="performance" name="performance" min="1" max="10" required>
-
-        <label for="calendario">Calendário (1 a 10):</label>
-        <input type="number" id="calendario" name="calendario" min="1" max="10" required>
-
-        <label for="impacto">Impacto (1 a 10):</label>
-        <input type="number" id="impacto" name="impacto" min="1" max="10" required>
-
-        <label for="confronto_direto">Confronto Direto (1 a 10):</label>
-        <input type="number" id="confronto_direto" name="confronto_direto" min="1" max="10" required>
-
-        <button type="submit">Enviar Voto</button>
-    </form>
-</body>
-</html>
+    <form action="https://formsubmit.co/seu-email@example.com" method="POST">
+        <table>
+            <thead>
+                <tr>
+                    <th>Rapper</th>
+                    <th>Consistência</th>
+                    <th>Material</th>
+                    <th>Performance</th>
+                    <th>Calendário</th>
+                    <th>Impacto</th>
+                    <th>Confronto Direto</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Lista de Rappers -->
+                <tr>
+                    <td>Sadyko</td>
+                    <td><input type="number" name="sadyko_consistencia" min="1" max="10" required></td>
+                    <td><input type="number" name="sadyko_material" min="1" max="10" required></td>
+                    <td><input type="number" name="sadyko_performance" min="1" max="10" required></td>
+                    <td><input type="number" name="sadyko_calendario" min="1" max="10" required></td>
+                    <td><input type="number" name="sadyko_impacto" min="1" max="10" required></td>
+                    <td><input type="number" name="sadyko_confronto" min="1" max="10" required></td>
+                </tr>
+                <tr>
+                    <td>Wilson</td>
+                    <td><input type="number" name="wilson_consistencia" min="1" max="10" required></td>
+                    <td><input type="number" name="wilson_material" min="1" max="10" required></td>
+                    <td><input type="number" name="wilson_performance" min="1" max="10" required></td>
+                    <td><input type="number" name="wilson_calendario" min="1" max="10" required></td>
+                    <td><input type="number" name="wilson_impacto" min="1" max="10" required></td>
+                    <td><input type="number" name="wilson_confronto" min="1" max="10" required></td>
+                </tr>
+                <tr>
+                    <td>Melro</td>
+                    <td><input type="number" name="melro_consistencia" min="1" max="10" required></td>
+                    <td><input type="number" name="melro_material" min="1" max="10" required></td>
+                    <td><input type="number" name="melro_performance" min="1" max="10" required></td>
+                    <td><input type="number" name="melro_calendario" min="1" max="10" required></td>
+                    <td><input type="number" name="melro_impacto" min="1" max="10" required></td>
+                    <td><input type="number" name="melro_confronto" min="1" max="10" required></td>
+                </tr>
+                <tr>
+                    <td>Flizzi</td>
+                    <td><input type="number" name="flizzi_consistencia" min="1" max="10" required></td>
+                    <td><input type="number" name="flizzi_material" min="1" max="10" required></td>
+                    <td><input type="number" name="flizzi_performance" min="1" max="10" required></td>
+                    <td><input type="number" name="flizzi_calendario" min="1" max="10" required></td>
+                    <td><input type="number" name="flizzi_impacto" min="1" max="10" required></td>
+                    <td><input type="number" name="flizzi_confronto" min="1" max="10" required></td>
+                </tr>
+                <tr>
+                    <td>Rickas</td>
+                    <td><input type="number" name="rickas_consistencia" min="1" max="10" required></td>
+                    <td><input type="number" name="rickas_material" min="1" max="10" required></td>
+                    <td><input type="number" name="rickas_performance" min="1" max="10" required></td>
+                    <td><input type="number" name="rickas_calendario" min="1" max="10" required></td>
+                    <td><input type="number" name="rickas_impacto" min="1" max="10" required></td>
+                    <td><input type="number" name="rickas_confronto" min="1" max="10" required></td>
+                </tr>
+                <tr>
+                    <td>Guima</td>
+                    <td><input type="number" name="guima_consistencia" min="1" max="10" required></td>
+                    <td><input type="number" name="guima_material" min="1" max="10" required></td>
+                    <td><input type="number" name="guima_performance" min="1" max="10" required></td>
+                    <td><input type="number" name="guima_calendario" min="1" max="10" required></td>
+                    <td><input type="number" name="guima_impacto" min="1" max="10" required></td>
+                    <td><input type="number" name="guima_confronto" min="1" max="10" required></td>
+                </tr>
+                <tr>
+                    <td>AM</td>
+                    <td><input type="number" name="am_consistencia" min="1" max="10" required></td>
+                    <td><input type="number" name="am_material" min="1" max="10" required></td>
+                    <td><input type="number" name="am_performance" min="1" max="10" required></td>
+                    <td><input type="number" name="am_calendario" min="1" max="10" required></td>
+                    <td><input type="number" name="am_impacto" min="1" max="10" required></td>
+                    <td><input type="number" name="am_confronto" min="1" max="10" required></td>
+                </tr>
+                <tr>
+                    <td>ZA</td>
+                    <td><input type="number" name="za_consistencia" min="1" max="10" required></td>
+                    <td><input type="number" name="za_material" min="1" max="10" required></td>
+                    <td><input type="number" name="za_performance" min="1" max="10" required></td>
+                    <td><input type="number" name="za_calendario" min="1" max="10" required></td>
+                    <td><input type="number" name="za_impacto" min="1" max="10" required></td>
+                    <td><input type="number" name="za_confronto" min="1" max="10" required></td>
+                </tr>
+                <tr>
+                    <td>RealPunch</td>
+                    <td><input type="number" name="realpunch_consistencia" min="1" max="10" required></td>
+                    <td><input type="number" name="realpunch_material" min="1" max="10" required></td>
+                    <td><input type="number" name="realpunch_performance" min="1" max="10" required></td>
+                    <td><input type="number" name="realpunch_calendario" min="1" max="10" required></td>
+                    <td><input type="number" name="realpunch_impacto" min="1" max="10" required></td>
+                    <td><input type="number" name="realpunch_confronto" min="1" max="10" required></td>
+                </tr>
+                <tr>
+                    <td>Facto BSJ</td>
+                    <td><input type="number" name="facto_bsj_consistencia" min="1" max="10" required></td>
+                    <td><input type="number" name="facto_bsj_material" min="1" max="10" required></td>
+                    <td><input type="number" name="facto_bsj_performance" min="1" max="10" required></td>
+                    <td><input type="number" name="facto_bsj_calendario" min="1" max="10" required></td>
+                    <td><input type="number" name="facto_bsj_impacto" min="1" max="10" required></td>
+                    <td><input type="number" name="facto_bsj_confronto" min="1" max="10" required></td>
+                </tr>
+                <tr>
+                    <td>Mr Burnz</td>
+                    <td><input type="number" name="mr_burnz_consistencia" min="1" max="10" required></td>
+                    <td><input type="number" name="mr_burnz_material" min="1" max="10" required></td>
+                    <td><input type="number" name="mr_burnz_performance" min="1" max="10" required></td>
+                    <td><input type="number" name="mr_burnz_calendario" min="1" max="10" required></td>
+                    <td><input type="number" name="mr_burnz_impacto" min="1" max="10" required></td>
+                    <td><input type="number" name="mr_burnz_confronto" min="1" max="10" required></td>
+                </tr>
+                <tr>
+                    <td>Abismal</td>
+                    <td><input type="number" name="abismal_consistencia" min="1" max="10" required></td>
+                    <td><input type="number" name="abismal_material" min="1" max="10" required></td>
+                    <td><input type="number" name="abismal_performance" min="1" max="10" required></td>
+                    <td><input type="number" name="abismal_calendario" min="1" max="10" required></td>
+                    <td><input type="number" name="abismal_impacto" min="1" max="10" required></td>
+                    <td><input type="number" name="abismal_confronto" min="1" max="10" required></td>
+                </tr>
+                <tr>
+                    <td>Kenny</td>
+                    <td><input type="number" name="kenny_consistencia" min="1" max="10" required></td>
+                    <td><input type="number" name="kenny_material" min="1" max="10" required></td>
+                    <td><input type="number" name="kenny_performance" min="1" max="10" required></td>
+                    <td><input type="number" name="kenny_calendario" min="1" max="10" required></td>
+                    <td><input type="number" name="kenny_impacto" min="1" max="10" required></td>
+                    <td><input type="number" name="kenny_confronto" min="1" max="10" required></td>
+                </tr>
+                <tr>
+                    <td>Strata G</td>
+                    <td><input type="number" name="strata_g_consistencia" min="1" max="10" required></td>
+                    <td><input type="number" name="strata_g_material" min="1" max="10" required></td>
+                    <td><input type="number" name="strata_g_performance" min="1" max="10" required></td>
+                    <td><input type="number" name="strata_g_calendario" min="1" max="10" required></td>
+                    <td><input type="number" name="strata_g_impacto" min="1" max="10" required></td>
+                    <td><input type="number" name="strata_g_confronto" min="1" max="10" required></td>
+                </tr>
+                <tr>
+                    <td>Lc</td>
+                    <td><input type="number" name="lc_consistencia" min="1" max="10" required></td>
+                    <td><input type="number" name="lc_material" min="1" max="10" required></td>
+                    <td><input type="number" name="lc_performance" min="1" max="10" required></td>
+                    <td><input type="number" name="lc_calendario" min="1" max="10" required></td>
+                    <td><input type="number" name="lc_impacto" min="1" max="10" required></td>
+                    <td><input type="number" name="lc_confronto" min="1" max="10" required></td>
+                </tr>
+                <tr>
+                    <td>Spicy Lee</td>
+                    <td><input type="number" name="spicy_lee_consistencia" min="1" max="10" required></td>
+                    <td><input type="number" name="spicy_lee_material" min="1" max="10" required></td>
+                    <td><input type="number" name="spicy_lee_performance" min="1" max="10" required></td>
+                    <td><input type="number" name="spicy_lee_calendario" min="1" max="10" required></td>
+                    <td><input type="number" name="spicy_lee_impacto" min="1" max="10" required></td>
+                    <td><input type="number" name="spicy_lee_confronto" min="1" max="10" required></td>
+                </tr>
+                <tr>
+                    <td>9 Miller</td>
+                    <td><input type="number" name="9_miller_consistencia" min="1" max="10" required></td>
+                    <td><input type="number" name="9_miller_material" min="1" max="10" required></td>
+                    <td><input type="number" name="9_miller_performance" min="1" max="10" required></td>
+                    <td><input type="number" name="9_miller_calendario" min="1" max="10" required></td>
+                    <td><input type="number" name="9_miller_impacto" min="1" max="10" required></td>
+                    <td><input type="number" name="9_miller_confronto" min="1" max="10" required></td>
+                </tr>
+                <tr>
+                    <td>Licon</td>
+                    <td><input type="number" name="licon_consistencia" min="1" max="10" required></td>
+                    <td><input type="number" name="licon_material" min="1" max="10" required></td>
+                    <td><input type="number" name="licon_performance" min="1" max="10" required></td>
+                    <td><input type="number" name="licon_calendario" min="1" max="10" required></td>
+                    <td><input type="number" name="licon_impacto" min="1" max="10" required></td>
+                    <td><input type="number" name="licon_confronto" min="1" max="10" required></td>
+                </tr>
+                <tr>
+                     <td>JayIll</td>
+                    <td><input type="number" name="JayIll_consistencia" min="1" max="10" required></td>
+                    <td><input type="number" name="JayIll_material" min="1" max="10" required></td>
+                    <td><input type="number" name="JayIll_performance" min="1" max="10" required></td>
+                    <td><input type="number" name="JayIll_calendario" min="1" max="10" required></td>
+                    <td><input type="number" name="JayIll_impacto" min="1" max="10" required></td>
+                    <td><input type="number" name="JayIll_confronto" min="1" max="10" required></td>
+                    
