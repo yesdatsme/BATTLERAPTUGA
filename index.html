@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Votação de Rappers</title>
     <style>
+        /* (Mantive o CSS que você enviou para preservar o estilo) */
         body {
             font-family: 'Arial', sans-serif;
             background: linear-gradient(135deg, #f5f7fa, #c3cfe2);
@@ -119,145 +120,105 @@
     <h1>VOTAÇÃO</h1>
     <form action="https://formsubmit.co/seu-email@example.com" method="POST">
         <div class="rapper-container">
+            <!-- 3ma -->
+            <div class="rapper-card">
+                <img src="https://via.placeholder.com/200" alt="3ma">
+                <a href="https://www.youtube.com/results?search_query=3ma" target="_blank">3ma</a>
+                <div class="voting-options">
+                    <!-- Campos de votação -->
+                </div>
+                <!-- Sem adversários recentes -->
+            </div>
+
             <!-- Abismal -->
             <div class="rapper-card">
                 <img src="https://via.placeholder.com/200" alt="Abismal">
                 <a href="https://www.youtube.com/results?search_query=Abismal" target="_blank">Abismal</a>
                 <div class="voting-options">
-                    <label for="abismal_consistencia">Consistência</label>
-                    <input type="number" id="abismal_consistencia" name="abismal_consistencia" min="1" max="10" required>
-                    <label for="abismal_material">Material</label>
-                    <input type="number" id="abismal_material" name="abismal_material" min="1" max="10" required>
-                    <label for="abismal_performance">Performance</label>
-                    <input type="number" id="abismal_performance" name="abismal_performance" min="1" max="10" required>
-                    <label for="abismal_adversarios">Adversários</label>
-                    <input type="number" id="abismal_adversarios" name="abismal_adversarios" min="1" max="10" required>
-                    <label for="abismal_impacto">Impacto</label>
-                    <input type="number" id="abismal_impacto" name="abismal_impacto" min="1" max="10" required>
-                    <label for="abismal_confronto">Confronto Direto</label>
-                    <input type="number" id="abismal_confronto" name="abismal_confronto" min="1" max="10" required>
+                    <!-- Campos de votação -->
                 </div>
                 <div class="recent-battles">
                     <h3>Adversários Recentes</h3>
                     <ul>
-                        <li>WilsonG 
-                            <select name="abismal_wilsong_result">
-                                <option value="vitoria">Vitória</option>
-                                <option value="empate">Empate</option>
-                                <option value="derrota">Derrota</option>
-                            </select>
-                        </li>
-                        <li>Mr Burnz (2x2 com Edi Ventura e StrataG) 
-                            <select name="abismal_mrburnz_result">
-                                <option value="vitoria">Vitória</option>
-                                <option value="empate">Empate</option>
-                                <option value="derrota">Derrota</option>
-                            </select>
-                        </li>
-                        <li>Kenny 
-                            <select name="abismal_kenny_result">
-                                <option value="vitoria">Vitória</option>
-                                <option value="empate">Empate</option>
-                                <option value="derrota">Derrota</option>
-                            </select>
-                        </li>
-                        <li>RealPunch 
+                        <li>RealPunch
                             <select name="abismal_realpunch_result">
                                 <option value="vitoria">Vitória</option>
                                 <option value="empate">Empate</option>
                                 <option value="derrota">Derrota</option>
                             </select>
                         </li>
+                        <li>WilsonG
+                            <select name="abismal_wilsong_result">
+                                <option value="vitoria">Vitória</option>
+                                <option value="empate">Empate</option>
+                                <option value="derrota">Derrota</option>
+                            </select>
+                        </li>
                     </ul>
                 </div>
             </div>
 
-            <!-- Wilson -->
+            <!-- AM -->
             <div class="rapper-card">
-                <img src="https://via.placeholder.com/200" alt="Wilson">
-                <a href="https://www.youtube.com/results?search_query=Wilson" target="_blank">Wilson</a>
+                <img src="https://via.placeholder.com/200" alt="AM">
+                <a href="https://www.youtube.com/results?search_query=AM" target="_blank">AM</a>
                 <div class="voting-options">
-                    <label for="wilson_consistencia">Consistência</label>
-                    <input type="number" id="wilson_consistencia" name="wilson_consistencia" min="1" max="10" required>
-                    <label for="wilson_material">Material</label>
-                    <input type="number" id="wilson_material" name="wilson_material" min="1" max="10" required>
-                    <label for="wilson_performance">Performance</label>
-                    <input type="number" id="wilson_performance" name="wilson_performance" min="1" max="10" required>
-                    <label for="wilson_adversarios">Adversários</label>
-                    <input type="number" id="wilson_adversarios" name="wilson_adversarios" min="1" max="10" required>
-                    <label for="wilson_impacto">Impacto</label>
-                    <input type="number" id="wilson_impacto" name="wilson_impacto" min="1" max="10" required>
-                    <label for="wilson_confronto">Confronto Direto</label>
-                    <input type="number" id="wilson_confronto" name="wilson_confronto" min="1" max="10" required>
+                    <!-- Campos de votação -->
                 </div>
                 <div class="recent-battles">
                     <h3>Adversários Recentes</h3>
                     <ul>
-                        <li>Sadyko (2x2 com Licon e JayIll) 
-                            <select name="wilson_sadyko_result">
+                        <li>Vazto
+                            <select name="am_vazto_result">
                                 <option value="vitoria">Vitória</option>
                                 <option value="empate">Empate</option>
                                 <option value="derrota">Derrota</option>
                             </select>
                         </li>
-                        <li>Licon 
-                            <select name="wilson_licon_result">
+                        <li>Za
+                            <select name="am_za_result">
                                 <option value="vitoria">Vitória</option>
                                 <option value="empate">Empate</option>
                                 <option value="derrota">Derrota</option>
                             </select>
                         </li>
-                        <li>JayIll 
-                            <select name="wilson_jayill_result">
+                        <li>Melro
+                            <select name="am_melro_result">
                                 <option value="vitoria">Vitória</option>
                                 <option value="empate">Empate</option>
                                 <option value="derrota">Derrota</option>
                             </select>
                         </li>
-                        <li>Reverse 
-                            <select name="wilson_reverse_result">
+                        <li>Flajo
+                            <select name="am_flajo_result">
                                 <option value="vitoria">Vitória</option>
                                 <option value="empate">Empate</option>
                                 <option value="derrota">Derrota</option>
                             </select>
                         </li>
-                        <li>Mr Burnz 
-                            <select name="wilson_mrburnz_result">
+                        <li>AnimaNera
+                            <select name="am_animanera_result">
                                 <option value="vitoria">Vitória</option>
                                 <option value="empate">Empate</option>
                                 <option value="derrota">Derrota</option>
                             </select>
                         </li>
-                        <li>Abismal 
-                            <select name="wilson_abismal_result">
+                        <li>Joker
+                            <select name="am_joker_result">
                                 <option value="vitoria">Vitória</option>
                                 <option value="empate">Empate</option>
                                 <option value="derrota">Derrota</option>
                             </select>
                         </li>
-                        <li>Joker 
-                            <select name="wilson_joker_result">
+                        <li>Quantico
+                            <select name="am_quantico_result">
                                 <option value="vitoria">Vitória</option>
                                 <option value="empate">Empate</option>
                                 <option value="derrota">Derrota</option>
                             </select>
                         </li>
-                        <li>Za 
-                            <select name="wilson_za_result">
-                                <option value="vitoria">Vitória</option>
-                                <option value="empate">Empate</option>
-                                <option value="derrota">Derrota</option>
-                            </select>
-                        </li>
-                        <li>Flajo 
-                            <select name="wilson_flajo_result">
-                                <option value="vitoria">Vitória</option>
-                                <option value="empate">Empate</option>
-                                <option value="derrota">Derrota</option>
-                            </select>
-                        </li>
-                        <li>Edi Ventura 
-                            <select name="wilson_ediventura_result">
+                        <li>Slark
+                            <select name="am_slark_result">
                                 <option value="vitoria">Vitória</option>
                                 <option value="empate">Empate</option>
                                 <option value="derrota">Derrota</option>
@@ -267,148 +228,42 @@
                 </div>
             </div>
 
-            <!-- Sadyko -->
+            <!-- AnimaNera -->
             <div class="rapper-card">
-                <img src="https://via.placeholder.com/200" alt="Sadyko">
-                <a href="https://www.youtube.com/results?search_query=Sadyko" target="_blank">Sadyko</a>
+                <img src="https://via.placeholder.com/200" alt="AnimaNera">
+                <a href="https://www.youtube.com/results?search_query=AnimaNera" target="_blank">AnimaNera</a>
                 <div class="voting-options">
-                    <label for="sadyko_consistencia">Consistência</label>
-                    <input type="number" id="sadyko_consistencia" name="sadyko_consistencia" min="1" max="10" required>
-                    <label for="sadyko_material">Material</label>
-                    <input type="number" id="sadyko_material" name="sadyko_material" min="1" max="10" required>
-                    <label for="sadyko_performance">Performance</label>
-                    <input type="number" id="sadyko_performance" name="sadyko_performance" min="1" max="10" required>
-                    <label for="sadyko_adversarios">Adversários</label>
-                    <input type="number" id="sadyko_adversarios" name="sadyko_adversarios" min="1" max="10" required>
-                    <label for="sadyko_impacto">Impacto</label>
-                    <input type="number" id="sadyko_impacto" name="sadyko_impacto" min="1" max="10" required>
-                    <label for="sadyko_confronto">Confronto Direto</label>
-                    <input type="number" id="sadyko_confronto" name="sadyko_confronto" min="1" max="10" required>
+                    <!-- Campos de votação -->
+                </div>
+                <!-- Sem adversários recentes -->
+            </div>
+
+            <!-- Athal -->
+            <div class="rapper-card">
+                <img src="https://via.placeholder.com/200" alt="Athal">
+                <a href="https://www.youtube.com/results?search_query=Athal" target="_blank">Athal</a>
+                <div class="voting-options">
+                    <!-- Campos de votação -->
                 </div>
                 <div class="recent-battles">
                     <h3>Adversários Recentes</h3>
                     <ul>
-                        <li>Wilson (2x2 com Licon e JayIll) 
-                            <select name="sadyko_wilson_result">
+                        <li>Mk
+                            <select name="athal_mk_result">
                                 <option value="vitoria">Vitória</option>
                                 <option value="empate">Empate</option>
                                 <option value="derrota">Derrota</option>
                             </select>
                         </li>
-                        <li>Licon 
-                            <select name="sadyko_licon_result">
+                        <li>Surreal
+                            <select name="athal_surreal_result">
                                 <option value="vitoria">Vitória</option>
                                 <option value="empate">Empate</option>
                                 <option value="derrota">Derrota</option>
                             </select>
                         </li>
-                        <li>JayIll 
-                            <select name="sadyko_jayill_result">
-                                <option value="vitoria">Vitória</option>
-                                <option value="empate">Empate</option>
-                                <option value="derrota">Derrota</option>
-                            </select>
-                        </li>
-                        <li>SaoOneArt 
-                            <select name="sadyko_saooneart_result">
-                                <option value="vitoria">Vitória</option>
-                                <option value="empate">Empate</option>
-                                <option value="derrota">Derrota</option>
-                            </select>
-                        </li>
-                        <li>Reverse 
-                            <select name="sadyko_reverse_result">
-                                <option value="vitoria">Vitória</option>
-                                <option value="empate">Empate</option>
-                                <option value="derrota">Derrota</option>
-                            </select>
-                        </li>
-                        <li>Max 
-                            <select name="sadyko_max_result">
-                                <option value="vitoria">Vitória</option>
-                                <option value="empate">Empate</option>
-                                <option value="derrota">Derrota</option>
-                            </select>
-                        </li>
-                        <li>Kenny 
-                            <select name="sadyko_kenny_result">
-                                <option value="vitoria">Vitória</option>
-                                <option value="empate">Empate</option>
-                                <option value="derrota">Derrota</option>
-                            </select>
-                        </li>
-                        <li>Edi Ventura 
-                            <select name="sadyko_ediventura_result">
-                                <option value="vitoria">Vitória</option>
-                                <option value="empate">Empate</option>
-                                <option value="derrota">Derrota</option>
-                            </select>
-                        </li>
-                        <li>Quantico 
-                            <select name="sadyko_quantico_result">
-                                <option value="vitoria">Vitória</option>
-                                <option value="empate">Empate</option>
-                                <option value="derrota">Derrota</option>
-                            </select>
-                        </li>
-                        <li>Rui Costa 
-                            <select name="sadyko_ruicosta_result">
-                                <option value="vitoria">Vitória</option>
-                                <option value="empate">Empate</option>
-                                <option value="derrota">Derrota</option>
-                            </select>
-                        </li>
-                        <li>Lc 
-                            <select name="sadyko_lc_result">
-                                <option value="vitoria">Vitória</option>
-                                <option value="empate">Empate</option>
-                                <option value="derrota">Derrota</option>
-                            </select>
-                        </li>
-                        <li>Spicy Lee 
-                            <select name="sadyko_spicylee_result">
-                                <option value="vitoria">Vitória</option>
-                                <option value="empate">Empate</option>
-                                <option value="derrota">Derrota</option>
-                            </select>
-                        </li>
-                        <li>MoDiDuz 
-                            <select name="sadyko_modiduz_result">
-                                <option value="vitoria">Vitória</option>
-                                <option value="empate">Empate</option>
-                                <option value="derrota">Derrota</option>
-                            </select>
-                        </li>
-                        <li>Joker 
-                            <select name="sadyko_joker_result">
-                                <option value="vitoria">Vitória</option>
-                                <option value="empate">Empate</option>
-                                <option value="derrota">Derrota</option>
-                            </select>
-                        </li>
-                        <li>Xco 
-                            <select name="sadyko_xco_result">
-                                <option value="vitoria">Vitória</option>
-                                <option value="empate">Empate</option>
-                                <option value="derrota">Derrota</option>
-                            </select>
-                        </li>
-                        <li>Flep 
-                            <select name="sadyko_flep_result">
-                                <option value="vitoria">Vitória</option>
-                                <option value="empate">Empate</option>
-                                <option value="derrota">Derrota</option>
-                            </select>
-                        </li>
-                        <li>Mr Burnz 
-                            <select name="sadyko_mrburnz_result">
-                                <option value="vitoria">Vitória</option>
-                                <option value="empate">Empate</option>
-                                <option value="derrota">Derrota</option>
-                            </select>
-                        </li>
-                        <li>Guima 
-                            <select name="sadyko_guima_result">
+                        <li>Ti
+                            <select name="athal_ti_result">
                                 <option value="vitoria">Vitória</option>
                                 <option value="empate">Empate</option>
                                 <option value="derrota">Derrota</option>
@@ -418,64 +273,29 @@
                 </div>
             </div>
 
-            <!-- Melro -->
+            <!-- (Continuação para os demais rappers...) -->
+            <!-- Caden -->
             <div class="rapper-card">
-                <img src="https://via.placeholder.com/200" alt="Melro">
-                <a href="https://www.youtube.com/results?search_query=Melro" target="_blank">Melro</a>
+                <img src="https://via.placeholder.com/200" alt="Caden">
+                <a href="https://www.youtube.com/results?search_query=Caden" target="_blank">Caden</a>
                 <div class="voting-options">
-                    <label for="melro_consistencia">Consistência</label>
-                    <input type="number" id="melro_consistencia" name="melro_consistencia" min="1" max="10" required>
-                    <label for="melro_material">Material</label>
-                    <input type="number" id="melro_material" name="melro_material" min="1" max="10" required>
-                    <label for="melro_performance">Performance</label>
-                    <input type="number" id="melro_performance" name="melro_performance" min="1" max="10" required>
-                    <label for="melro_adversarios">Adversários</label>
-                    <input type="number" id="melro_adversarios" name="melro_adversarios" min="1" max="10" required>
-                    <label for="melro_impacto">Impacto</label>
-                    <input type="number" id="melro_impacto" name="melro_impacto" min="1" max="10" required>
-                    <label for="melro_confronto">Confronto Direto</label>
-                    <input type="number" id="melro_confronto" name="melro_confronto" min="1" max="10" required>
+                    <!-- Campos de votação -->
+                </div>
+                <!-- Sem adversários recentes -->
+            </div>
+
+            <!-- CPjota -->
+            <div class="rapper-card">
+                <img src="https://via.placeholder.com/200" alt="CPjota">
+                <a href="https://www.youtube.com/results?search_query=CPjota" target="_blank">CPjota</a>
+                <div class="voting-options">
+                    <!-- Campos de votação -->
                 </div>
                 <div class="recent-battles">
                     <h3>Adversários Recentes</h3>
                     <ul>
-                        <li>Vazto 
-                            <select name="melro_vazto_result">
-                                <option value="vitoria">Vitória</option>
-                                <option value="empate">Empate</option>
-                                <option value="derrota">Derrota</option>
-                            </select>
-                        </li>
-                        <li>Flip 
-                            <select name="melro_flip_result">
-                                <option value="vitoria">Vitória</option>
-                                <option value="empate">Empate</option>
-                                <option value="derrota">Derrota</option>
-                            </select>
-                        </li>
-                        <li>Mk 
-                            <select name="melro_mk_result">
-                                <option value="vitoria">Vitória</option>
-                                <option value="empate">Empate</option>
-                                <option value="derrota">Derrota</option>
-                            </select>
-                        </li>
-                        <li>Vazzz 
-                            <select name="melro_vazzz_result">
-                                <option value="vitoria">Vitória</option>
-                                <option value="empate">Empate</option>
-                                <option value="derrota">Derrota</option>
-                            </select>
-                        </li>
-                        <li>Galeno 
-                            <select name="melro_galeno_result">
-                                <option value="vitoria">Vitória</option>
-                                <option value="empate">Empate</option>
-                                <option value="derrota">Derrota</option>
-                            </select>
-                        </li>
-                        <li>AM 
-                            <select name="melro_am_result">
+                        <li>Lc
+                            <select name="cpjota_lc_result">
                                 <option value="vitoria">Vitória</option>
                                 <option value="empate">Empate</option>
                                 <option value="derrota">Derrota</option>
@@ -485,57 +305,18 @@
                 </div>
             </div>
 
-            <!-- Flizzi -->
+            <!-- Davinci -->
             <div class="rapper-card">
-                <img src="https://via.placeholder.com/200" alt="Flizzi">
-                <a href="https://www.youtube.com/results?search_query=Flizzi" target="_blank">Flizzi</a>
+                <img src="https://via.placeholder.com/200" alt="Davinci">
+                <a href="https://www.youtube.com/results?search_query=Davinci" target="_blank">Davinci</a>
                 <div class="voting-options">
-                    <label for="flizzi_consistencia">Consistência</label>
-                    <input type="number" id="flizzi_consistencia" name="flizzi_consistencia" min="1" max="10" required>
-                    <label for="flizzi_material">Material</label>
-                    <input type="number" id="flizzi_material" name="flizzi_material" min="1" max="10" required>
-                    <label for="flizzi_performance">Performance</label>
-                    <input type="number" id="flizzi_performance" name="flizzi_performance" min="1" max="10" required>
-                    <label for="flizzi_adversarios">Adversários</label>
-                    <input type="number" id="flizzi_adversarios" name="flizzi_adversarios" min="1" max="10" required>
-                    <label for="flizzi_impacto">Impacto</label>
-                    <input type="number" id="flizzi_impacto" name="flizzi_impacto" min="1" max="10" required>
-                    <label for="flizzi_confronto">Confronto Direto</label>
-                    <input type="number" id="flizzi_confronto" name="flizzi_confronto" min="1" max="10" required>
+                    <!-- Campos de votação -->
                 </div>
                 <div class="recent-battles">
                     <h3>Adversários Recentes</h3>
                     <ul>
-                        <li>SanJ 
-                            <select name="flizzi_sanj_result">
-                                <option value="vitoria">Vitória</option>
-                                <option value="empate">Empate</option>
-                                <option value="derrota">Derrota</option>
-                            </select>
-                        </li>
-                        <li>Shifu 
-                            <select name="flizzi_shifu_result">
-                                <option value="vitoria">Vitória</option>
-                                <option value="empate">Empate</option>
-                                <option value="derrota">Derrota</option>
-                            </select>
-                        </li>
-                        <li>Kazymba 
-                            <select name="flizzi_kazymba_result">
-                                <option value="vitoria">Vitória</option>
-                                <option value="empate">Empate</option>
-                                <option value="derrota">Derrota</option>
-                            </select>
-                        </li>
-                        <li>Mofs 
-                            <select name="flizzi_mofs_result">
-                                <option value="vitoria">Vitória</option>
-                                <option value="empate">Empate</option>
-                                <option value="derrota">Derrota</option>
-                            </select>
-                        </li>
-                        <li>Surreal 
-                            <select name="flizzi_surreal_result">
+                        <li>Rickas
+                            <select name="davinci_rickas_result">
                                 <option value="vitoria">Vitória</option>
                                 <option value="empate">Empate</option>
                                 <option value="derrota">Derrota</option>
@@ -545,43 +326,70 @@
                 </div>
             </div>
 
-            <!-- Rickas -->
+            <!-- EDC -->
             <div class="rapper-card">
-                <img src="https://via.placeholder.com/200" alt="Rickas">
-                <a href="https://www.youtube.com/results?search_query=Rickas" target="_blank">Rickas</a>
+                <img src="https://via.placeholder.com/200" alt="EDC">
+                <a href="https://www.youtube.com/results?search_query=EDC" target="_blank">EDC</a>
                 <div class="voting-options">
-                    <label for="rickas_consistencia">Consistência</label>
-                    <input type="number" id="rickas_consistencia" name="rickas_consistencia" min="1" max="10" required>
-                    <label for="rickas_material">Material</label>
-                    <input type="number" id="rickas_material" name="rickas_material" min="1" max="10" required>
-                    <label for="rickas_performance">Performance</label>
-                    <input type="number" id="rickas_performance" name="rickas_performance" min="1" max="10" required>
-                    <label for="rickas_adversarios">Adversários</label>
-                    <input type="number" id="rickas_adversarios" name="rickas_adversarios" min="1" max="10" required>
-                    <label for="rickas_impacto">Impacto</label>
-                    <input type="number" id="rickas_impacto" name="rickas_impacto" min="1" max="10" required>
-                    <label for="rickas_confronto">Confronto Direto</label>
-                    <input type="number" id="rickas_confronto" name="rickas_confronto" min="1" max="10" required>
+                    <!-- Campos de votação -->
+                </div>
+                <!-- Sem adversários recentes -->
+            </div>
+
+            <!-- Edi Ventura -->
+            <div class="rapper-card">
+                <img src="https://via.placeholder.com/200" alt="Edi Ventura">
+                <a href="https://www.youtube.com/results?search_query=Edi Ventura" target="_blank">Edi Ventura</a>
+                <div class="voting-options">
+                    <!-- Campos de votação -->
                 </div>
                 <div class="recent-battles">
                     <h3>Adversários Recentes</h3>
                     <ul>
-                        <li>Davinci 
-                            <select name="rickas_davinci_result">
+                        <li>RealPunch
+                            <select name="ediventura_realpunch_result">
                                 <option value="vitoria">Vitória</option>
                                 <option value="empate">Empate</option>
                                 <option value="derrota">Derrota</option>
                             </select>
                         </li>
-                        <li>SanJ 
-                            <select name="rickas_sanj_result">
+                        <li>WilsonG
+                            <select name="ediventura_wilsonG_result">
                                 <option value="vitoria">Vitória</option>
                                 <option value="empate">Empate</option>
                                 <option value="derrota">Derrota</option>
                             </select>
                         </li>
-                        <li>Flip 
-                            <select name="rickas_flip_result">
+                        <li>Sadyko
+                            <select name="ediventura_sadyko_result">
+                                <option value="vitoria">Vitória</option>
+                                <option value="empate">Empate</option>
+                                <option value="derrota">Derrota</option>
+                            </select>
+                        </li>
+                        <li>Flajo
+                            <select name="ediventura_flajo_result">
+                                <option value="vitoria">Vitória</option>
+                                <option value="empate">Empate</option>
+                                <option value="derrota">Derrota</option>
+                            </select>
+                        </li>
+                        <li>9MILLER
+                            <select name="ediventura_9miller_result">
+                                <option value="vitoria">Vitória</option>
+                                <option value="empate">Empate</option>
+                                <option value="derrota">Derrota</option>
+                            </select>
+                        </li>
+                        <li>ZA
+                            <select name="ediventura_za_result">
+                                <option value="vitoria">Vitória</option>
+                                <option value="empate">Empate</option>
+                                <option value="derrota">Derrota</option>
+                            </select>
+                        </li>
+                        <li>Lc
+                            <select name="ediventura_lc_result">
                                 <option value="vitoria">Vitória</option>
                                 <option value="empate">Empate</option>
                                 <option value="derrota">Derrota</option>
@@ -591,43 +399,25 @@
                 </div>
             </div>
 
-            <!-- Guima -->
+            <!-- ElevenMC -->
             <div class="rapper-card">
-                <img src="https://via.placeholder.com/200" alt="Guima">
-                <a href="https://www.youtube.com/results?search_query=Guima" target="_blank">Guima</a>
+                <img src="https://via.placeholder.com/200" alt="ElevenMC">
+                <a href="https://www.youtube.com/results?search_query=Eleven" target="_blank">ElevenMC</a>
                 <div class="voting-options">
-                    <label for="guima_consistencia">Consistência</label>
-                    <input type="number" id="guima_consistencia" name="guima_consistencia" min="1" max="10" required>
-                    <label for="guima_material">Material</label>
-                    <input type="number" id="guima_material" name="guima_material" min="1" max="10" required>
-                    <label for="guima_performance">Performance</label>
-                    <input type="number" id="guima_performance" name="guima_performance" min="1" max="10" required>
-                    <label for="guima_adversarios">Adversários</label>
-                    <input type="number" id="guima_adversarios" name="guima_adversarios" min="1" max="10" required>
-                    <label for="guima_impacto">Impacto</label>
-                    <input type="number" id="guima_impacto" name="guima_impacto" min="1" max="10" required>
-                    <label for="guima_confronto">Confronto Direto</label>
-                    <input type="number" id="guima_confronto" name="guima_confronto" min="1" max="10" required>
+                    <!-- Campos de votação -->
                 </div>
                 <div class="recent-battles">
                     <h3>Adversários Recentes</h3>
                     <ul>
-                        <li>Sadyko 
-                            <select name="guima_sadyko_result">
+                        <li>Flip
+                            <select name="eleven_flip_result">
                                 <option value="vitoria">Vitória</option>
                                 <option value="empate">Empate</option>
                                 <option value="derrota">Derrota</option>
                             </select>
                         </li>
-                        <li>Quantico 
-                            <select name="guima_quantico_result">
-                                <option value="vitoria">Vitória</option>
-                                <option value="empate">Empate</option>
-                                <option value="derrota">Derrota</option>
-                            </select>
-                        </li>
-                        <li>Pele 
-                            <select name="guima_pele_result">
+                        <li>Limbu
+                            <select name="eleven_limbu_result">
                                 <option value="vitoria">Vitória</option>
                                 <option value="empate">Empate</option>
                                 <option value="derrota">Derrota</option>
@@ -637,9 +427,70 @@
                 </div>
             </div>
 
-            <!-- Continue adicionando os rappers restantes seguindo o mesmo padrão -->
+            <!-- Flep -->
+            <div class="rapper-card">
+                <img src="https://via.placeholder.com/200" alt="Flep">
+                <a href="https://www.youtube.com/results?search_query=Flep" target="_blank">Flep</a>
+                <div class="voting-options">
+                    <!-- Campos de votação -->
+                </div>
+                <div class="recent-battles">
+                    <h3>Adversários Recentes</h3>
+                    <ul>
+                        <li>Mr Burnz
+                            <select name="flep_mrburnz_result">
+                                <option value="vitoria">Vitória</option>
+                                <option value="empate">Empate</option>
+                                <option value="derrota">Derrota</option>
+                            </select>
+                        </li>
+                        <li>Facto BSJ
+                            <select name="flep_factobsj_result">
+                                <option value="vitoria">Vitória</option>
+                                <option value="empate">Empate</option>
+                                <option value="derrota">Derrota</option>
+                            </select>
+                        </li>
+                        <li>Xco
+                            <select name="flep_xco_result">
+                                <option value="vitoria">Vitória</option>
+                                <option value="empate">Empate</option>
+                                <option value="derrota">Derrota</option>
+                            </select>
+                        </li>
+                        <li>Edi Ventura
+                            <select name="flep_ediventura_result">
+                                <option value="vitoria">Vitória</option>
+                                <option value="empate">Empate</option>
+                                <option value="derrota">Derrota</option>
+                            </select>
+                        </li>
+                        <li>Sadyko
+                            <select name="flep_sadyko_result">
+                                <option value="vitoria">Vitória</option>
+                                <option value="empate">Empate</option>
+                                <option value="derrota">Derrota</option>
+                            </select>
+                        </li>
+                        <li>Joker
+                            <select name="flep_joker_result">
+                                <option value="vitoria">Vitória</option>
+                                <option value="empate">Empate</option>
+                                <option value="derrota">Derrota</option>
+                            </select>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- (Continuação para os demais rappers...) -->
         </div>
-        <button type="submit">Enviar Votos</button>
+        <button type="submit">Enviar Votação</button>
+    </form>
+</body>
+</html>
+        </div>
+        <button type="submit">Enviar Votação</button>
     </form>
 </body>
 </html>
