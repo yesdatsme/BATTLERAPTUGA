@@ -83,6 +83,11 @@
       width: 50px;
     }
 
+    /* Estilos para os selects */
+    select {
+      margin: 5px;
+    }
+
   </style>
 </head>
 <body>
@@ -128,23 +133,32 @@
         <div class="adversarios">
           <label>KM:</label> 
           <select id="3ma-km-status">
-            <option value="favorito">Favorito</option>
-            <option value="underdog">Underdog</option>
+            <option value="vitoria">Vitória</option>
+            <option value="empate">Empate</option>
+            <option value="derrota">Derrota</option>
           </select>
+          <br>
+          <a href="https://www.youtube.com/results?search_query=3ma+vs+KM" target="_blank">Assistir no YouTube - 3ma vs KM</a>
         </div>
         <div class="adversarios">
           <label>Shap3:</label> 
           <select id="3ma-shap3-status">
-            <option value="favorito">Favorito</option>
-            <option value="underdog">Underdog</option>
+            <option value="vitoria">Vitória</option>
+            <option value="empate">Empate</option>
+            <option value="derrota">Derrota</option>
           </select>
+          <br>
+          <a href="https://www.youtube.com/results?search_query=3ma+vs+Shap3" target="_blank">Assistir no YouTube - 3ma vs Shap3</a>
         </div>
         <div class="adversarios">
           <label>LC:</label> 
           <select id="3ma-lc-status">
-            <option value="favorito">Favorito</option>
-            <option value="underdog">Underdog</option>
+            <option value="vitoria">Vitória</option>
+            <option value="empate">Empate</option>
+            <option value="derrota">Derrota</option>
           </select>
+          <br>
+          <a href="https://www.youtube.com/results?search_query=3ma+vs+LC" target="_blank">Assistir no YouTube - 3ma vs LC</a>
         </div>
       </div>
     </div>
@@ -169,23 +183,32 @@
         <div class="adversarios">
           <label>Edi Ventura:</label> 
           <select id="abismal-edi-status">
-            <option value="favorito">Favorito</option>
-            <option value="underdog">Underdog</option>
+            <option value="vitoria">Vitória</option>
+            <option value="empate">Empate</option>
+            <option value="derrota">Derrota</option>
           </select>
+          <br>
+          <a href="https://www.youtube.com/results?search_query=Abismal+vs+Edi+Ventura" target="_blank">Assistir no YouTube - Abismal vs Edi Ventura</a>
         </div>
         <div class="adversarios">
           <label>Flajo:</label> 
           <select id="abismal-flajo-status">
-            <option value="favorito">Favorito</option>
-            <option value="underdog">Underdog</option>
+            <option value="vitoria">Vitória</option>
+            <option value="empate">Empate</option>
+            <option value="derrota">Derrota</option>
           </select>
+          <br>
+          <a href="https://www.youtube.com/results?search_query=Abismal+vs+Flajo" target="_blank">Assistir no YouTube - Abismal vs Flajo</a>
         </div>
         <div class="adversarios">
           <label>WilsonG:</label> 
           <select id="abismal-wilsong-status">
-            <option value="favorito">Favorito</option>
-            <option value="underdog">Underdog</option>
+            <option value="vitoria">Vitória</option>
+            <option value="empate">Empate</option>
+            <option value="derrota">Derrota</option>
           </select>
+          <br>
+          <a href="https://www.youtube.com/results?search_query=Abismal+vs+WilsonG" target="_blank">Assistir no YouTube - Abismal vs WilsonG</a>
         </div>
       </div>
     </div>
@@ -233,24 +256,3 @@
                       (consistencia * 0.10) + (performance * 0.10) + (impacto * 0.10);
 
       // Ajustando a pontuação com base no status dos adversários
-      const kmStatus = document.getElementById("3ma-km-status").value;
-      const shap3Status = document.getElementById("3ma-shap3-status").value;
-      const lcStatus = document.getElementById("3ma-lc-status").value;
-
-      if (kmStatus === "favorito" && document.getElementById("3ma-resultado").value === "perdeu") {
-        pontuacao *= 0.80;  // Favorito que perdeu
-      } else if (kmStatus === "underdog" && document.getElementById("3ma-resultado").value === "ganhou") {
-        pontuacao *= 1.20;  // Underdog que ganhou
-      }
-
-      console.log("Pontuação Ajustada:", pontuacao);
-    }
-
-    function salvarResultados() {
-      calcularPontuacao();
-      alert("Resultados salvos!");
-    }
-  </script>
-
-</body>
-</html>
