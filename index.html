@@ -3,239 +3,258 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Avaliação de Rappers - Batalhas</title>
+    <title>Avaliação de Batalhas de Rap</title>
     <style>
         body {
             font-family: Arial, sans-serif;
-            background-color: #f4f4f9;
+            background-color: #f4f4f4;
             margin: 0;
             padding: 0;
-            display: flex;
-            justify-content: center;
-            flex-direction: column;
-            align-items: center;
         }
-        h1 {
-            margin-top: 20px;
-            color: #333;
-        }
-        .rapper-card {
-            background-color: #fff;
-            margin: 20px;
-            padding: 20px;
-            border-radius: 10px;
-            width: 250px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            display: inline-block;
-            text-align: center;
-            vertical-align: top;
-        }
-        .rapper-card img {
-            width: 120px;
-            height: 120px;
-            border-radius: 50%;
-            margin-bottom: 10px;
-        }
-        .rapper-card h3 a {
-            color: #333;
-            text-decoration: none;
-        }
-        .rapper-card h3 a:hover {
-            color: #007bff;
-        }
-        .rapper-card .adversarios ul {
-            list-style-type: none;
-            padding-left: 0;
-        }
-        .rapper-card .adversarios li a {
-            color: #007bff;
-            text-decoration: none;
-        }
-        .rapper-card .adversarios li a:hover {
-            text-decoration: underline;
-        }
-        .voting-options label {
-            display: block;
-            margin-top: 5px;
-        }
-        .voting-options input {
-            width: 50px;
-            padding: 5px;
-            margin-top: 5px;
-        }
-        .voting-options select {
-            margin-top: 5px;
-        }
-        .voting-options button {
-            margin-top: 10px;
-            background-color: #28a745;
+
+        header {
+            background-color: #333;
             color: white;
-            border: none;
+            text-align: center;
+            padding: 1em;
+        }
+
+        .info-text {
+            background-color: #fff3cd;
             padding: 10px;
+            margin: 20px;
             border-radius: 5px;
-            cursor: pointer;
+            font-size: 16px;
         }
-        .voting-options button:hover {
-            background-color: #218838;
-        }
-        .rapper-cards-container {
+
+        .rapper-container {
             display: flex;
             flex-wrap: wrap;
-            justify-content: center;
+            justify-content: space-between;
+            padding: 20px;
+            gap: 20px;
         }
-        .rapper-card + .rapper-card {
-            margin-left: 20px;
-        }
-        .results-container {
-            margin-top: 20px;
+
+        .rapper-column {
+            background-color: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 23%;
+            margin-bottom: 20px;
             display: flex;
             flex-direction: column;
             align-items: center;
         }
-        .results-table {
+
+        .rapper-column img {
+            width: 100%;
+            height: auto;
+            border-radius: 10px;
+        }
+
+        .rapper-column h3 {
+            margin-top: 10px;
+            font-size: 18px;
+            text-align: center;
+        }
+
+        .rapper-column a {
+            color: #0066cc;
+            text-decoration: none;
+            font-size: 16px;
+        }
+
+        select {
+            width: 100%;
+            padding: 5px;
+            margin: 10px 0;
+        }
+
+        #submit-btn {
+            display: block;
+            width: 100%;
+            padding: 10px;
+            background-color: #333;
+            color: white;
+            font-size: 16px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 20px;
+        }
+
+        #submit-btn:hover {
+            background-color: #555;
+        }
+
+        .summary-table {
+            width: 100%;
             margin-top: 20px;
             border-collapse: collapse;
-            width: 100%;
-            max-width: 800px;
         }
-        .results-table th, .results-table td {
+
+        .summary-table th, .summary-table td {
             border: 1px solid #ddd;
             padding: 8px;
             text-align: center;
         }
-        .results-table th {
-            background-color: #007bff;
-            color: white;
-        }
-        .results-table td {
-            background-color: #f9f9f9;
+
+        .summary-table th {
+            background-color: #f4f4f4;
         }
     </style>
 </head>
 <body>
+    <header>
+        <h1>Sistema de Avaliação de Batalhas de Rap</h1>
+        <p>Selecione os detalhes das batalhas abaixo</p>
+    </header>
 
-    <h1>Avaliação de Rappers - Batalhas</h1>
-    <p>Por favor, avalie os rappers de acordo com os critérios e escolha os melhores!</p>
-    <p>Este sistema de avaliação atribui pesos diferenciados aos critérios para determinar a pontuação de cada rapper. Os critérios Material, Confronto Direto e Adversários têm um peso maior, enquanto Consistência, Performance e Impacto têm menor peso. A pontuação é inicialmente calculada somando-se as notas de cada critério multiplicadas pelos seus respectivos pesos.</p>
-    <p>Após calcular a pontuação inicial, o status do rapper (favorito ou underdog) é levado em conta para ajustar a pontuação, dependendo do resultado da batalha:</p>
-    <ul>
-        <li>Favorito que perde: Perde 20% da pontuação.</li>
-        <li>Underdog que ganha: Ganha 20% de bônus.</li>
-        <li>Favorito que ganha: Não há alteração na pontuação.</li>
-        <li>Underdog que perde: Não há alteração na pontuação.</li>
-    </ul>
-
-    <div class="rapper-cards-container">
-        <!-- 3ma -->
-        <div class="rapper-card" id="3ma">
-            <img src="https://via.placeholder.com/120" alt="3ma">
-            <h3><a href="https://www.youtube.com/results?search_query=3ma" target="_blank">3ma</a></h3>
-            <div class="adversarios">
-                <ul>
-                    <li><a href="https://www.youtube.com/results?search_query=3ma%20vs%20Shap3" target="_blank">Adversário: Shap3</a></li>
-                    <li><a href="https://www.youtube.com/results?search_query=3ma%20vs%20Lc" target="_blank">Adversário: Lc</a></li>
-                </ul>
-            </div>
-            <div class="voting-options">
-                <label for="3ma_consistencia">Consistência (1-10):</label>
-                <input type="number" id="3ma_consistencia" min="1" max="10">
-                <label for="3ma_material">Material (1-10):</label>
-                <input type="number" id="3ma_material" min="1" max="10">
-                <label for="3ma_performance">Performance (1-10):</label>
-                <input type="number" id="3ma_performance" min="1" max="10">
-                <label for="3ma_adversarios">Adversários (1-10):</label>
-                <input type="number" id="3ma_adversarios" min="1" max="10">
-                <label for="3ma_impacto">Impacto (1-10):</label>
-                <input type="number" id="3ma_impacto" min="1" max="10">
-                <label for="3ma_confronto">Confronto Direto (1-10):</label>
-                <input type="number" id="3ma_confronto" min="1" max="10">
-                
-                <!-- Escolher se é favorito, underdog ou empate -->
-                <label for="3ma_status">Status:</label>
-                <select id="3ma_status">
-                    <option value="favorito">Favorito</option>
-                    <option value="underdog">Underdog</option>
-                    <option value="empate">Empate</option>
-                </select>
-                
-                <button onclick="submitVote('3ma')">Votar</button>
-            </div>
-        </div>
-
-        <!-- Abismal -->
-        <div class="rapper-card" id="Abismal">
-            <img src="https://via.placeholder.com/120" alt="Abismal">
-            <h3><a href="https://www.youtube.com/results?search_query=Abismal" target="_blank">Abismal</a></h3>
-            <div class="adversarios">
-                <ul>
-                    <li><a href="https://www.youtube.com/results?search_query=Abismal%20vs%20Edi%20Ventura" target="_blank">Adversário: Edi Ventura</a></li>
-                    <li><a href="https://www.youtube.com/results?search_query=Abismal%20vs%20Flajo" target="_blank">Adversário: Flajo</a></li>
-                    <li><a href="https://www.youtube.com/results?search_query=Abismal%20vs%20WilsonG" target="_blank">Adversário: WilsonG</a></li>
-                </ul>
-            </div>
-            <div class="voting-options">
-                <label for="Abismal_consistencia">Consistência (1-10):</label>
-                <input type="number" id="Abismal_consistencia" min="1" max="10">
-                <label for="Abismal_material">Material (1-10):</label>
-                <input type="number" id="Abismal_material" min="1" max="10">
-                <label for="Abismal_performance">Performance (1-10):</label>
-                <input type="number" id="Abismal_performance" min="1" max="10">
-                <label for="Abismal_adversarios">Adversários (1-10):</label>
-                <input type="number" id="Abismal_adversarios" min="1" max="10">
-                <label for="Abismal_impacto">Impacto (1-10):</label>
-                <input type="number" id="Abismal_impacto" min="1" max="10">
-                <label for="Abismal_confronto">Confronto Direto (1-10):</label>
-                <input type="number" id="Abismal_confronto" min="1" max="10">
-                
-                <!-- Escolher se é favorito, underdog ou empate -->
-                <label for="Abismal_status">Status:</label>
-                <select id="Abismal_status">
-                    <option value="favorito">Favorito</option>
-                    <option value="underdog">Underdog</option>
-                    <option value="empate">Empate</option>
-                </select>
-                
-                <button onclick="submitVote('Abismal')">Votar</button>
-            </div>
-        </div>
-        <!-- Adicione o restante dos rappers e adversários aqui, seguindo a mesma lógica -->
+    <div class="info-text">
+        <p><strong>Instruções:</strong> Este sistema de avaliação atribui pesos diferenciados aos critérios para determinar a pontuação de cada rapper. Os critérios Material, Confronto Direto e Adversários têm um peso maior, enquanto Consistência, Performance e Impacto têm menor peso. A pontuação é inicialmente calculada somando-se as notas de cada critério multiplicadas pelos seus respectivos pesos.</p>
+        <p>Após calcular a pontuação inicial, o status do rapper (favorito ou underdog) é levado em conta para ajustar a pontuação, dependendo do resultado da batalha:</p>
+        <ul>
+            <li><strong>Favorito que perde:</strong> Perde 20% da pontuação.</li>
+            <li><strong>Underdog que ganha:</strong> Ganha 20% de bônus.</li>
+            <li><strong>Favorito que ganha:</strong> Não há alteração na pontuação.</li>
+            <li><strong>Underdog que perde:</strong> Não há alteração na pontuação.</li>
+        </ul>
+        <p>Esse sistema garante que o status do rapper e seu desempenho durante a batalha influenciem a pontuação final, criando um equilíbrio entre técnica (critérios de avaliação) e contexto competitivo (favorito/underdog e resultado da batalha).</p>
     </div>
+
+    <div class="rapper-container">
+        <!-- Exemplo de coluna para o rapper "Abismal" -->
+        <div class="rapper-column">
+            <img src="https://via.placeholder.com/150" alt="Abismal">
+            <h3><a href="https://www.youtube.com/results?search_query=Abismal" target="_blank">Abismal</a></h3>
+            <div>
+                <strong>Adversário 1:</strong> <a href="https://www.youtube.com/results?search_query=Abismal+vs+Edi+Ventura" target="_blank">Edi Ventura</a>
+                <br>
+                <label for="favorite-underdog-abismal-1">Favorito/Underdog:</label>
+                <select id="favorite-underdog-abismal-1">
+                    <option value="favorito">Favorito</option>
+                    <option value="underdog">Underdog</option>
+                </select>
+                <label for="result-abismal-1">Resultado:</label>
+                <select id="result-abismal-1">
+                    <option value="ganhou">Ganhou</option>
+                    <option value="perdeu">Perdeu</option>
+                    <option value="empatou">Empatou</option>
+                </select>
+            </div>
+            <div>
+                <strong>Adversário 2:</strong> <a href="https://www.youtube.com/results?search_query=Abismal+vs+Flajo" target="_blank">Flajo</a>
+                <br>
+                <label for="favorite-underdog-abismal-2">Favorito/Underdog:</label>
+                <select id="favorite-underdog-abismal-2">
+                    <option value="favorito">Favorito</option>
+                    <option value="underdog">Underdog</option>
+                </select>
+                <label for="result-abismal-2">Resultado:</label>
+                <select id="result-abismal-2">
+                    <option value="ganhou">Ganhou</option>
+                    <option value="perdeu">Perdeu</option>
+                    <option value="empatou">Empatou</option>
+                </select>
+            </div>
+            <div>
+                <strong>Adversário 3:</strong> <a href="https://www.youtube.com/results?search_query=Abismal+vs+WilsonG" target="_blank">WilsonG</a>
+                <br>
+                <label for="favorite-underdog-abismal-3">Favorito/Underdog:</label>
+                <select id="favorite-underdog-abismal-3">
+                    <option value="favorito">Favorito</option>
+                    <option value="underdog">Underdog</option>
+                </select>
+                <label for="result-abismal-3">Resultado:</label>
+                <select id="result-abismal-3">
+                    <option value="ganhou">Ganhou</option>
+                    <option value="perdeu">Perdeu</option>
+                    <option value="empatou">Empatou</option>
+                </select>
+            </div>
+        </div>
+
+        <!-- Adicione mais rappers aqui... -->
+
+    </div>
+
+    <button id="submit-btn" onclick="submitVotes()">Submeter Todos os Votos</button>
 
     <!-- Tabela de resultados -->
-    <div class="results-container">
-        <h2>Resultados</h2>
-        <table class="results-table">
-            <thead>
-                <tr>
-                    <th>Rapper</th>
-                    <th>Batalhas Vencidas</th>
-                    <th>Batalhas Perdidas</th>
-                    <th>Critérios</th>
-                    <th>Pontos</th>
-                </tr>
-            </thead>
-            <tbody id="resultsTable">
-                <!-- As linhas serão preenchidas dinamicamente após o envio dos votos -->
-            </tbody>
-        </table>
-    </div>
+    <table class="summary-table">
+        <thead>
+            <tr>
+                <th>Rapper</th>
+                <th>Critérios</th>
+                <th>Batalhas Vencidas</th>
+                <th>Batalhas Perdidas</th>
+                <th>Pontuação Final</th>
+            </tr>
+        </thead>
+        <tbody id="summary-table-body">
+            <!-- Os resultados serão preenchidos aqui -->
+        </tbody>
+    </table>
 
     <script>
-        function submitVote(rapperId) {
-            // Aqui você pode pegar as notas e o status do rapper e calcular a pontuação
-            const consistency = document.getElementById(rapperId + '_consistencia').value;
-            const material = document.getElementById(rapperId + '_material').value;
-            const performance = document.getElementById(rapperId + '_performance').value;
-            const opponents = document.getElementById(rapperId + '_adversarios').value;
-            const impact = document.getElementById(rapperId + '_impacto').value;
-            const confrontation = document.getElementById(rapperId + '_confronto').value;
-            const status = document.getElementById(rapperId + '_status').value;
-            
-            // Lógica de cálculo de pontos e armazenamento dos dados do rapper
+        function submitVotes() {
+            let tableBody = document.getElementById("summary-table-body");
+            tableBody.innerHTML = ""; // Limpa a tabela antes de adicionar os novos dados
 
-            alert('Voto enviado para: ' + rapperId);
+            // Exemplo de como processar a votação do Abismal
+            let abismalResults = [
+                {
+                    name: "Abismal",
+                    battles: [
+                        { adversary: "Edi Ventura", favorite: document.getElementById("favorite-underdog-abismal-1").value, result: document.getElementById("result-abismal-1").value },
+                        { adversary: "Flajo", favorite: document.getElementById("favorite-underdog-abismal-2").value, result: document.getElementById("result-abismal-2").value },
+                        { adversary: "WilsonG", favorite: document.getElementById("favorite-underdog-abismal-3").value, result: document.getElementById("result-abismal-3").value }
+                    ]
+                }
+            ];
+
+            abismalResults.forEach(rapper => {
+                let row = document.createElement("tr");
+                let criteria = "Material, Confronto Direto, Adversários";  // Placeholder, calcular conforme necessário
+                let victories = rapper.battles.filter(battle => battle.result === "ganhou").length;
+                let losses = rapper.battles.filter(battle => battle.result === "perdeu").length;
+                
+                // Cálculo da pontuação final com pesos
+                let score = calculateScore(rapper.battles);
+                row.innerHTML = `
+                    <td>${rapper.name}</td>
+                    <td>${criteria}</td>
+                    <td>${victories}</td>
+                    <td>${losses}</td>
+                    <td>${score}</td>
+                `;
+                tableBody.appendChild(row);
+            });
+        }
+
+        // Função para calcular a pontuação final com base nos critérios
+        function calculateScore(battles) {
+            let totalScore = 0;
+            const weights = {
+                material: 0.3,
+                confrontoDireto: 0.3,
+                adversarios: 0.4
+            };
+
+            battles.forEach(battle => {
+                // Aqui, você pode calcular a pontuação de cada batalha baseada nos critérios
+                // Por exemplo, se o battle.result === "ganhou", aumentar a pontuação de acordo com os pesos
+                let battleScore = 0;
+
+                // Atribua pontos de acordo com os critérios (Material, Confronto Direto, Adversários)
+                battleScore += (battle.result === "ganhou") ? 10 : (battle.result === "empatou" ? 5 : 0);
+                
+                totalScore += battleScore;
+            });
+
+            return totalScore;
         }
     </script>
-
 </body>
 </html>
