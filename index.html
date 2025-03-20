@@ -191,6 +191,72 @@
     </div>
   </div>
 
+  <!-- Coluna do rapper Shap3 -->
+  <div class="rapper-column" id="rapper-shap3">
+    <img src="https://via.placeholder.com/150" alt="Imagem do Shap3">
+    <h2>
+      <a href="https://www.youtube.com/results?search_query=Shap3" target="_blank">Shap3</a>
+    </h2>
+
+    <!-- Avaliação do rapper -->
+    <h3>Avaliação do rapper</h3>
+
+    <!-- Critérios -->
+    <div class="input-group">
+      <label for="nota-material-shap3">Material (0-10):</label>
+      <input type="number" name="nota-material-shap3" min="0" max="10">
+    </div>
+
+    <div class="input-group">
+      <label for="nota-confronto-shap3">Confronto Direto (0-10):</label>
+      <input type="number" name="nota-confronto-shap3" min="0" max="10">
+    </div>
+
+    <div class="input-group">
+      <label for="nota-adversarios-shap3">Adversários (0-10):</label>
+      <input type="number" name="nota-adversarios-shap3" min="0" max="10">
+    </div>
+
+    <div class="input-group">
+      <label for="nota-consistencia-shap3">Consistência (0-10):</label>
+      <input type="number" name="nota-consistencia-shap3" min="0" max="10">
+    </div>
+
+    <div class="input-group">
+      <label for="nota-performance-shap3">Performance (0-10):</label>
+      <input type="number" name="nota-performance-shap3" min="0" max="10">
+    </div>
+
+    <div class="input-group">
+      <label for="nota-impacto-shap3">Impacto (0-10):</label>
+      <input type="number" name="nota-impacto-shap3" min="0" max="10">
+    </div>
+
+    <!-- Batalhas -->
+    <h3>Batalhas</h3>
+
+    <!-- Para cada batalha, botões de assistir -->
+    <div class="input-group">
+      <button class="button" onclick="assistir('Shap3', '3ma')">Shap3 VS 3ma</button>
+      <label for="resultado-shap3-3ma">Resultado:</label>
+      <div class="radio-group">
+        <label><input type="radio" name="resultado-shap3-3ma" value="ganhou"> Ganhou</label>
+        <label><input type="radio" name="resultado-shap3-3ma" value="perdeu"> Perdeu</label>
+        <label><input type="radio" name="resultado-shap3-3ma" value="empatou"> Empatou</label>
+      </div>
+      <label for="underdog-favorito-shap3-3ma">Favorito/Underdog:</label>
+      <div class="radio-group">
+        <label><input type="radio" name="underdog-favorito-shap3-3ma" value="favorito"> Favorito</label>
+        <label><input type="radio" name="underdog-favorito-shap3-3ma" value="underdog"> Underdog</label>
+      </div>
+    </div>
+
+    <!-- Botão de votar -->
+    <div class="input-group">
+      <button class="button" onclick="votar('Shap3', '3ma')">Votar</button>
+    </div>
+  </div>
+
   <!-- Tabela de resultados -->
   <div class="table-container">
     <table class="results-table">
