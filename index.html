@@ -4592,47 +4592,6 @@
   const app = firebase.initializeApp(firebaseConfig);
   const db = firebase.firestore();
 
-  // Função para calcular a pontuação de um rapper
-  function calcularPontuacao(rapperId) {
-    const material = parseFloat(document.getElementById(`nota-material-${rapperId}`).value) || 0;
-    const confronto = parseFloat(document.getElementById(`nota-confronto-${rapperId}`).value) || 0;
-    const adversarios = parseFloat(document.getElementById(`nota-adversarios-${rapperId}`).value) || 0;
-    const consistencia = parseFloat(document.getElementById(`nota-consistencia-${rapperId}`).value) || 0;
-    const performance = parseFloat(document.getElementById(`nota-performance-${rapperId}`).value) || 0;
-    const impacto = parseFloat(document.getElementById(`nota-impacto-${rapperId}`).value) || 0;
-
-    // Pesos dos critérios
-    const pesoMaterial = 0.25;
-    const pesoConfronto = 0.25;
-    const pesoAdversarios = 0.20;
-    const pesoConsistencia = 0.10;
-    const pesoPerformance = 0.10;
-    const pesoImpacto = 0.10;
-
-    // Cálculo da pontuação inicial
-    let pontuacao = (material * pesoMaterial) +
-                    (confronto * pesoConfronto) +
-                    (adversarios * pesoAdversarios) +
-                    (consistencia * pesoConsistencia) +
-                    (performance * pesoPerformance) +
-                    (impacto * pesoImpacto);
-
-    // Ajustar pontuação com base nas batalhas
-    const batalhas = document.querySelectorAll(`#rapper-${rapperId} .input-group select`);
-    batalhas.forEach(batalha => {
-      const resultado = batalha.value;
-      const favorito = batalha.nextElementSibling.nextElementSibling.value;
-
-      if (resultado === "Venceu" && favorito === "Underdog") {
-        pontuacao *= 1.20; // Underdog que ganha: +20%
-      } else if (resultado === "Perdeu" && favorito === "Favorito") {
-        pontuacao *= 0.80; // Favorito que perde: -20%
-      }
-    });
-
-    return pontuacao;
-  }
-
   // Função para salvar os votos no Firestore
   function salvarVotos(rapperId) {
     const votos = {
@@ -4653,6 +4612,8 @@
       votos.batalhas.push({ resultado, favorito });
     });
 
+    console.log("Dados a serem enviados:", votos);
+
     // Envia os votos para o Firestore
     db.collection('votos').doc(rapperId).set(votos, { merge: true })
       .then(() => {
@@ -4671,6 +4632,8 @@
       querySnapshot.forEach((doc) => {
         const rapperId = doc.id;
         const data = doc.data();
+
+        console.log("Dados recebidos:", data);
 
         // Calcula a pontuação média
         const pontuacao = (data.material + data.confronto + data.adversarios + data.consistencia + data.performance + data.impacto) / 6;
@@ -4742,15 +4705,14 @@
 
   // Função para votar
   function votar(rapperId) {
-    // Salva os votos do rapper atual
+    console.log("Votando para:", rapperId);
     salvarVotos(rapperId);
-
-    // Atualiza a tabela
     observarVotos();
   }
 
   // Inicia a observação dos votos ao carregar a página
   window.onload = function() {
+    console.log("Página carregada, observando votos...");
     observarVotos();
   };
 </script>
