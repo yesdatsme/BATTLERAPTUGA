@@ -9,13 +9,11 @@
     .info-box {
       background-color: #f7e98d;
       padding: 10px;
-      margin: 20px 0;
+      margin: 20px auto;
       font-size: 14px;
       border-radius: 5px;
       text-align: center;
       max-width: 90%;
-      margin-left: auto;
-      margin-right: auto;
     }
 
     /* Estilos para os rappers nas 4 colunas */
@@ -51,13 +49,13 @@
       margin-top: 10px;
     }
 
-    .battle-info {
+    .criteria {
       margin-top: 10px;
       font-size: 14px;
     }
 
-    .criteria {
-      margin-top: 10px;
+    .battle-info {
+      margin-top: 15px;
     }
 
     /* Estilos para a tabela de resultados */
@@ -86,8 +84,7 @@
 <body>
   <div class="info-box">
     <h3>Instruções de Avaliação</h3>
-    <p>Este sistema de avaliação atribui pesos diferenciados aos critérios para determinar a pontuação de cada rapper. Os critérios Material, Confronto Direto e Adversários têm um peso maior, enquanto Consistência, Performance e Impacto têm menor peso.</p>
-    <p>A pontuação é calculada somando-se as notas de cada critério multiplicadas pelos seus respectivos pesos:</p>
+    <p>Este sistema de avaliação atribui pesos diferenciados aos critérios para determinar a pontuação de cada rapper.</p>
     <ul>
       <li>Material: 25% (Mais importante)</li>
       <li>Confronto Direto: 25% (Mais importante)</li>
@@ -96,45 +93,51 @@
       <li>Performance: 10% (Menos importante)</li>
       <li>Impacto: 10% (Menos importante)</li>
     </ul>
+    <p>Ajustes na pontuação com base no status:</p>
+    <ul>
+      <li><strong>Favorito que perde:</strong> Perde 20% da pontuação.</li>
+      <li><strong>Underdog que ganha:</strong> Ganha 20% de bônus.</li>
+      <li><strong>Favorito que ganha:</strong> Não há alteração na pontuação.</li>
+      <li><strong>Underdog que perde:</strong> Não há alteração na pontuação.</li>
+    </ul>
   </div>
 
   <!-- Rappers -->
   <div class="rapper-container">
-    <!-- Exemplo para o rapper Abismal -->
     <div class="rapper-card">
       <img src="abismal.jpg" alt="Abismal" class="rapper-photo">
       <div class="rapper-name">
         <a href="https://www.youtube.com/results?search_query=Abismal" target="_blank">Abismal</a>
       </div>
+      
+      <div class="criteria">
+        <strong>Avalie o rapper:</strong><br>
+        Material: <input type="number" min="0" max="10" class="criteria-rating" id="abismal-material"><br>
+        Confronto Direto: <input type="number" min="0" max="10" class="criteria-rating" id="abismal-confronto"><br>
+        Adversários: <input type="number" min="0" max="10" class="criteria-rating" id="abismal-adversarios"><br>
+        Consistência: <input type="number" min="0" max="10" class="criteria-rating" id="abismal-consistencia"><br>
+        Performance: <input type="number" min="0" max="10" class="criteria-rating" id="abismal-performance"><br>
+        Impacto: <input type="number" min="0" max="10" class="criteria-rating" id="abismal-impacto">
+      </div>
+
       <div class="battle-info">
         <strong>Adversários:</strong><br>
         <a href="https://www.youtube.com/results?search_query=Abismal+vs+Edi+Ventura" target="_blank">Abismal vs Edi Ventura</a>
         <br>
         <label>Favorito/Underdog:</label>
-        <select>
+        <select id="abismal-underdog-favorito">
           <option value="favorito">Favorito</option>
           <option value="underdog">Underdog</option>
         </select>
         <br>
         <label>Resultado:</label>
-        <select>
+        <select id="abismal-resultado">
           <option value="ganhou">Ganhou</option>
           <option value="perdeu">Perdeu</option>
           <option value="empatou">Empatou</option>
         </select>
       </div>
-      <div class="criteria">
-        <strong>Avalie o rapper:</strong><br>
-        Material: <input type="number" min="1" max="10" class="criteria-rating"><br>
-        Confronto Direto: <input type="number" min="1" max="10" class="criteria-rating"><br>
-        Adversários: <input type="number" min="1" max="10" class="criteria-rating"><br>
-        Consistência: <input type="number" min="1" max="10" class="criteria-rating"><br>
-        Performance: <input type="number" min="1" max="10" class="criteria-rating"><br>
-        Impacto: <input type="number" min="1" max="10" class="criteria-rating">
-      </div>
     </div>
-
-    <!-- Adicione outros rappers aqui, seguindo o mesmo modelo -->
   </div>
 
   <!-- Tabela de Resultados -->
@@ -148,20 +151,44 @@
       </tr>
     </thead>
     <tbody>
-      <!-- Exemplo para Abismal -->
       <tr>
         <td>Abismal</td>
         <td>1</td>
         <td>0</td>
         <td>85</td>
       </tr>
-      <!-- Adicione os resultados dos outros rappers aqui -->
     </tbody>
   </table>
 
   <script>
-    // Aqui pode ser implementada a lógica para calcular a pontuação com base nas avaliações
-    // Isso seria feito através de JavaScript, conforme os critérios de avaliação e as batalhas
+    function calcularPontuacao() {
+      const material = parseInt(document.getElementById("abismal-material").value) || 0;
+      const confronto = parseInt(document.getElementById("abismal-confronto").value) || 0;
+      const adversarios = parseInt(document.getElementById("abismal-adversarios").value) || 0;
+      const consistencia = parseInt(document.getElementById("abismal-consistencia").value) || 0;
+      const performance = parseInt(document.getElementById("abismal-performance").value) || 0;
+      const impacto = parseInt(document.getElementById("abismal-impacto").value) || 0;
+
+      let pontuacao = (material * 0.25) + (confronto * 0.25) + (adversarios * 0.20) + 
+                      (consistencia * 0.10) + (performance * 0.10) + (impacto * 0.10);
+
+      const status = document.getElementById("abismal-underdog-favorito").value;
+      const resultado = document.getElementById("abismal-resultado").value;
+
+      if (status === "favorito" && resultado === "perdeu") {
+        pontuacao *= 0.80;
+      } else if (status === "underdog" && resultado === "ganhou") {
+        pontuacao *= 1.20;
+      }
+
+      console.log("Pontuação Ajustada:", pontuacao);
+    }
+
+    function salvarResultados() {
+      calcularPontuacao();
+      alert("Resultados salvos!");
+    }
   </script>
+
 </body>
 </html>
