@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Rappers e Batalhas</title>
   <style>
+    /* Estilo para as caixas de informação */
     .info-box {
       background-color: #f7e98d;
       padding: 10px;
@@ -15,6 +16,7 @@
       max-width: 90%;
     }
 
+    /* Estilo para as colunas de cada rapper */
     .rapper-column {
       display: inline-block;
       width: 22%;
@@ -46,8 +48,11 @@
       margin-bottom: 10px;
     }
 
-    .select-group, .input-group {
-      margin-bottom: 10px;
+    /* Estilo para os campos de avaliação */
+    .input-group input {
+      width: 100%;
+      padding: 5px;
+      font-size: 14px;
     }
 
     .button {
@@ -64,17 +69,6 @@
 
     .button:hover {
       background-color: #45a049;
-    }
-
-    .input-group input, .select-group select {
-      width: 100%;
-      padding: 5px;
-      font-size: 14px;
-    }
-
-    .radio-group label {
-      display: inline-block;
-      margin-right: 10px;
     }
 
     .table-container {
@@ -106,6 +100,7 @@
 </head>
 <body>
 
+  <!-- Caixa de instruções -->
   <div class="info-box">
     <h3>Instruções de Avaliação</h3>
     <p>Escolha as avaliações para o rapper da coluna. Avalie o rapper nos critérios:</p>
@@ -120,12 +115,14 @@
     <p>Em seguida, escolha para cada batalha se o rapper era favorito ou underdog e o resultado da batalha (Venceu, Perdeu, Empatou). As batalhas do rapper serão exibidas com botões de "Assistir" que redirecionam para o YouTube.</p>
   </div>
 
-  <!-- Colunas dos rappers -->
+  <!-- Coluna do rapper 3ma -->
   <div class="rapper-column" id="rapper-3ma">
     <img src="https://via.placeholder.com/150" alt="Imagem do 3ma">
     <h2>
       <a href="https://www.youtube.com/results?search_query=3ma" target="_blank">3ma</a>
     </h2>
+
+    <!-- Avaliação do rapper -->
     <h3>Avaliação do rapper</h3>
 
     <!-- Critérios -->
@@ -133,221 +130,131 @@
       <label for="nota-material-3ma">Material (0-10):</label>
       <input type="number" name="nota-material-3ma" min="0" max="10">
     </div>
+
     <div class="input-group">
       <label for="nota-confronto-3ma">Confronto Direto (0-10):</label>
       <input type="number" name="nota-confronto-3ma" min="0" max="10">
     </div>
+
     <div class="input-group">
       <label for="nota-adversarios-3ma">Adversários (0-10):</label>
       <input type="number" name="nota-adversarios-3ma" min="0" max="10">
     </div>
+
     <div class="input-group">
       <label for="nota-consistencia-3ma">Consistência (0-10):</label>
       <input type="number" name="nota-consistencia-3ma" min="0" max="10">
     </div>
+
     <div class="input-group">
       <label for="nota-performance-3ma">Performance (0-10):</label>
       <input type="number" name="nota-performance-3ma" min="0" max="10">
     </div>
+
     <div class="input-group">
       <label for="nota-impacto-3ma">Impacto (0-10):</label>
       <input type="number" name="nota-impacto-3ma" min="0" max="10">
     </div>
 
+    <!-- Batalhas -->
     <h3>Batalhas</h3>
-    <!-- Batalhas do 3ma -->
+
+    <!-- Para cada batalha, botões de assistir e escolher resultado e favorito -->
     <div class="input-group">
-      <button class="button" onclick="assistir('3ma', 'KM')">3ma VS KM</button>
-      <label for="resultado-3ma-km">Resultado:</label>
-      <div class="radio-group">
-        <label><input type="radio" name="resultado-3ma-km" value="ganhou"> Ganhou</label>
-        <label><input type="radio" name="resultado-3ma-km" value="perdeu"> Perdeu</label>
-        <label><input type="radio" name="resultado-3ma-km" value="empatou"> Empatou</label>
-      </div>
-      <label for="underdog-favorito-3ma-km">Favorito/Underdog:</label>
-      <div class="radio-group">
-        <label><input type="radio" name="underdog-favorito-3ma-km" value="favorito"> Favorito</label>
-        <label><input type="radio" name="underdog-favorito-3ma-km" value="underdog"> Underdog</label>
-      </div>
+      <label for="resultado-3ma-KM">Resultado 3ma VS KM:</label>
+      <select id="resultado-3ma-KM">
+        <option value="Venceu">Venceu</option>
+        <option value="Perdeu">Perdeu</option>
+        <option value="Empatou">Empatou</option>
+      </select>
+      <label for="favorito-3ma-KM">Favorito ou Underdog:</label>
+      <select id="favorito-3ma-KM">
+        <option value="Favorito">Favorito</option>
+        <option value="Underdog">Underdog</option>
+      </select>
+      <button class="button" onclick="assistir('3ma', 'KM')">Assistir Batalha 3ma VS KM</button>
     </div>
 
     <div class="input-group">
-      <button class="button" onclick="assistir('3ma', 'Shap3')">3ma VS Shap3</button>
-      <label for="resultado-3ma-shap3">Resultado:</label>
-      <div class="radio-group">
-        <label><input type="radio" name="resultado-3ma-shap3" value="ganhou"> Ganhou</label>
-        <label><input type="radio" name="resultado-3ma-shap3" value="perdeu"> Perdeu</label>
-        <label><input type="radio" name="resultado-3ma-shap3" value="empatou"> Empatou</label>
-      </div>
-      <label for="underdog-favorito-3ma-shap3">Favorito/Underdog:</label>
-      <div class="radio-group">
-        <label><input type="radio" name="underdog-favorito-3ma-shap3" value="favorito"> Favorito</label>
-        <label><input type="radio" name="underdog-favorito-3ma-shap3" value="underdog"> Underdog</label>
-      </div>
+      <label for="resultado-3ma-Shap3">Resultado 3ma VS Shap3:</label>
+      <select id="resultado-3ma-Shap3">
+        <option value="Venceu">Venceu</option>
+        <option value="Perdeu">Perdeu</option>
+        <option value="Empatou">Empatou</option>
+      </select>
+      <label for="favorito-3ma-Shap3">Favorito ou Underdog:</label>
+      <select id="favorito-3ma-Shap3">
+        <option value="Favorito">Favorito</option>
+        <option value="Underdog">Underdog</option>
+      </select>
+      <button class="button" onclick="assistir('3ma', 'Shap3')">Assistir Batalha 3ma VS Shap3</button>
     </div>
 
     <div class="input-group">
-      <button class="button" onclick="assistir('3ma', 'LC')">3ma VS LC</button>
-      <label for="resultado-3ma-lc">Resultado:</label>
-      <div class="radio-group">
-        <label><input type="radio" name="resultado-3ma-lc" value="ganhou"> Ganhou</label>
-        <label><input type="radio" name="resultado-3ma-lc" value="perdeu"> Perdeu</label>
-        <label><input type="radio" name="resultado-3ma-lc" value="empatou"> Empatou</label>
-      </div>
-      <label for="underdog-favorito-3ma-lc">Favorito/Underdog:</label>
-      <div class="radio-group">
-        <label><input type="radio" name="underdog-favorito-3ma-lc" value="favorito"> Favorito</label>
-        <label><input type="radio" name="underdog-favorito-3ma-lc" value="underdog"> Underdog</label>
-      </div>
+      <label for="resultado-3ma-LC">Resultado 3ma VS LC:</label>
+      <select id="resultado-3ma-LC">
+        <option value="Venceu">Venceu</option>
+        <option value="Perdeu">Perdeu</option>
+        <option value="Empatou">Empatou</option>
+      </select>
+      <label for="favorito-3ma-LC">Favorito ou Underdog:</label>
+      <select id="favorito-3ma-LC">
+        <option value="Favorito">Favorito</option>
+        <option value="Underdog">Underdog</option>
+      </select>
+      <button class="button" onclick="assistir('3ma', 'LC')">Assistir Batalha 3ma VS LC</button>
     </div>
-    
+
+    <!-- Botão de votar (apenas um por coluna) -->
     <div class="input-group">
-      <button class="button" onclick="votar('3ma', 'KM')">Votar</button>
-    </div>
-    <div class="input-group">
-      <button class="button" onclick="votar('3ma', 'Shap3')">Votar</button>
-    </div>
-    <div class="input-group">
-      <button class="button" onclick="votar('3ma', 'LC')">Votar</button>
+      <button class="button" onclick="votar('3ma')">Votar</button>
     </div>
   </div>
 
-  <div class="rapper-column" id="rapper-lc">
-    <img src="https://via.placeholder.com/150" alt="Imagem do LC">
-    <h2>
-      <a href="https://www.youtube.com/results?search_query=LC" target="_blank">LC</a>
-    </h2>
-    <h3>Avaliação do rapper</h3>
-
-    <!-- Critérios para LC -->
-    <div class="input-group">
-      <label for="nota-material-lc">Material (0-10):</label>
-      <input type="number" name="nota-material-lc" min="0" max="10">
-    </div>
-    <div class="input-group">
-      <label for="nota-confronto-lc">Confronto Direto (0-10):</label>
-      <input type="number" name="nota-confronto-lc" min="0" max="10">
-    </div>
-    <div class="input-group">
-      <label for="nota-adversarios-lc">Adversários (0-10):</label>
-      <input type="number" name="nota-adversarios-lc" min="0" max="10">
-    </div>
-    <div class="input-group">
-      <label for="nota-consistencia-lc">Consistência (0-10):</label>
-      <input type="number" name="nota-consistencia-lc" min="0" max="10">
-    </div>
-    <div class="input-group">
-      <label for="nota-performance-lc">Performance (0-10):</label>
-      <input type="number" name="nota-performance-lc" min="0" max="10">
-    </div>
-    <div class="input-group">
-      <label for="nota-impacto-lc">Impacto (0-10):</label>
-      <input type="number" name="nota-impacto-lc" min="0" max="10">
-    </div>
-
-    <h3>Batalhas</h3>
-    <!-- Batalhas de LC -->
-    <div class="input-group">
-      <button class="button" onclick="assistir('LC', '3ma')">LC VS 3ma</button>
-      <label for="resultado-lc-3ma">Resultado:</label>
-      <div class="radio-group">
-        <label><input type="radio" name="resultado-lc-3ma" value="ganhou"> Ganhou</label>
-        <label><input type="radio" name="resultado-lc-3ma" value="perdeu"> Perdeu</label>
-        <label><input type="radio" name="resultado-lc-3ma" value="empatou"> Empatou</label>
-      </div>
-      <label for="underdog-favorito-lc-3ma">Favorito/Underdog:</label>
-      <div class="radio-group">
-        <label><input type="radio" name="underdog-favorito-lc-3ma" value="favorito"> Favorito</label>
-        <label><input type="radio" name="underdog-favorito-lc-3ma" value="underdog"> Underdog</label>
-      </div>
-    </div>
-
-    <div class="input-group">
-      <button class="button" onclick="votar('LC', '3ma')">Votar</button>
-    </div>
+  <!-- Tabela de Resultados -->
+  <div class="table-container">
+    <h3>Resultado das Batalhas</h3>
+    <table class="results-table">
+      <thead>
+        <tr>
+          <th>Rapper</th>
+          <th>Vitórias</th>
+          <th>Derrotas</th>
+          <th>Empates</th>
+          <th>TIER</th>
+        </tr>
+      </thead>
+      <tbody id="tabela-resultados">
+        <!-- As vitórias, derrotas e empates serão atualizados aqui dinamicamente -->
+      </tbody>
+    </table>
   </div>
 
   <script>
-    // Função para assistir a batalha
-    function assistir(rapper1, rapper2) {
-      window.open(`https://www.youtube.com/results?search_query=${rapper1}+vs+${rapper2}`, '_blank');
+    function assistir(rapper, adversario) {
+      // Função para abrir a batalha no YouTube (exemplo simples)
+      window.open('https://www.youtube.com/results?search_query=' + rapper + '+VS+' + adversario, '_blank');
     }
 
-    // Função para votar e atualizar a tabela
-    function votar(rapper1, rapper2) {
-      const resultado = document.querySelector(`input[name="resultado-${rapper1.toLowerCase()}-${rapper2.toLowerCase()}"]:checked`);
-      const favorito = document.querySelector(`input[name="underdog-favorito-${rapper1.toLowerCase()}-${rapper2.toLowerCase()}"]:checked`).value;
-      
-      if (resultado) {
-        const resultadoValue = resultado.value;
+    function votar(rapper) {
+      // Função para processar o voto
+      let resultadoKM = document.getElementById(`resultado-${rapper}-KM`).value;
+      let favoritoKM = document.getElementById(`favorito-${rapper}-KM`).value;
+      let resultadoShap3 = document.getElementById(`resultado-${rapper}-Shap3`).value;
+      let favoritoShap3 = document.getElementById(`favorito-${rapper}-Shap3`).value;
+      let resultadoLC = document.getElementById(`resultado-${rapper}-LC`).value;
+      let favoritoLC = document.getElementById(`favorito-${rapper}-LC`).value;
 
-        // Atualizar as vitórias e derrotas
-        const tabela = document.getElementById('ranking');
-        let rapper1Row = document.getElementById(rapper1);
-        let rapper2Row = document.getElementById(rapper2);
+      // Atualiza a tabela de resultados
+      let tabela = document.getElementById("tabela-resultados");
+      let row = tabela.insertRow();
 
-        if (!rapper1Row) {
-          rapper1Row = document.createElement('tr');
-          rapper1Row.id = rapper1;
-          tabela.appendChild(rapper1Row);
-        }
-        
-        if (!rapper2Row) {
-          rapper2Row = document.createElement('tr');
-          rapper2Row.id = rapper2;
-          tabela.appendChild(rapper2Row);
-        }
-
-        // Atualizando vitórias e derrotas conforme o resultado
-        if (resultadoValue === "ganhou") {
-          rapper1Row.innerHTML = `   
-            <td>${rapper1}</td>
-            <td>1</td>
-            <td>0</td>
-            <td>TIER A</td>
-            <td>50</td>
-          `;
-          rapper2Row.innerHTML = `
-            <td>${rapper2}</td>
-            <td>0</td>
-            <td>1</td>
-            <td>TIER B</td>
-            <td>45</td>
-          `;
-        } else if (resultadoValue === "perdeu") {
-          rapper1Row.innerHTML = `
-            <td>${rapper1}</td>
-            <td>0</td>
-            <td>1</td>
-            <td>TIER B</td>
-            <td>45</td>
-          `;
-          rapper2Row.innerHTML = `
-            <td>${rapper2}</td>
-            <td>1</td>
-            <td>0</td>
-            <td>TIER A</td>
-            <td>50</td>
-          `;
-        } else {
-          rapper1Row.innerHTML = `
-            <td>${rapper1}</td>
-            <td>0</td>
-            <td>0</td>
-            <td>TIER A</td>
-            <td>47</td>
-          `;
-          rapper2Row.innerHTML = `
-            <td>${rapper2}</td>
-            <td>0</td>
-            <td>0</td>
-            <td>TIER A</td>
-            <td>47</td>
-          `;
-        }
-      }
+      row.insertCell(0).textContent = rapper;
+      row.insertCell(1).textContent = `${resultadoKM === 'Venceu' ? 1 : 0} / ${resultadoShap3 === 'Venceu' ? 1 : 0} / ${resultadoLC === 'Venceu' ? 1 : 0}`;
+      row.insertCell(2).textContent = `${resultadoKM === 'Perdeu' ? 1 : 0} / ${resultadoShap3 === 'Perdeu' ? 1 : 0} / ${resultadoLC === 'Perdeu' ? 1 : 0}`;
+      row.insertCell(3).textContent = `${resultadoKM === 'Empatou' ? 1 : 0} / ${resultadoShap3 === 'Empatou' ? 1 : 0} / ${resultadoLC === 'Empatou' ? 1 : 0}`;
+      row.insertCell(4).textContent = 'TIER X';  // TIER pode ser calculado com base nas vitórias ou outro critério
     }
   </script>
-
 </body>
 </html>
