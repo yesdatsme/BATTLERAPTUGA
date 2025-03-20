@@ -12,11 +12,17 @@
       margin: 20px auto;
       font-size: 14px;
       border-radius: 5px;
-      text-align: center;
+      text-align: left;
       max-width: 90%;
     }
 
     /* Estilo para as colunas de cada rapper */
+    .rapper-container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-around;
+    }
+
     .rapper-column {
       display: inline-block;
       width: 22%;
@@ -49,7 +55,16 @@
     }
 
     /* Estilo para os campos de avaliação */
-    .input-group input {
+    .input-group {
+      margin-bottom: 10px;
+    }
+
+    .input-group label {
+      display: block;
+      margin-bottom: 5px;
+    }
+
+    .input-group input, .input-group select {
       width: 100%;
       padding: 5px;
       font-size: 14px;
@@ -103,112 +118,123 @@
   <!-- Caixa de instruções -->
   <div class="info-box">
     <h3>Instruções de Avaliação</h3>
-    <p>Escolha as avaliações para o rapper da coluna. Avalie o rapper nos critérios:</p>
+    <p>Este sistema de avaliação atribui pesos diferenciados aos critérios para determinar a pontuação de cada rapper:</p>
     <ul>
-      <li>Material</li>
-      <li>Confronto Direto</li>
-      <li>Adversários</li>
-      <li>Consistência</li>
-      <li>Performance</li>
-      <li>Impacto</li>
+      <li><strong>Material:</strong> 25% (mais importante)</li>
+      <li><strong>Confronto Direto:</strong> 25% (mais importante)</li>
+      <li><strong>Adversários:</strong> 20% (importante)</li>
+      <li><strong>Consistência:</strong> 10% (menos importante)</li>
+      <li><strong>Performance:</strong> 10% (menos importante)</li>
+      <li><strong>Impacto:</strong> 10% (menos importante)</li>
     </ul>
-    <p>Em seguida, escolha para cada batalha se o rapper era favorito ou underdog e o resultado da batalha (Venceu, Perdeu, Empatou). As batalhas do rapper serão exibidas com botões de "Assistir" que redirecionam para o YouTube.</p>
+    <p>Após calcular a pontuação inicial, o status do rapper (favorito ou underdog) é levado em conta para ajustar a pontuação, dependendo do resultado da batalha:</p>
+    <ul>
+      <li><strong>Favorito que perde:</strong> Perde 20% da pontuação.</li>
+      <li><strong>Underdog que ganha:</strong> Ganha 20% de bônus.</li>
+      <li><strong>Favorito que ganha:</strong> Não há alteração na pontuação.</li>
+      <li><strong>Underdog que perde:</strong> Não há alteração na pontuação.</li>
+    </ul>
   </div>
 
-  <!-- Coluna do rapper 3ma -->
-  <div class="rapper-column" id="rapper-3ma">
-    <img src="https://via.placeholder.com/150" alt="Imagem do 3ma">
-    <h2>
-      <a href="https://www.youtube.com/results?search_query=3ma" target="_blank">3ma</a>
-    </h2>
+  <!-- Container para as colunas dos rappers -->
+  <div class="rapper-container">
+    <!-- Coluna do rapper 3ma -->
+    <div class="rapper-column" id="rapper-3ma">
+      <img src="https://via.placeholder.com/150" alt="Imagem do 3ma">
+      <h2>
+        <a href="https://www.youtube.com/results?search_query=3ma" target="_blank">3ma</a>
+      </h2>
 
-    <!-- Avaliação do rapper -->
-    <h3>Avaliação do rapper</h3>
+      <!-- Avaliação do rapper -->
+      <h3>Avaliação do rapper</h3>
 
-    <!-- Critérios -->
-    <div class="input-group">
-      <label for="nota-material-3ma">Material (0-10):</label>
-      <input type="number" name="nota-material-3ma" min="0" max="10">
+      <!-- Critérios -->
+      <div class="input-group">
+        <label for="nota-material-3ma">Material (0-10):</label>
+        <input type="number" name="nota-material-3ma" min="0" max="10">
+      </div>
+
+      <div class="input-group">
+        <label for="nota-confronto-3ma">Confronto Direto (0-10):</label>
+        <input type="number" name="nota-confronto-3ma" min="0" max="10">
+      </div>
+
+      <div class="input-group">
+        <label for="nota-adversarios-3ma">Adversários (0-10):</label>
+        <input type="number" name="nota-adversarios-3ma" min="0" max="10">
+      </div>
+
+      <div class="input-group">
+        <label for="nota-consistencia-3ma">Consistência (0-10):</label>
+        <input type="number" name="nota-consistencia-3ma" min="0" max="10">
+      </div>
+
+      <div class="input-group">
+        <label for="nota-performance-3ma">Performance (0-10):</label>
+        <input type="number" name="nota-performance-3ma" min="0" max="10">
+      </div>
+
+      <div class="input-group">
+        <label for="nota-impacto-3ma">Impacto (0-10):</label>
+        <input type="number" name="nota-impacto-3ma" min="0" max="10">
+      </div>
+
+      <!-- Batalhas -->
+      <h3>Batalhas</h3>
+
+      <!-- Para cada batalha, botões de assistir e escolher resultado e favorito -->
+      <div class="input-group">
+        <label for="resultado-3ma-KM">Resultado 3ma VS KM:</label>
+        <select id="resultado-3ma-KM">
+          <option value="Venceu">Venceu</option>
+          <option value="Perdeu">Perdeu</option>
+          <option value="Empatou">Empatou</option>
+        </select>
+        <label for="favorito-3ma-KM">Favorito ou Underdog:</label>
+        <select id="favorito-3ma-KM">
+          <option value="Favorito">Favorito</option>
+          <option value="Underdog">Underdog</option>
+        </select>
+        <button class="button" onclick="assistir('3ma', 'KM')">Assistir Batalha 3ma VS KM</button>
+      </div>
+
+      <div class="input-group">
+        <label for="resultado-3ma-Shap3">Resultado 3ma VS Shap3:</label>
+        <select id="resultado-3ma-Shap3">
+          <option value="Venceu">Venceu</option>
+          <option value="Perdeu">Perdeu</option>
+          <option value="Empatou">Empatou</option>
+        </select>
+        <label for="favorito-3ma-Shap3">Favorito ou Underdog:</label>
+        <select id="favorito-3ma-Shap3">
+          <option value="Favorito">Favorito</option>
+          <option value="Underdog">Underdog</option>
+        </select>
+        <button class="button" onclick="assistir('3ma', 'Shap3')">Assistir Batalha 3ma VS Shap3</button>
+      </div>
+
+      <div class="input-group">
+        <label for="resultado-3ma-LC">Resultado 3ma VS LC:</label>
+        <select id="resultado-3ma-LC">
+          <option value="Venceu">Venceu</option>
+          <option value="Perdeu">Perdeu</option>
+          <option value="Empatou">Empatou</option>
+        </select>
+        <label for="favorito-3ma-LC">Favorito ou Underdog:</label>
+        <select id="favorito-3ma-LC">
+          <option value="Favorito">Favorito</option>
+          <option value="Underdog">Underdog</option>
+        </select>
+        <button class="button" onclick="assistir('3ma', 'LC')">Assistir Batalha 3ma VS LC</button>
+      </div>
+
+      <!-- Botão de votar (apenas um por coluna) -->
+      <div class="input-group">
+        <button class="button" onclick="votar('3ma')">Votar</button>
+      </div>
     </div>
 
-    <div class="input-group">
-      <label for="nota-confronto-3ma">Confronto Direto (0-10):</label>
-      <input type="number" name="nota-confronto-3ma" min="0" max="10">
-    </div>
-
-    <div class="input-group">
-      <label for="nota-adversarios-3ma">Adversários (0-10):</label>
-      <input type="number" name="nota-adversarios-3ma" min="0" max="10">
-    </div>
-
-    <div class="input-group">
-      <label for="nota-consistencia-3ma">Consistência (0-10):</label>
-      <input type="number" name="nota-consistencia-3ma" min="0" max="10">
-    </div>
-
-    <div class="input-group">
-      <label for="nota-performance-3ma">Performance (0-10):</label>
-      <input type="number" name="nota-performance-3ma" min="0" max="10">
-    </div>
-
-    <div class="input-group">
-      <label for="nota-impacto-3ma">Impacto (0-10):</label>
-      <input type="number" name="nota-impacto-3ma" min="0" max="10">
-    </div>
-
-    <!-- Batalhas -->
-    <h3>Batalhas</h3>
-
-    <!-- Para cada batalha, botões de assistir e escolher resultado e favorito -->
-    <div class="input-group">
-      <label for="resultado-3ma-KM">Resultado 3ma VS KM:</label>
-      <select id="resultado-3ma-KM">
-        <option value="Venceu">Venceu</option>
-        <option value="Perdeu">Perdeu</option>
-        <option value="Empatou">Empatou</option>
-      </select>
-      <label for="favorito-3ma-KM">Favorito ou Underdog:</label>
-      <select id="favorito-3ma-KM">
-        <option value="Favorito">Favorito</option>
-        <option value="Underdog">Underdog</option>
-      </select>
-      <button class="button" onclick="assistir('3ma', 'KM')">Assistir Batalha 3ma VS KM</button>
-    </div>
-
-    <div class="input-group">
-      <label for="resultado-3ma-Shap3">Resultado 3ma VS Shap3:</label>
-      <select id="resultado-3ma-Shap3">
-        <option value="Venceu">Venceu</option>
-        <option value="Perdeu">Perdeu</option>
-        <option value="Empatou">Empatou</option>
-      </select>
-      <label for="favorito-3ma-Shap3">Favorito ou Underdog:</label>
-      <select id="favorito-3ma-Shap3">
-        <option value="Favorito">Favorito</option>
-        <option value="Underdog">Underdog</option>
-      </select>
-      <button class="button" onclick="assistir('3ma', 'Shap3')">Assistir Batalha 3ma VS Shap3</button>
-    </div>
-
-    <div class="input-group">
-      <label for="resultado-3ma-LC">Resultado 3ma VS LC:</label>
-      <select id="resultado-3ma-LC">
-        <option value="Venceu">Venceu</option>
-        <option value="Perdeu">Perdeu</option>
-        <option value="Empatou">Empatou</option>
-      </select>
-      <label for="favorito-3ma-LC">Favorito ou Underdog:</label>
-      <select id="favorito-3ma-LC">
-        <option value="Favorito">Favorito</option>
-        <option value="Underdog">Underdog</option>
-      </select>
-      <button class="button" onclick="assistir('3ma', 'LC')">Assistir Batalha 3ma VS LC</button>
-    </div>
-
-    <!-- Botão de votar (apenas um por coluna) -->
-    <div class="input-group">
-      <button class="button" onclick="votar('3ma')">Votar</button>
-    </div>
+    <!-- Repetir a estrutura para outros rappers -->
   </div>
 
   <!-- Tabela de Resultados -->
@@ -221,6 +247,8 @@
           <th>Vitórias</th>
           <th>Derrotas</th>
           <th>Empates</th>
+          <th>Pontuação</th>
+          <th>Critério Mais Forte</th>
           <th>TIER</th>
         </tr>
       </thead>
@@ -232,28 +260,84 @@
 
   <script>
     function assistir(rapper, adversario) {
-      // Função para abrir a batalha no YouTube (exemplo simples)
+      // Função para abrir a batalha no YouTube
       window.open('https://www.youtube.com/results?search_query=' + rapper + '+VS+' + adversario, '_blank');
     }
 
+    function calcularPontuacao(rapper) {
+      // Pesos dos critérios
+      const pesos = {
+        material: 0.25,
+        confronto: 0.25,
+        adversarios: 0.20,
+        consistencia: 0.10,
+        performance: 0.10,
+        impacto: 0.10
+      };
+
+      // Notas dos critérios
+      const notas = {
+        material: parseFloat(document.getElementById(`nota-material-${rapper}`).value) || 0,
+        confronto: parseFloat(document.getElementById(`nota-confronto-${rapper}`).value) || 0,
+        adversarios: parseFloat(document.getElementById(`nota-adversarios-${rapper}`).value) || 0,
+        consistencia: parseFloat(document.getElementById(`nota-consistencia-${rapper}`).value) || 0,
+        performance: parseFloat(document.getElementById(`nota-performance-${rapper}`).value) || 0,
+        impacto: parseFloat(document.getElementById(`nota-impacto-${rapper}`).value) || 0
+      };
+
+      // Cálculo da pontuação inicial
+      let pontuacaoInicial = 0;
+      for (const [criterio, peso] of Object.entries(pesos)) {
+        pontuacaoInicial += notas[criterio] * peso;
+      }
+
+      // Ajuste da pontuação com base no resultado da batalha
+      const resultadoKM = document.getElementById(`resultado-${rapper}-KM`).value;
+      const favoritoKM = document.getElementById(`favorito-${rapper}-KM`).value;
+      const resultadoShap3 = document.getElementById(`resultado-${rapper}-Shap3`).value;
+      const favoritoShap3 = document.getElementById(`favorito-${rapper}-Shap3`).value;
+      const resultadoLC = document.getElementById(`resultado-${rapper}-LC`).value;
+      const favoritoLC = document.getElementById(`favorito-${rapper}-LC`).value;
+
+      const resultados = [
+        { resultado: resultadoKM, favorito: favoritoKM },
+        { resultado: resultadoShap3, favorito: favoritoShap3 },
+        { resultado: resultadoLC, favorito: favoritoLC }
+      ];
+
+      resultados.forEach(({ resultado, favorito }) => {
+        if (favorito === 'Favorito' && resultado === 'Perdeu') {
+          pontuacaoInicial *= 0.8; // Perde 20% da pontuação
+        } else if (favorito === 'Underdog' && resultado === 'Venceu') {
+          pontuacaoInicial *= 1.2; // Ganha 20% de bônus
+        }
+      });
+
+      return pontuacaoInicial;
+    }
+
+    function determinarTier(pontuacao) {
+      if (pontuacao >= 9) return 'TIER 1';
+      if (pontuacao >= 7) return 'TIER 2';
+      if (pontuacao >= 5) return 'TIER 3';
+      return 'TIER 4';
+    }
+
     function votar(rapper) {
-      // Função para processar o voto
-      let resultadoKM = document.getElementById(`resultado-${rapper}-KM`).value;
-      let favoritoKM = document.getElementById(`favorito-${rapper}-KM`).value;
-      let resultadoShap3 = document.getElementById(`resultado-${rapper}-Shap3`).value;
-      let favoritoShap3 = document.getElementById(`favorito-${rapper}-Shap3`).value;
-      let resultadoLC = document.getElementById(`resultado-${rapper}-LC`).value;
-      let favoritoLC = document.getElementById(`favorito-${rapper}-LC`).value;
+      const pontuacao = calcularPontuacao(rapper);
+      const tier = determinarTier(pontuacao);
 
       // Atualiza a tabela de resultados
-      let tabela = document.getElementById("tabela-resultados");
-      let row = tabela.insertRow();
+      const tabela = document.getElementById("tabela-resultados");
+      const row = tabela.insertRow();
 
       row.insertCell(0).textContent = rapper;
-      row.insertCell(1).textContent = `${resultadoKM === 'Venceu' ? 1 : 0} / ${resultadoShap3 === 'Venceu' ? 1 : 0} / ${resultadoLC === 'Venceu' ? 1 : 0}`;
-      row.insertCell(2).textContent = `${resultadoKM === 'Perdeu' ? 1 : 0} / ${resultadoShap3 === 'Perdeu' ? 1 : 0} / ${resultadoLC === 'Perdeu' ? 1 : 0}`;
-      row.insertCell(3).textContent = `${resultadoKM === 'Empatou' ? 1 : 0} / ${resultadoShap3 === 'Empatou' ? 1 : 0} / ${resultadoLC === 'Empatou' ? 1 : 0}`;
-      row.insertCell(4).textContent = 'TIER X';  // TIER pode ser calculado com base nas vitórias ou outro critério
+      row.insertCell(1).textContent = 0; // Vitórias (a ser implementado)
+      row.insertCell(2).textContent = 0; // Derrotas (a ser implementado)
+      row.insertCell(3).textContent = 0; // Empates (a ser implementado)
+      row.insertCell(4).textContent = pontuacao.toFixed(2);
+      row.insertCell(5).textContent = 'Material'; // Critério mais forte (a ser implementado)
+      row.insertCell(6).textContent = tier;
     }
   </script>
 </body>
