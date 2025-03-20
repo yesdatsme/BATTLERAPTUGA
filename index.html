@@ -93,16 +93,26 @@
 
     <div class="info-text">
         <p><strong>Instruções de Avaliação:</strong></p>
-        <p>Os critérios de avaliação dos rappers são:</p>
+        <p>Este sistema de avaliação atribui pesos diferenciados aos critérios para determinar a pontuação de cada rapper. Os critérios Material, Confronto Direto e Adversários têm um peso maior, enquanto Consistência, Performance e Impacto têm menor peso. A pontuação é inicialmente calculada somando-se as notas de cada critério multiplicadas pelos seus respectivos pesos.</p>
+        
+        <p><strong>Critérios de Avaliação:</strong></p>
         <ul>
-            <li><strong>Material</strong>: 25% (mais importante)</li>
-            <li><strong>Confronto Direto</strong>: 25% (mais importante)</li>
-            <li><strong>Adversários</strong>: 20% (importante)</li>
-            <li><strong>Consistência</strong>: 10% (menos importante)</li>
-            <li><strong>Performance</strong>: 10% (menos importante)</li>
-            <li><strong>Impacto</strong>: 10% (menos importante)</li>
+            <li><strong>Material</strong>: 25% (Mais importante)</li>
+            <li><strong>Confronto Direto</strong>: 25% (Mais importante)</li>
+            <li><strong>Adversários</strong>: 20% (Importante)</li>
+            <li><strong>Consistência</strong>: 10% (Menos importante)</li>
+            <li><strong>Performance</strong>: 10% (Menos importante)</li>
+            <li><strong>Impacto</strong>: 10% (Menos importante)</li>
         </ul>
-        <p>Cada critério deve ser avaliado de 1 a 10, sendo 1 a pior nota e 10 a melhor. Após avaliar, selecione se o rapper era <strong>Favorito</strong> ou <strong>Underdog</strong> nas batalhas e se ele <strong>Venceu</strong>, <strong>Perdeu</strong>, ou <strong>Empatou</strong>.</p>
+        
+        <p>Após calcular a pontuação inicial, o status do rapper (favorito ou underdog) é levado em conta para ajustar a pontuação, dependendo do resultado da batalha:</p>
+        <ul>
+            <li><strong>Favorito que perde:</strong> Perde 20% da pontuação.</li>
+            <li><strong>Underdog que ganha:</strong> Ganha 20% de bônus.</li>
+            <li><strong>Favorito que ganha:</strong> Não há alteração na pontuação.</li>
+            <li><strong>Underdog que perde:</strong> Não há alteração na pontuação.</li>
+        </ul>
+        <p>Esse sistema garante que o status do rapper e seu desempenho durante a batalha influenciem a pontuação final, criando um equilíbrio entre técnica (critérios de avaliação) e contexto competitivo (favorito/underdog e resultado da batalha).</p>
     </div>
 
     <div class="container">
@@ -127,10 +137,10 @@
             </div>
             <div class="battle-info">
                 <p><strong>Batalhas:</strong></p>
-
+                
                 <!-- Contra Shap3 -->
                 <div class="battle-line">
-                    <span><a href="https://www.youtube.com/results?search_query=3ma+vs+Shap3" target="_blank">3ma vs Shap3</a></span>
+                    <span><a href="https://www.youtube.com/results?search_query=3ma+vs+Shap3" target="_blank">Contra Shap3 - Assistir no YouTube</a></span>
                     <span>
                         <label for="battle_shap3">Favorito/Underdog:</label>
                         <select id="battle_shap3">
@@ -150,7 +160,7 @@
 
                 <!-- Contra Lc -->
                 <div class="battle-line">
-                    <span><a href="https://www.youtube.com/results?search_query=3ma+vs+Lc" target="_blank">3ma vs Lc</a></span>
+                    <span><a href="https://www.youtube.com/results?search_query=3ma+vs+Lc" target="_blank">Contra Lc - Assistir no YouTube</a></span>
                     <span>
                         <label for="battle_lc">Favorito/Underdog:</label>
                         <select id="battle_lc">
@@ -170,7 +180,7 @@
             </div>
         </div>
 
-        <!-- Rapper 2 (Adicione mais rappers conforme necessário) -->
+        <!-- Rapper 2 -->
         <div class="rapper">
             <img src="Abismal.jpg" alt="Abismal">
             <h3>Abismal</h3>
@@ -191,10 +201,10 @@
             </div>
             <div class="battle-info">
                 <p><strong>Batalhas:</strong></p>
-
+                
                 <!-- Contra Edi Ventura -->
                 <div class="battle-line">
-                    <span><a href="https://www.youtube.com/results?search_query=Abismal+vs+Edi+Ventura" target="_blank">Abismal vs Edi Ventura</a></span>
+                    <span><a href="https://www.youtube.com/results?search_query=Abismal+vs+Edi+Ventura" target="_blank">Contra Edi Ventura - Assistir no YouTube</a></span>
                     <span>
                         <label for="battle_edi">Favorito/Underdog:</label>
                         <select id="battle_edi">
