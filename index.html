@@ -214,6 +214,11 @@
         <label><input type="radio" name="underdog-favorito-3ma-km" value="underdog"> Underdog</label>
       </div>
     </div>
+
+    <!-- Botão de votar -->
+    <div class="input-group">
+      <button class="button" onclick="votar('3ma')">Votar</button>
+    </div>
   </div>
 
   <!-- Tabela de resultados -->
@@ -235,16 +240,43 @@
   </div>
 
   <script>
+    // Função para assistir a batalha
     function assistir(rapper1, rapper2) {
       window.open(`https://www.youtube.com/results?search_query=${rapper1}+vs+${rapper2}`, '_blank');
     }
 
-    // Função para calcular e exibir o ranking
-    function calcularRanking() {
-      // Implementação da lógica de cálculo do ranking
-      // Esta função pode ser ajustada conforme a lógica de cálculo dos critérios, vitórias, etc.
+    // Função para votar e atualizar a tabela
+    function votar(rapper) {
+      const material = document.querySelector(`input[name="nota-material-${rapper}"]`).value;
+      const confronto = document.querySelector(`input[name="nota-confronto-${rapper}"]`).value;
+      const adversarios = document.querySelector(`input[name="nota-adversarios-${rapper}"]`).value;
+      const consistencia = document.querySelector(`input[name="nota-consistencia-${rapper}"]`).value;
+      const performance = document.querySelector(`input[name="nota-performance-${rapper}"]`).value;
+      const impacto = document.querySelector(`input[name="nota-impacto-${rapper}"]`).value;
+
+      // Calcular a pontuação total
+      const pontuacaoTotal = parseInt(material) + parseInt(confronto) + parseInt(adversarios) +
+                             parseInt(consistencia) + parseInt(performance) + parseInt(impacto);
+
+      // Atualizar o ranking com os dados
+      const tabela = document.getElementById('ranking');
+      let rapperRow = document.getElementById(rapper);
+
+      if (!rapperRow) {
+        rapperRow = document.createElement('tr');
+        rapperRow.id = rapper;
+        tabela.appendChild(rapperRow);
+      }
+
+      // Adicionar ou atualizar os dados do rapper
+      rapperRow.innerHTML = `
+        <td>${rapper}</td>
+        <td>0</td> <!-- Vitória -->
+        <td>0</td> <!-- Perda -->
+        <td>TIER A</td> <!-- TIER -->
+        <td>${pontuacaoTotal}</td>
+      `;
     }
   </script>
-
 </body>
 </html>
