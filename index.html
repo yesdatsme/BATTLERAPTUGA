@@ -100,11 +100,33 @@
     <p>Escolha as avaliações para cada rapper nos seguintes critérios: Material, Confronto Direto, Adversários, Consistência, Performance, Impacto.</p>
     <p>Selecione se o rapper era favorito ou underdog em relação ao adversário e escolha se ele ganhou, perdeu ou empatou.</p>
     <p>Após completar, o sistema calculará o seu Tier de acordo com o desempenho nas batalhas e os critérios de avaliação.</p>
+
+    <h3>Critérios e Pesos</h3>
+    <ul>
+      <li>Material: 25% (mais importante)</li>
+      <li>Confronto Direto: 25% (mais importante)</li>
+      <li>Adversários: 20% (importante)</li>
+      <li>Consistência: 10% (menos importante)</li>
+      <li>Performance: 10% (menos importante)</li>
+      <li>Impacto: 10% (menos importante)</li>
+    </ul>
+
+    <p><strong>Instruções:</strong> Este sistema de avaliação atribui pesos diferenciados aos critérios para determinar a pontuação de cada rapper. Os critérios Material, Confronto Direto e Adversários têm um peso maior, enquanto Consistência, Performance e Impacto têm menor peso.</p>
+    <p>A pontuação é inicialmente calculada somando-se as notas de cada critério multiplicadas pelos seus respectivos pesos.</p>
+    <p>Após calcular a pontuação inicial, o status do rapper (favorito ou underdog) é levado em conta para ajustar a pontuação, dependendo do resultado da batalha.</p>
+    <ul>
+      <li>Favorito que perde: Perde 20% da pontuação.</li>
+      <li>Underdog que ganha: Ganha 20% de bônus.</li>
+      <li>Favorito que ganha: Não há alteração na pontuação.</li>
+      <li>Underdog que perde: Não há alteração na pontuação.</li>
+    </ul>
   </div>
 
   <!-- Colunas para cada rapper -->
-  <div class="rapper-column">
-    <h2>Rapper A</h2>
+  <div class="rapper-column" id="rapper-A">
+    <h2>
+      <a href="https://www.youtube.com/results?search_query=3ma" target="_blank">3ma</a>
+    </h2>
 
     <div class="input-group">
       <label for="material-A">Material (0-10)</label>
@@ -150,7 +172,7 @@
       </select>
     </div>
     <div class="input-group">
-      <button class="button" onclick="assistir('KM-A')">Assistir</button>
+      <button class="button" onclick="assistir('3ma', 'KM')">Assistir</button>
     </div>
 
     <!-- Shap3 -->
@@ -171,7 +193,7 @@
       </select>
     </div>
     <div class="input-group">
-      <button class="button" onclick="assistir('Shap3-A')">Assistir</button>
+      <button class="button" onclick="assistir('3ma', 'Shap3')">Assistir</button>
     </div>
 
     <!-- LC -->
@@ -192,96 +214,20 @@
       </select>
     </div>
     <div class="input-group">
-      <button class="button" onclick="assistir('LC-A')">Assistir</button>
+      <button class="button" onclick="assistir('3ma', 'LC')">Assistir</button>
     </div>
-  </div>
 
-  <!-- Coluna do Rapper B -->
-  <div class="rapper-column">
-    <h2>Rapper B</h2>
-
-    <!-- A mesma estrutura do Rapper A -->
-    <!-- ... Aqui iriam os campos de avaliação e os adversários, assim como para o Rapper A... -->
-  </div>
-
-  <!-- Coluna do Rapper C -->
-  <div class="rapper-column">
-    <h2>Rapper C</h2>
-
-    <!-- ... Aqui iriam os campos de avaliação e os adversários, assim como para o Rapper A... -->
-  </div>
-
-  <!-- Coluna do Rapper D -->
-  <div class="rapper-column">
-    <h2>Rapper D</h2>
-
-    <!-- ... Aqui iriam os campos de avaliação e os adversários, assim como para o Rapper A... -->
-  </div>
-
-  <!-- Tabela de resultados e Tier -->
-  <div class="table-container">
-    <table class="results-table">
-      <thead>
-        <tr>
-          <th>Rapper</th>
-          <th>Batalhas Ganhas</th>
-          <th>Batalhas Perdidas</th>
-          <th>Critério Mais Forte</th>
-          <th>Tier</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr id="result-A">
-          <td>Rapper A</td>
-          <td id="batalhas-ganhas-A">0</td>
-          <td id="batalhas-perdidas-A">0</td>
-          <td id="criterio-forte-A">-</td>
-          <td id="tier-A">-</td>
-        </tr>
-      </tbody>
-    </table>
+    <!-- Resultado do rapper -->
+    <div id="resultado-Rapper-A" style="margin-top: 20px;"></div>
   </div>
 
   <script>
-    function assistir(rival) {
-      var rapper = rival.split('-')[0];
-      var link = `https://www.youtube.com/results?search_query=${rapper}%20vs%20${rival}`;
-      window.open(link, '_blank');
-    }
-
-    function calcularPontuacao(rapperId) {
-      const material = parseInt(document.getElementById(`material-${rapperId}`).value) || 0;
-      const confronto = parseInt(document.getElementById(`confronto-${rapperId}`).value) || 0;
-      const adversarios = parseInt(document.getElementById(`adversarios-${rapperId}`).value) || 0;
-      const consistencia = parseInt(document.getElementById(`consistencia-${rapperId}`).value) || 0;
-      const performance = parseInt(document.getElementById(`performance-${rapperId}`).value) || 0;
-      const impacto = parseInt(document.getElementById(`impacto-${rapperId}`).value) || 0;
-
-      let pontuacao = (material * 0.25) + (confronto * 0.25) + (adversarios * 0.20) + 
-                      (consistencia * 0.10) + (performance * 0.10) + (impacto * 0.10);
-      
-      return pontuacao;
-    }
-
-    function classificarTier(pontuacao) {
-      if (pontuacao >= 80) return "Tier 1";
-      if (pontuacao >= 60) return "Tier 2";
-      if (pontuacao >= 40) return "Tier 3";
-      if (pontuacao >= 20) return "Tier 4";
-      return "Tier 5";
-    }
-
-    // Atualiza os resultados e Tier
-    function atualizarResultados() {
-      const rapperAId = 'A';
-      const pontuacaoA = calcularPontuacao(rapperAId);
-      const tierA = classificarTier(pontuacaoA);
-
-      document.getElementById('batalhas-ganhas-A').textContent = 0; // Atualizar com base nos resultados reais
-      document.getElementById('batalhas-perdidas-A').textContent = 0; // Atualizar com base nos resultados reais
-      document.getElementById('criterio-forte-A').textContent = 'Material'; // Exemplo de critério mais forte
-      document.getElementById('tier-A').textContent = tierA;
+    // Função para abrir a pesquisa no YouTube para a batalha
+    function assistir(rapper, adversario) {
+      const url = `https://www.youtube.com/results?search_query=${rapper}+vs+${adversario}`;
+      window.open(url, '_blank');
     }
   </script>
+
 </body>
 </html>
