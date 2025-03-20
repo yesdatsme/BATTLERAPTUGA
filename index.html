@@ -5,243 +5,125 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Rappers</title>
     <style>
-        /* (Mantive o CSS anterior para preservar o estilo) */
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+        .container {
+            display: flex;
+            width: 75%;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        .rapper-card {
+            width: 23%;
+            border: 1px solid #ccc;
+            padding: 10px;
+            border-radius: 5px;
+        }
+        .scoreboard {
+            width: 22%;
+            border: 1px solid #ccc;
+            padding: 10px;
+            border-radius: 5px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: center;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
     </style>
 </head>
 <body>
-    <h1>Rappers</h1>
-
-    <!-- Menu de Critérios -->
-    <div class="criteria">
-        <h2>Critérios de Avaliação</h2>
-        <ul>
-            <li><strong>Consistência (1-10):</strong> Avaliação da regularidade do rapper.</li>
-            <li><strong>Material (1-10):</strong> Qualidade das rimas e letras.</li>
-            <li><strong>Performance (1-10):</strong> Habilidade em palco.</li>
-            <li><strong>Adversários (1-10):</strong> Nível dos oponentes enfrentados.</li>
-            <li><strong>Impacto (1-10):</strong> Influência no cenário do rap.</li>
-            <li><strong>Confronto Direto (1-10):</strong> Desempenho em batalhas diretas.</li>
-        </ul>
-        <p><strong>Nota sobre Underdog e Favorito:</strong></p>
-        <ul>
-            <li><strong>Favorito que ganha:</strong> Pontuação total é mantida (sem alteração).</li>
-            <li><strong>Favorito que perde:</strong> Pontuação total é <strong>reduzida em 20%</strong>.</li>
-            <li><strong>Underdog que ganha:</strong> Pontuação total é <strong>aumentada em 20%</strong>.</li>
-            <li><strong>Underdog que perde:</strong> Pontuação total é mantida (sem alteração).</li>
-        </ul>
-        <p><strong>Nota:</strong> Ao selecionar "Underdog" ou "Favorito", a escolha se aplica ao rapper da coluna, não ao adversário.</p>
+    <div class="container" id="rapper-list">
+        <!-- Os rappers serão preenchidos aqui -->
     </div>
 
-    <div class="container">
-        <!-- Lista de Rappers -->
-        <div class="rapper-container">
-            <!-- 3ma -->
-            <div class="rapper-card" id="3ma">
-                <h2>3ma</h2>
-                <div class="voting-options">
-                    <label for="3ma_consistencia">Consistência (1-10):</label>
-                    <input type="number" id="3ma_consistencia" min="1" max="10" required>
-                    <label for="3ma_material">Material (1-10):</label>
-                    <input type="number" id="3ma_material" min="1" max="10" required>
-                    <label for="3ma_performance">Performance (1-10):</label>
-                    <input type="number" id="3ma_performance" min="1" max="10" required>
-                    <label for="3ma_adversarios">Adversários (1-10):</label>
-                    <input type="number" id="3ma_adversarios" min="1" max="10" required>
-                    <label for="3ma_impacto">Impacto (1-10):</label>
-                    <input type="number" id="3ma_impacto" min="1" max="10" required>
-                    <label for="3ma_confronto">Confronto Direto (1-10):</label>
-                    <input type="number" id="3ma_confronto" min="1" max="10" required>
-                </div>
-                <div class="recent-battles">
-                    <h3>Batalhas Recentes</h3>
-                    <ul>
-                        <li>KM
-                            <select name="3ma_status" onchange="updateOpponentStatus('3ma', 'KM')">
-                                <option value="favorite">Favorito</option>
-                                <option value="underdog">Underdog</option>
-                            </select>
-                            <select name="3ma_result" onchange="updateOpponentResult('3ma', 'KM')">
-                                <option value="vitoria">Vitória</option>
-                                <option value="derrota">Derrota</option>
-                            </select>
-                        </li>
-                        <li>Shap3
-                            <select name="3ma_status" onchange="updateOpponentStatus('3ma', 'Shap3')">
-                                <option value="favorite">Favorito</option>
-                                <option value="underdog">Underdog</option>
-                            </select>
-                            <select name="3ma_result" onchange="updateOpponentResult('3ma', 'Shap3')">
-                                <option value="vitoria">Vitória</option>
-                                <option value="derrota">Derrota</option>
-                            </select>
-                        </li>
-                        <li>Lc
-                            <select name="3ma_status" onchange="updateOpponentStatus('3ma', 'Lc')">
-                                <option value="favorite">Favorito</option>
-                                <option value="underdog">Underdog</option>
-                            </select>
-                            <select name="3ma_result" onchange="updateOpponentResult('3ma', 'Lc')">
-                                <option value="vitoria">Vitória</option>
-                                <option value="derrota">Derrota</option>
-                            </select>
-                        </li>
-                    </ul>
-                </div>
-                <button onclick="submitVote('3ma')">Votar</button>
-            </div>
-
-            <!-- Abismal -->
-            <div class="rapper-card" id="abismal">
-                <h2>Abismal</h2>
-                <div class="voting-options">
-                    <label for="abismal_consistencia">Consistência (1-10):</label>
-                    <input type="number" id="abismal_consistencia" min="1" max="10" required>
-                    <label for="abismal_material">Material (1-10):</label>
-                    <input type="number" id="abismal_material" min="1" max="10" required>
-                    <label for="abismal_performance">Performance (1-10):</label>
-                    <input type="number" id="abismal_performance" min="1" max="10" required>
-                    <label for="abismal_adversarios">Adversários (1-10):</label>
-                    <input type="number" id="abismal_adversarios" min="1" max="10" required>
-                    <label for="abismal_impacto">Impacto (1-10):</label>
-                    <input type="number" id="abismal_impacto" min="1" max="10" required>
-                    <label for="abismal_confronto">Confronto Direto (1-10):</label>
-                    <input type="number" id="abismal_confronto" min="1" max="10" required>
-                </div>
-                <div class="recent-battles">
-                    <h3>Batalhas Recentes</h3>
-                    <ul>
-                        <li>Edi Ventura
-                            <select name="abismal_status" onchange="updateOpponentStatus('abismal', 'Edi Ventura')">
-                                <option value="favorite">Favorito</option>
-                                <option value="underdog">Underdog</option>
-                            </select>
-                            <select name="abismal_result" onchange="updateOpponentResult('abismal', 'Edi Ventura')">
-                                <option value="vitoria">Vitória</option>
-                                <option value="derrota">Derrota</option>
-                            </select>
-                        </li>
-                        <li>Flajo
-                            <select name="abismal_status" onchange="updateOpponentStatus('abismal', 'Flajo')">
-                                <option value="favorite">Favorito</option>
-                                <option value="underdog">Underdog</option>
-                            </select>
-                            <select name="abismal_result" onchange="updateOpponentResult('abismal', 'Flajo')">
-                                <option value="vitoria">Vitória</option>
-                                <option value="derrota">Derrota</option>
-                            </select>
-                        </li>
-                        <li>WilsonG
-                            <select name="abismal_status" onchange="updateOpponentStatus('abismal', 'WilsonG')">
-                                <option value="favorite">Favorito</option>
-                                <option value="underdog">Underdog</option>
-                            </select>
-                            <select name="abismal_result" onchange="updateOpponentResult('abismal', 'WilsonG')">
-                                <option value="vitoria">Vitória</option>
-                                <option value="derrota">Derrota</option>
-                            </select>
-                        </li>
-                    </ul>
-                </div>
-                <button onclick="submitVote('abismal')">Votar</button>
-            </div>
-
-            <!-- Adicione mais rappers aqui -->
-        </div>
-
-        <!-- Tabela de Pontuação Geral -->
-        <div class="scoreboard">
-            <h2>Pontuação Geral</h2>
-            <table>
-                <thead>
-                    <tr>
-                        <th>Rapper</th>
-                        <th>Pontuação</th>
-                    </tr>
-                </thead>
-                <tbody id="scoreboard-body">
-                    <!-- As pontuações serão preenchidas dinamicamente via JavaScript -->
-                </tbody>
-            </table>
-        </div>
+    <div class="scoreboard">
+        <h2>Pontuação Geral</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Rapper</th>
+                    <th>Pontuação</th>
+                </tr>
+            </thead>
+            <tbody id="scoreboard-body">
+                <!-- As pontuações serão preenchidas dinamicamente via JavaScript -->
+            </tbody>
+        </table>
     </div>
 
     <script>
-        // Função para atualizar o status do oponente
-        function updateOpponentStatus(rapperId, opponentId) {
-            const status = document.querySelector(`select[name="${rapperId}_status"]`).value;
-            const opponentStatus = document.querySelector(`select[name="${opponentId}_status"]`);
-
-            if (status === "favorite") {
-                opponentStatus.value = "underdog";
-            } else if (status === "underdog") {
-                opponentStatus.value = "favorite";
-            }
+        const rappers = {
+            "3ma": ["KM", "Shap3", "Lc"],
+            "Abismal": ["Edi Ventura", "Flajo", "WilsonG"],
+            "AM": ["Licon", "Melro", "Vazto"],
+            "AnimaNera": ["Slark", "Am"],
+            "Caden": ["Jonec", "Joker"],
+            "CPjota": ["Lc"],
+            "DaVinci": ["Rickas"],
+            "Edi Ventura": ["RealPunch", "WilsonG", "Mr Burnz", "Strata G", "Abismal", "ZA", "Lc", "Majestic TK"],
+            "EDC": ["Quinta"],
+            "Eleven": ["Flip", "Limbu"],
+            "Facto BSJ": ["Flep", "Joker"],
+            "Filtro": ["Sadyko", "Rui Costa"],
+            "Flajo": ["WilsonG", "RealPunch", "Abismal", "ZA", "Mr Burnz"],
+            "Flays": ["GuiGox"],
+            "Flep": ["Mr Burnz", "Facto BSJ", "Xco", "Edi Ventura", "Sadyko", "Joker"],
+            "Galeno": ["Relvas", "Mk", "Melro", "Tio Pappi"],
+            "GG": ["Surreal", "MK"],
+            "Guima": ["Sadyko", "Quantico", "Pele"],
+            "Guigox": ["Flays", "Riss"],
+            "Joker": ["Sadyko", "Spicy Lee", "Mandacaru", "Slark", "Lc", "Mr Burnz", "Facto BSJ"],
+            "Jonec": ["ZA", "Licon", "Kazymba", "Poligrafo", "Rui Costa"],
+            "Jay Ill": ["Zolty", "Slark"],
+            "Kazymba": ["Flizzi", "Jonec", "ErreK"],
+            "KM": ["3ma", "Benny"],
+            "Lc": ["ErreK", "Cpjota", "Edi Ventura", "Za", "Slark", "Sadyko"],
+            "Licon": ["AM", "Moreira", "ErreK", "Vazto"],
+            "Mandacaru": ["Spicy Lee", "DaVinci", "Tomás"],
+            "Majestic TK": ["Edi Ventura"],
+            "Melro": ["Vazto", "Flip", "Mk", "Vazzz", "Galeno", "AM"],
+            "MK": ["Melro", "Licon", "Shifu", "Athal", "Max"],
+            "MK Nocivo": ["StrataG"],
+            "Mr Burnz": ["RealPunch", "WilsonG", "Za", "Flep", "Sadyko"],
+            "Modiduz": ["Sadyko"],
+            "Moreira": ["Licon"],
+            "Poligrafo": ["Jonec"],
+            "Quantico": ["AM", "Guima", "Sadyko"],
+            "Quinta": ["Edc", "Tio Pappi"],
+            "Riss": ["7AM", "Guigox"],
+            "Relvas": ["Vazzz", "Galeno"],
+            "Reverse": ["ZA", "Sadyko", "WilsonG"],
+            "Rodas G": ["Tomás"],
+            "SanJ": ["Flizzi", "Rickas"],
+            "Saooneart": ["Sadyko"],
+            "Shifu": ["Flizzi", "Mk", "Galeno"],
+            "Slark": ["AM", "Spicy Lee", "Lc", "Sadyko", "Filtro", "Vazto", "JayIll", "AnimaNera", "Tio Pappi"],
+            "Surreal": ["Flizzi"],
+            "Tio Pappi": ["Galeno", "Slark", "Quantico", "Vazzz"],
+            "Vazto": ["Melro", "AM", "Licon"],
+            "Vazzz": ["Melro", "Relvas", "Tio Pappi"],
+            "WilsonG": ["Reverse", "Mr Burnz", "Abismal", "Joker", "Za", "Flajo", "Edi Ventura"],
+            "Za": ["Lc", "Xco", "Za", "Reverse", "Mr Burnz", "Jonec", "Edi Ventura"],
+            "Zolty": ["MAX", "JayIll"]
+        };
+        
+        function createRapperCard(rapper, battles) {
+            return `<div class="rapper-card"><h2>${rapper}</h2><p>Batalhas: ${battles.join(", ")}</p></div>`;
         }
-
-        // Função para atualizar o resultado do oponente
-        function updateOpponentResult(rapperId, opponentId) {
-            const result = document.querySelector(`select[name="${rapperId}_result"]`).value;
-            const opponentResult = document.querySelector(`select[name="${opponentId}_result"]`);
-
-            if (result === "vitoria") {
-                opponentResult.value = "derrota";
-            } else if (result === "derrota") {
-                opponentResult.value = "vitoria";
-            }
-        }
-
-        // Função para salvar os votos no localStorage
-        function submitVote(rapperId) {
-            const consistencia = parseFloat(document.getElementById(`${rapperId}_consistencia`).value);
-            const material = parseFloat(document.getElementById(`${rapperId}_material`).value);
-            const performance = parseFloat(document.getElementById(`${rapperId}_performance`).value);
-            const adversarios = parseFloat(document.getElementById(`${rapperId}_adversarios`).value);
-            const impacto = parseFloat(document.getElementById(`${rapperId}_impacto`).value);
-            const confronto = parseFloat(document.getElementById(`${rapperId}_confronto`).value);
-
-            const totalScore = consistencia + material + performance + adversarios + impacto + confronto;
-
-            // Verifica se é Underdog ou Favorito e o resultado da batalha
-            const status = document.querySelector(`select[name="${rapperId}_status"]`).value;
-            const result = document.querySelector(`select[name="${rapperId}_result"]`).value;
-
-            let finalScore = totalScore;
-
-            if (status === "favorite" && result === "derrota") {
-                // Favorito que perde: perde 20% da pontuação
-                finalScore *= 0.8;
-            } else if (status === "underdog" && result === "vitoria") {
-                // Underdog que ganha: ganha 20% de bônus
-                finalScore *= 1.2;
-            }
-
-            // Salva a pontuação no localStorage
-            localStorage.setItem(rapperId, finalScore);
-
-            // Atualiza a tabela de pontuação
-            updateScoreboard();
-        }
-
-        // Função para atualizar a tabela de pontuação
-        function updateScoreboard() {
-            const scoreboardBody = document.getElementById('scoreboard-body');
-            scoreboardBody.innerHTML = '';
-
-            // Recupera todos os rappers e suas pontuações
-            const rappers = ['3ma', 'abismal']; // Adicione mais rappers aqui
-            rappers.forEach(rapper => {
-                const score = parseFloat(localStorage.getItem(rapper)) || 0;
-                const row = document.createElement('tr');
-                row.innerHTML = `
-                    <td>${rapper}</td>
-                    <td>${score.toFixed(1)}</td>
-                `;
-                scoreboardBody.appendChild(row);
-            });
-        }
-
-        // Atualiza a tabela de pontuação ao carregar a página
-        window.onload = updateScoreboard;
+        
+        document.getElementById('rapper-list').innerHTML = Object.entries(rappers).map(([rapper, battles]) => createRapperCard(rapper, battles)).join('');
     </script>
 </body>
 </html>
