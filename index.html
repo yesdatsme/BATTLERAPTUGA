@@ -26,14 +26,25 @@
       border-radius: 8px;
       box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
       transition: transform 0.3s;
+      text-align: center;
     }
 
     .rapper-column:hover {
       transform: scale(1.05);
     }
 
+    .rapper-column img {
+      max-width: 100%;
+      border-radius: 8px;
+      margin-bottom: 15px;
+    }
+
+    .rapper-column h2 a {
+      text-decoration: none;
+      color: #333;
+    }
+
     .rapper-column h2 {
-      text-align: center;
       margin-bottom: 10px;
     }
 
@@ -123,81 +134,75 @@
   </div>
 
   <!-- Colunas para cada rapper -->
-  <div class="rapper-column" id="rapper-A">
+  <div class="rapper-column" id="rapper-3ma">
+    <img src="https://via.placeholder.com/150" alt="Imagem do 3ma"> <!-- Adicione uma imagem real do rapper -->
     <h2>
       <a href="https://www.youtube.com/results?search_query=3ma" target="_blank">3ma</a>
     </h2>
 
     <div class="input-group">
-      <label for="material-A">Material (0-10)</label>
-      <input type="number" id="material-A" min="0" max="10" value="0">
+      <label for="material-3ma">Material (0-10)</label>
+      <input type="number" id="material-3ma" min="0" max="10" value="0">
     </div>
     <div class="input-group">
-      <label for="confronto-A">Confronto Direto (0-10)</label>
-      <input type="number" id="confronto-A" min="0" max="10" value="0">
+      <label for="confronto-3ma">Confronto Direto (0-10)</label>
+      <input type="number" id="confronto-3ma" min="0" max="10" value="0">
     </div>
     <div class="input-group">
-      <label for="adversarios-A">Adversários (0-10)</label>
-      <input type="number" id="adversarios-A" min="0" max="10" value="0">
+      <label for="adversarios-3ma">Adversários (0-10)</label>
+      <input type="number" id="adversarios-3ma" min="0" max="10" value="0">
     </div>
     <div class="input-group">
-      <label for="consistencia-A">Consistência (0-10)</label>
-      <input type="number" id="consistencia-A" min="0" max="10" value="0">
+      <label for="consistencia-3ma">Consistência (0-10)</label>
+      <input type="number" id="consistencia-3ma" min="0" max="10" value="0">
     </div>
     <div class="input-group">
-      <label for="performance-A">Performance (0-10)</label>
-      <input type="number" id="performance-A" min="0" max="10" value="0">
+      <label for="performance-3ma">Performance (0-10)</label>
+      <input type="number" id="performance-3ma" min="0" max="10" value="0">
     </div>
     <div class="input-group">
-      <label for="impacto-A">Impacto (0-10)</label>
-      <input type="number" id="impacto-A" min="0" max="10" value="0">
+      <label for="impacto-3ma">Impacto (0-10)</label>
+      <input type="number" id="impacto-3ma" min="0" max="10" value="0">
     </div>
 
     <h3>Adversários</h3>
-    <!-- Botões de assistente com link correto -->
-    <div class="select-group">
-      <label for="resultado-Shap3-A">Shap3 - Resultado</label>
-      <select id="resultado-Shap3-A">
-        <option value="0">Selecione</option>
-        <option value="1">Venceu</option>
-        <option value="2">Empatou</option>
-        <option value="3">Perdeu</option>
-      </select>
-    </div>
-    <div class="select-group">
-      <label for="underdog-Shap3-A">Shap3 - Underdog/Favorito</label>
-      <select id="underdog-Shap3-A">
-        <option value="0">Favorito</option>
-        <option value="1">Underdog</option>
-      </select>
+    <!-- Botões de assistente com links corretos -->
+    <div class="input-group">
+      <button class="button" onclick="assistir('3ma', 'Shap3')">Assistir: 3ma vs Shap3</button>
     </div>
     <div class="input-group">
-      <button class="button" onclick="assistir('3ma', 'Shap3')">Assistir</button>
-    </div>
-
-    <!-- LC -->
-    <div class="select-group">
-      <label for="resultado-LC-A">LC - Resultado</label>
-      <select id="resultado-LC-A">
-        <option value="0">Selecione</option>
-        <option value="1">Venceu</option>
-        <option value="2">Empatou</option>
-        <option value="3">Perdeu</option>
-      </select>
-    </div>
-    <div class="select-group">
-      <label for="underdog-LC-A">LC - Underdog/Favorito</label>
-      <select id="underdog-LC-A">
-        <option value="0">Favorito</option>
-        <option value="1">Underdog</option>
-      </select>
+      <button class="button" onclick="assistir('3ma', 'LC')">Assistir: 3ma vs LC</button>
     </div>
     <div class="input-group">
-      <button class="button" onclick="assistir('3ma', 'LC')">Assistir</button>
+      <button class="button" onclick="assistir('3ma', 'KM')">Assistir: 3ma vs KM</button>
     </div>
+  </div>
 
-    <!-- Resultado do rapper -->
-    <div id="resultado-Rapper-A" style="margin-top: 20px;"></div>
+  <!-- Tabela de resultados -->
+  <div class="table-container">
+    <table class="results-table">
+      <thead>
+        <tr>
+          <th>Rapper</th>
+          <th>Tier</th>
+          <th>Pontuação Total</th>
+        </tr>
+      </thead>
+      <tbody>
+        <!-- Adicionar linhas de resultados de rappers -->
+        <tr>
+          <td>3ma</td>
+          <td class="tier">S</td>
+          <td>85</td>
+        </tr>
+        <tr>
+          <td>Shap3</td>
+          <td class="tier">A</td>
+          <td>78</td>
+        </tr>
+        <!-- Adicionar mais rappers e suas pontuações -->
+      </tbody>
+    </table>
   </div>
 
   <script>
