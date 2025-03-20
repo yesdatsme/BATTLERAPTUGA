@@ -5,12 +5,32 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ranking de Rappers</title>
     <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
         .rapper-card {
             margin: 20px;
             padding: 20px;
             border: 1px solid #ccc;
             border-radius: 10px;
             background-color: #f4f4f4;
+            width: 48%;
+            display: inline-block;
+            vertical-align: top;
+            text-align: center;
+        }
+        .rapper-card img {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+        }
+        .rapper-card h3 {
+            margin-top: 10px;
+            font-size: 20px;
+        }
+        .rapper-card a {
+            text-decoration: none;
+            color: #4CAF50;
         }
         .voting-options label {
             margin: 10px 0;
@@ -38,12 +58,42 @@
         button:hover {
             background-color: #45a049;
         }
+        .score-table {
+            width: 100%;
+            margin-top: 30px;
+            border-collapse: collapse;
+        }
+        .score-table, .score-table th, .score-table td {
+            border: 1px solid #ccc;
+        }
+        .score-table th, .score-table td {
+            padding: 10px;
+            text-align: center;
+        }
+        .score-table th {
+            background-color: #f4f4f4;
+        }
     </style>
 </head>
 <body>
+
+    <h2>Ranking de Rappers</h2>
+    <p>Este sistema de avaliação atribui pesos diferenciados aos critérios para determinar a pontuação de cada rapper. Os critérios Material, Confronto Direto e Adversários têm um peso maior, enquanto Consistência, Performance e Impacto têm menor peso. A pontuação é inicialmente calculada somando-se as notas de cada critério multiplicadas pelos seus respectivos pesos.</p>
+
+    <p>Após calcular a pontuação inicial, o status do rapper (favorito ou underdog) é levado em conta para ajustar a pontuação, dependendo do resultado da batalha:</p>
+    <ul>
+        <li><strong>Favorito que perde:</strong> Perde 20% da pontuação.</li>
+        <li><strong>Underdog que ganha:</strong> Ganha 20% de bônus.</li>
+        <li><strong>Favorito que ganha:</strong> Não há alteração na pontuação.</li>
+        <li><strong>Underdog que perde:</strong> Não há alteração na pontuação.</li>
+    </ul>
+
+    <p>Esse sistema garante que o status do rapper e seu desempenho durante a batalha influenciem a pontuação final, criando um equilíbrio entre técnica (critérios de avaliação) e contexto competitivo (favorito/underdog e resultado da batalha).</p>
+
     <!-- Card 3ma -->
     <div class="rapper-card" id="3ma">
-        <h2>3ma</h2>
+        <img src="https://via.placeholder.com/100" alt="3ma">
+        <h3><a href="https://www.youtube.com/results?search_query=3ma" target="_blank">3ma</a></h3>
         <div class="voting-options">
             <label for="3ma_consistencia">Consistência (1-10):</label>
             <input type="number" id="3ma_consistencia" min="1" max="10" required>
@@ -60,9 +110,9 @@
         </div>
 
         <div class="recent-battles">
-            <h3>Batalhas Recentes</h3>
+            <h4>Batalhas Recentes</h4>
             <ul>
-                <li>KM
+                <li><a href="https://www.youtube.com/results?search_query=3ma+vs+KM" target="_blank">KM</a>
                     <select name="3ma_status_KM" onchange="updateOpponentStatus('3ma', 'KM')">
                         <option value="favorite">Favorito</option>
                         <option value="underdog">Underdog</option>
@@ -70,9 +120,10 @@
                     <select name="3ma_result_KM" onchange="updateOpponentResult('3ma', 'KM')">
                         <option value="vitoria">Vitória</option>
                         <option value="derrota">Derrota</option>
+                        <option value="empate">Empate</option>
                     </select>
                 </li>
-                <li>Shap3
+                <li><a href="https://www.youtube.com/results?search_query=3ma+vs+Shap3" target="_blank">Shap3</a>
                     <select name="3ma_status_Shap3" onchange="updateOpponentStatus('3ma', 'Shap3')">
                         <option value="favorite">Favorito</option>
                         <option value="underdog">Underdog</option>
@@ -80,9 +131,10 @@
                     <select name="3ma_result_Shap3" onchange="updateOpponentResult('3ma', 'Shap3')">
                         <option value="vitoria">Vitória</option>
                         <option value="derrota">Derrota</option>
+                        <option value="empate">Empate</option>
                     </select>
                 </li>
-                <li>Lc
+                <li><a href="https://www.youtube.com/results?search_query=3ma+vs+Lc" target="_blank">Lc</a>
                     <select name="3ma_status_Lc" onchange="updateOpponentStatus('3ma', 'Lc')">
                         <option value="favorite">Favorito</option>
                         <option value="underdog">Underdog</option>
@@ -90,15 +142,17 @@
                     <select name="3ma_result_Lc" onchange="updateOpponentResult('3ma', 'Lc')">
                         <option value="vitoria">Vitória</option>
                         <option value="derrota">Derrota</option>
+                        <option value="empate">Empate</option>
                     </select>
                 </li>
             </ul>
         </div>
     </div>
 
-    <!-- Adicione outros rappers aqui -->
+    <!-- Card Abismal -->
     <div class="rapper-card" id="Abismal">
-        <h2>Abismal</h2>
+        <img src="https://via.placeholder.com/100" alt="Abismal">
+        <h3><a href="https://www.youtube.com/results?search_query=Abismal" target="_blank">Abismal</a></h3>
         <div class="voting-options">
             <label for="Abismal_consistencia">Consistência (1-10):</label>
             <input type="number" id="Abismal_consistencia" min="1" max="10" required>
@@ -115,9 +169,9 @@
         </div>
 
         <div class="recent-battles">
-            <h3>Batalhas Recentes</h3>
+            <h4>Batalhas Recentes</h4>
             <ul>
-                <li>Edi Ventura
+                <li><a href="https://www.youtube.com/results?search_query=Abismal+vs+EdiVentura" target="_blank">Edi Ventura</a>
                     <select name="Abismal_status_EdiVentura" onchange="updateOpponentStatus('Abismal', 'EdiVentura')">
                         <option value="favorite">Favorito</option>
                         <option value="underdog">Underdog</option>
@@ -125,9 +179,10 @@
                     <select name="Abismal_result_EdiVentura" onchange="updateOpponentResult('Abismal', 'EdiVentura')">
                         <option value="vitoria">Vitória</option>
                         <option value="derrota">Derrota</option>
+                        <option value="empate">Empate</option>
                     </select>
                 </li>
-                <li>Flajo
+                <li><a href="https://www.youtube.com/results?search_query=Abismal+vs+Flajo" target="_blank">Flajo</a>
                     <select name="Abismal_status_Flajo" onchange="updateOpponentStatus('Abismal', 'Flajo')">
                         <option value="favorite">Favorito</option>
                         <option value="underdog">Underdog</option>
@@ -135,9 +190,10 @@
                     <select name="Abismal_result_Flajo" onchange="updateOpponentResult('Abismal', 'Flajo')">
                         <option value="vitoria">Vitória</option>
                         <option value="derrota">Derrota</option>
+                        <option value="empate">Empate</option>
                     </select>
                 </li>
-                <li>WilsonG
+                <li><a href="https://www.youtube.com/results?search_query=Abismal+vs+WilsonG" target="_blank">WilsonG</a>
                     <select name="Abismal_status_WilsonG" onchange="updateOpponentStatus('Abismal', 'WilsonG')">
                         <option value="favorite">Favorito</option>
                         <option value="underdog">Underdog</option>
@@ -145,60 +201,99 @@
                     <select name="Abismal_result_WilsonG" onchange="updateOpponentResult('Abismal', 'WilsonG')">
                         <option value="vitoria">Vitória</option>
                         <option value="derrota">Derrota</option>
+                        <option value="empate">Empate</option>
                     </select>
                 </li>
             </ul>
         </div>
     </div>
 
-    <!-- Adicione mais rappers seguindo o mesmo formato abaixo -->
+    <!-- Tabela de Pontuação -->
+    <h3>Tabela de Pontuação</h3>
+    <table class="score-table">
+        <thead>
+            <tr>
+                <th>Rapper</th>
+                <th>Pontuação</th>
+                <th>Resultado Batalha</th>
+                <th>Status</th>
+            </tr>
+        </thead>
+        <tbody id="scoreboard">
+            <!-- As pontuações serão preenchidas dinamicamente -->
+        </tbody>
+    </table>
 
     <button onclick="submitVote()">Votar</button>
 
     <script>
         let rapperStats = {};
 
+        // Função para atualizar o status do adversário
         function updateOpponentStatus(rapper, opponent) {
             let status = document.querySelector(`[name="${rapper}_status_${opponent}"]`).value;
             if (!rapperStats[rapper]) {
                 rapperStats[rapper] = {};
             }
             rapperStats[rapper][`status_${opponent}`] = status;
+            updateScoreboard();
         }
 
+        // Função para atualizar o resultado da batalha do adversário
         function updateOpponentResult(rapper, opponent) {
             let result = document.querySelector(`[name="${rapper}_result_${opponent}"]`).value;
             if (!rapperStats[rapper]) {
                 rapperStats[rapper] = {};
             }
             rapperStats[rapper][`result_${opponent}`] = result;
+            updateScoreboard();
         }
 
-        function submitVote() {
-            let allRappers = document.querySelectorAll('.rapper-card');
-            allRappers.forEach(function(rapperCard) {
-                let rapperId = rapperCard.id;
-                let material = document.getElementById(`${rapperId}_material`).value;
-                let consistencia = document.getElementById(`${rapperId}_consistencia`).value;
-                let performance = document.getElementById(`${rapperId}_performance`).value;
-                let adversarios = document.getElementById(`${rapperId}_adversarios`).value;
-                let impacto = document.getElementById(`${rapperId}_impacto`).value;
-                let confronto = document.getElementById(`${rapperId}_confronto`).value;
+        // Função para atualizar a pontuação dinamicamente
+        function updateScoreboard() {
+            const scoreboard = document.getElementById("scoreboard");
+            scoreboard.innerHTML = '';
 
-                rapperStats[rapperId] = {
-                    votes: {
-                        material: parseInt(material),
-                        consistencia: parseInt(consistencia),
-                        performance: parseInt(performance),
-                        adversarios: parseInt(adversarios),
-                        impacto: parseInt(impacto),
-                        confronto: parseInt(confronto),
-                    }
-                };
+            // Exemplo de pontuação
+            Object.keys(rapperStats).forEach(rapper => {
+                let score = calculateScore(rapperStats[rapper]);
+                let row = `
+                    <tr>
+                        <td>${rapper}</td>
+                        <td>${score}</td>
+                        <td>${rapperStats[rapper].result}</td>
+                        <td>${rapperStats[rapper].status}</td>
+                    </tr>
+                `;
+                scoreboard.innerHTML += row;
             });
-            
-            alert("Votos registrados!");
-            console.log(rapperStats);
+        }
+
+        // Função para calcular a pontuação de cada rapper
+        function calculateScore(stats) {
+            // Exemplo simples, você pode melhorar com o cálculo real
+            let score = 0;
+            score += stats.consistencia || 0;
+            score += stats.material || 0;
+            score += stats.performance || 0;
+            score += stats.adversarios || 0;
+            score += stats.impacto || 0;
+            score += stats.confronto || 0;
+
+            // Considerar bônus ou perda de pontos com base no status e resultado
+            if (stats.status === 'favorite') {
+                if (stats.result === 'derrota') score *= 0.8;
+            } else if (stats.status === 'underdog') {
+                if (stats.result === 'vitoria') score *= 1.2;
+            }
+
+            return score;
+        }
+
+        // Função para submeter todos os votos
+        function submitVote() {
+            alert("Votos submetidos com sucesso!");
+            // Aqui você pode adicionar lógica para enviar as informações para um servidor, por exemplo.
         }
     </script>
 </body>
