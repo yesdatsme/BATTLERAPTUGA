@@ -214,18 +214,18 @@
       </div>
 
       <div class="input-group">
-        <label for="resultado-3ma-LC">Resultado 3ma VS LC:</label>
-        <select id="resultado-3ma-LC">
+        <label for="resultado-3ma-Lc">Resultado 3ma VS Lc:</label>
+        <select id="resultado-3ma-Lc">
           <option value="Venceu">Venceu</option>
           <option value="Perdeu">Perdeu</option>
           <option value="Empatou">Empatou</option>
         </select>
-        <label for="favorito-3ma-LC">Favorito ou Underdog:</label>
-        <select id="favorito-3ma-LC">
+        <label for="favorito-3ma-Lc">Favorito ou Underdog:</label>
+        <select id="favorito-3ma-Lc">
           <option value="Favorito">Favorito</option>
           <option value="Underdog">Underdog</option>
         </select>
-        <button class="button" onclick="assistir('3ma', 'LC')">Assistir Batalha 3ma VS LC</button>
+        <button class="button" onclick="assistir('3ma', 'Lc')">Assistir Batalha 3ma VS Lc</button>
       </div>
 
       <!-- Botão de votar (apenas um por coluna) -->
@@ -235,6 +235,104 @@
     </div>
 
     <!-- Repetir a estrutura para outros rappers -->
+    <!-- Abismal -->
+    <div class="rapper-column" id="rapper-Abismal">
+      <img src="https://via.placeholder.com/150" alt="Imagem do Abismal">
+      <h2>
+        <a href="https://www.youtube.com/results?search_query=Abismal" target="_blank">Abismal</a>
+      </h2>
+
+      <!-- Avaliação do rapper -->
+      <h3>Avaliação do rapper</h3>
+
+      <!-- Critérios -->
+      <div class="input-group">
+        <label for="nota-material-Abismal">Material (0-10):</label>
+        <input type="number" name="nota-material-Abismal" min="0" max="10">
+      </div>
+
+      <div class="input-group">
+        <label for="nota-confronto-Abismal">Confronto Direto (0-10):</label>
+        <input type="number" name="nota-confronto-Abismal" min="0" max="10">
+      </div>
+
+      <div class="input-group">
+        <label for="nota-adversarios-Abismal">Adversários (0-10):</label>
+        <input type="number" name="nota-adversarios-Abismal" min="0" max="10">
+      </div>
+
+      <div class="input-group">
+        <label for="nota-consistencia-Abismal">Consistência (0-10):</label>
+        <input type="number" name="nota-consistencia-Abismal" min="0" max="10">
+      </div>
+
+      <div class="input-group">
+        <label for="nota-performance-Abismal">Performance (0-10):</label>
+        <input type="number" name="nota-performance-Abismal" min="0" max="10">
+      </div>
+
+      <div class="input-group">
+        <label for="nota-impacto-Abismal">Impacto (0-10):</label>
+        <input type="number" name="nota-impacto-Abismal" min="0" max="10">
+      </div>
+
+      <!-- Batalhas -->
+      <h3>Batalhas</h3>
+
+      <!-- Para cada batalha, botões de assistir e escolher resultado e favorito -->
+      <div class="input-group">
+        <label for="resultado-Abismal-EdiVentura">Resultado Abismal VS Edi Ventura:</label>
+        <select id="resultado-Abismal-EdiVentura">
+          <option value="Venceu">Venceu</option>
+          <option value="Perdeu">Perdeu</option>
+          <option value="Empatou">Empatou</option>
+        </select>
+        <label for="favorito-Abismal-EdiVentura">Favorito ou Underdog:</label>
+        <select id="favorito-Abismal-EdiVentura">
+          <option value="Favorito">Favorito</option>
+          <option value="Underdog">Underdog</option>
+        </select>
+        <button class="button" onclick="assistir('Abismal', 'Edi Ventura')">Assistir Batalha Abismal VS Edi Ventura</button>
+      </div>
+
+      <div class="input-group">
+        <label for="resultado-Abismal-Flajo">Resultado Abismal VS Flajo:</label>
+        <select id="resultado-Abismal-Flajo">
+          <option value="Venceu">Venceu</option>
+          <option value="Perdeu">Perdeu</option>
+          <option value="Empatou">Empatou</option>
+        </select>
+        <label for="favorito-Abismal-Flajo">Favorito ou Underdog:</label>
+        <select id="favorito-Abismal-Flajo">
+          <option value="Favorito">Favorito</option>
+          <option value="Underdog">Underdog</option>
+        </select>
+        <button class="button" onclick="assistir('Abismal', 'Flajo')">Assistir Batalha Abismal VS Flajo</button>
+      </div>
+
+      <div class="input-group">
+        <label for="resultado-Abismal-WilsonG">Resultado Abismal VS WilsonG:</label>
+        <select id="resultado-Abismal-WilsonG">
+          <option value="Venceu">Venceu</option>
+          <option value="Perdeu">Perdeu</option>
+          <option value="Empatou">Empatou</option>
+        </select>
+        <label for="favorito-Abismal-WilsonG">Favorito ou Underdog:</label>
+        <select id="favorito-Abismal-WilsonG">
+          <option value="Favorito">Favorito</option>
+          <option value="Underdog">Underdog</option>
+        </select>
+        <button class="button" onclick="assistir('Abismal', 'WilsonG')">Assistir Batalha Abismal VS WilsonG</button>
+      </div>
+
+      <!-- Botão de votar (apenas um por coluna) -->
+      <div class="input-group">
+        <button class="button" onclick="votar('Abismal')">Votar</button>
+      </div>
+    </div>
+
+    <!-- Repetir a estrutura para todos os rappers e seus adversários -->
+    <!-- ... -->
   </div>
 
   <!-- Tabela de Resultados -->
@@ -292,18 +390,13 @@
       }
 
       // Ajuste da pontuação com base no resultado da batalha
-      const resultadoKM = document.getElementById(`resultado-${rapper}-KM`).value;
-      const favoritoKM = document.getElementById(`favorito-${rapper}-KM`).value;
-      const resultadoShap3 = document.getElementById(`resultado-${rapper}-Shap3`).value;
-      const favoritoShap3 = document.getElementById(`favorito-${rapper}-Shap3`).value;
-      const resultadoLC = document.getElementById(`resultado-${rapper}-LC`).value;
-      const favoritoLC = document.getElementById(`favorito-${rapper}-LC`).value;
-
-      const resultados = [
-        { resultado: resultadoKM, favorito: favoritoKM },
-        { resultado: resultadoShap3, favorito: favoritoShap3 },
-        { resultado: resultadoLC, favorito: favoritoLC }
-      ];
+      const resultados = [];
+      const batalhas = document.querySelectorAll(`#rapper-${rapper} .input-group select[id^="resultado"]`);
+      batalhas.forEach((select) => {
+        const resultado = select.value;
+        const favorito = document.getElementById(select.id.replace('resultado', 'favorito')).value;
+        resultados.push({ resultado, favorito });
+      });
 
       resultados.forEach(({ resultado, favorito }) => {
         if (favorito === 'Favorito' && resultado === 'Perdeu') {
