@@ -58,6 +58,10 @@
       margin-top: 15px;
     }
 
+    .adversarios {
+      margin-top: 10px;
+    }
+
     /* Estilos para a tabela de resultados */
     .results-table {
       width: 100%;
@@ -121,22 +125,27 @@
       </div>
       <div class="battle-info">
         <strong>Adversários:</strong><br>
-        <a href="https://www.youtube.com/results?search_query=3ma+vs+KM" target="_blank">3ma vs KM</a>, 
-        <a href="https://www.youtube.com/results?search_query=3ma+vs+Shap3" target="_blank">3ma vs Shap3</a>, 
-        <a href="https://www.youtube.com/results?search_query=3ma+vs+Lc" target="_blank">3ma vs Lc</a>
-        <br>
-        <label>Favorito/Underdog:</label>
-        <select id="3ma-underdog-favorito">
-          <option value="favorito">Favorito</option>
-          <option value="underdog">Underdog</option>
-        </select>
-        <br>
-        <label>Resultado:</label>
-        <select id="3ma-resultado">
-          <option value="ganhou">Ganhou</option>
-          <option value="perdeu">Perdeu</option>
-          <option value="empatou">Empatou</option>
-        </select>
+        <div class="adversarios">
+          <label>KM:</label> 
+          <select id="3ma-km-status">
+            <option value="favorito">Favorito</option>
+            <option value="underdog">Underdog</option>
+          </select>
+        </div>
+        <div class="adversarios">
+          <label>Shap3:</label> 
+          <select id="3ma-shap3-status">
+            <option value="favorito">Favorito</option>
+            <option value="underdog">Underdog</option>
+          </select>
+        </div>
+        <div class="adversarios">
+          <label>LC:</label> 
+          <select id="3ma-lc-status">
+            <option value="favorito">Favorito</option>
+            <option value="underdog">Underdog</option>
+          </select>
+        </div>
       </div>
     </div>
 
@@ -157,26 +166,31 @@
       </div>
       <div class="battle-info">
         <strong>Adversários:</strong><br>
-        <a href="https://www.youtube.com/results?search_query=Abismal+vs+Edi+Ventura" target="_blank">Abismal vs Edi Ventura</a>, 
-        <a href="https://www.youtube.com/results?search_query=Abismal+vs+Flajo" target="_blank">Abismal vs Flajo</a>, 
-        <a href="https://www.youtube.com/results?search_query=Abismal+vs+WilsonG" target="_blank">Abismal vs WilsonG</a>
-        <br>
-        <label>Favorito/Underdog:</label>
-        <select id="abismal-underdog-favorito">
-          <option value="favorito">Favorito</option>
-          <option value="underdog">Underdog</option>
-        </select>
-        <br>
-        <label>Resultado:</label>
-        <select id="abismal-resultado">
-          <option value="ganhou">Ganhou</option>
-          <option value="perdeu">Perdeu</option>
-          <option value="empatou">Empatou</option>
-        </select>
+        <div class="adversarios">
+          <label>Edi Ventura:</label> 
+          <select id="abismal-edi-status">
+            <option value="favorito">Favorito</option>
+            <option value="underdog">Underdog</option>
+          </select>
+        </div>
+        <div class="adversarios">
+          <label>Flajo:</label> 
+          <select id="abismal-flajo-status">
+            <option value="favorito">Favorito</option>
+            <option value="underdog">Underdog</option>
+          </select>
+        </div>
+        <div class="adversarios">
+          <label>WilsonG:</label> 
+          <select id="abismal-wilsong-status">
+            <option value="favorito">Favorito</option>
+            <option value="underdog">Underdog</option>
+          </select>
+        </div>
       </div>
     </div>
 
-    <!-- Mais rappers podem ser adicionados aqui seguindo a mesma estrutura -->
+    <!-- Outros rappers podem ser adicionados seguindo a mesma estrutura -->
   </div>
 
   <!-- Tabela de Resultados -->
@@ -207,23 +221,26 @@
 
   <script>
     function calcularPontuacao() {
-      const material = parseInt(document.getElementById("abismal-material").value) || 0;
-      const confronto = parseInt(document.getElementById("abismal-confronto").value) || 0;
-      const adversarios = parseInt(document.getElementById("abismal-adversarios").value) || 0;
-      const consistencia = parseInt(document.getElementById("abismal-consistencia").value) || 0;
-      const performance = parseInt(document.getElementById("abismal-performance").value) || 0;
-      const impacto = parseInt(document.getElementById("abismal-impacto").value) || 0;
+      // Exemplo de como a pontuação é calculada para o rapper
+      const material = parseInt(document.getElementById("3ma-material").value) || 0;
+      const confronto = parseInt(document.getElementById("3ma-confronto").value) || 0;
+      const adversarios = parseInt(document.getElementById("3ma-adversarios").value) || 0;
+      const consistencia = parseInt(document.getElementById("3ma-consistencia").value) || 0;
+      const performance = parseInt(document.getElementById("3ma-performance").value) || 0;
+      const impacto = parseInt(document.getElementById("3ma-impacto").value) || 0;
 
       let pontuacao = (material * 0.25) + (confronto * 0.25) + (adversarios * 0.20) + 
                       (consistencia * 0.10) + (performance * 0.10) + (impacto * 0.10);
 
-      const status = document.getElementById("abismal-underdog-favorito").value;
-      const resultado = document.getElementById("abismal-resultado").value;
+      // Ajustando a pontuação com base no status dos adversários
+      const kmStatus = document.getElementById("3ma-km-status").value;
+      const shap3Status = document.getElementById("3ma-shap3-status").value;
+      const lcStatus = document.getElementById("3ma-lc-status").value;
 
-      if (status === "favorito" && resultado === "perdeu") {
-        pontuacao *= 0.80;
-      } else if (status === "underdog" && resultado === "ganhou") {
-        pontuacao *= 1.20;
+      if (kmStatus === "favorito" && document.getElementById("3ma-resultado").value === "perdeu") {
+        pontuacao *= 0.80;  // Favorito que perdeu
+      } else if (kmStatus === "underdog" && document.getElementById("3ma-resultado").value === "ganhou") {
+        pontuacao *= 1.20;  // Underdog que ganhou
       }
 
       console.log("Pontuação Ajustada:", pontuacao);
