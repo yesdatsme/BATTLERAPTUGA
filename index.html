@@ -55,6 +55,19 @@
             padding: 5px;
             margin-bottom: 10px;
         }
+        .battle-info .battle-line {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+        .battle-info .battle-line a {
+            color: #007BFF;
+            text-decoration: none;
+        }
+        .battle-info .battle-line a:hover {
+            text-decoration: underline;
+        }
         .info-text {
             margin-top: 20px;
             font-size: 1em;
@@ -73,18 +86,26 @@
         .submit-btn:hover {
             background-color: #45a049;
         }
-        .battle-info .battle-line {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 10px;
+        .rapper .battle-info {
+            background-color: #f9f9f9;
+            padding: 10px;
+            border-radius: 8px;
+            margin-top: 15px;
         }
-        .battle-info .battle-line a {
-            color: #007BFF;
-            text-decoration: none;
+        .rapper .battle-info label {
+            font-size: 1.1em;
         }
-        .battle-info .battle-line a:hover {
-            text-decoration: underline;
+        .yellow-box {
+            background-color: #FFD700;
+            padding: 10px;
+            border-radius: 8px;
+            margin-top: 15px;
+            font-size: 1.1em;
+            font-weight: bold;
+            color: #000;
+        }
+        .battle-info .battle-line span {
+            flex: 1;
         }
     </style>
 </head>
@@ -135,21 +156,20 @@
                 <label for="impacto_3ma">Impacto (1-10)</label>
                 <input type="number" id="impacto_3ma" min="1" max="10">
             </div>
+
+            <!-- Battle Info -->
             <div class="battle-info">
-                <p><strong>Batalhas:</strong></p>
-                
-                <!-- Contra Shap3 -->
+                <div class="yellow-box">
+                    <p><strong>Contra Shap3</strong> - <a href="https://www.youtube.com/results?search_query=3ma+vs+Shap3" target="_blank">Assistir no YouTube</a></p>
+                </div>
                 <div class="battle-line">
-                    <span><a href="https://www.youtube.com/results?search_query=3ma+vs+Shap3" target="_blank">Contra Shap3 - Assistir no YouTube</a></span>
-                    <span>
-                        <label for="battle_shap3">Favorito/Underdog:</label>
+                    <span><strong>Favorito/Underdog:</strong> 
                         <select id="battle_shap3">
                             <option value="favorito">Favorito</option>
                             <option value="underdog">Underdog</option>
                         </select>
                     </span>
-                    <span>
-                        <label for="result_shap3">Resultado:</label>
+                    <span><strong>Resultado:</strong>
                         <select id="result_shap3">
                             <option value="vitoria">Venceu</option>
                             <option value="derrota">Perdeu</option>
@@ -158,25 +178,7 @@
                     </span>
                 </div>
 
-                <!-- Contra Lc -->
-                <div class="battle-line">
-                    <span><a href="https://www.youtube.com/results?search_query=3ma+vs+Lc" target="_blank">Contra Lc - Assistir no YouTube</a></span>
-                    <span>
-                        <label for="battle_lc">Favorito/Underdog:</label>
-                        <select id="battle_lc">
-                            <option value="favorito">Favorito</option>
-                            <option value="underdog">Underdog</option>
-                        </select>
-                    </span>
-                    <span>
-                        <label for="result_lc">Resultado:</label>
-                        <select id="result_lc">
-                            <option value="vitoria">Venceu</option>
-                            <option value="derrota">Perdeu</option>
-                            <option value="empate">Empatou</option>
-                        </select>
-                    </span>
-                </div>
+                <!-- Adicionar mais batalhas aqui -->
             </div>
         </div>
 
@@ -199,21 +201,20 @@
                 <label for="impacto_abismal">Impacto (1-10)</label>
                 <input type="number" id="impacto_abismal" min="1" max="10">
             </div>
+
+            <!-- Battle Info -->
             <div class="battle-info">
-                <p><strong>Batalhas:</strong></p>
-                
-                <!-- Contra Edi Ventura -->
+                <div class="yellow-box">
+                    <p><strong>Contra Edi Ventura</strong> - <a href="https://www.youtube.com/results?search_query=Abismal+vs+Edi+Ventura" target="_blank">Assistir no YouTube</a></p>
+                </div>
                 <div class="battle-line">
-                    <span><a href="https://www.youtube.com/results?search_query=Abismal+vs+Edi+Ventura" target="_blank">Contra Edi Ventura - Assistir no YouTube</a></span>
-                    <span>
-                        <label for="battle_edi">Favorito/Underdog:</label>
+                    <span><strong>Favorito/Underdog:</strong> 
                         <select id="battle_edi">
                             <option value="favorito">Favorito</option>
                             <option value="underdog">Underdog</option>
                         </select>
                     </span>
-                    <span>
-                        <label for="result_edi">Resultado:</label>
+                    <span><strong>Resultado:</strong>
                         <select id="result_edi">
                             <option value="vitoria">Venceu</option>
                             <option value="derrota">Perdeu</option>
@@ -222,7 +223,7 @@
                     </span>
                 </div>
 
-                <!-- Adicione mais batalhas conforme necessário -->
+                <!-- Adicionar mais batalhas aqui -->
             </div>
         </div>
     </div>
