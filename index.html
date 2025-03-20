@@ -65,7 +65,7 @@
             font-size: 16px;
         }
 
-        select, input[type="number"] {
+        select, input[type="number"], .underdog-fav {
             width: 100%;
             padding: 5px;
             margin: 10px 0;
@@ -168,7 +168,7 @@
                 <strong>Adversários:</strong>
                 <div>
                     <label for="favorite-underdog-abismal-edi">Favorito/Underdog contra Edi Ventura:</label>
-                    <select id="favorite-underdog-abismal-edi">
+                    <select id="favorite-underdog-abismal-edi" class="underdog-fav">
                         <option value="favorito">Favorito</option>
                         <option value="underdog">Underdog</option>
                     </select>
@@ -183,7 +183,7 @@
                 </div>
                 <div>
                     <label for="favorite-underdog-abismal-flajo">Favorito/Underdog contra Flajo:</label>
-                    <select id="favorite-underdog-abismal-flajo">
+                    <select id="favorite-underdog-abismal-flajo" class="underdog-fav">
                         <option value="favorito">Favorito</option>
                         <option value="underdog">Underdog</option>
                     </select>
@@ -199,33 +199,29 @@
             </div>
         </div>
 
-        <!-- Adicione mais colunas para outros rappers -->
+        <!-- Adicione mais colunas para outros rappers da mesma forma -->
     </div>
 
-    <button id="submit-btn">Submeter Avaliações</button>
+    <button id="submit-btn">Submeter Votação</button>
 
     <table class="summary-table">
         <thead>
             <tr>
                 <th>Rapper</th>
+                <th>Critérios</th>
                 <th>Batalhas Vencidas</th>
                 <th>Batalhas Perdidas</th>
-                <th>Batalhas Empatadas</th>
-                <th>Critérios</th>
-                <th>Resultado Final</th>
             </tr>
         </thead>
         <tbody>
             <tr>
                 <td>Abismal</td>
-                <td>3</td>
-                <td>1</td>
-                <td>0</td>
                 <td>Material: 8, Confronto Direto: 7, Adversários: 8, Consistência: 7, Performance: 6, Impacto: 7</td>
-                <td>Vencedor</td>
+                <td>2</td>
+                <td>1</td>
             </tr>
-            <!-- Outras linhas com dados de outros rappers -->
         </tbody>
     </table>
+
 </body>
 </html>
