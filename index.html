@@ -18,10 +18,10 @@
         .container {
             display: flex;
             flex-wrap: wrap;
-            justify-content: space-around;
+            justify-content: space-between;
         }
         .rapper {
-            width: 22%;
+            width: 48%;
             margin: 10px 0;
             padding: 15px;
             background-color: #fff;
@@ -31,6 +31,7 @@
         }
         .rapper img {
             width: 100%;
+            max-width: 150px;
             border-radius: 50%;
         }
         .rapper h3 {
@@ -55,22 +56,29 @@
             padding: 5px;
             margin-bottom: 10px;
         }
-        .battle-info .battle-line {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 10px;
+        .yellow-box {
+            background-color: #FFD700;
+            padding: 10px;
+            border-radius: 8px;
+            margin-top: 15px;
+            font-size: 1.1em;
+            font-weight: bold;
+            color: #000;
         }
-        .battle-info .battle-line a {
-            color: #007BFF;
-            text-decoration: none;
-        }
-        .battle-info .battle-line a:hover {
-            text-decoration: underline;
-        }
-        .info-text {
+        table {
+            width: 100%;
+            border-collapse: collapse;
             margin-top: 20px;
-            font-size: 1em;
+        }
+        table, th, td {
+            border: 1px solid #ddd;
+        }
+        th, td {
+            padding: 10px;
+            text-align: center;
+        }
+        th {
+            background-color: #f2f2f2;
         }
         .submit-btn {
             display: block;
@@ -85,27 +93,6 @@
         }
         .submit-btn:hover {
             background-color: #45a049;
-        }
-        .rapper .battle-info {
-            background-color: #f9f9f9;
-            padding: 10px;
-            border-radius: 8px;
-            margin-top: 15px;
-        }
-        .rapper .battle-info label {
-            font-size: 1.1em;
-        }
-        .yellow-box {
-            background-color: #FFD700;
-            padding: 10px;
-            border-radius: 8px;
-            margin-top: 15px;
-            font-size: 1.1em;
-            font-weight: bold;
-            color: #000;
-        }
-        .battle-info .battle-line span {
-            flex: 1;
         }
     </style>
 </head>
@@ -162,23 +149,6 @@
                 <div class="yellow-box">
                     <p><strong>Contra Shap3</strong> - <a href="https://www.youtube.com/results?search_query=3ma+vs+Shap3" target="_blank">Assistir no YouTube</a></p>
                 </div>
-                <div class="battle-line">
-                    <span><strong>Favorito/Underdog:</strong> 
-                        <select id="battle_shap3">
-                            <option value="favorito">Favorito</option>
-                            <option value="underdog">Underdog</option>
-                        </select>
-                    </span>
-                    <span><strong>Resultado:</strong>
-                        <select id="result_shap3">
-                            <option value="vitoria">Venceu</option>
-                            <option value="derrota">Perdeu</option>
-                            <option value="empate">Empatou</option>
-                        </select>
-                    </span>
-                </div>
-
-                <!-- Adicionar mais batalhas aqui -->
             </div>
         </div>
 
@@ -207,26 +177,36 @@
                 <div class="yellow-box">
                     <p><strong>Contra Edi Ventura</strong> - <a href="https://www.youtube.com/results?search_query=Abismal+vs+Edi+Ventura" target="_blank">Assistir no YouTube</a></p>
                 </div>
-                <div class="battle-line">
-                    <span><strong>Favorito/Underdog:</strong> 
-                        <select id="battle_edi">
-                            <option value="favorito">Favorito</option>
-                            <option value="underdog">Underdog</option>
-                        </select>
-                    </span>
-                    <span><strong>Resultado:</strong>
-                        <select id="result_edi">
-                            <option value="vitoria">Venceu</option>
-                            <option value="derrota">Perdeu</option>
-                            <option value="empate">Empatou</option>
-                        </select>
-                    </span>
-                </div>
-
-                <!-- Adicionar mais batalhas aqui -->
             </div>
         </div>
     </div>
+
+    <!-- Tabela de Resultados -->
+    <h2>Resultados das Batalhas</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>Rapper</th>
+                <th>Material</th>
+                <th>Confronto Direto</th>
+                <th>Adversários</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>3ma</td>
+                <td id="result_material_3ma"></td>
+                <td id="result_confronto_3ma"></td>
+                <td id="result_adversarios_3ma"></td>
+            </tr>
+            <tr>
+                <td>Abismal</td>
+                <td id="result_material_abismal"></td>
+                <td id="result_confronto_abismal"></td>
+                <td id="result_adversarios_abismal"></td>
+            </tr>
+        </tbody>
+    </table>
 
     <button class="submit-btn">Submeter Todos os Votos</button>
 
