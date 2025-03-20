@@ -166,7 +166,23 @@
     </div>
 
     <h3>Adversários</h3>
-    <!-- Botões de assistente com links corretos -->
+    <!-- Selecione Favorito/Underdog e Venceu/Perdeu/Empatou -->
+    <div class="input-group">
+      <label for="resultado-3ma-shap3">Resultado: 3ma vs Shap3</label>
+      <select id="resultado-3ma-shap3">
+        <option value="ganhou">Ganhou</option>
+        <option value="perdeu">Perdeu</option>
+        <option value="empatou">Empatou</option>
+      </select>
+    </div>
+    <div class="input-group">
+      <label for="underdog-favorito-3ma-shap3">Favorito/Underdog:</label>
+      <select id="underdog-favorito-3ma-shap3">
+        <option value="favorito">Favorito</option>
+        <option value="underdog">Underdog</option>
+      </select>
+    </div>
+
     <div class="input-group">
       <button class="button" onclick="assistir('3ma', 'Shap3')">Assistir: 3ma vs Shap3</button>
     </div>
@@ -185,22 +201,27 @@
         <tr>
           <th>Rapper</th>
           <th>Tier</th>
-          <th>Pontuação Total</th>
+          <th>Batalhas Ganhas</th>
+          <th>Batalhas Perdidas</th>
+          <th>Melhor Critério</th>
         </tr>
       </thead>
       <tbody>
-        <!-- Adicionar linhas de resultados de rappers -->
+        <!-- Exemplo de dados -->
         <tr>
           <td>3ma</td>
           <td class="tier">S</td>
-          <td>85</td>
+          <td>2</td>
+          <td>1</td>
+          <td>Material</td>
         </tr>
         <tr>
           <td>Shap3</td>
           <td class="tier">A</td>
-          <td>78</td>
+          <td>1</td>
+          <td>2</td>
+          <td>Confronto Direto</td>
         </tr>
-        <!-- Adicionar mais rappers e suas pontuações -->
       </tbody>
     </table>
   </div>
