@@ -5,48 +5,119 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Votação de Rappers</title>
     <style>
+        /* (Mantive o CSS que você enviou para preservar o estilo) */
         body {
-            font-family: Arial, sans-serif;
-            margin: 20px;
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(135deg, #f5f7fa, #c3cfe2);
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
+        }
+        h1 {
+            text-align: center;
+            color: #333;
+            font-size: 2.5em;
+            margin-bottom: 20px;
+        }
+        .rapper-container {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+            max-width: 1200px;
+            margin: 0 auto;
         }
         .rapper-card {
-            border: 1px solid #ccc;
+            background: #fff;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            text-align: center;
             padding: 20px;
-            margin-bottom: 20px;
+        }
+        .rapper-card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
             border-radius: 10px;
+            margin-bottom: 15px;
+        }
+        .rapper-card a {
+            text-decoration: none;
+            color: #2575fc;
+            font-weight: bold;
+            font-size: 1.2em;
+        }
+        .rapper-card a:hover {
+            text-decoration: underline;
+        }
+        .voting-options {
+            background: #f9f9f9;
+            padding: 15px;
+            border-radius: 10px;
+            margin-top: 10px;
         }
         .voting-options label {
             display: block;
             margin: 10px 0 5px;
+            font-weight: bold;
+            color: #333;
         }
         .voting-options input[type="number"] {
-            width: 60px;
-            padding: 5px;
+            width: 80%;
+            padding: 8px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 1em;
+            margin-bottom: 10px;
+        }
+        .recent-battles {
+            margin-top: 15px;
+            padding: 10px;
+            background: #f9f9f9;
+            border-radius: 10px;
+        }
+        .recent-battles h3 {
+            font-size: 1.1em;
+            margin-bottom: 10px;
+            color: #333;
+        }
+        .recent-battles ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        .recent-battles li {
+            margin-bottom: 10px;
+            font-size: 0.9em;
+            color: #555;
         }
         .recent-battles select {
+            margin-left: 10px;
             padding: 5px;
-            margin-right: 10px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
         }
         button {
-            padding: 10px 20px;
-            background-color: #007bff;
-            color: white;
+            width: 100%;
+            padding: 15px;
+            background: linear-gradient(135deg, #6a11cb, #2575fc);
+            color: #fff;
             border: none;
-            border-radius: 5px;
+            border-radius: 10px;
+            font-size: 1.2em;
             cursor: pointer;
+            transition: background 0.3s ease;
+            margin-top: 20px;
         }
         button:hover {
-            background-color: #0056b3;
-        }
-        .resultado {
-            margin-top: 20px;
-            font-size: 1.2em;
-            font-weight: bold;
+            background: linear-gradient(135deg, #2575fc, #6a11cb);
         }
     </style>
 </head>
 <body>
-    <h1>Votação de Rappers</h1>
+    <h1>VOTAÇÃO</h1>
     <form id="votacaoForm">
         <!-- 3ma -->
         <div class="rapper-card" id="3ma">
