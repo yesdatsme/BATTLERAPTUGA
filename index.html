@@ -216,7 +216,7 @@
 
             abismalResults.forEach(rapper => {
                 let row = document.createElement("tr");
-                let criteria = "Material, Confronto Direto, Adversários";  // Placeholder, calcular conforme necessário
+                let criteria = "Material, Confronto Direto, Adversários, Consistência, Performance, Impacto";  // Placeholder para os critérios
                 let victories = rapper.battles.filter(battle => battle.result === "ganhou").length;
                 let losses = rapper.battles.filter(battle => battle.result === "perdeu").length;
                 
@@ -237,19 +237,25 @@
         function calculateScore(battles) {
             let totalScore = 0;
             const weights = {
-                material: 0.3,
-                confrontoDireto: 0.3,
-                adversarios: 0.4
+                material: 0.25, // 25%
+                confrontoDireto: 0.25, // 25%
+                adversarios: 0.20, // 20%
+                consistencia: 0.10, // 10%
+                performance: 0.10, // 10%
+                impacto: 0.10 // 10%
             };
 
             battles.forEach(battle => {
-                // Aqui, você pode calcular a pontuação de cada batalha baseada nos critérios
-                // Por exemplo, se o battle.result === "ganhou", aumentar a pontuação de acordo com os pesos
+                // Atribuir pontos de acordo com os critérios e o resultado da batalha
                 let battleScore = 0;
 
-                // Atribua pontos de acordo com os critérios (Material, Confronto Direto, Adversários)
-                battleScore += (battle.result === "ganhou") ? 10 : (battle.result === "empatou" ? 5 : 0);
-                
+                // Simulando a distribuição da pontuação com base nos resultados das batalhas
+                if (battle.result === "ganhou") {
+                    battleScore += (weights.material * 10 + weights.confrontoDireto * 10 + weights.adversarios * 10);
+                } else if (battle.result === "empatou") {
+                    battleScore += (weights.material * 5 + weights.confrontoDireto * 5 + weights.adversarios * 5);
+                }
+
                 totalScore += battleScore;
             });
 
