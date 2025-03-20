@@ -16,27 +16,30 @@
       max-width: 90%;
     }
 
-    /* Estilo para a tabela */
-    .results-table {
-      width: 100%;
-      border-collapse: collapse;
-      margin-top: 20px;
-      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-    }
-
-    .results-table th, .results-table td {
-      border: 1px solid #ddd;
+    /* Estilo para as colunas de cada rapper */
+    .rapper-column {
+      display: inline-block;
+      width: 22%;
       padding: 15px;
-      text-align: center;
-    }
-
-    .results-table th {
+      margin: 10px;
       background-color: #f2f2f2;
-      font-size: 18px;
+      border-radius: 8px;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+      transition: transform 0.3s;
     }
 
-    .results-table td {
-      font-size: 16px;
+    .rapper-column:hover {
+      transform: scale(1.05);
+    }
+
+    .rapper-column h2 {
+      text-align: center;
+      margin-bottom: 10px;
+    }
+
+    /* Estilo para os campos de avaliação */
+    .select-group, .input-group {
+      margin-bottom: 10px;
     }
 
     /* Estilo para o botão */
@@ -49,29 +52,41 @@
       cursor: pointer;
       font-size: 16px;
       transition: background-color 0.3s ease;
+      width: 100%;
     }
 
     .button:hover {
       background-color: #45a049;
     }
 
-    /* Estilo para os inputs de avaliação */
-    select, input[type="number"] {
-      margin: 5px;
+    .input-group input, .select-group select {
+      width: 100%;
       padding: 5px;
       font-size: 14px;
-      width: 80px;
     }
 
-    .select-group {
-      margin-bottom: 10px;
-    }
-
-    .text-center {
+    .table-container {
+      margin-top: 50px;
       text-align: center;
     }
 
-    /* Estilo para a seção de Tier */
+    .results-table {
+      width: 80%;
+      margin: 0 auto;
+      border-collapse: collapse;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .results-table th, .results-table td {
+      border: 1px solid #ddd;
+      padding: 10px;
+      text-align: center;
+    }
+
+    .results-table th {
+      background-color: #f2f2f2;
+    }
+
     .tier {
       font-weight: bold;
     }
@@ -82,100 +97,158 @@
   <!-- Caixa de instruções -->
   <div class="info-box">
     <h3>Instruções de Avaliação</h3>
-    <p>Este sistema de avaliação atribui pesos diferenciados aos critérios para determinar a pontuação de cada rapper.</p>
-    <ul>
-      <li>Material: 25% (Mais importante)</li>
-      <li>Confronto Direto: 25% (Mais importante)</li>
-      <li>Adversários: 20% (Importante)</li>
-      <li>Consistência: 10% (Menos importante)</li>
-      <li>Performance: 10% (Menos importante)</li>
-      <li>Impacto: 10% (Menos importante)</li>
-    </ul>
+    <p>Escolha as avaliações para cada rapper nos seguintes critérios: Material, Confronto Direto, Adversários, Consistência, Performance, Impacto.</p>
+    <p>Selecione se o rapper era favorito ou underdog em relação ao adversário e escolha se ele ganhou, perdeu ou empatou.</p>
+    <p>Após completar, o sistema calculará o seu Tier de acordo com o desempenho nas batalhas e os critérios de avaliação.</p>
   </div>
 
-  <!-- Tabela para exibir as batalhas -->
-  <table class="results-table">
-    <thead>
-      <tr>
-        <th>Rapper</th>
-        <th>KM</th>
-        <th>Shap3</th>
-        <th>LC</th>
-        <th>Material (0-10)</th>
-        <th>Confronto (0-10)</th>
-        <th>Adversários (0-10)</th>
-        <th>Consistência (0-10)</th>
-        <th>Performance (0-10)</th>
-        <th>Impacto (0-10)</th>
-        <th>Tier</th>
-      </tr>
-    </thead>
-    <tbody id="rapper-battles">
-      <!-- Linha para 3ma -->
-      <tr id="rapper-3ma">
-        <td>3ma</td>
-        <td>
-          <select id="resultado-KM">
-            <option value="0">Selecione</option>
-            <option value="1">Venceu</option>
-            <option value="2">Empatou</option>
-            <option value="3">Perdeu</option>
-          </select>
-          <br>
-          <select id="underdog-KM">
-            <option value="0">Favorito</option>
-            <option value="1">Underdog</option>
-          </select>
-          <br>
-          <a href="https://www.youtube.com/results?search_query=3ma%20vs%20KM" target="_blank">Assistir</a>
-        </td>
-        <td>
-          <select id="resultado-Shap3">
-            <option value="0">Selecione</option>
-            <option value="1">Venceu</option>
-            <option value="2">Empatou</option>
-            <option value="3">Perdeu</option>
-          </select>
-          <br>
-          <select id="underdog-Shap3">
-            <option value="0">Favorito</option>
-            <option value="1">Underdog</option>
-          </select>
-          <br>
-          <a href="https://www.youtube.com/results?search_query=3ma%20vs%20Shap3" target="_blank">Assistir</a>
-        </td>
-        <td>
-          <select id="resultado-LC">
-            <option value="0">Selecione</option>
-            <option value="1">Venceu</option>
-            <option value="2">Empatou</option>
-            <option value="3">Perdeu</option>
-          </select>
-          <br>
-          <select id="underdog-LC">
-            <option value="0">Favorito</option>
-            <option value="1">Underdog</option>
-          </select>
-          <br>
-          <a href="https://www.youtube.com/results?search_query=3ma%20vs%20LC" target="_blank">Assistir</a>
-        </td>
-        <td><input type="number" id="material-3ma" value="0" min="0" max="10"></td>
-        <td><input type="number" id="confronto-3ma" value="0" min="0" max="10"></td>
-        <td><input type="number" id="adversarios-3ma" value="0" min="0" max="10"></td>
-        <td><input type="number" id="consistencia-3ma" value="0" min="0" max="10"></td>
-        <td><input type="number" id="performance-3ma" value="0" min="0" max="10"></td>
-        <td><input type="number" id="impacto-3ma" value="0" min="0" max="10"></td>
-        <td id="tier-3ma">-</td>
-      </tr>
-    </tbody>
-  </table>
+  <!-- Colunas para cada rapper -->
+  <div class="rapper-column">
+    <h2>Rapper A</h2>
 
-  <!-- Botão de votação -->
-  <div class="text-center">
-    <button class="button" onclick="votar()">Votar em Todos</button>
+    <div class="input-group">
+      <label for="material-A">Material (0-10)</label>
+      <input type="number" id="material-A" min="0" max="10" value="0">
+    </div>
+    <div class="input-group">
+      <label for="confronto-A">Confronto Direto (0-10)</label>
+      <input type="number" id="confronto-A" min="0" max="10" value="0">
+    </div>
+    <div class="input-group">
+      <label for="adversarios-A">Adversários (0-10)</label>
+      <input type="number" id="adversarios-A" min="0" max="10" value="0">
+    </div>
+    <div class="input-group">
+      <label for="consistencia-A">Consistência (0-10)</label>
+      <input type="number" id="consistencia-A" min="0" max="10" value="0">
+    </div>
+    <div class="input-group">
+      <label for="performance-A">Performance (0-10)</label>
+      <input type="number" id="performance-A" min="0" max="10" value="0">
+    </div>
+    <div class="input-group">
+      <label for="impacto-A">Impacto (0-10)</label>
+      <input type="number" id="impacto-A" min="0" max="10" value="0">
+    </div>
+
+    <h3>Adversários</h3>
+    <!-- KM -->
+    <div class="select-group">
+      <label for="resultado-KM-A">KM - Resultado</label>
+      <select id="resultado-KM-A">
+        <option value="0">Selecione</option>
+        <option value="1">Venceu</option>
+        <option value="2">Empatou</option>
+        <option value="3">Perdeu</option>
+      </select>
+    </div>
+    <div class="select-group">
+      <label for="underdog-KM-A">KM - Underdog/Favorito</label>
+      <select id="underdog-KM-A">
+        <option value="0">Favorito</option>
+        <option value="1">Underdog</option>
+      </select>
+    </div>
+    <div class="input-group">
+      <button class="button" onclick="assistir('KM-A')">Assistir</button>
+    </div>
+
+    <!-- Shap3 -->
+    <div class="select-group">
+      <label for="resultado-Shap3-A">Shap3 - Resultado</label>
+      <select id="resultado-Shap3-A">
+        <option value="0">Selecione</option>
+        <option value="1">Venceu</option>
+        <option value="2">Empatou</option>
+        <option value="3">Perdeu</option>
+      </select>
+    </div>
+    <div class="select-group">
+      <label for="underdog-Shap3-A">Shap3 - Underdog/Favorito</label>
+      <select id="underdog-Shap3-A">
+        <option value="0">Favorito</option>
+        <option value="1">Underdog</option>
+      </select>
+    </div>
+    <div class="input-group">
+      <button class="button" onclick="assistir('Shap3-A')">Assistir</button>
+    </div>
+
+    <!-- LC -->
+    <div class="select-group">
+      <label for="resultado-LC-A">LC - Resultado</label>
+      <select id="resultado-LC-A">
+        <option value="0">Selecione</option>
+        <option value="1">Venceu</option>
+        <option value="2">Empatou</option>
+        <option value="3">Perdeu</option>
+      </select>
+    </div>
+    <div class="select-group">
+      <label for="underdog-LC-A">LC - Underdog/Favorito</label>
+      <select id="underdog-LC-A">
+        <option value="0">Favorito</option>
+        <option value="1">Underdog</option>
+      </select>
+    </div>
+    <div class="input-group">
+      <button class="button" onclick="assistir('LC-A')">Assistir</button>
+    </div>
+  </div>
+
+  <!-- Coluna do Rapper B -->
+  <div class="rapper-column">
+    <h2>Rapper B</h2>
+
+    <!-- A mesma estrutura do Rapper A -->
+    <!-- ... Aqui iriam os campos de avaliação e os adversários, assim como para o Rapper A... -->
+  </div>
+
+  <!-- Coluna do Rapper C -->
+  <div class="rapper-column">
+    <h2>Rapper C</h2>
+
+    <!-- ... Aqui iriam os campos de avaliação e os adversários, assim como para o Rapper A... -->
+  </div>
+
+  <!-- Coluna do Rapper D -->
+  <div class="rapper-column">
+    <h2>Rapper D</h2>
+
+    <!-- ... Aqui iriam os campos de avaliação e os adversários, assim como para o Rapper A... -->
+  </div>
+
+  <!-- Tabela de resultados e Tier -->
+  <div class="table-container">
+    <table class="results-table">
+      <thead>
+        <tr>
+          <th>Rapper</th>
+          <th>Batalhas Ganhas</th>
+          <th>Batalhas Perdidas</th>
+          <th>Critério Mais Forte</th>
+          <th>Tier</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr id="result-A">
+          <td>Rapper A</td>
+          <td id="batalhas-ganhas-A">0</td>
+          <td id="batalhas-perdidas-A">0</td>
+          <td id="criterio-forte-A">-</td>
+          <td id="tier-A">-</td>
+        </tr>
+      </tbody>
+    </table>
   </div>
 
   <script>
+    function assistir(rival) {
+      var rapper = rival.split('-')[0];
+      var link = `https://www.youtube.com/results?search_query=${rapper}%20vs%20${rival}`;
+      window.open(link, '_blank');
+    }
+
     function calcularPontuacao(rapperId) {
       const material = parseInt(document.getElementById(`material-${rapperId}`).value) || 0;
       const confronto = parseInt(document.getElementById(`confronto-${rapperId}`).value) || 0;
@@ -198,14 +271,16 @@
       return "Tier 5";
     }
 
-    function votar() {
-      const rapperId = "3ma"; // Adapte para os outros rappers conforme necessário
-      const pontuacao = calcularPontuacao(rapperId);
-      const tier = classificarTier(pontuacao);
+    // Atualiza os resultados e Tier
+    function atualizarResultados() {
+      const rapperAId = 'A';
+      const pontuacaoA = calcularPontuacao(rapperAId);
+      const tierA = classificarTier(pontuacaoA);
 
-      document.getElementById(`tier-${rapperId}`).innerText = tier;
-
-      alert(`Votação concluída para ${rapperId}. Tier atribuído: ${tier}`);
+      document.getElementById('batalhas-ganhas-A').textContent = 0; // Atualizar com base nos resultados reais
+      document.getElementById('batalhas-perdidas-A').textContent = 0; // Atualizar com base nos resultados reais
+      document.getElementById('criterio-forte-A').textContent = 'Material'; // Exemplo de critério mais forte
+      document.getElementById('tier-A').textContent = tierA;
     }
   </script>
 </body>
