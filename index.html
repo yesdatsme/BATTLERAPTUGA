@@ -101,6 +101,11 @@
     .tier {
       font-weight: bold;
     }
+    
+    .radio-group label {
+      display: inline-block;
+      margin-right: 10px;
+    }
   </style>
 </head>
 <body>
@@ -140,89 +145,52 @@
       <a href="https://www.youtube.com/results?search_query=3ma" target="_blank">3ma</a>
     </h2>
 
-    <div class="input-group">
-      <label for="material-3ma">Material (0-10)</label>
-      <input type="number" id="material-3ma" min="0" max="10" value="0">
-    </div>
-    <div class="input-group">
-      <label for="confronto-3ma">Confronto Direto (0-10)</label>
-      <input type="number" id="confronto-3ma" min="0" max="10" value="0">
-    </div>
-    <div class="input-group">
-      <label for="adversarios-3ma">Adversários (0-10)</label>
-      <input type="number" id="adversarios-3ma" min="0" max="10" value="0">
-    </div>
-    <div class="input-group">
-      <label for="consistencia-3ma">Consistência (0-10)</label>
-      <input type="number" id="consistencia-3ma" min="0" max="10" value="0">
-    </div>
-    <div class="input-group">
-      <label for="performance-3ma">Performance (0-10)</label>
-      <input type="number" id="performance-3ma" min="0" max="10" value="0">
-    </div>
-    <div class="input-group">
-      <label for="impacto-3ma">Impacto (0-10)</label>
-      <input type="number" id="impacto-3ma" min="0" max="10" value="0">
-    </div>
-
     <h3>Adversários</h3>
-    <!-- Selecione Favorito/Underdog e Venceu/Perdeu/Empatou individualmente para cada adversário -->
-    <div class="input-group">
-      <label for="resultado-3ma-shap3">Resultado: 3ma vs Shap3</label>
-      <select id="resultado-3ma-shap3">
-        <option value="ganhou">Ganhou</option>
-        <option value="perdeu">Perdeu</option>
-        <option value="empatou">Empatou</option>
-      </select>
-    </div>
-    <div class="input-group">
-      <label for="underdog-favorito-3ma-shap3">Favorito/Underdog: 3ma vs Shap3</label>
-      <select id="underdog-favorito-3ma-shap3">
-        <option value="favorito">Favorito</option>
-        <option value="underdog">Underdog</option>
-      </select>
-    </div>
 
-    <div class="input-group">
-      <label for="resultado-3ma-lc">Resultado: 3ma vs LC</label>
-      <select id="resultado-3ma-lc">
-        <option value="ganhou">Ganhou</option>
-        <option value="perdeu">Perdeu</option>
-        <option value="empatou">Empatou</option>
-      </select>
-    </div>
-    <div class="input-group">
-      <label for="underdog-favorito-3ma-lc">Favorito/Underdog: 3ma vs LC</label>
-      <select id="underdog-favorito-3ma-lc">
-        <option value="favorito">Favorito</option>
-        <option value="underdog">Underdog</option>
-      </select>
-    </div>
-
-    <div class="input-group">
-      <label for="resultado-3ma-km">Resultado: 3ma vs KM</label>
-      <select id="resultado-3ma-km">
-        <option value="ganhou">Ganhou</option>
-        <option value="perdeu">Perdeu</option>
-        <option value="empatou">Empatou</option>
-      </select>
-    </div>
-    <div class="input-group">
-      <label for="underdog-favorito-3ma-km">Favorito/Underdog: 3ma vs KM</label>
-      <select id="underdog-favorito-3ma-km">
-        <option value="favorito">Favorito</option>
-        <option value="underdog">Underdog</option>
-      </select>
-    </div>
-
+    <!-- Para cada adversário, link para assistir, seleção de resultado e seleção de underdog/favorito -->
     <div class="input-group">
       <button class="button" onclick="assistir('3ma', 'Shap3')">Assistir: 3ma vs Shap3</button>
+      <label for="resultado-3ma-shap3">Resultado:</label>
+      <div class="radio-group">
+        <label><input type="radio" name="resultado-3ma-shap3" value="ganhou"> Ganhou</label>
+        <label><input type="radio" name="resultado-3ma-shap3" value="perdeu"> Perdeu</label>
+        <label><input type="radio" name="resultado-3ma-shap3" value="empatou"> Empatou</label>
+      </div>
+      <label for="underdog-favorito-3ma-shap3">Favorito/Underdog:</label>
+      <div class="radio-group">
+        <label><input type="radio" name="underdog-favorito-3ma-shap3" value="favorito"> Favorito</label>
+        <label><input type="radio" name="underdog-favorito-3ma-shap3" value="underdog"> Underdog</label>
+      </div>
     </div>
+
     <div class="input-group">
       <button class="button" onclick="assistir('3ma', 'LC')">Assistir: 3ma vs LC</button>
+      <label for="resultado-3ma-lc">Resultado:</label>
+      <div class="radio-group">
+        <label><input type="radio" name="resultado-3ma-lc" value="ganhou"> Ganhou</label>
+        <label><input type="radio" name="resultado-3ma-lc" value="perdeu"> Perdeu</label>
+        <label><input type="radio" name="resultado-3ma-lc" value="empatou"> Empatou</label>
+      </div>
+      <label for="underdog-favorito-3ma-lc">Favorito/Underdog:</label>
+      <div class="radio-group">
+        <label><input type="radio" name="underdog-favorito-3ma-lc" value="favorito"> Favorito</label>
+        <label><input type="radio" name="underdog-favorito-3ma-lc" value="underdog"> Underdog</label>
+      </div>
     </div>
+
     <div class="input-group">
       <button class="button" onclick="assistir('3ma', 'KM')">Assistir: 3ma vs KM</button>
+      <label for="resultado-3ma-km">Resultado:</label>
+      <div class="radio-group">
+        <label><input type="radio" name="resultado-3ma-km" value="ganhou"> Ganhou</label>
+        <label><input type="radio" name="resultado-3ma-km" value="perdeu"> Perdeu</label>
+        <label><input type="radio" name="resultado-3ma-km" value="empatou"> Empatou</label>
+      </div>
+      <label for="underdog-favorito-3ma-km">Favorito/Underdog:</label>
+      <div class="radio-group">
+        <label><input type="radio" name="underdog-favorito-3ma-km" value="favorito"> Favorito</label>
+        <label><input type="radio" name="underdog-favorito-3ma-km" value="underdog"> Underdog</label>
+      </div>
     </div>
   </div>
 
