@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Rappers e Batalhas</title>
   <style>
-    /* Estilos para a caixa amarela de informações */
+    /* Estilo para as caixas de informação */
     .info-box {
       background-color: #f7e98d;
       padding: 10px;
@@ -16,85 +16,70 @@
       max-width: 90%;
     }
 
-    /* Estilos para os rappers nas 4 colunas */
-    .rapper-container {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: space-around;
-      margin-bottom: 30px;
+    /* Estilo para a tabela */
+    .results-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 20px;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
     }
 
-    .rapper-card {
-      width: 22%;
-      background-color: #f0f0f0;
-      border-radius: 5px;
+    .results-table th, .results-table td {
+      border: 1px solid #ddd;
       padding: 15px;
       text-align: center;
-      margin: 10px;
-      transition: transform 0.3s ease;
     }
 
-    .rapper-card:hover {
-      transform: scale(1.1);
-    }
-
-    .rapper-photo {
-      width: 100%;
-      border-radius: 5px;
-    }
-
-    .rapper-name {
+    .results-table th {
+      background-color: #f2f2f2;
       font-size: 18px;
-      font-weight: bold;
-      margin-top: 10px;
     }
 
-    .criteria {
-      margin-top: 10px;
+    .results-table td {
+      font-size: 16px;
+    }
+
+    /* Estilo para o botão */
+    .button {
+      padding: 10px 20px;
+      background-color: #4CAF50;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 16px;
+      transition: background-color 0.3s ease;
+    }
+
+    .button:hover {
+      background-color: #45a049;
+    }
+
+    /* Estilo para os inputs de avaliação */
+    select, input[type="number"] {
+      margin: 5px;
+      padding: 5px;
       font-size: 14px;
-    }
-
-    .battle-info {
-      margin-top: 15px;
-    }
-
-    .adversarios {
-      margin-top: 10px;
+      width: 80px;
     }
 
     .select-group {
       margin-bottom: 10px;
     }
 
-    /* Estilos para a tabela de resultados */
-    .results-table {
-      width: 100%;
-      border-collapse: collapse;
-      margin-top: 20px;
-    }
-
-    .results-table th, .results-table td {
-      border: 1px solid #ddd;
-      padding: 8px;
+    .text-center {
       text-align: center;
     }
 
-    .results-table th {
-      background-color: #f2f2f2;
+    /* Estilo para a seção de Tier */
+    .tier {
+      font-weight: bold;
     }
-
-    .criteria-rating {
-      width: 50px;
-    }
-
-    /* Estilos para os selects */
-    select {
-      margin: 5px;
-    }
-
   </style>
 </head>
 <body>
+
+  <!-- Caixa de instruções -->
   <div class="info-box">
     <h3>Instruções de Avaliação</h3>
     <p>Este sistema de avaliação atribui pesos diferenciados aos critérios para determinar a pontuação de cada rapper.</p>
@@ -106,206 +91,98 @@
       <li>Performance: 10% (Menos importante)</li>
       <li>Impacto: 10% (Menos importante)</li>
     </ul>
-    <p>Ajustes na pontuação com base no status:</p>
-    <ul>
-      <li><strong>Favorito que perde:</strong> Perde 20% da pontuação.</li>
-      <li><strong>Underdog que ganha:</strong> Ganha 20% de bônus.</li>
-      <li><strong>Favorito que ganha:</strong> Não há alteração na pontuação.</li>
-      <li><strong>Underdog que perde:</strong> Não há alteração na pontuação.</li>
-    </ul>
   </div>
 
-  <!-- Rappers -->
-  <div class="rapper-container">
-    <!-- 3ma -->
-    <div class="rapper-card">
-      <img src="3ma.jpg" alt="3ma" class="rapper-photo">
-      <div class="rapper-name">
-        <a href="https://www.youtube.com/results?search_query=3ma" target="_blank">3ma</a>
-      </div>
-      <div class="criteria">
-        <strong>Avalie o rapper:</strong><br>
-        Material: <input type="number" min="0" max="10" class="criteria-rating" id="3ma-material" value="0"><br>
-        Confronto Direto: <input type="number" min="0" max="10" class="criteria-rating" id="3ma-confronto" value="0"><br>
-        Adversários: <input type="number" min="0" max="10" class="criteria-rating" id="3ma-adversarios" value="0"><br>
-        Consistência: <input type="number" min="0" max="10" class="criteria-rating" id="3ma-consistencia" value="0"><br>
-        Performance: <input type="number" min="0" max="10" class="criteria-rating" id="3ma-performance" value="0"><br>
-        Impacto: <input type="number" min="0" max="10" class="criteria-rating" id="3ma-impacto" value="0">
-      </div>
-      <div class="battle-info">
-        <strong>Adversários:</strong><br>
-        <div class="adversarios select-group">
-          <label>KM:</label>
-          <select id="3ma-km-status">
-            <option value="vitoria">Vitória</option>
-            <option value="empate">Empate</option>
-            <option value="derrota">Derrota</option>
+  <!-- Tabela para exibir as batalhas -->
+  <table class="results-table">
+    <thead>
+      <tr>
+        <th>Rapper</th>
+        <th>Adversários</th>
+        <th>Resultado</th>
+        <th>Underdog/Favorito</th>
+        <th>Links</th>
+        <th>Material (0-10)</th>
+        <th>Confronto (0-10)</th>
+        <th>Adversários (0-10)</th>
+        <th>Consistência (0-10)</th>
+        <th>Performance (0-10)</th>
+        <th>Impacto (0-10)</th>
+        <th>Tier</th>
+      </tr>
+    </thead>
+    <tbody id="rapper-battles">
+      <!-- Linha do rapper 3ma -->
+      <tr id="rapper-3ma">
+        <td>3ma</td>
+        <td>
+          KM, Shap3, Lc
+        </td>
+        <td>
+          <select id="resultado-3ma">
+            <option value="0">Selecione</option>
+            <option value="1">Venceu</option>
+            <option value="2">Empatou</option>
+            <option value="3">Perdeu</option>
           </select>
-          <select id="3ma-km-estado">
-            <option value="favorito">Favorito</option>
-            <option value="underdog">Underdog</option>
+        </td>
+        <td>
+          <select id="underdog-3ma">
+            <option value="0">Favorito</option>
+            <option value="1">Underdog</option>
           </select>
-          <br>
-          <a href="https://www.youtube.com/results?search_query=3ma+vs+KM" target="_blank">Assistir - 3ma vs KM</a>
-        </div>
-        <div class="adversarios select-group">
-          <label>Shap3:</label>
-          <select id="3ma-shap3-status">
-            <option value="vitoria">Vitória</option>
-            <option value="empate">Empate</option>
-            <option value="derrota">Derrota</option>
-          </select>
-          <select id="3ma-shap3-estado">
-            <option value="favorito">Favorito</option>
-            <option value="underdog">Underdog</option>
-          </select>
-          <br>
-          <a href="https://www.youtube.com/results?search_query=3ma+vs+Shap3" target="_blank">Assistir - 3ma vs Shap3</a>
-        </div>
-        <div class="adversarios select-group">
-          <label>LC:</label>
-          <select id="3ma-lc-status">
-            <option value="vitoria">Vitória</option>
-            <option value="empate">Empate</option>
-            <option value="derrota">Derrota</option>
-          </select>
-          <select id="3ma-lc-estado">
-            <option value="favorito">Favorito</option>
-            <option value="underdog">Underdog</option>
-          </select>
-          <br>
-          <a href="https://www.youtube.com/results?search_query=3ma+vs+LC" target="_blank">Assistir - 3ma vs LC</a>
-        </div>
-      </div>
-    </div>
+        </td>
+        <td>
+          <a href="https://www.youtube.com/results?search_query=3ma%20vs%20KM" target="_blank">Assistir</a>
+        </td>
+        <td><input type="number" id="material-3ma" value="0" min="0" max="10"></td>
+        <td><input type="number" id="confronto-3ma" value="0" min="0" max="10"></td>
+        <td><input type="number" id="adversarios-3ma" value="0" min="0" max="10"></td>
+        <td><input type="number" id="consistencia-3ma" value="0" min="0" max="10"></td>
+        <td><input type="number" id="performance-3ma" value="0" min="0" max="10"></td>
+        <td><input type="number" id="impacto-3ma" value="0" min="0" max="10"></td>
+        <td id="tier-3ma">-</td>
+      </tr>
+    </tbody>
+  </table>
 
-    <!-- Abismal -->
-    <div class="rapper-card">
-      <img src="abismal.jpg" alt="Abismal" class="rapper-photo">
-      <div class="rapper-name">
-        <a href="https://www.youtube.com/results?search_query=Abismal" target="_blank">Abismal</a>
-      </div>
-      <div class="criteria">
-        <strong>Avalie o rapper:</strong><br>
-        Material: <input type="number" min="0" max="10" class="criteria-rating" id="abismal-material" value="0"><br>
-        Confronto Direto: <input type="number" min="0" max="10" class="criteria-rating" id="abismal-confronto" value="0"><br>
-        Adversários: <input type="number" min="0" max="10" class="criteria-rating" id="abismal-adversarios" value="0"><br>
-        Consistência: <input type="number" min="0" max="10" class="criteria-rating" id="abismal-consistencia" value="0"><br>
-        Performance: <input type="number" min="0" max="10" class="criteria-rating" id="abismal-performance" value="0"><br>
-        Impacto: <input type="number" min="0" max="10" class="criteria-rating" id="abismal-impacto" value="0">
-      </div>
-      <div class="battle-info">
-        <strong>Adversários:</strong><br>
-        <div class="adversarios select-group">
-          <label>Edi Ventura:</label>
-          <select id="abismal-edi-status">
-            <option value="vitoria">Vitória</option>
-            <option value="empate">Empate</option>
-            <option value="derrota">Derrota</option>
-          </select>
-          <select id="abismal-edi-estado">
-            <option value="favorito">Favorito</option>
-            <option value="underdog">Underdog</option>
-          </select>
-          <br>
-          <a href="https://www.youtube.com/results?search_query=Abismal+vs+Edi+Ventura" target="_blank">Assistir - Abismal vs Edi Ventura</a>
-        </div>
-        <div class="adversarios select-group">
-          <label>Flajo:</label>
-          <select id="abismal-flajo-status">
-            <option value="vitoria">Vitória</option>
-            <option value="empate">Empate</option>
-            <option value="derrota">Derrota</option>
-          </select>
-          <select id="abismal-flajo-estado">
-            <option value="favorito">Favorito</option>
-            <option value="underdog">Underdog</option>
-          </select>
-          <br>
-          <a href="https://www.youtube.com/results?search_query=Abismal+vs+Flajo" target="_blank">Assistir - Abismal vs Flajo</a>
-        </div>
-        <div class="adversarios select-group">
-          <label>WilsonG:</label>
-          <select id="abismal-wilsong-status">
-            <option value="vitoria">Vitória</option>
-            <option value="empate">Empate</option>
-            <option value="derrota">Derrota</option>
-          </select>
-          <select id="abismal-wilsong-estado">
-            <option value="favorito">Favorito</option>
-            <option value="underdog">Underdog</option>
-          </select>
-          <br>
-          <a href="https://www.youtube.com/results?search_query=Abismal+vs+WilsonG" target="_blank">Assistir - Abismal vs WilsonG</a>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- Tabela de Resultados -->
-  <div class="results-table">
-    <table>
-      <thead>
-        <tr>
-          <th>Rapper</th>
-          <th>Material</th>
-          <th>Confronto Direto</th>
-          <th>Adversários</th>
-          <th>Consistência</th>
-          <th>Performance</th>
-          <th>Impacto</th>
-          <th>Total</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td>3ma</td>
-          <td><input type="number" min="0" max="10" id="3ma-material-res" value="0"></td>
-          <td><input type="number" min="0" max="10" id="3ma-confronto-res" value="0"></td>
-          <td><input type="number" min="0" max="10" id="3ma-adversarios-res" value="0"></td>
-          <td><input type="number" min="0" max="10" id="3ma-consistencia-res" value="0"></td>
-          <td><input type="number" min="0" max="10" id="3ma-performance-res" value="0"></td>
-          <td><input type="number" min="0" max="10" id="3ma-impacto-res" value="0"></td>
-          <td><input type="number" min="0" max="100" id="3ma-total" disabled value="0"></td>
-        </tr>
-        <tr>
-          <td>Abismal</td>
-          <td><input type="number" min="0" max="10" id="abismal-material-res" value="0"></td>
-          <td><input type="number" min="0" max="10" id="abismal-confronto-res" value="0"></td>
-          <td><input type="number" min="0" max="10" id="abismal-adversarios-res" value="0"></td>
-          <td><input type="number" min="0" max="10" id="abismal-consistencia-res" value="0"></td>
-          <td><input type="number" min="0" max="10" id="abismal-performance-res" value="0"></td>
-          <td><input type="number" min="0" max="10" id="abismal-impacto-res" value="0"></td>
-          <td><input type="number" min="0" max="100" id="abismal-total" disabled value="0"></td>
-        </tr>
-      </tbody>
-    </table>
+  <!-- Botão de votação -->
+  <div class="text-center">
+    <button class="button" onclick="votar()">Votar em Todos</button>
   </div>
 
   <script>
-    // Função para calcular os totais dos rappers com base nas notas
-    function calcularPontuacao(rapper) {
-      const material = parseInt(document.getElementById(rapper + '-material').value) || 0;
-      const confronto = parseInt(document.getElementById(rapper + '-confronto').value) || 0;
-      const adversarios = parseInt(document.getElementById(rapper + '-adversarios').value) || 0;
-      const consistencia = parseInt(document.getElementById(rapper + '-consistencia').value) || 0;
-      const performance = parseInt(document.getElementById(rapper + '-performance').value) || 0;
-      const impacto = parseInt(document.getElementById(rapper + '-impacto').value) || 0;
+    function calcularPontuacao(rapperId) {
+      const material = parseInt(document.getElementById(`material-${rapperId}`).value) || 0;
+      const confronto = parseInt(document.getElementById(`confronto-${rapperId}`).value) || 0;
+      const adversarios = parseInt(document.getElementById(`adversarios-${rapperId}`).value) || 0;
+      const consistencia = parseInt(document.getElementById(`consistencia-${rapperId}`).value) || 0;
+      const performance = parseInt(document.getElementById(`performance-${rapperId}`).value) || 0;
+      const impacto = parseInt(document.getElementById(`impacto-${rapperId}`).value) || 0;
 
-      // Calcula a pontuação total
-      const total = material + confronto + adversarios + consistencia + performance + impacto;
-
-      // Atribui o total no campo correspondente
-      document.getElementById(rapper + '-total').value = total;
+      let pontuacao = (material * 0.25) + (confronto * 0.25) + (adversarios * 0.20) + 
+                      (consistencia * 0.10) + (performance * 0.10) + (impacto * 0.10);
+      
+      return pontuacao;
     }
 
-    // Atualizar pontuação total sempre que os valores mudarem
-    document.querySelectorAll('input[type="number"]').forEach(input => {
-      input.addEventListener('input', () => {
-        calcularPontuacao('3ma');
-        calcularPontuacao('abismal');
-      });
-    });
+    function classificarTier(pontuacao) {
+      if (pontuacao >= 80) return "Tier 1";
+      if (pontuacao >= 60) return "Tier 2";
+      if (pontuacao >= 40) return "Tier 3";
+      if (pontuacao >= 20) return "Tier 4";
+      return "Tier 5";
+    }
+
+    function votar() {
+      const rapperId = "3ma"; // Adapte para os outros rappers conforme necessário
+      const pontuacao = calcularPontuacao(rapperId);
+      const tier = classificarTier(pontuacao);
+
+      document.getElementById(`tier-${rapperId}`).innerText = tier;
+
+      alert(`Votação concluída para ${rapperId}. Tier atribuído: ${tier}`);
+    }
   </script>
 </body>
 </html>
