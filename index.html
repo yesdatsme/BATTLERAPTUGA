@@ -76,6 +76,11 @@
       font-size: 14px;
     }
 
+    .radio-group label {
+      display: inline-block;
+      margin-right: 10px;
+    }
+
     .table-container {
       margin-top: 50px;
       text-align: center;
@@ -101,55 +106,72 @@
     .tier {
       font-weight: bold;
     }
-
-    .radio-group label {
-      display: inline-block;
-      margin-right: 10px;
-    }
   </style>
 </head>
 <body>
 
-  <!-- Caixa de instruções restaurada -->
+  <!-- Caixa de instruções -->
   <div class="info-box">
     <h3>Instruções de Avaliação</h3>
-    <p>Escolha as avaliações para cada rapper nos seguintes critérios: Material, Confronto Direto, Adversários, Consistência, Performance, Impacto.</p>
-    <p>Selecione se o rapper era favorito ou underdog em relação ao adversário e escolha se ele ganhou, perdeu ou empatou.</p>
-    <p>Após completar, o sistema calculará o seu Tier de acordo com o desempenho nas batalhas e os critérios de avaliação.</p>
-
-    <h3>Critérios e Pesos</h3>
+    <p>Escolha as avaliações para o rapper da coluna. Avalie o rapper nos critérios:</p>
     <ul>
-      <li>Material: 25% (mais importante)</li>
-      <li>Confronto Direto: 25% (mais importante)</li>
-      <li>Adversários: 20% (importante)</li>
-      <li>Consistência: 10% (menos importante)</li>
-      <li>Performance: 10% (menos importante)</li>
-      <li>Impacto: 10% (menos importante)</li>
+      <li>Material</li>
+      <li>Confronto Direto</li>
+      <li>Adversários</li>
+      <li>Consistência</li>
+      <li>Performance</li>
+      <li>Impacto</li>
     </ul>
-
-    <p><strong>Instruções:</strong> Este sistema de avaliação atribui pesos diferenciados aos critérios para determinar a pontuação de cada rapper. Os critérios Material, Confronto Direto e Adversários têm um peso maior, enquanto Consistência, Performance e Impacto têm menor peso.</p>
-    <p>A pontuação é inicialmente calculada somando-se as notas de cada critério multiplicadas pelos seus respectivos pesos.</p>
-    <p>Após calcular a pontuação inicial, o status do rapper (favorito ou underdog) é levado em conta para ajustar a pontuação, dependendo do resultado da batalha.</p>
-    <ul>
-      <li>Favorito que perde: Perde 20% da pontuação.</li>
-      <li>Underdog que ganha: Ganha 20% de bônus.</li>
-      <li>Favorito que ganha: Não há alteração na pontuação.</li>
-      <li>Underdog que perde: Não há alteração na pontuação.</li>
-    </ul>
+    <p>Em seguida, escolha para cada batalha se o rapper era favorito ou underdog e o resultado da batalha (Venceu, Perdeu, Empatou). As batalhas do rapper serão exibidas com botões de "Assistir" que redirecionam para o YouTube.</p>
   </div>
 
-  <!-- Colunas para cada rapper -->
+  <!-- Coluna do rapper 3ma -->
   <div class="rapper-column" id="rapper-3ma">
-    <img src="https://via.placeholder.com/150" alt="Imagem do 3ma"> <!-- Adicione uma imagem real do rapper -->
+    <img src="https://via.placeholder.com/150" alt="Imagem do 3ma">
     <h2>
       <a href="https://www.youtube.com/results?search_query=3ma" target="_blank">3ma</a>
     </h2>
 
-    <h3>Adversários</h3>
+    <!-- Avaliação do rapper -->
+    <h3>Avaliação do rapper</h3>
 
-    <!-- Para cada adversário, link para assistir, seleção de resultado e seleção de underdog/favorito -->
+    <!-- Critérios -->
     <div class="input-group">
-      <button class="button" onclick="assistir('3ma', 'Shap3')">3ma VS Shap3 - Assistir</button>
+      <label for="nota-material-3ma">Material (0-10):</label>
+      <input type="number" name="nota-material-3ma" min="0" max="10">
+    </div>
+
+    <div class="input-group">
+      <label for="nota-confronto-3ma">Confronto Direto (0-10):</label>
+      <input type="number" name="nota-confronto-3ma" min="0" max="10">
+    </div>
+
+    <div class="input-group">
+      <label for="nota-adversarios-3ma">Adversários (0-10):</label>
+      <input type="number" name="nota-adversarios-3ma" min="0" max="10">
+    </div>
+
+    <div class="input-group">
+      <label for="nota-consistencia-3ma">Consistência (0-10):</label>
+      <input type="number" name="nota-consistencia-3ma" min="0" max="10">
+    </div>
+
+    <div class="input-group">
+      <label for="nota-performance-3ma">Performance (0-10):</label>
+      <input type="number" name="nota-performance-3ma" min="0" max="10">
+    </div>
+
+    <div class="input-group">
+      <label for="nota-impacto-3ma">Impacto (0-10):</label>
+      <input type="number" name="nota-impacto-3ma" min="0" max="10">
+    </div>
+
+    <!-- Batalhas -->
+    <h3>Batalhas</h3>
+
+    <!-- Para cada batalha, botões de assistir -->
+    <div class="input-group">
+      <button class="button" onclick="assistir('3ma', 'Shap3')">3ma VS Shap3</button>
       <label for="resultado-3ma-shap3">Resultado:</label>
       <div class="radio-group">
         <label><input type="radio" name="resultado-3ma-shap3" value="ganhou"> Ganhou</label>
@@ -164,7 +186,7 @@
     </div>
 
     <div class="input-group">
-      <button class="button" onclick="assistir('3ma', 'LC')">3ma VS LC - Assistir</button>
+      <button class="button" onclick="assistir('3ma', 'LC')">3ma VS LC</button>
       <label for="resultado-3ma-lc">Resultado:</label>
       <div class="radio-group">
         <label><input type="radio" name="resultado-3ma-lc" value="ganhou"> Ganhou</label>
@@ -179,7 +201,7 @@
     </div>
 
     <div class="input-group">
-      <button class="button" onclick="assistir('3ma', 'KM')">3ma VS KM - Assistir</button>
+      <button class="button" onclick="assistir('3ma', 'KM')">3ma VS KM</button>
       <label for="resultado-3ma-km">Resultado:</label>
       <div class="radio-group">
         <label><input type="radio" name="resultado-3ma-km" value="ganhou"> Ganhou</label>
@@ -200,38 +222,27 @@
       <thead>
         <tr>
           <th>Rapper</th>
-          <th>Tier</th>
-          <th>Batalhas Ganhas</th>
-          <th>Batalhas Perdidas</th>
-          <th>Melhor Critério</th>
+          <th>Vitórias</th>
+          <th>Perdidas</th>
+          <th>TIER</th>
+          <th>Pontuação</th>
         </tr>
       </thead>
-      <tbody>
-        <!-- Exemplo de dados -->
-        <tr>
-          <td>3ma</td>
-          <td class="tier">1</td>
-          <td>2</td>
-          <td>1</td>
-          <td>Material</td>
-        </tr>
-        <tr>
-          <td>Shap3</td>
-          <td class="tier">2</td>
-          <td>1</td>
-          <td>2</td>
-          <td>Confronto Direto</td>
-        </tr>
+      <tbody id="ranking">
+        <!-- Dados dos rappers serão populados aqui -->
       </tbody>
     </table>
   </div>
 
   <script>
-    // Função para abrir a pesquisa no YouTube para a batalha
-    function assistir(rapper, adversario) {
-      // Corrigir redirecionamento para "rapper vs adversario"
-      const url = `https://www.youtube.com/results?search_query=${rapper}+vs+${adversario}`;
-      window.open(url, '_blank');
+    function assistir(rapper1, rapper2) {
+      window.open(`https://www.youtube.com/results?search_query=${rapper1}+vs+${rapper2}`, '_blank');
+    }
+
+    // Função para calcular e exibir o ranking
+    function calcularRanking() {
+      // Implementação da lógica de cálculo do ranking
+      // Esta função pode ser ajustada conforme a lógica de cálculo dos critérios, vitórias, etc.
     }
   </script>
 
