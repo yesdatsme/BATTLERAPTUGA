@@ -103,6 +103,15 @@
         .summary-table th {
             background-color: #f4f4f4;
         }
+
+        .battle-info {
+            margin-top: 10px;
+            font-size: 14px;
+        }
+
+        .battle-info a {
+            color: #0066cc;
+        }
     </style>
 </head>
 <body>
@@ -152,34 +161,45 @@
                 <input type="number" id="performance-abismal" min="1" max="10">
                 <label for="impacto-abismal">Impacto:</label>
                 <input type="number" id="impacto-abismal" min="1" max="10">
-                
-                <label for="favorite-underdog-abismal">Favorito/Underdog:</label>
-                <select id="favorite-underdog-abismal">
-                    <option value="favorito">Favorito</option>
-                    <option value="underdog">Underdog</option>
-                </select>
-                <label for="result-abismal">Resultado:</label>
-                <select id="result-abismal">
-                    <option value="ganhou">Ganhou</option>
-                    <option value="perdeu">Perdeu</option>
-                    <option value="empatou">Empatou</option>
-                </select>
             </div>
 
-            <!-- Outros adversários -->
-            <div>
-                <strong>Adversário 1:</strong> <a href="https://www.youtube.com/results?search_query=Abismal+vs+Edi+Ventura" target="_blank">Edi Ventura</a>
+            <!-- Adversários e status -->
+            <div class="battle-info">
+                <strong>Adversários:</strong>
+                <div>
+                    <label for="favorite-underdog-abismal-edi">Favorito/Underdog contra Edi Ventura:</label>
+                    <select id="favorite-underdog-abismal-edi">
+                        <option value="favorito">Favorito</option>
+                        <option value="underdog">Underdog</option>
+                    </select>
+                    <label for="result-abismal-edi">Resultado:</label>
+                    <select id="result-abismal-edi">
+                        <option value="ganhou">Ganhou</option>
+                        <option value="perdeu">Perdeu</option>
+                        <option value="empatou">Empatou</option>
+                    </select>
+                    <br><br>
+                    <a href="https://www.youtube.com/results?search_query=Abismal+vs+Edi+Ventura" target="_blank">Abismal vs Edi Ventura</a>
+                </div>
+                <div>
+                    <label for="favorite-underdog-abismal-flajo">Favorito/Underdog contra Flajo:</label>
+                    <select id="favorite-underdog-abismal-flajo">
+                        <option value="favorito">Favorito</option>
+                        <option value="underdog">Underdog</option>
+                    </select>
+                    <label for="result-abismal-flajo">Resultado:</label>
+                    <select id="result-abismal-flajo">
+                        <option value="ganhou">Ganhou</option>
+                        <option value="perdeu">Perdeu</option>
+                        <option value="empatou">Empatou</option>
+                    </select>
+                    <br><br>
+                    <a href="https://www.youtube.com/results?search_query=Abismal+vs+Flajo" target="_blank">Abismal vs Flajo</a>
+                </div>
             </div>
-
-            <div>
-                <strong>Adversário 2:</strong> <a href="https://www.youtube.com/results?search_query=Abismal+vs+Flajo" target="_blank">Flajo</a>
-            </div>
-
         </div>
 
-        <!-- Adicione mais colunas para outros rappers da mesma forma -->
-        <!-- Por exemplo, coluna para "AM" -->
-        <!-- Repita a estrutura para outros rappers -->
+        <!-- Adicione mais colunas para outros rappers -->
     </div>
 
     <button id="submit-btn">Submeter Avaliações</button>
@@ -201,7 +221,7 @@
                 <td>3</td>
                 <td>1</td>
                 <td>0</td>
-                <td>Material: 8, Confronto Direto: 7, Adversários: 6, Consistência: 7, Performance: 8, Impacto: 7</td>
+                <td>Material: 8, Confronto Direto: 7, Adversários: 8, Consistência: 7, Performance: 6, Impacto: 7</td>
                 <td>Vencedor</td>
             </tr>
             <!-- Outras linhas com dados de outros rappers -->
