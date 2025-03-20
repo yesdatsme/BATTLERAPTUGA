@@ -71,14 +71,15 @@
     }
 
     .button {
-      padding: 5px 10px;
+      padding: 10px 20px;
       background-color: #4CAF50;
       color: white;
       border: none;
       border-radius: 5px;
       cursor: pointer;
-      font-size: 14px;
+      font-size: 16px;
       transition: background-color 0.3s ease;
+      width: 100%;
     }
 
     .button:hover {
@@ -109,6 +110,18 @@
 
     .tier {
       font-weight: bold;
+    }
+
+    /* Estilo para o link "Assistir" */
+    .assistir-link {
+      color: #4CAF50;
+      text-decoration: none;
+      font-weight: bold;
+      margin-left: 5px;
+    }
+
+    .assistir-link:hover {
+      text-decoration: underline;
     }
   </style>
 </head>
@@ -181,7 +194,7 @@
       <!-- Batalhas -->
       <h3>Batalhas</h3>
 
-      <!-- Para cada batalha, botões de assistir e escolher resultado e favorito -->
+      <!-- Para cada batalha, seletores de resultado e link "Assistir" -->
       <div class="input-group">
         <label for="resultado-3ma-KM">Resultado 3ma VS KM:</label>
         <select id="resultado-3ma-KM">
@@ -194,7 +207,7 @@
           <option value="Favorito">Favorito</option>
           <option value="Underdog">Underdog</option>
         </select>
-        <button class="button" onclick="assistir('3ma', 'KM')">Assistir</button>
+        <a class="assistir-link" href="https://www.youtube.com/results?search_query=3ma+VS+KM" target="_blank">Assistir</a>
       </div>
 
       <div class="input-group">
@@ -209,7 +222,7 @@
           <option value="Favorito">Favorito</option>
           <option value="Underdog">Underdog</option>
         </select>
-        <button class="button" onclick="assistir('3ma', 'Shap3')">Assistir</button>
+        <a class="assistir-link" href="https://www.youtube.com/results?search_query=3ma+VS+Shap3" target="_blank">Assistir</a>
       </div>
 
       <div class="input-group">
@@ -224,7 +237,7 @@
           <option value="Favorito">Favorito</option>
           <option value="Underdog">Underdog</option>
         </select>
-        <button class="button" onclick="assistir('3ma', 'Lc')">Assistir</button>
+        <a class="assistir-link" href="https://www.youtube.com/results?search_query=3ma+VS+Lc" target="_blank">Assistir</a>
       </div>
 
       <!-- Botão de votar (apenas um por coluna) -->
@@ -278,7 +291,7 @@
       <!-- Batalhas -->
       <h3>Batalhas</h3>
 
-      <!-- Para cada batalha, botões de assistir e escolher resultado e favorito -->
+      <!-- Para cada batalha, seletores de resultado e link "Assistir" -->
       <div class="input-group">
         <label for="resultado-Abismal-EdiVentura">Resultado Abismal VS Edi Ventura:</label>
         <select id="resultado-Abismal-EdiVentura">
@@ -291,7 +304,7 @@
           <option value="Favorito">Favorito</option>
           <option value="Underdog">Underdog</option>
         </select>
-        <button class="button" onclick="assistir('Abismal', 'Edi Ventura')">Assistir</button>
+        <a class="assistir-link" href="https://www.youtube.com/results?search_query=Abismal+VS+Edi Ventura" target="_blank">Assistir</a>
       </div>
 
       <div class="input-group">
@@ -306,7 +319,7 @@
           <option value="Favorito">Favorito</option>
           <option value="Underdog">Underdog</option>
         </select>
-        <button class="button" onclick="assistir('Abismal', 'Flajo')">Assistir</button>
+        <a class="assistir-link" href="https://www.youtube.com/results?search_query=Abismal+VS+Flajo" target="_blank">Assistir</a>
       </div>
 
       <div class="input-group">
@@ -321,7 +334,7 @@
           <option value="Favorito">Favorito</option>
           <option value="Underdog">Underdog</option>
         </select>
-        <button class="button" onclick="assistir('Abismal', 'WilsonG')">Assistir</button>
+        <a class="assistir-link" href="https://www.youtube.com/results?search_query=Abismal+VS+WilsonG" target="_blank">Assistir</a>
       </div>
 
       <!-- Botão de votar (apenas um por coluna) -->
@@ -356,9 +369,21 @@
   </div>
 
   <script>
-    function assistir(rapper, adversario) {
-      // Função para abrir a batalha no YouTube
-      window.open('https://www.youtube.com/results?search_query=' + rapper + '+VS+' + adversario, '_blank');
+    function votar(rapper) {
+      const pontuacao = calcularPontuacao(rapper);
+      const tier = determinarTier(pontuacao);
+
+      // Atualiza a tabela de resultados
+      const tabela = document.getElementById("tabela-resultados");
+      const row = tabela.insertRow();
+
+      row.insertCell(0).textContent = rapper;
+      row.insertCell(1).textContent = 0; // Vitórias (a ser implementado)
+      row.insertCell(2).textContent = 0; // Derrotas (a ser implementado)
+      row.insertCell(3).textContent = 0; // Empates (a ser implementado)
+      row.insertCell(4).textContent = pontuacao.toFixed(2);
+      row.insertCell(5).textContent = 'Material'; // Critério mais forte (a ser implementado)
+      row.insertCell(6).textContent = tier;
     }
 
     function calcularPontuacao(rapper) {
@@ -413,23 +438,6 @@
       if (pontuacao >= 7) return 'TIER 2';
       if (pontuacao >= 5) return 'TIER 3';
       return 'TIER 4';
-    }
-
-    function votar(rapper) {
-      const pontuacao = calcularPontuacao(rapper);
-      const tier = determinarTier(pontuacao);
-
-      // Atualiza a tabela de resultados
-      const tabela = document.getElementById("tabela-resultados");
-      const row = tabela.insertRow();
-
-      row.insertCell(0).textContent = rapper;
-      row.insertCell(1).textContent = 0; // Vitórias (a ser implementado)
-      row.insertCell(2).textContent = 0; // Derrotas (a ser implementado)
-      row.insertCell(3).textContent = 0; // Empates (a ser implementado)
-      row.insertCell(4).textContent = pontuacao.toFixed(2);
-      row.insertCell(5).textContent = 'Material'; // Critério mais forte (a ser implementado)
-      row.insertCell(6).textContent = tier;
     }
   </script>
 </body>
