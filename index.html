@@ -185,39 +185,9 @@
       </div>
     </div>
 
-    <div class="input-group">
-      <button class="button" onclick="assistir('3ma', 'LC')">3ma VS LC</button>
-      <label for="resultado-3ma-lc">Resultado:</label>
-      <div class="radio-group">
-        <label><input type="radio" name="resultado-3ma-lc" value="ganhou"> Ganhou</label>
-        <label><input type="radio" name="resultado-3ma-lc" value="perdeu"> Perdeu</label>
-        <label><input type="radio" name="resultado-3ma-lc" value="empatou"> Empatou</label>
-      </div>
-      <label for="underdog-favorito-3ma-lc">Favorito/Underdog:</label>
-      <div class="radio-group">
-        <label><input type="radio" name="underdog-favorito-3ma-lc" value="favorito"> Favorito</label>
-        <label><input type="radio" name="underdog-favorito-3ma-lc" value="underdog"> Underdog</label>
-      </div>
-    </div>
-
-    <div class="input-group">
-      <button class="button" onclick="assistir('3ma', 'KM')">3ma VS KM</button>
-      <label for="resultado-3ma-km">Resultado:</label>
-      <div class="radio-group">
-        <label><input type="radio" name="resultado-3ma-km" value="ganhou"> Ganhou</label>
-        <label><input type="radio" name="resultado-3ma-km" value="perdeu"> Perdeu</label>
-        <label><input type="radio" name="resultado-3ma-km" value="empatou"> Empatou</label>
-      </div>
-      <label for="underdog-favorito-3ma-km">Favorito/Underdog:</label>
-      <div class="radio-group">
-        <label><input type="radio" name="underdog-favorito-3ma-km" value="favorito"> Favorito</label>
-        <label><input type="radio" name="underdog-favorito-3ma-km" value="underdog"> Underdog</label>
-      </div>
-    </div>
-
     <!-- Botão de votar -->
     <div class="input-group">
-      <button class="button" onclick="votar('3ma')">Votar</button>
+      <button class="button" onclick="votar('3ma', 'Shap3')">Votar</button>
     </div>
   </div>
 
@@ -246,36 +216,80 @@
     }
 
     // Função para votar e atualizar a tabela
-    function votar(rapper) {
-      const material = document.querySelector(`input[name="nota-material-${rapper}"]`).value;
-      const confronto = document.querySelector(`input[name="nota-confronto-${rapper}"]`).value;
-      const adversarios = document.querySelector(`input[name="nota-adversarios-${rapper}"]`).value;
-      const consistencia = document.querySelector(`input[name="nota-consistencia-${rapper}"]`).value;
-      const performance = document.querySelector(`input[name="nota-performance-${rapper}"]`).value;
-      const impacto = document.querySelector(`input[name="nota-impacto-${rapper}"]`).value;
+    function votar(rapper1, rapper2) {
+      const resultado = document.querySelector(`input[name="resultado-${rapper1.toLowerCase()}-${rapper2.toLowerCase()}"]:checked`);
+      const favorito = document.querySelector(`input[name="underdog-favorito-${rapper1.toLowerCase()}-${rapper2.toLowerCase()}"]:checked`).value;
+      
+      if (resultado) {
+        const resultadoValue = resultado.value;
 
-      // Calcular a pontuação total
-      const pontuacaoTotal = parseInt(material) + parseInt(confronto) + parseInt(adversarios) +
-                             parseInt(consistencia) + parseInt(performance) + parseInt(impacto);
+        // Atualizar as vitórias e derrotas
+        const tabela = document.getElementById('ranking');
+        let rapper1Row = document.getElementById(rapper1);
+        let rapper2Row = document.getElementById(rapper2);
 
-      // Atualizar o ranking com os dados
-      const tabela = document.getElementById('ranking');
-      let rapperRow = document.getElementById(rapper);
+        if (!rapper1Row) {
+          rapper1Row = document.createElement('tr');
+          rapper1Row.id = rapper1;
+          tabela.appendChild(rapper1Row);
+        }
+        
+        if (!rapper2Row) {
+          rapper2Row = document.createElement('tr');
+          rapper2Row.id = rapper2;
+          tabela.appendChild(rapper2Row);
+        }
 
-      if (!rapperRow) {
-        rapperRow = document.createElement('tr');
-        rapperRow.id = rapper;
-        tabela.appendChild(rapperRow);
+        // Atualizando vitórias e derrotas conforme o resultado
+        if (resultadoValue === "ganhou") {
+          rapper1Row.innerHTML = `
+            <td>${rapper1}</td>
+            <td>1</td>
+            <td>0</td>
+            <td>TIER A</td>
+            <td>50</td>
+          `;
+          rapper2Row.innerHTML = `
+            <td>${rapper2}</td>
+            <td>0</td>
+            <td>1</td>
+            <td>TIER B</td>
+            <td>45</td>
+          `;
+        } else if (resultadoValue === "perdeu") {
+          rapper1Row.innerHTML = `
+            <td>${rapper1}</td>
+            <td>0</td>
+            <td>1</td>
+            <td>TIER B</td>
+            <td>45</td>
+          `;
+          rapper2Row.innerHTML = `
+            <td>${rapper2}</td>
+            <td>1</td>
+            <td>0</td>
+            <td>TIER A</td>
+            <td>50</td>
+          `;
+        } else if (resultadoValue === "empatou") {
+          rapper1Row.innerHTML = `
+            <td>${rapper1}</td>
+            <td>0</td>
+            <td>0</td>
+            <td>TIER A</td>
+            <td>47</td>
+          `;
+          rapper2Row.innerHTML = `
+            <td>${rapper2}</td>
+            <td>0</td>
+            <td>0</td>
+            <td>TIER A</td>
+            <td>47</td>
+          `;
+        }
+      } else {
+        alert("Selecione um resultado para a batalha");
       }
-
-      // Adicionar ou atualizar os dados do rapper
-      rapperRow.innerHTML = `
-        <td>${rapper}</td>
-        <td>0</td> <!-- Vitória -->
-        <td>0</td> <!-- Perda -->
-        <td>TIER A</td> <!-- TIER -->
-        <td>${pontuacaoTotal}</td>
-      `;
     }
   </script>
 </body>
