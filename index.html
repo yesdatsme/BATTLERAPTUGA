@@ -4570,151 +4570,8 @@
     <button class="button" onclick="votar('Zolty')">Votar</button>
   </div>
 </div>
-  </script>
-<script>
-  // Função para calcular a pontuação de um rapper
-  function calcularPontuacao(rapperId) {
-    // Cálculo dos critérios (avaliação)
-    const fields = ['material','confronto','adversarios','consistencia','performance','impacto'];
-    let total = 0, count = 0;
-    fields.forEach(function(field) {
-      const input = document.getElementById(`nota-${field}-${rapperId}`);
-      if(input && input.value) {
-         total += parseFloat(input.value);
-         count++;
-      }
-    });
-    let criteriaScore = count ? total / count : 0;
-    // Peso 30%
-    criteriaScore = criteriaScore * 0.3;
-    
-    // Cálculo dos resultados das batalhas
-    // Para cada batalha: Venceu = 1, Empatou = 0.5, Perdeu = 0
-    let wins = 0, losses = 0, draws = 0, battlePoints = 0;
-    const battleSelects = document.querySelectorAll(`#rapper-${rapperId} select[id^="resultado-${rapperId}-"]`);
-    battleSelects.forEach(function(select) {
-       const result = select.value;
-       if(result === "Venceu") { battlePoints += 1; wins++; }
-       else if(result === "Empatou") { battlePoints += 0.5; draws++; }
-       else if(result === "Perdeu") { battlePoints += 0; losses++; }
-    });
-    // Se houver batalhas, calcula a média (multiplicada por 10 para escalonar) e aplica peso de 50%
-    let battleScore = battleSelects.length ? (battlePoints / battleSelects.length) * 10 : 0;
-    battleScore = battleScore * 0.5;
-    
-    // Bônus de underdog nas batalhas vencidas – peso 20%
-    let underdogBonus = 0;
-    const favSelects = document.querySelectorAll(`#rapper-${rapperId} select[id^="favorito-${rapperId}-"]`);
-    favSelects.forEach(function(select, index) {
-       // Se na batalha correspondente o rapper venceu e foi marcado como "Underdog", soma bônus
-       const battleSelect = battleSelects[index];
-       if(battleSelect && battleSelect.value === "Venceu" && select.value === "Underdog") {
-         underdogBonus += 1;
-       }
-    });
-    let underdogScore = favSelects.length ? (underdogBonus / favSelects.length) * 10 : 0;
-    underdogScore = underdogScore * 0.2;
-    
-    // Soma dos componentes para a pontuação final
-    let finalScore = criteriaScore + battleScore + underdogScore;
-    
-    return {
-      criteria: criteriaScore.toFixed(2),
-      battle: battleScore.toFixed(2),
-      underdog: underdogScore.toFixed(2),
-      final: finalScore.toFixed(2),
-      wins: wins,
-      losses: losses,
-      draws: draws
-    };
-  }
 
-  // Função para atualizar a tabela de resultados
-  function atualizarTabela() {
-    // Supondo que sua tabela possua um tbody com id "resultadosTabelaBody"
-    let tableBody = document.getElementById('resultadosTabelaBody');
-    tableBody.innerHTML = ""; // Limpa dados anteriores
-
-    // Percorre cada rapper e atualiza os dados
-    const rappers = document.querySelectorAll('.rapper-column');
-    rappers.forEach(function(rapperDiv) {
-      const rapperId = rapperDiv.id.replace("rapper-", "");
-      const pontuacao = calcularPontuacao(rapperId);
-      // Define o critério mais forte (neste exemplo, usamos a média dos critérios)
-      let criterioMaisForte = pontuacao.criteria;
-      
-      // Definição simples de Tier:
-      // Se pontuação final alta e várias vitórias, considera Tier1; senão, Tier2.
-      let tier = "Tier2";
-      if(parseFloat(pontuacao.final) >= 7 && pontuacao.wins >= 2) {
-         tier = "Tier1";
-      }
-      // Cria a linha da tabela
-      const tr = document.createElement('tr');
-      tr.innerHTML = `<td>${rapperId}</td>
-                      <td>${pontuacao.wins}</td>
-                      <td>${pontuacao.losses}</td>
-                      <td>${pontuacao.final}</td>
-                      <td>${criterioMaisForte}</td>
-                      <td>${tier}</td>`;
-      tableBody.appendChild(tr);
-    });
-  }
-
-  // Função para sincronizar escolhas entre as batalhas (resultados e underdog/favorito)
-  function sincronizarEscolhas() {
-    // Sincronização para resultados
-    const battleResults = document.querySelectorAll('select[id^="resultado-"]');
-    battleResults.forEach(function(select) {
-      select.addEventListener('change', function() {
-        // Id no formato: resultado-Rapper1-Opponent
-        const parts = select.id.split("-");
-        if(parts.length < 3) return;
-        const rapper1 = parts[1];
-        const opponent = parts.slice(2).join("-");
-        const opponentSelect = document.getElementById(`resultado-${opponent}-${rapper1}`);
-        if(opponentSelect) {
-          if(select.value === "Venceu") {
-             opponentSelect.value = "Perdeu";
-          } else if(select.value === "Perdeu") {
-             opponentSelect.value = "Venceu";
-          } else {
-             opponentSelect.value = "Empatou";
-          }
-          opponentSelect.dispatchEvent(new Event('change'));
-        }
-        atualizarTabela();
-      });
-    });
-    // Sincronização para favorito/underdog
-    const favSelects = document.querySelectorAll('select[id^="favorito-"]');
-    favSelects.forEach(function(select) {
-      select.addEventListener('change', function() {
-         const parts = select.id.split("-");
-         if(parts.length < 3) return;
-         const rapper1 = parts[1];
-         const opponent = parts.slice(2).join("-");
-         const opponentFavSelect = document.getElementById(`favorito-${opponent}-${rapper1}`);
-         if(opponentFavSelect) {
-           opponentFavSelect.value = (select.value === "Underdog") ? "Favorito" : "Underdog";
-           opponentFavSelect.dispatchEvent(new Event('change'));
-         }
-         atualizarTabela();
-      });
-    });
-  }
-
-  // Adiciona listener para mudanças nos inputs de avaliação
-  document.querySelectorAll('input[type="number"]').forEach(function(input) {
-    input.addEventListener('change', atualizarTabela);
-  });
-
-  // Inicializa a sincronização e atualização da tabela
-  sincronizarEscolhas();
-  atualizarTabela();
-</script>
-<script>
-<!-- Sua tabela já existente -->
+<!-- Tabela de resultados -->
 <table id="resultadosTabela">
   <thead>
     <tr>
@@ -4731,163 +4588,80 @@
   </tbody>
 </table>
 
-<!-- Coloque o script abaixo, antes do fechamento da tag </body> -->
 <script>
-  // Função para calcular a pontuação de um rapper
   function calcularPontuacao(rapperId) {
-    // Soma e média dos critérios (avaliação)
-    const fields = ['material','confronto','adversarios','consistencia','performance','impacto'];
+    const fields = ['material', 'confronto', 'adversarios', 'consistencia', 'performance', 'impacto'];
     let total = 0, count = 0;
     fields.forEach(function(field) {
       const input = document.getElementById(`nota-${field}-${rapperId}`);
       if(input && input.value) {
-         total += parseFloat(input.value);
-         count++;
+        total += parseFloat(input.value);
+        count++;
       }
     });
     let criteriaScore = count ? total / count : 0;
-    // Aplica peso de 30%
     criteriaScore = criteriaScore * 0.3;
-    
-    // Calcula os resultados das batalhas: Venceu = 1, Empatou = 0.5, Perdeu = 0
-    let wins = 0, losses = 0, draws = 0, battlePoints = 0;
+
+    let battlePoints = 0;
     const battleSelects = document.querySelectorAll(`#rapper-${rapperId} select[id^="resultado-${rapperId}-"]`);
     battleSelects.forEach(function(select) {
-       const result = select.value;
-       if(result === "Venceu") { battlePoints += 1; wins++; }
-       else if(result === "Empatou") { battlePoints += 0.5; draws++; }
-       else if(result === "Perdeu") { battlePoints += 0; losses++; }
+      const result = select.value;
+      if(result === "Venceu") { battlePoints += 1; }
+      else if(result === "Empatou") { battlePoints += 0.5; }
     });
-    // Escalona a média dos resultados e aplica peso de 50%
+
     let battleScore = battleSelects.length ? (battlePoints / battleSelects.length) * 10 : 0;
     battleScore = battleScore * 0.5;
-    
-    // Bônus para underdog nas batalhas vencidas – peso de 20%
+
     let underdogBonus = 0;
     const favSelects = document.querySelectorAll(`#rapper-${rapperId} select[id^="favorito-${rapperId}-"]`);
     favSelects.forEach(function(select, index) {
-       // Se na batalha o rapper venceu e foi marcado como "Underdog", soma bônus
-       const battleSelect = battleSelects[index];
-       if(battleSelect && battleSelect.value === "Venceu" && select.value === "Underdog") {
-         underdogBonus += 1;
-       }
+      const battleSelect = battleSelects[index];
+      if(battleSelect && battleSelect.value === "Venceu" && select.value === "Underdog") {
+        underdogBonus += 1;
+      }
     });
     let underdogScore = favSelects.length ? (underdogBonus / favSelects.length) * 10 : 0;
     underdogScore = underdogScore * 0.2;
-    
-    // Pontuação final é a soma dos três componentes
+
     let finalScore = criteriaScore + battleScore + underdogScore;
-    
+
     return {
       criteria: criteriaScore.toFixed(2),
       battle: battleScore.toFixed(2),
       underdog: underdogScore.toFixed(2),
       final: finalScore.toFixed(2),
-      wins: wins,
-      losses: losses,
-      draws: draws
+      wins: battlePoints,
+      losses: battleSelects.length - battlePoints
     };
   }
 
-  // Função para atualizar a tabela de resultados
   function atualizarTabela() {
-    // Seleciona o tbody da tabela de resultados
     let tableBody = document.getElementById('resultadosTabelaBody');
-    tableBody.innerHTML = ""; // Limpa os dados anteriores
+    tableBody.innerHTML = "";
 
-    // Para cada rapper (cada div com a classe "rapper-column")
     const rappers = document.querySelectorAll('.rapper-column');
     rappers.forEach(function(rapperDiv) {
       const rapperId = rapperDiv.id.replace("rapper-", "");
       const pontuacao = calcularPontuacao(rapperId);
-      // Aqui usamos a média dos critérios como o "Critério Mais Forte"
-      let criterioMaisForte = pontuacao.criteria;
-      
-      // Definição simples do Tier: se pontuação final alta e várias vitórias, é Tier1
-      let tier = "Tier2";
-      if(parseFloat(pontuacao.final) >= 7 && pontuacao.wins >= 2) {
-         tier = "Tier1";
-      }
-      // Cria uma linha na tabela com os dados
+      let tier = pontuacao.final >= 7 && pontuacao.wins >= 2 ? "Tier1" : "Tier2";
       const tr = document.createElement('tr');
       tr.innerHTML = `<td>${rapperId}</td>
                       <td>${pontuacao.wins}</td>
                       <td>${pontuacao.losses}</td>
                       <td>${pontuacao.final}</td>
-                      <td>${criterioMaisForte}</td>
+                      <td>${pontuacao.criteria}</td>
                       <td>${tier}</td>`;
       tableBody.appendChild(tr);
     });
   }
 
-  // Função para sincronizar as escolhas entre os seletores de batalha
-  function sincronizarEscolhas() {
-    // Sincroniza resultados: se um rapper é marcado como vencedor, o oponente é automaticamente marcado como perdedor
-    const battleResults = document.querySelectorAll('select[id^="resultado-"]');
-    battleResults.forEach(function(select) {
-      select.addEventListener('change', function() {
-        // O id está no formato: resultado-Rapper1-Opponent
-        const parts = select.id.split("-");
-        if(parts.length < 3) return;
-        const rapper1 = parts[1];
-        const opponent = parts.slice(2).join("-");
-        const opponentSelect = document.getElementById(`resultado-${opponent}-${rapper1}`);
-        if(opponentSelect) {
-          if(select.value === "Venceu") {
-             opponentSelect.value = "Perdeu";
-          } else if(select.value === "Perdeu") {
-             opponentSelect.value = "Venceu";
-          } else {
-             opponentSelect.value = "Empatou";
-          }
-          opponentSelect.dispatchEvent(new Event('change'));
-        }
-        atualizarTabela();
-      });
-    });
-    // Sincroniza a escolha de underdog/favorito: se um rapper é marcado como underdog, o oponente automaticamente será favorito
-    const favSelects = document.querySelectorAll('select[id^="favorito-"]');
-    favSelects.forEach(function(select) {
-      select.addEventListener('change', function() {
-         const parts = select.id.split("-");
-         if(parts.length < 3) return;
-         const rapper1 = parts[1];
-         const opponent = parts.slice(2).join("-");
-         const opponentFavSelect = document.getElementById(`favorito-${opponent}-${rapper1}`);
-         if(opponentFavSelect) {
-           opponentFavSelect.value = (select.value === "Underdog") ? "Favorito" : "Underdog";
-           opponentFavSelect.dispatchEvent(new Event('change'));
-         }
-         atualizarTabela();
-      });
-    });
-  }
-
-  // Atualiza a tabela sempre que um campo de avaliação for alterado
   document.querySelectorAll('input[type="number"]').forEach(function(input) {
     input.addEventListener('change', atualizarTabela);
   });
 
-  // Inicializa a sincronização e a atualização da tabela
-  sincronizarEscolhas();
   atualizarTabela();
 </script>
-<script>
-<table id="resultadosTabela">
-  <thead>
-    <tr>
-      <th>Rapper</th>
-      <th>Vitórias</th>
-      <th>Derrotas</th>
-      <th>Pontuação</th>
-      <th>Critério Mais Forte</th>
-      <th>Tier</th>
-    </tr>
-  </thead>
-  <tbody id="resultadosTabelaBody">
-    <!-- As linhas serão inseridas aqui automaticamente -->
-  </tbody>
-</table>
-</script>
+
 </body>
 </html>
