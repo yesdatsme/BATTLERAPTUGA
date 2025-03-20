@@ -4571,62 +4571,162 @@
   </div>
 </div>
 
-<!-- Scripts -->
-  <script src="https://www.gstatic.com/firebasejs/10.0.0/firebase-app.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/10.0.0/firebase-firestore.js"></script>
-  <script>
-    // Configuração do Firebase
-    const firebaseConfig = {
-      apiKey: "SUA_API_KEY",
-      authDomain: "SEU_DOMINIO.firebaseapp.com",
-      projectId: "SEU_PROJECT_ID",
-      storageBucket: "SEU_BUCKET.appspot.com",
-      messagingSenderId: "SEU_SENDER_ID",
-      appId: "SEU_APP_ID"
+<script>
+  // Função para calcular a pontuação de um rapper
+  function calcularPontuacao(rapperId) {
+    const material = parseFloat(document.getElementById(`nota-material-${rapperId}`).value) || 0;
+    const confronto = parseFloat(document.getElementById(`nota-confronto-${rapperId}`).value) || 0;
+    const adversarios = parseFloat(document.getElementById(`nota-adversarios-${rapperId}`).value) || 0;
+    const consistencia = parseFloat(document.getElementById(`nota-consistencia-${rapperId}`).value) || 0;
+    const performance = parseFloat(document.getElementById(`nota-performance-${rapperId}`).value) || 0;
+    const impacto = parseFloat(document.getElementById(`nota-impacto-${rapperId}`).value) || 0;
+
+    // Pesos dos critérios
+    const pesoMaterial = 0.25;
+    const pesoConfronto = 0.25;
+    const pesoAdversarios = 0.20;
+    const pesoConsistencia = 0.10;
+    const pesoPerformance = 0.10;
+    const pesoImpacto = 0.10;
+
+    // Cálculo da pontuação inicial
+    let pontuacao = (material * pesoMaterial) +
+                    (confronto * pesoConfronto) +
+                    (adversarios * pesoAdversarios) +
+                    (consistencia * pesoConsistencia) +
+                    (performance * pesoPerformance) +
+                    (impacto * pesoImpacto);
+
+    // Ajustar pontuação com base nas batalhas
+    const batalhas = document.querySelectorAll(`#rapper-${rapperId} .input-group select`);
+    batalhas.forEach(batalha => {
+      const resultado = batalha.value;
+      const favorito = batalha.nextElementSibling.nextElementSibling.value;
+
+      if (resultado === "Venceu" && favorito === "Underdog") {
+        pontuacao *= 1.20; // Underdog que ganha: +20%
+      } else if (resultado === "Perdeu" && favorito === "Favorito") {
+        pontuacao *= 0.80; // Favorito que perde: -20%
+      }
+    });
+
+    return pontuacao;
+  }
+
+  // Função para sincronizar as batalhas entre dois rappers
+  function sincronizarBatalha(rapperId, adversarioId, resultado, status) {
+    const adversarioSelects = document.querySelectorAll(`#rapper-${adversarioId} .input-group select`);
+    adversarioSelects.forEach(select => {
+      if (select.id.includes(rapperId)) {
+        // Atualiza o resultado da batalha para o adversário
+        select.value = resultado === "Venceu" ? "Perdeu" : resultado === "Perdeu" ? "Venceu" : "Empatou";
+        
+        // Atualiza o status (favorito/underdog) para o adversário
+        const statusSelect = select.nextElementSibling.nextElementSibling;
+        statusSelect.value = status === "Favorito" ? "Underdog" : "Favorito";
+      }
+    });
+  }
+
+  // Função para atualizar a tabela de resultados
+  function atualizarTabela() {
+    const rappers = document.querySelectorAll('.rapper-column');
+    const resultados = [];
+
+    rappers.forEach(rapper => {
+      const rapperId = rapper.id.replace('rapper-', '');
+      const pontuacao = calcularPontuacao(rapperId);
+      resultados.push({ nome: rapperId, pontuacao: pontuacao });
+    });
+
+    // Ordenar rappers por pontuação
+    resultados.sort((a, b) => b.pontuacao - a.pontuacao);
+
+    // Atualizar a tabela
+    const tabela = document.createElement('table');
+    tabela.className = 'results-table';
+    tabela.innerHTML = `
+      <thead>
+        <tr>
+          <th>Rapper</th>
+          <th>Pontuação</th>
+          <th>Tier</th>
+        </tr>
+      </thead>
+      <tbody>
+        ${resultados.map((rapper, index) => `
+          <tr>
+            <td>${rapper.nome}</td>
+            <td>${rapper.pontuacao.toFixed(2)}</td>
+            <td class="tier">${index < 5 ? 'S' : index < 15 ? 'A' : index < 30 ? 'B' : 'C'}</td>
+          </tr>
+        `).join('')}
+      </tbody>
+    `;
+
+    const tabelaContainer = document.querySelector('.table-container');
+    tabelaContainer.innerHTML = '';
+    tabelaContainer.appendChild(tabela);
+  }
+
+  // Função para salvar os votos no localStorage
+  function salvarVotos(rapperId) {
+    const votos = JSON.parse(localStorage.getItem('votos')) || {};
+    votos[rapperId] = {
+      material: document.getElementById(`nota-material-${rapperId}`).value,
+      confronto: document.getElementById(`nota-confronto-${rapperId}`).value,
+      adversarios: document.getElementById(`nota-adversarios-${rapperId}`).value,
+      consistencia: document.getElementById(`nota-consistencia-${rapperId}`).value,
+      performance: document.getElementById(`nota-performance-${rapperId}`).value,
+      impacto: document.getElementById(`nota-impacto-${rapperId}`).value,
+      batalhas: Array.from(document.querySelectorAll(`#rapper-${rapperId} .input-group select`)).map(select => select.value)
     };
+    localStorage.setItem('votos', JSON.stringify(votos));
+  }
 
-    // Inicialize o Firebase
-    const app = firebase.initializeApp(firebaseConfig);
-    const db = firebase.firestore();
+  // Função para carregar os votos do localStorage
+  function carregarVotos() {
+    const votos = JSON.parse(localStorage.getItem('votos')) || {};
+    Object.keys(votos).forEach(rapperId => {
+      const voto = votos[rapperId];
+      document.getElementById(`nota-material-${rapperId}`).value = voto.material;
+      document.getElementById(`nota-confronto-${rapperId}`).value = voto.confronto;
+      document.getElementById(`nota-adversarios-${rapperId}`).value = voto.adversarios;
+      document.getElementById(`nota-consistencia-${rapperId}`).value = voto.consistencia;
+      document.getElementById(`nota-performance-${rapperId}`).value = voto.performance;
+      document.getElementById(`nota-impacto-${rapperId}`).value = voto.impacto;
+      const selects = document.querySelectorAll(`#rapper-${rapperId} .input-group select`);
+      selects.forEach((select, index) => {
+        select.value = voto.batalhas[index];
+      });
+    });
+  }
 
-    // Função para salvar os votos no Firestore
-    function salvarVotos(rapperId, votos) {
-      db.collection("votos").doc(rapperId).set(votos)
-        .then(() => console.log("Votos salvos com sucesso!"))
-        .catch((error) => console.error("Erro ao salvar votos: ", error));
-    }
+  // Função para votar
+  function votar(rapperId) {
+    // Salva os votos do rapper atual
+    salvarVotos(rapperId);
 
-    // Função para carregar os votos do Firestore
-    function carregarVotos(rapperId) {
-      db.collection("votos").doc(rapperId).get()
-        .then((doc) => {
-          if (doc.exists) {
-            const votos = doc.data();
-            console.log("Votos carregados:", votos);
-            // Atualize os campos do formulário com os votos carregados
-          } else {
-            console.log("Nenhum voto encontrado para este rapper.");
-          }
-        })
-        .catch((error) => console.error("Erro ao carregar votos: ", error));
-    }
+    // Sincroniza as batalhas com os adversários
+    const batalhas = document.querySelectorAll(`#rapper-${rapperId} .input-group select`);
+    batalhas.forEach(batalha => {
+      const resultado = batalha.value;
+      const status = batalha.nextElementSibling.nextElementSibling.value;
+      const adversarioId = batalha.id.split('-').pop(); // Extrai o ID do adversário
 
-    // Exemplo de uso:
-    // Salvar votos para o rapper "3ma"
-    const votos3ma = {
-      material: 8,
-      confronto: 7,
-      adversarios: 9,
-      consistencia: 8,
-      performance: 9,
-      impacto: 8
-    };
-    salvarVotos("3ma", votos3ma);
+      // Sincroniza a batalha com o adversário
+      sincronizarBatalha(rapperId, adversarioId, resultado, status);
+    });
 
-    // Carregar votos para o rapper "3ma"
-    carregarVotos("3ma");
-  </script>
-</body>
-</html>
+    // Atualiza a tabela
+    atualizarTabela();
+  }
+
+  // Carregar votos ao carregar a página
+  window.onload = function() {
+    carregarVotos();
+    atualizarTabela();
+  };
+</script>
 </body>
 </html>
