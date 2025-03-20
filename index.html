@@ -3,135 +3,139 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ranking de Rappers</title>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    <title>Avaliação de Rappers - Batalhas</title>
     <style>
         body {
-            font-family: 'Roboto', sans-serif;
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
             margin: 0;
             padding: 0;
-            background-color: #f7f7f7;
+            display: flex;
+            justify-content: center;
+            flex-direction: column;
+            align-items: center;
+        }
+        h1 {
+            margin-top: 20px;
             color: #333;
         }
-
-        h2 {
-            text-align: center;
-            margin-top: 30px;
-            font-size: 28px;
-            color: #4CAF50;
-        }
-
-        .rapper-container {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: space-around;
-            padding: 20px;
-            margin-top: 30px;
-        }
-
         .rapper-card {
             background-color: #fff;
-            width: 22%;
-            border-radius: 15px;
-            margin: 15px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            margin: 20px;
             padding: 20px;
+            border-radius: 10px;
+            width: 250px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            display: inline-block;
             text-align: center;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            vertical-align: top;
         }
-
-        .rapper-card:hover {
-            transform: scale(1.05);
-            box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2);
-        }
-
         .rapper-card img {
             width: 120px;
             height: 120px;
             border-radius: 50%;
-            margin-bottom: 15px;
-        }
-
-        .rapper-card h3 {
-            font-size: 20px;
             margin-bottom: 10px;
+        }
+        .rapper-card h3 a {
             color: #333;
-        }
-
-        .rapper-card a {
             text-decoration: none;
-            color: #4CAF50;
-            font-weight: bold;
         }
-
-        .voting-options {
-            margin-top: 15px;
-            text-align: left;
+        .rapper-card h3 a:hover {
+            color: #007bff;
         }
-
+        .rapper-card .adversarios ul {
+            list-style-type: none;
+            padding-left: 0;
+        }
+        .rapper-card .adversarios li a {
+            color: #007bff;
+            text-decoration: none;
+        }
+        .rapper-card .adversarios li a:hover {
+            text-decoration: underline;
+        }
         .voting-options label {
             display: block;
-            margin: 8px 0;
-            font-weight: 500;
+            margin-top: 5px;
         }
-
-        .voting-options input, .voting-options select {
-            padding: 8px;
-            margin: 5px 0 10px;
-            width: 100%;
-            border: 1px solid #ccc;
-            border-radius: 5px;
+        .voting-options input {
+            width: 50px;
+            padding: 5px;
+            margin-top: 5px;
         }
-
-        .rapper-card button {
-            background-color: #4CAF50;
+        .voting-options select {
+            margin-top: 5px;
+        }
+        .voting-options button {
+            margin-top: 10px;
+            background-color: #28a745;
             color: white;
             border: none;
             padding: 10px;
             border-radius: 5px;
             cursor: pointer;
-            width: 100%;
-            font-size: 16px;
-            margin-top: 10px;
         }
-
-        .rapper-card button:hover {
-            background-color: #45a049;
+        .voting-options button:hover {
+            background-color: #218838;
         }
-
-        .score-table {
-            width: 100%;
-            margin-top: 30px;
+        .rapper-cards-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        .rapper-card + .rapper-card {
+            margin-left: 20px;
+        }
+        .results-container {
+            margin-top: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .results-table {
+            margin-top: 20px;
             border-collapse: collapse;
-            margin-bottom: 50px;
+            width: 100%;
+            max-width: 800px;
         }
-
-        .score-table th, .score-table td {
-            padding: 12px;
-            text-align: center;
+        .results-table th, .results-table td {
             border: 1px solid #ddd;
+            padding: 8px;
+            text-align: center;
         }
-
-        .score-table th {
-            background-color: #f4f4f4;
-            font-size: 18px;
+        .results-table th {
+            background-color: #007bff;
+            color: white;
         }
-
-        .score-table td {
-            font-size: 16px;
+        .results-table td {
+            background-color: #f9f9f9;
         }
     </style>
 </head>
 <body>
 
-    <h2>Ranking de Rappers</h2>
-    <p style="text-align: center; font-size: 18px;">Este sistema de avaliação atribui pesos diferenciados aos critérios para determinar a pontuação de cada rapper. Os critérios Material, Confronto Direto e Adversários têm um peso maior, enquanto Consistência, Performance e Impacto têm menor peso. A pontuação é inicialmente calculada somando-se as notas de cada critério multiplicadas pelos seus respectivos pesos.</p>
+    <h1>Avaliação de Rappers - Batalhas</h1>
+    <p>Por favor, avalie os rappers de acordo com os critérios e escolha os melhores!</p>
+    <p>Este sistema de avaliação atribui pesos diferenciados aos critérios para determinar a pontuação de cada rapper. Os critérios Material, Confronto Direto e Adversários têm um peso maior, enquanto Consistência, Performance e Impacto têm menor peso. A pontuação é inicialmente calculada somando-se as notas de cada critério multiplicadas pelos seus respectivos pesos.</p>
+    <p>Após calcular a pontuação inicial, o status do rapper (favorito ou underdog) é levado em conta para ajustar a pontuação, dependendo do resultado da batalha:</p>
+    <ul>
+        <li>Favorito que perde: Perde 20% da pontuação.</li>
+        <li>Underdog que ganha: Ganha 20% de bônus.</li>
+        <li>Favorito que ganha: Não há alteração na pontuação.</li>
+        <li>Underdog que perde: Não há alteração na pontuação.</li>
+    </ul>
 
-    <div class="rapper-container">
-        <!-- Card 3ma -->
+    <div class="rapper-cards-container">
+        <!-- 3ma -->
         <div class="rapper-card" id="3ma">
             <img src="https://via.placeholder.com/120" alt="3ma">
             <h3><a href="https://www.youtube.com/results?search_query=3ma" target="_blank">3ma</a></h3>
+            <div class="adversarios">
+                <ul>
+                    <li><a href="https://www.youtube.com/results?search_query=3ma%20vs%20Shap3" target="_blank">Adversário: Shap3</a></li>
+                    <li><a href="https://www.youtube.com/results?search_query=3ma%20vs%20Lc" target="_blank">Adversário: Lc</a></li>
+                </ul>
+            </div>
             <div class="voting-options">
                 <label for="3ma_consistencia">Consistência (1-10):</label>
                 <input type="number" id="3ma_consistencia" min="1" max="10">
@@ -145,14 +149,30 @@
                 <input type="number" id="3ma_impacto" min="1" max="10">
                 <label for="3ma_confronto">Confronto Direto (1-10):</label>
                 <input type="number" id="3ma_confronto" min="1" max="10">
+                
+                <!-- Escolher se é favorito, underdog ou empate -->
+                <label for="3ma_status">Status:</label>
+                <select id="3ma_status">
+                    <option value="favorito">Favorito</option>
+                    <option value="underdog">Underdog</option>
+                    <option value="empate">Empate</option>
+                </select>
+                
                 <button onclick="submitVote('3ma')">Votar</button>
             </div>
         </div>
 
-        <!-- Card Abismal -->
+        <!-- Abismal -->
         <div class="rapper-card" id="Abismal">
             <img src="https://via.placeholder.com/120" alt="Abismal">
             <h3><a href="https://www.youtube.com/results?search_query=Abismal" target="_blank">Abismal</a></h3>
+            <div class="adversarios">
+                <ul>
+                    <li><a href="https://www.youtube.com/results?search_query=Abismal%20vs%20Edi%20Ventura" target="_blank">Adversário: Edi Ventura</a></li>
+                    <li><a href="https://www.youtube.com/results?search_query=Abismal%20vs%20Flajo" target="_blank">Adversário: Flajo</a></li>
+                    <li><a href="https://www.youtube.com/results?search_query=Abismal%20vs%20WilsonG" target="_blank">Adversário: WilsonG</a></li>
+                </ul>
+            </div>
             <div class="voting-options">
                 <label for="Abismal_consistencia">Consistência (1-10):</label>
                 <input type="number" id="Abismal_consistencia" min="1" max="10">
@@ -166,69 +186,56 @@
                 <input type="number" id="Abismal_impacto" min="1" max="10">
                 <label for="Abismal_confronto">Confronto Direto (1-10):</label>
                 <input type="number" id="Abismal_confronto" min="1" max="10">
+                
+                <!-- Escolher se é favorito, underdog ou empate -->
+                <label for="Abismal_status">Status:</label>
+                <select id="Abismal_status">
+                    <option value="favorito">Favorito</option>
+                    <option value="underdog">Underdog</option>
+                    <option value="empate">Empate</option>
+                </select>
+                
                 <button onclick="submitVote('Abismal')">Votar</button>
             </div>
         </div>
+        <!-- Adicione o restante dos rappers e adversários aqui, seguindo a mesma lógica -->
+    </div>
 
-        <!-- Card AM -->
-        <div class="rapper-card" id="AM">
-            <img src="https://via.placeholder.com/120" alt="AM">
-            <h3><a href="https://www.youtube.com/results?search_query=AM" target="_blank">AM</a></h3>
-            <div class="voting-options">
-                <label for="AM_consistencia">Consistência (1-10):</label>
-                <input type="number" id="AM_consistencia" min="1" max="10">
-                <label for="AM_material">Material (1-10):</label>
-                <input type="number" id="AM_material" min="1" max="10">
-                <label for="AM_performance">Performance (1-10):</label>
-                <input type="number" id="AM_performance" min="1" max="10">
-                <label for="AM_adversarios">Adversários (1-10):</label>
-                <input type="number" id="AM_adversarios" min="1" max="10">
-                <label for="AM_impacto">Impacto (1-10):</label>
-                <input type="number" id="AM_impacto" min="1" max="10">
-                <label for="AM_confronto">Confronto Direto (1-10):</label>
-                <input type="number" id="AM_confronto" min="1" max="10">
-                <button onclick="submitVote('AM')">Votar</button>
-            </div>
-        </div>
-
-        <!-- Card AZ -->
-        <div class="rapper-card" id="AZ">
-            <img src="https://via.placeholder.com/120" alt="AZ">
-            <h3><a href="https://www.youtube.com/results?search_query=AZ" target="_blank">AZ</a></h3>
-            <div class="voting-options">
-                <label for="AZ_consistencia">Consistência (1-10):</label>
-                <input type="number" id="AZ_consistencia" min="1" max="10">
-                <label for="AZ_material">Material (1-10):</label>
-                <input type="number" id="AZ_material" min="1" max="10">
-                <label for="AZ_performance">Performance (1-10):</label>
-                <input type="number" id="AZ_performance" min="1" max="10">
-                <label for="AZ_adversarios">Adversários (1-10):</label>
-                <input type="number" id="AZ_adversarios" min="1" max="10">
-                <label for="AZ_impacto">Impacto (1-10):</label>
-                <input type="number" id="AZ_impacto" min="1" max="10">
-                <label for="AZ_confronto">Confronto Direto (1-10):</label>
-                <input type="number" id="AZ_confronto" min="1" max="10">
-                <button onclick="submitVote('AZ')">Votar</button>
-            </div>
-        </div>
+    <!-- Tabela de resultados -->
+    <div class="results-container">
+        <h2>Resultados</h2>
+        <table class="results-table">
+            <thead>
+                <tr>
+                    <th>Rapper</th>
+                    <th>Batalhas Vencidas</th>
+                    <th>Batalhas Perdidas</th>
+                    <th>Critérios</th>
+                    <th>Pontos</th>
+                </tr>
+            </thead>
+            <tbody id="resultsTable">
+                <!-- As linhas serão preenchidas dinamicamente após o envio dos votos -->
+            </tbody>
+        </table>
     </div>
 
     <script>
         function submitVote(rapperId) {
-            // Coleta as notas dos inputs para cada rapper
-            const consistencia = document.getElementById(`${rapperId}_consistencia`).value;
-            const material = document.getElementById(`${rapperId}_material`).value;
-            const performance = document.getElementById(`${rapperId}_performance`).value;
-            const adversarios = document.getElementById(`${rapperId}_adversarios`).value;
-            const impacto = document.getElementById(`${rapperId}_impacto`).value;
-            const confronto = document.getElementById(`${rapperId}_confronto`).value;
-
-            // Calculando a pontuação
-            const pontuacao = (consistencia * 0.1) + (material * 0.3) + (performance * 0.1) + 
-                              (adversarios * 0.2) + (impacto * 0.1) + (confronto * 0.2);
+            // Aqui você pode pegar as notas e o status do rapper e calcular a pontuação
+            const consistency = document.getElementById(rapperId + '_consistencia').value;
+            const material = document.getElementById(rapperId + '_material').value;
+            const performance = document.getElementById(rapperId + '_performance').value;
+            const opponents = document.getElementById(rapperId + '_adversarios').value;
+            const impact = document.getElementById(rapperId + '_impacto').value;
+            const confrontation = document.getElementById(rapperId + '_confronto').value;
+            const status = document.getElementById(rapperId + '_status').value;
             
-            alert(`Sua pontuação para ${rapperId.toUpperCase()} foi de: ${pontuacao}`);
+            // Lógica de cálculo de pontos e armazenamento dos dados do rapper
+
+            alert('Voto enviado para: ' + rapperId);
         }
     </script>
+
 </body>
 </html>
