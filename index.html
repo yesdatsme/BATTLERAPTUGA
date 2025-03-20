@@ -73,6 +73,19 @@
         .submit-btn:hover {
             background-color: #45a049;
         }
+        .battle-info .battle-line {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+        .battle-info .battle-line a {
+            color: #007BFF;
+            text-decoration: none;
+        }
+        .battle-info .battle-line a:hover {
+            text-decoration: underline;
+        }
     </style>
 </head>
 <body>
@@ -114,36 +127,94 @@
             </div>
             <div class="battle-info">
                 <p><strong>Batalhas:</strong></p>
-                <label for="battle_shap3">Contra Shap3:</label>
-                <select id="battle_shap3">
-                    <option value="favorito">Favorito</option>
-                    <option value="underdog">Underdog</option>
-                </select>
-                <label for="result_shap3">Resultado:</label>
-                <select id="result_shap3">
-                    <option value="vitoria">Venceu</option>
-                    <option value="derrota">Perdeu</option>
-                    <option value="empate">Empatou</option>
-                </select>
-                <a href="https://www.youtube.com/results?search_query=3ma+vs+Shap3" target="_blank">Assistir no YouTube</a>
 
-                <label for="battle_lc">Contra Lc:</label>
-                <select id="battle_lc">
-                    <option value="favorito">Favorito</option>
-                    <option value="underdog">Underdog</option>
-                </select>
-                <label for="result_lc">Resultado:</label>
-                <select id="result_lc">
-                    <option value="vitoria">Venceu</option>
-                    <option value="derrota">Perdeu</option>
-                    <option value="empate">Empatou</option>
-                </select>
-                <a href="https://www.youtube.com/results?search_query=3ma+vs+Lc" target="_blank">Assistir no YouTube</a>
+                <!-- Contra Shap3 -->
+                <div class="battle-line">
+                    <span><a href="https://www.youtube.com/results?search_query=3ma+vs+Shap3" target="_blank">3ma vs Shap3</a></span>
+                    <span>
+                        <label for="battle_shap3">Favorito/Underdog:</label>
+                        <select id="battle_shap3">
+                            <option value="favorito">Favorito</option>
+                            <option value="underdog">Underdog</option>
+                        </select>
+                    </span>
+                    <span>
+                        <label for="result_shap3">Resultado:</label>
+                        <select id="result_shap3">
+                            <option value="vitoria">Venceu</option>
+                            <option value="derrota">Perdeu</option>
+                            <option value="empate">Empatou</option>
+                        </select>
+                    </span>
+                </div>
+
+                <!-- Contra Lc -->
+                <div class="battle-line">
+                    <span><a href="https://www.youtube.com/results?search_query=3ma+vs+Lc" target="_blank">3ma vs Lc</a></span>
+                    <span>
+                        <label for="battle_lc">Favorito/Underdog:</label>
+                        <select id="battle_lc">
+                            <option value="favorito">Favorito</option>
+                            <option value="underdog">Underdog</option>
+                        </select>
+                    </span>
+                    <span>
+                        <label for="result_lc">Resultado:</label>
+                        <select id="result_lc">
+                            <option value="vitoria">Venceu</option>
+                            <option value="derrota">Perdeu</option>
+                            <option value="empate">Empatou</option>
+                        </select>
+                    </span>
+                </div>
             </div>
         </div>
 
-        <!-- Adicione os outros rappers de forma similar, alterando as batalhas e adversários -->
+        <!-- Rapper 2 (Adicione mais rappers conforme necessário) -->
+        <div class="rapper">
+            <img src="Abismal.jpg" alt="Abismal">
+            <h3>Abismal</h3>
+            <div class="criteria">
+                <p><strong>Avalie Abismal:</strong></p>
+                <label for="material_abismal">Material (1-10)</label>
+                <input type="number" id="material_abismal" min="1" max="10">
+                <label for="confronto_abismal">Confronto Direto (1-10)</label>
+                <input type="number" id="confronto_abismal" min="1" max="10">
+                <label for="adversarios_abismal">Adversários (1-10)</label>
+                <input type="number" id="adversarios_abismal" min="1" max="10">
+                <label for="consistencia_abismal">Consistência (1-10)</label>
+                <input type="number" id="consistencia_abismal" min="1" max="10">
+                <label for="performance_abismal">Performance (1-10)</label>
+                <input type="number" id="performance_abismal" min="1" max="10">
+                <label for="impacto_abismal">Impacto (1-10)</label>
+                <input type="number" id="impacto_abismal" min="1" max="10">
+            </div>
+            <div class="battle-info">
+                <p><strong>Batalhas:</strong></p>
 
+                <!-- Contra Edi Ventura -->
+                <div class="battle-line">
+                    <span><a href="https://www.youtube.com/results?search_query=Abismal+vs+Edi+Ventura" target="_blank">Abismal vs Edi Ventura</a></span>
+                    <span>
+                        <label for="battle_edi">Favorito/Underdog:</label>
+                        <select id="battle_edi">
+                            <option value="favorito">Favorito</option>
+                            <option value="underdog">Underdog</option>
+                        </select>
+                    </span>
+                    <span>
+                        <label for="result_edi">Resultado:</label>
+                        <select id="result_edi">
+                            <option value="vitoria">Venceu</option>
+                            <option value="derrota">Perdeu</option>
+                            <option value="empate">Empatou</option>
+                        </select>
+                    </span>
+                </div>
+
+                <!-- Adicione mais batalhas conforme necessário -->
+            </div>
+        </div>
     </div>
 
     <button class="submit-btn">Submeter Todos os Votos</button>
