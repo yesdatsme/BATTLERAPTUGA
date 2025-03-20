@@ -166,7 +166,7 @@
     </div>
 
     <h3>Adversários</h3>
-    <!-- Selecione Favorito/Underdog e Venceu/Perdeu/Empatou -->
+    <!-- Selecione Favorito/Underdog e Venceu/Perdeu/Empatou individualmente para cada adversário -->
     <div class="input-group">
       <label for="resultado-3ma-shap3">Resultado: 3ma vs Shap3</label>
       <select id="resultado-3ma-shap3">
@@ -176,8 +176,40 @@
       </select>
     </div>
     <div class="input-group">
-      <label for="underdog-favorito-3ma-shap3">Favorito/Underdog:</label>
+      <label for="underdog-favorito-3ma-shap3">Favorito/Underdog: 3ma vs Shap3</label>
       <select id="underdog-favorito-3ma-shap3">
+        <option value="favorito">Favorito</option>
+        <option value="underdog">Underdog</option>
+      </select>
+    </div>
+
+    <div class="input-group">
+      <label for="resultado-3ma-lc">Resultado: 3ma vs LC</label>
+      <select id="resultado-3ma-lc">
+        <option value="ganhou">Ganhou</option>
+        <option value="perdeu">Perdeu</option>
+        <option value="empatou">Empatou</option>
+      </select>
+    </div>
+    <div class="input-group">
+      <label for="underdog-favorito-3ma-lc">Favorito/Underdog: 3ma vs LC</label>
+      <select id="underdog-favorito-3ma-lc">
+        <option value="favorito">Favorito</option>
+        <option value="underdog">Underdog</option>
+      </select>
+    </div>
+
+    <div class="input-group">
+      <label for="resultado-3ma-km">Resultado: 3ma vs KM</label>
+      <select id="resultado-3ma-km">
+        <option value="ganhou">Ganhou</option>
+        <option value="perdeu">Perdeu</option>
+        <option value="empatou">Empatou</option>
+      </select>
+    </div>
+    <div class="input-group">
+      <label for="underdog-favorito-3ma-km">Favorito/Underdog: 3ma vs KM</label>
+      <select id="underdog-favorito-3ma-km">
         <option value="favorito">Favorito</option>
         <option value="underdog">Underdog</option>
       </select>
