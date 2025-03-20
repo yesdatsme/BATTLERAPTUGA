@@ -94,7 +94,7 @@
 </head>
 <body>
 
-  <!-- Caixa de instruções -->
+  <!-- Caixa de instruções restaurada -->
   <div class="info-box">
     <h3>Instruções de Avaliação</h3>
     <p>Escolha as avaliações para cada rapper nos seguintes critérios: Material, Confronto Direto, Adversários, Consistência, Performance, Impacto.</p>
@@ -154,7 +154,7 @@
     </div>
 
     <h3>Adversários</h3>
-    <!-- Shap3 (corrigido o redirecionamento de pesquisa para "3ma vs Shap3") -->
+    <!-- Botões de assistente com link correto -->
     <div class="select-group">
       <label for="resultado-Shap3-A">Shap3 - Resultado</label>
       <select id="resultado-Shap3-A">
@@ -203,6 +203,7 @@
   <script>
     // Função para abrir a pesquisa no YouTube para a batalha
     function assistir(rapper, adversario) {
+      // Corrigir redirecionamento para "rapper vs adversario"
       const url = `https://www.youtube.com/results?search_query=${rapper}+vs+${adversario}`;
       window.open(url, '_blank');
     }
