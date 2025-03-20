@@ -4571,97 +4571,152 @@
   </div>
 </div>
 
-<!-- Tabela de resultados -->
-<table id="resultadosTabela">
-  <thead>
-    <tr>
-      <th>Rapper</th>
-      <th>Vitórias</th>
-      <th>Derrotas</th>
-      <th>Pontuação</th>
-      <th>Critério Mais Forte</th>
-      <th>Tier</th>
-    </tr>
-  </thead>
-  <tbody id="resultadosTabelaBody">
-    <!-- Linhas serão inseridas aqui -->
-  </tbody>
-</table>
 
-<script>
-  function calcularPontuacao(rapperId) {
-    const fields = ['material', 'confronto', 'adversarios', 'consistencia', 'performance', 'impacto'];
-    let total = 0, count = 0;
-    fields.forEach(function(field) {
-      const input = document.getElementById(`nota-${field}-${rapperId}`);
-      if(input && input.value) {
-        total += parseFloat(input.value);
-        count++;
+  <!-- Tabela de Resultados -->
+  <table id="resultadosTabela">
+    <thead>
+      <tr>
+        <th>Rapper</th>
+        <th>Vitórias</th>
+        <th>Derrotas</th>
+        <th>Pontuação</th>
+        <th>Critério Mais Forte</th>
+        <th>Tier</th>
+      </tr>
+    </thead>
+    <tbody id="resultadosTabelaBody">
+      <!-- Linhas serão inseridas aqui -->
+    </tbody>
+  </table>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      // Função para calcular a pontuação de um rapper
+      function calcularPontuacao(rapperId) {
+        const fields = ['material', 'confronto', 'adversarios', 'consistencia', 'performance', 'impacto'];
+        let total = 0, count = 0;
+        fields.forEach(function(field) {
+          const input = document.getElementById(`nota-${field}-${rapperId}`);
+          if (input && input.value) {
+            total += parseFloat(input.value);
+            count++;
+          }
+        });
+        let criteriaScore = count ? total / count : 0;
+        criteriaScore = criteriaScore * 0.3;
+
+        let wins = 0, losses = 0, draws = 0, battlePoints = 0;
+        const battleSelects = document.querySelectorAll(`#rapper-${rapperId} select[id^="resultado-${rapperId}-"]`);
+        battleSelects.forEach(function(select) {
+          const result = select.value;
+          if (result === "Venceu") { battlePoints += 1; wins++; }
+          else if (result === "Empatou") { battlePoints += 0.5; draws++; }
+          else if (result === "Perdeu") { battlePoints += 0; losses++; }
+        });
+        let battleScore = battleSelects.length ? (battlePoints / battleSelects.length) * 10 : 0;
+        battleScore = battleScore * 0.5;
+
+        let underdogBonus = 0;
+        const favSelects = document.querySelectorAll(`#rapper-${rapperId} select[id^="favorito-${rapperId}-"]`);
+        favSelects.forEach(function(select, index) {
+          const battleSelect = battleSelects[index];
+          if (battleSelect && battleSelect.value === "Venceu" && select.value === "Underdog") {
+            underdogBonus += 1;
+          }
+        });
+        let underdogScore = favSelects.length ? (underdogBonus / favSelects.length) * 10 : 0;
+        underdogScore = underdogScore * 0.2;
+
+        let finalScore = criteriaScore + battleScore + underdogScore;
+
+        return {
+          criteria: criteriaScore.toFixed(2),
+          battle: battleScore.toFixed(2),
+          underdog: underdogScore.toFixed(2),
+          final: finalScore.toFixed(2),
+          wins: wins,
+          losses: losses,
+          draws: draws
+        };
       }
-    });
-    let criteriaScore = count ? total / count : 0;
-    criteriaScore = criteriaScore * 0.3;
 
-    let battlePoints = 0;
-    const battleSelects = document.querySelectorAll(`#rapper-${rapperId} select[id^="resultado-${rapperId}-"]`);
-    battleSelects.forEach(function(select) {
-      const result = select.value;
-      if(result === "Venceu") { battlePoints += 1; }
-      else if(result === "Empatou") { battlePoints += 0.5; }
-    });
+      // Função para atualizar a tabela de resultados
+      function atualizarTabela() {
+        let tableBody = document.getElementById('resultadosTabelaBody');
+        tableBody.innerHTML = "";
 
-    let battleScore = battleSelects.length ? (battlePoints / battleSelects.length) * 10 : 0;
-    battleScore = battleScore * 0.5;
+        const rappers = document.querySelectorAll('.rapper-column');
+        rappers.forEach(function(rapperDiv) {
+          const rapperId = rapperDiv.id.replace("rapper-", "");
+          const pontuacao = calcularPontuacao(rapperId);
+          let criterioMaisForte = pontuacao.criteria;
 
-    let underdogBonus = 0;
-    const favSelects = document.querySelectorAll(`#rapper-${rapperId} select[id^="favorito-${rapperId}-"]`);
-    favSelects.forEach(function(select, index) {
-      const battleSelect = battleSelects[index];
-      if(battleSelect && battleSelect.value === "Venceu" && select.value === "Underdog") {
-        underdogBonus += 1;
+          let tier = "Tier2";
+          if (parseFloat(pontuacao.final) >= 7 && pontuacao.wins >= 2) {
+            tier = "Tier1";
+          }
+
+          const tr = document.createElement('tr');
+          tr.innerHTML = `<td>${rapperId}</td>
+                          <td>${pontuacao.wins}</td>
+                          <td>${pontuacao.losses}</td>
+                          <td>${pontuacao.final}</td>
+                          <td>${criterioMaisForte}</td>
+                          <td>${tier}</td>`;
+          tableBody.appendChild(tr);
+        });
       }
+
+      // Função para sincronizar escolhas entre as batalhas
+      function sincronizarEscolhas() {
+        const battleResults = document.querySelectorAll('select[id^="resultado-"]');
+        battleResults.forEach(function(select) {
+          select.addEventListener('change', function() {
+            const parts = select.id.split("-");
+            if (parts.length < 3) return;
+            const rapper1 = parts[1];
+            const opponent = parts.slice(2).join("-");
+            const opponentSelect = document.getElementById(`resultado-${opponent}-${rapper1}`);
+            if (opponentSelect) {
+              if (select.value === "Venceu") {
+                opponentSelect.value = "Perdeu";
+              } else if (select.value === "Perdeu") {
+                opponentSelect.value = "Venceu";
+              } else {
+                opponentSelect.value = "Empatou";
+              }
+              opponentSelect.dispatchEvent(new Event('change'));
+            }
+            atualizarTabela();
+          });
+        });
+
+        const favSelects = document.querySelectorAll('select[id^="favorito-"]');
+        favSelects.forEach(function(select) {
+          select.addEventListener('change', function() {
+            const parts = select.id.split("-");
+            if (parts.length < 3) return;
+            const rapper1 = parts[1];
+            const opponent = parts.slice(2).join("-");
+            const opponentFavSelect = document.getElementById(`favorito-${opponent}-${rapper1}`);
+            if (opponentFavSelect) {
+              opponentFavSelect.value = (select.value === "Underdog") ? "Favorito" : "Underdog";
+              opponentFavSelect.dispatchEvent(new Event('change'));
+            }
+            atualizarTabela();
+          });
+        });
+      }
+
+      // Atualiza a tabela sempre que um campo de avaliação for alterado
+      document.querySelectorAll('input[type="number"]').forEach(function(input) {
+        input.addEventListener('change', atualizarTabela);
+      });
+
+      // Inicializa a sincronização e a atualização da tabela
+      sincronizarEscolhas();
+      atualizarTabela();
     });
-    let underdogScore = favSelects.length ? (underdogBonus / favSelects.length) * 10 : 0;
-    underdogScore = underdogScore * 0.2;
-
-    let finalScore = criteriaScore + battleScore + underdogScore;
-
-    return {
-      criteria: criteriaScore.toFixed(2),
-      battle: battleScore.toFixed(2),
-      underdog: underdogScore.toFixed(2),
-      final: finalScore.toFixed(2),
-      wins: battlePoints,
-      losses: battleSelects.length - battlePoints
-    };
-  }
-
-  function atualizarTabela() {
-    let tableBody = document.getElementById('resultadosTabelaBody');
-    tableBody.innerHTML = "";
-
-    const rappers = document.querySelectorAll('.rapper-column');
-    rappers.forEach(function(rapperDiv) {
-      const rapperId = rapperDiv.id.replace("rapper-", "");
-      const pontuacao = calcularPontuacao(rapperId);
-      let tier = pontuacao.final >= 7 && pontuacao.wins >= 2 ? "Tier1" : "Tier2";
-      const tr = document.createElement('tr');
-      tr.innerHTML = `<td>${rapperId}</td>
-                      <td>${pontuacao.wins}</td>
-                      <td>${pontuacao.losses}</td>
-                      <td>${pontuacao.final}</td>
-                      <td>${pontuacao.criteria}</td>
-                      <td>${tier}</td>`;
-      tableBody.appendChild(tr);
-    });
-  }
-
-  document.querySelectorAll('input[type="number"]').forEach(function(input) {
-    input.addEventListener('change', atualizarTabela);
-  });
-
-  atualizarTabela();
-</script>
-
+  </script>
 </body>
 </html>
