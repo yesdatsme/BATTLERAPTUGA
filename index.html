@@ -150,51 +150,38 @@
 
   <!-- Container para as colunas dos rappers -->
   <div class="rapper-container">
-    <!-- Coluna do rapper 3ma -->
+    
+    <!-- 3ma -->
     <div class="rapper-column" id="rapper-3ma">
       <img src="https://via.placeholder.com/150" alt="Imagem do 3ma">
-      <h2>
-        <a href="https://www.youtube.com/results?search_query=3ma" target="_blank">3ma</a>
-      </h2>
-
-      <!-- Avaliação do rapper -->
+      <h2><a href="https://www.youtube.com/results?search_query=3ma" target="_blank">3ma</a></h2>
       <h3>Avaliação do rapper</h3>
-
-      <!-- Critérios -->
       <div class="input-group">
         <label for="nota-material-3ma">Material (0-10):</label>
-        <input type="number" name="nota-material-3ma" min="0" max="10">
+        <input type="number" id="nota-material-3ma" name="nota-material-3ma" min="0" max="10">
       </div>
-
       <div class="input-group">
         <label for="nota-confronto-3ma">Confronto Direto (0-10):</label>
-        <input type="number" name="nota-confronto-3ma" min="0" max="10">
+        <input type="number" id="nota-confronto-3ma" name="nota-confronto-3ma" min="0" max="10">
       </div>
-
       <div class="input-group">
         <label for="nota-adversarios-3ma">Adversários (0-10):</label>
-        <input type="number" name="nota-adversarios-3ma" min="0" max="10">
+        <input type="number" id="nota-adversarios-3ma" name="nota-adversarios-3ma" min="0" max="10">
       </div>
-
       <div class="input-group">
         <label for="nota-consistencia-3ma">Consistência (0-10):</label>
-        <input type="number" name="nota-consistencia-3ma" min="0" max="10">
+        <input type="number" id="nota-consistencia-3ma" name="nota-consistencia-3ma" min="0" max="10">
       </div>
-
       <div class="input-group">
         <label for="nota-performance-3ma">Performance (0-10):</label>
-        <input type="number" name="nota-performance-3ma" min="0" max="10">
+        <input type="number" id="nota-performance-3ma" name="nota-performance-3ma" min="0" max="10">
       </div>
-
       <div class="input-group">
         <label for="nota-impacto-3ma">Impacto (0-10):</label>
-        <input type="number" name="nota-impacto-3ma" min="0" max="10">
+        <input type="number" id="nota-impacto-3ma" name="nota-impacto-3ma" min="0" max="10">
       </div>
-
-      <!-- Batalhas -->
       <h3>Batalhas</h3>
-
-      <!-- Para cada batalha, seletores de resultado e link "Assistir" -->
+      <!-- Batalha: 3ma vs KM -->
       <div class="input-group">
         <label for="resultado-3ma-KM">Resultado 3ma VS KM:</label>
         <select id="resultado-3ma-KM">
@@ -209,7 +196,7 @@
         </select>
         <a class="assistir-link" href="https://www.youtube.com/results?search_query=3ma+VS+KM" target="_blank">Assistir</a>
       </div>
-
+      <!-- Batalha: 3ma vs Shap3 -->
       <div class="input-group">
         <label for="resultado-3ma-Shap3">Resultado 3ma VS Shap3:</label>
         <select id="resultado-3ma-Shap3">
@@ -224,7 +211,7 @@
         </select>
         <a class="assistir-link" href="https://www.youtube.com/results?search_query=3ma+VS+Shap3" target="_blank">Assistir</a>
       </div>
-
+      <!-- Batalha: 3ma vs Lc -->
       <div class="input-group">
         <label for="resultado-3ma-Lc">Resultado 3ma VS Lc:</label>
         <select id="resultado-3ma-Lc">
@@ -239,59 +226,42 @@
         </select>
         <a class="assistir-link" href="https://www.youtube.com/results?search_query=3ma+VS+Lc" target="_blank">Assistir</a>
       </div>
-
-      <!-- Botão de votar (apenas um por coluna) -->
       <div class="input-group">
         <button class="button" onclick="votar('3ma')">Votar</button>
       </div>
     </div>
-
-    <!-- Repetir a estrutura para outros rappers -->
+    
     <!-- Abismal -->
     <div class="rapper-column" id="rapper-Abismal">
       <img src="https://via.placeholder.com/150" alt="Imagem do Abismal">
-      <h2>
-        <a href="https://www.youtube.com/results?search_query=Abismal" target="_blank">Abismal</a>
-      </h2>
-
-      <!-- Avaliação do rapper -->
+      <h2><a href="https://www.youtube.com/results?search_query=Abismal" target="_blank">Abismal</a></h2>
       <h3>Avaliação do rapper</h3>
-
-      <!-- Critérios -->
       <div class="input-group">
         <label for="nota-material-Abismal">Material (0-10):</label>
-        <input type="number" name="nota-material-Abismal" min="0" max="10">
+        <input type="number" id="nota-material-Abismal" name="nota-material-Abismal" min="0" max="10">
       </div>
-
       <div class="input-group">
         <label for="nota-confronto-Abismal">Confronto Direto (0-10):</label>
-        <input type="number" name="nota-confronto-Abismal" min="0" max="10">
+        <input type="number" id="nota-confronto-Abismal" name="nota-confronto-Abismal" min="0" max="10">
       </div>
-
       <div class="input-group">
         <label for="nota-adversarios-Abismal">Adversários (0-10):</label>
-        <input type="number" name="nota-adversarios-Abismal" min="0" max="10">
+        <input type="number" id="nota-adversarios-Abismal" name="nota-adversarios-Abismal" min="0" max="10">
       </div>
-
       <div class="input-group">
         <label for="nota-consistencia-Abismal">Consistência (0-10):</label>
-        <input type="number" name="nota-consistencia-Abismal" min="0" max="10">
+        <input type="number" id="nota-consistencia-Abismal" name="nota-consistencia-Abismal" min="0" max="10">
       </div>
-
       <div class="input-group">
         <label for="nota-performance-Abismal">Performance (0-10):</label>
-        <input type="number" name="nota-performance-Abismal" min="0" max="10">
+        <input type="number" id="nota-performance-Abismal" name="nota-performance-Abismal" min="0" max="10">
       </div>
-
       <div class="input-group">
         <label for="nota-impacto-Abismal">Impacto (0-10):</label>
-        <input type="number" name="nota-impacto-Abismal" min="0" max="10">
+        <input type="number" id="nota-impacto-Abismal" name="nota-impacto-Abismal" min="0" max="10">
       </div>
-
-      <!-- Batalhas -->
       <h3>Batalhas</h3>
-
-      <!-- Para cada batalha, seletores de resultado e link "Assistir" -->
+      <!-- Batalha: Abismal vs EdiVentura -->
       <div class="input-group">
         <label for="resultado-Abismal-EdiVentura">Resultado Abismal VS Edi Ventura:</label>
         <select id="resultado-Abismal-EdiVentura">
@@ -304,24 +274,24 @@
           <option value="Favorito">Favorito</option>
           <option value="Underdog">Underdog</option>
         </select>
-        <a class="assistir-link" href="https://www.youtube.com/results?search_query=Abismal+VS+Edi Ventura" target="_blank">Assistir</a>
+        <a class="assistir-link" href="https://www.youtube.com/results?search_query=Abismal+VS+Edi+Ventura" target="_blank">Assistir</a>
       </div>
-
+      <!-- Batalha: Abismal vs RealPunch -->
       <div class="input-group">
-        <label for="resultado-Abismal-RealPunch">Resultado Abismal VS Realpunch:</label>
+        <label for="resultado-Abismal-RealPunch">Resultado Abismal VS RealPunch:</label>
         <select id="resultado-Abismal-RealPunch">
           <option value="Venceu">Venceu</option>
           <option value="Perdeu">Perdeu</option>
           <option value="Empatou">Empatou</option>
         </select>
-        <label for="favorito-Abismal-Realpunch">Favorito ou Underdog:</label>
-        <select id="favorito-Abismal-Realpunch">
+        <label for="favorito-Abismal-RealPunch">Favorito ou Underdog:</label>
+        <select id="favorito-Abismal-RealPunch">
           <option value="Favorito">Favorito</option>
           <option value="Underdog">Underdog</option>
         </select>
-        <a class="assistir-link" href="https://www.youtube.com/results?search_query=Abismal+VS+Realpunch" target="_blank">Assistir</a>
+        <a class="assistir-link" href="https://www.youtube.com/results?search_query=Abismal+VS+RealPunch" target="_blank">Assistir</a>
       </div>
-
+      <!-- Batalha: Abismal vs WilsonG -->
       <div class="input-group">
         <label for="resultado-Abismal-WilsonG">Resultado Abismal VS WilsonG:</label>
         <select id="resultado-Abismal-WilsonG">
@@ -336,109 +306,506 @@
         </select>
         <a class="assistir-link" href="https://www.youtube.com/results?search_query=Abismal+VS+WilsonG" target="_blank">Assistir</a>
       </div>
-
-      <!-- Botão de votar (apenas um por coluna) -->
       <div class="input-group">
         <button class="button" onclick="votar('Abismal')">Votar</button>
       </div>
     </div>
-
-    <!-- Repetir a estrutura para todos os rappers e seus adversários -->
-    <!-- ... -->
-  </div>
-
-  <!-- Tabela de Resultados -->
-  <div class="table-container">
-    <h3>Resultado das Batalhas</h3>
-    <table class="results-table">
-      <thead>
-        <tr>
-          <th>Rapper</th>
-          <th>Vitórias</th>
-          <th>Derrotas</th>
-          <th>Empates</th>
-          <th>Pontuação</th>
-          <th>Critério Mais Forte</th>
-          <th>TIER</th>
-        </tr>
-      </thead>
-      <tbody id="tabela-resultados">
-        <!-- As vitórias, derrotas e empates serão atualizados aqui dinamicamente -->
-      </tbody>
-    </table>
-  </div>
-
-  <script>
-    function votar(rapper) {
-      const pontuacao = calcularPontuacao(rapper);
-      const tier = determinarTier(pontuacao);
-
-      // Atualiza a tabela de resultados
-      const tabela = document.getElementById("tabela-resultados");
-      const row = tabela.insertRow();
-
-      row.insertCell(0).textContent = rapper;
-      row.insertCell(1).textContent = 0; // Vitórias (a ser implementado)
-      row.insertCell(2).textContent = 0; // Derrotas (a ser implementado)
-      row.insertCell(3).textContent = 0; // Empates (a ser implementado)
-      row.insertCell(4).textContent = pontuacao.toFixed(2);
-      row.insertCell(5).textContent = 'Material'; // Critério mais forte (a ser implementado)
-      row.insertCell(6).textContent = tier;
-    }
-
-    function calcularPontuacao(rapper) {
-      // Pesos dos critérios
-      const pesos = {
-        material: 0.25,
-        confronto: 0.25,
-        adversarios: 0.20,
-        consistencia: 0.10,
-        performance: 0.10,
-        impacto: 0.10
-      };
-
-      // Notas dos critérios
-      const notas = {
-        material: parseFloat(document.getElementById(`nota-material-${rapper}`).value) || 0,
-        confronto: parseFloat(document.getElementById(`nota-confronto-${rapper}`).value) || 0,
-        adversarios: parseFloat(document.getElementById(`nota-adversarios-${rapper}`).value) || 0,
-        consistencia: parseFloat(document.getElementById(`nota-consistencia-${rapper}`).value) || 0,
-        performance: parseFloat(document.getElementById(`nota-performance-${rapper}`).value) || 0,
-        impacto: parseFloat(document.getElementById(`nota-impacto-${rapper}`).value) || 0
-      };
-
-      // Cálculo da pontuação inicial
-      let pontuacaoInicial = 0;
-      for (const [criterio, peso] of Object.entries(pesos)) {
-        pontuacaoInicial += notas[criterio] * peso;
-      }
-
-      // Ajuste da pontuação com base no resultado da batalha
-      const resultados = [];
-      const batalhas = document.querySelectorAll(`#rapper-${rapper} .input-group select[id^="resultado"]`);
-      batalhas.forEach((select) => {
-        const resultado = select.value;
-        const favorito = document.getElementById(select.id.replace('resultado', 'favorito')).value;
-        resultados.push({ resultado, favorito });
-      });
-
-      resultados.forEach(({ resultado, favorito }) => {
-        if (favorito === 'Favorito' && resultado === 'Perdeu') {
-          pontuacaoInicial *= 0.8; // Perde 20% da pontuação
-        } else if (favorito === 'Underdog' && resultado === 'Venceu') {
-          pontuacaoInicial *= 1.2; // Ganha 20% de bônus
-        }
-      });
-
-      return pontuacaoInicial;
-    }
-
-    function determinarTier(pontuacao) {
-      if (pontuacao >= 9) return 'TIER 1';
-      if (pontuacao >= 7) return 'TIER 2';
-      if (pontuacao >= 5) return 'TIER 3';
-      return 'TIER 4';
-    }
+    
+    <!-- AM -->
+    <div class="rapper-column" id="rapper-AM">
+      <img src="https://via.placeholder.com/150" alt="Imagem do AM">
+      <h2><a href="https://www.youtube.com/results?search_query=AM" target="_blank">AM</a></h2>
+      <h3>Avaliação do rapper</h3>
+      <div class="input-group">
+        <label for="nota-material-AM">Material (0-10):</label>
+        <input type="number" id="nota-material-AM" name="nota-material-AM" min="0" max="10">
+      </div>
+      <div class="input-group">
+        <label for="nota-confronto-AM">Confronto Direto (0-10):</label>
+        <input type="number" id="nota-confronto-AM" name="nota-confronto-AM" min="0" max="10">
+      </div>
+      <div class="input-group">
+        <label for="nota-adversarios-AM">Adversários (0-10):</label>
+        <input type="number" id="nota-adversarios-AM" name="nota-adversarios-AM" min="0" max="10">
+      </div>
+      <div class="input-group">
+        <label for="nota-consistencia-AM">Consistência (0-10):</label>
+        <input type="number" id="nota-consistencia-AM" name="nota-consistencia-AM" min="0" max="10">
+      </div>
+      <div class="input-group">
+        <label for="nota-performance-AM">Performance (0-10):</label>
+        <input type="number" id="nota-performance-AM" name="nota-performance-AM" min="0" max="10">
+      </div>
+      <div class="input-group">
+        <label for="nota-impacto-AM">Impacto (0-10):</label>
+        <input type="number" id="nota-impacto-AM" name="nota-impacto-AM" min="0" max="10">
+      </div>
+      <h3>Batalhas</h3>
+      <!-- Batalha: AM vs Licon -->
+      <div class="input-group">
+        <label for="resultado-AM-Licon">Resultado AM VS Licon:</label>
+        <select id="resultado-AM-Licon">
+          <option value="Venceu">Venceu</option>
+          <option value="Perdeu">Perdeu</option>
+          <option value="Empatou">Empatou</option>
+        </select>
+        <label for="favorito-AM-Licon">Favorito ou Underdog:</label>
+        <select id="favorito-AM-Licon">
+          <option value="Favorito">Favorito</option>
+          <option value="Underdog">Underdog</option>
+        </select>
+        <a class="assistir-link" href="https://www.youtube.com/results?search_query=AM+VS+Licon" target="_blank">Assistir</a>
+      </div>
+      <!-- Batalha: AM vs Melro -->
+      <div class="input-group">
+        <label for="resultado-AM-Melro">Resultado AM VS Melro:</label>
+        <select id="resultado-AM-Melro">
+          <option value="Venceu">Venceu</option>
+          <option value="Perdeu">Perdeu</option>
+          <option value="Empatou">Empatou</option>
+        </select>
+        <label for="favorito-AM-Melro">Favorito ou Underdog:</label>
+        <select id="favorito-AM-Melro">
+          <option value="Favorito">Favorito</option>
+          <option value="Underdog">Underdog</option>
+        </select>
+        <a class="assistir-link" href="https://www.youtube.com/results?search_query=AM+VS+Melro" target="_blank">Assistir</a>
+      </div>
+      <!-- Batalha: AM vs Vazto -->
+      <div class="input-group">
+        <label for="resultado-AM-Vazto">Resultado AM VS Vazto:</label>
+        <select id="resultado-AM-Vazto">
+          <option value="Venceu">Venceu</option>
+          <option value="Perdeu">Perdeu</option>
+          <option value="Empatou">Empatou</option>
+        </select>
+        <label for="favorito-AM-Vazto">Favorito ou Underdog:</label>
+        <select id="favorito-AM-Vazto">
+          <option value="Favorito">Favorito</option>
+          <option value="Underdog">Underdog</option>
+        </select>
+        <a class="assistir-link" href="https://www.youtube.com/results?search_query=AM+VS+Vazto" target="_blank">Assistir</a>
+      </div>
+      <div class="input-group">
+        <button class="button" onclick="votar('AM')">Votar</button>
+      </div>
+    </div>
+    
+    <!-- AnimaNera -->
+    <div class="rapper-column" id="rapper-AnimaNera">
+      <img src="https://via.placeholder.com/150" alt="Imagem do AnimaNera">
+      <h2><a href="https://www.youtube.com/results?search_query=AnimaNera" target="_blank">AnimaNera</a></h2>
+      <h3>Avaliação do rapper</h3>
+      <div class="input-group">
+        <label for="nota-material-AnimaNera">Material (0-10):</label>
+        <input type="number" id="nota-material-AnimaNera" name="nota-material-AnimaNera" min="0" max="10">
+      </div>
+      <div class="input-group">
+        <label for="nota-confronto-AnimaNera">Confronto Direto (0-10):</label>
+        <input type="number" id="nota-confronto-AnimaNera" name="nota-confronto-AnimaNera" min="0" max="10">
+      </div>
+      <div class="input-group">
+        <label for="nota-adversarios-AnimaNera">Adversários (0-10):</label>
+        <input type="number" id="nota-adversarios-AnimaNera" name="nota-adversarios-AnimaNera" min="0" max="10">
+      </div>
+      <div class="input-group">
+        <label for="nota-consistencia-AnimaNera">Consistência (0-10):</label>
+        <input type="number" id="nota-consistencia-AnimaNera" name="nota-consistencia-AnimaNera" min="0" max="10">
+      </div>
+      <div class="input-group">
+        <label for="nota-performance-AnimaNera">Performance (0-10):</label>
+        <input type="number" id="nota-performance-AnimaNera" name="nota-performance-AnimaNera" min="0" max="10">
+      </div>
+      <div class="input-group">
+        <label for="nota-impacto-AnimaNera">Impacto (0-10):</label>
+        <input type="number" id="nota-impacto-AnimaNera" name="nota-impacto-AnimaNera" min="0" max="10">
+      </div>
+      <h3>Batalhas</h3>
+      <!-- Batalha: AnimaNera vs Slark -->
+      <div class="input-group">
+        <label for="resultado-AnimaNera-Slark">Resultado AnimaNera VS Slark:</label>
+        <select id="resultado-AnimaNera-Slark">
+          <option value="Venceu">Venceu</option>
+          <option value="Perdeu">Perdeu</option>
+          <option value="Empatou">Empatou</option>
+        </select>
+        <label for="favorito-AnimaNera-Slark">Favorito ou Underdog:</label>
+        <select id="favorito-AnimaNera-Slark">
+          <option value="Favorito">Favorito</option>
+          <option value="Underdog">Underdog</option>
+        </select>
+        <a class="assistir-link" href="https://www.youtube.com/results?search_query=AnimaNera+VS+Slark" target="_blank">Assistir</a>
+      </div>
+      <!-- Batalha: AnimaNera vs AM -->
+      <div class="input-group">
+        <label for="resultado-AnimaNera-AM">Resultado AnimaNera VS AM:</label>
+        <select id="resultado-AnimaNera-AM">
+          <option value="Venceu">Venceu</option>
+          <option value="Perdeu">Perdeu</option>
+          <option value="Empatou">Empatou</option>
+        </select>
+        <label for="favorito-AnimaNera-AM">Favorito ou Underdog:</label>
+        <select id="favorito-AnimaNera-AM">
+          <option value="Favorito">Favorito</option>
+          <option value="Underdog">Underdog</option>
+        </select>
+        <a class="assistir-link" href="https://www.youtube.com/results?search_query=AnimaNera+VS+AM" target="_blank">Assistir</a>
+      </div>
+      <div class="input-group">
+        <button class="button" onclick="votar('AnimaNera')">Votar</button>
+      </div>
+    </div>
+    
+    <!-- Benny -->
+    <div class="rapper-column" id="rapper-Benny">
+      <img src="https://via.placeholder.com/150" alt="Imagem do Benny">
+      <h2><a href="https://www.youtube.com/results?search_query=Benny" target="_blank">Benny</a></h2>
+      <h3>Avaliação do rapper</h3>
+      <div class="input-group">
+        <label for="nota-material-Benny">Material (0-10):</label>
+        <input type="number" id="nota-material-Benny" name="nota-material-Benny" min="0" max="10">
+      </div>
+      <div class="input-group">
+        <label for="nota-confronto-Benny">Confronto Direto (0-10):</label>
+        <input type="number" id="nota-confronto-Benny" name="nota-confronto-Benny" min="0" max="10">
+      </div>
+      <div class="input-group">
+        <label for="nota-adversarios-Benny">Adversários (0-10):</label>
+        <input type="number" id="nota-adversarios-Benny" name="nota-adversarios-Benny" min="0" max="10">
+      </div>
+      <div class="input-group">
+        <label for="nota-consistencia-Benny">Consistência (0-10):</label>
+        <input type="number" id="nota-consistencia-Benny" name="nota-consistencia-Benny" min="0" max="10">
+      </div>
+      <div class="input-group">
+        <label for="nota-performance-Benny">Performance (0-10):</label>
+        <input type="number" id="nota-performance-Benny" name="nota-performance-Benny" min="0" max="10">
+      </div>
+      <div class="input-group">
+        <label for="nota-impacto-Benny">Impacto (0-10):</label>
+        <input type="number" id="nota-impacto-Benny" name="nota-impacto-Benny" min="0" max="10">
+      </div>
+      <h3>Batalhas</h3>
+      <!-- Batalha: Benny vs KM -->
+      <div class="input-group">
+        <label for="resultado-Benny-KM">Resultado Benny VS KM:</label>
+        <select id="resultado-Benny-KM">
+          <option value="Venceu">Venceu</option>
+          <option value="Perdeu">Perdeu</option>
+          <option value="Empatou">Empatou</option>
+        </select>
+        <label for="favorito-Benny-KM">Favorito ou Underdog:</label>
+        <select id="favorito-Benny-KM">
+          <option value="Favorito">Favorito</option>
+          <option value="Underdog">Underdog</option>
+        </select>
+        <a class="assistir-link" href="https://www.youtube.com/results?search_query=Benny+VS+KM" target="_blank">Assistir</a>
+      </div>
+      <div class="input-group">
+        <button class="button" onclick="votar('Benny')">Votar</button>
+      </div>
+    </div>
+    
+    <!-- Caden -->
+    <div class="rapper-column" id="rapper-Caden">
+      <img src="https://via.placeholder.com/150" alt="Imagem do Caden">
+      <h2><a href="https://www.youtube.com/results?search_query=Caden" target="_blank">Caden</a></h2>
+      <h3>Avaliação do rapper</h3>
+      <div class="input-group">
+        <label for="nota-material-Caden">Material (0-10):</label>
+        <input type="number" id="nota-material-Caden" name="nota-material-Caden" min="0" max="10">
+      </div>
+      <div class="input-group">
+        <label for="nota-confronto-Caden">Confronto Direto (0-10):</label>
+        <input type="number" id="nota-confronto-Caden" name="nota-confronto-Caden" min="0" max="10">
+      </div>
+      <div class="input-group">
+        <label for="nota-adversarios-Caden">Adversários (0-10):</label>
+        <input type="number" id="nota-adversarios-Caden" name="nota-adversarios-Caden" min="0" max="10">
+      </div>
+      <div class="input-group">
+        <label for="nota-consistencia-Caden">Consistência (0-10):</label>
+        <input type="number" id="nota-consistencia-Caden" name="nota-consistencia-Caden" min="0" max="10">
+      </div>
+      <div class="input-group">
+        <label for="nota-performance-Caden">Performance (0-10):</label>
+        <input type="number" id="nota-performance-Caden" name="nota-performance-Caden" min="0" max="10">
+      </div>
+      <div class="input-group">
+        <label for="nota-impacto-Caden">Impacto (0-10):</label>
+        <input type="number" id="nota-impacto-Caden" name="nota-impacto-Caden" min="0" max="10">
+      </div>
+      <h3>Batalhas</h3>
+      <!-- Batalha: Caden vs Jonec -->
+      <div class="input-group">
+        <label for="resultado-Caden-Jonec">Resultado Caden VS Jonec:</label>
+        <select id="resultado-Caden-Jonec">
+          <option value="Venceu">Venceu</option>
+          <option value="Perdeu">Perdeu</option>
+          <option value="Empatou">Empatou</option>
+        </select>
+        <label for="favorito-Caden-Jonec">Favorito ou Underdog:</label>
+        <select id="favorito-Caden-Jonec">
+          <option value="Favorito">Favorito</option>
+          <option value="Underdog">Underdog</option>
+        </select>
+        <a class="assistir-link" href="https://www.youtube.com/results?search_query=Caden+VS+Jonec" target="_blank">Assistir</a>
+      </div>
+      <!-- Batalha: Caden vs Joker -->
+      <div class="input-group">
+        <label for="resultado-Caden-Joker">Resultado Caden VS Joker:</label>
+        <select id="resultado-Caden-Joker">
+          <option value="Venceu">Venceu</option>
+          <option value="Perdeu">Perdeu</option>
+          <option value="Empatou">Empatou</option>
+        </select>
+        <label for="favorito-Caden-Joker">Favorito ou Underdog:</label>
+        <select id="favorito-Caden-Joker">
+          <option value="Favorito">Favorito</option>
+          <option value="Underdog">Underdog</option>
+        </select>
+        <a class="assistir-link" href="https://www.youtube.com/results?search_query=Caden+VS+Joker" target="_blank">Assistir</a>
+      </div>
+      <div class="input-group">
+        <button class="button" onclick="votar('Caden')">Votar</button>
+      </div>
+    </div>
+    
+    <!-- CPjota -->
+    <div class="rapper-column" id="rapper-CPjota">
+      <img src="https://via.placeholder.com/150" alt="Imagem do CPjota">
+      <h2><a href="https://www.youtube.com/results?search_query=CPjota" target="_blank">CPjota</a></h2>
+      <h3>Avaliação do rapper</h3>
+      <div class="input-group">
+        <label for="nota-material-CPjota">Material (0-10):</label>
+        <input type="number" id="nota-material-CPjota" name="nota-material-CPjota" min="0" max="10">
+      </div>
+      <div class="input-group">
+        <label for="nota-confronto-CPjota">Confronto Direto (0-10):</label>
+        <input type="number" id="nota-confronto-CPjota" name="nota-confronto-CPjota" min="0" max="10">
+      </div>
+      <div class="input-group">
+        <label for="nota-adversarios-CPjota">Adversários (0-10):</label>
+        <input type="number" id="nota-adversarios-CPjota" name="nota-adversarios-CPjota" min="0" max="10">
+      </div>
+      <div class="input-group">
+        <label for="nota-consistencia-CPjota">Consistência (0-10):</label>
+        <input type="number" id="nota-consistencia-CPjota" name="nota-consistencia-CPjota" min="0" max="10">
+      </div>
+      <div class="input-group">
+        <label for="nota-performance-CPjota">Performance (0-10):</label>
+        <input type="number" id="nota-performance-CPjota" name="nota-performance-CPjota" min="0" max="10">
+      </div>
+      <div class="input-group">
+        <label for="nota-impacto-CPjota">Impacto (0-10):</label>
+        <input type="number" id="nota-impacto-CPjota" name="nota-impacto-CPjota" min="0" max="10">
+      </div>
+      <h3>Batalhas</h3>
+      <!-- Batalha: CPjota vs Lc -->
+      <div class="input-group">
+        <label for="resultado-CPjota-Lc">Resultado CPjota VS Lc:</label>
+        <select id="resultado-CPjota-Lc">
+          <option value="Venceu">Venceu</option>
+          <option value="Perdeu">Perdeu</option>
+          <option value="Empatou">Empatou</option>
+        </select>
+        <label for="favorito-CPjota-Lc">Favorito ou Underdog:</label>
+        <select id="favorito-CPjota-Lc">
+          <option value="Favorito">Favorito</option>
+          <option value="Underdog">Underdog</option>
+        </select>
+        <a class="assistir-link" href="https://www.youtube.com/results?search_query=CPjota+VS+Lc" target="_blank">Assistir</a>
+      </div>
+      <div class="input-group">
+        <button class="button" onclick="votar('CPjota')">Votar</button>
+      </div>
+    </div>
+    
+    <!-- DaVinci -->
+    <div class="rapper-column" id="rapper-DaVinci">
+      <img src="https://via.placeholder.com/150" alt="Imagem do DaVinci">
+      <h2><a href="https://www.youtube.com/results?search_query=DaVinci" target="_blank">DaVinci</a></h2>
+      <h3>Avaliação do rapper</h3>
+      <div class="input-group">
+        <label for="nota-material-DaVinci">Material (0-10):</label>
+        <input type="number" id="nota-material-DaVinci" name="nota-material-DaVinci" min="0" max="10">
+      </div>
+      <div class="input-group">
+        <label for="nota-confronto-DaVinci">Confronto Direto (0-10):</label>
+        <input type="number" id="nota-confronto-DaVinci" name="nota-confronto-DaVinci" min="0" max="10">
+      </div>
+      <div class="input-group">
+        <label for="nota-adversarios-DaVinci">Adversários (0-10):</label>
+        <input type="number" id="nota-adversarios-DaVinci" name="nota-adversarios-DaVinci" min="0" max="10">
+      </div>
+      <div class="input-group">
+        <label for="nota-consistencia-DaVinci">Consistência (0-10):</label>
+        <input type="number" id="nota-consistencia-DaVinci" name="nota-consistencia-DaVinci" min="0" max="10">
+      </div>
+      <div class="input-group">
+        <label for="nota-performance-DaVinci">Performance (0-10):</label>
+        <input type="number" id="nota-performance-DaVinci" name="nota-performance-DaVinci" min="0" max="10">
+      </div>
+      <div class="input-group">
+        <label for="nota-impacto-DaVinci">Impacto (0-10):</label>
+        <input type="number" id="nota-impacto-DaVinci" name="nota-impacto-DaVinci" min="0" max="10">
+      </div>
+      <h3>Batalhas</h3>
+      <!-- Batalha: DaVinci vs Rickas -->
+      <div class="input-group">
+        <label for="resultado-DaVinci-Rickas">Resultado DaVinci VS Rickas:</label>
+        <select id="resultado-DaVinci-Rickas">
+          <option value="Venceu">Venceu</option>
+          <option value="Perdeu">Perdeu</option>
+          <option value="Empatou">Empatou</option>
+        </select>
+        <label for="favorito-DaVinci-Rickas">Favorito ou Underdog:</label>
+        <select id="favorito-DaVinci-Rickas">
+          <option value="Favorito">Favorito</option>
+          <option value="Underdog">Underdog</option>
+        </select>
+        <a class="assistir-link" href="https://www.youtube.com/results?search_query=DaVinci+VS+Rickas" target="_blank">Assistir</a>
+      </div>
+      <!-- Batalha: DaVinci vs Melro -->
+      <div class="input-group">
+        <label for="resultado-DaVinci-Melro">Resultado DaVinci VS Melro:</label>
+        <select id="resultado-DaVinci-Melro">
+          <option value="Venceu">Venceu</option>
+          <option value="Perdeu">Perdeu</option>
+          <option value="Empatou">Empatou</option>
+        </select>
+        <label for="favorito-DaVinci-Melro">Favorito ou Underdog:</label>
+        <select id="favorito-DaVinci-Melro">
+          <option value="Favorito">Favorito</option>
+          <option value="Underdog">Underdog</option>
+        </select>
+        <a class="assistir-link" href="https://www.youtube.com/results?search_query=DaVinci+VS+Melro" target="_blank">Assistir</a>
+      </div>
+      <div class="input-group">
+        <button class="button" onclick="votar('DaVinci')">Votar</button>
+      </div>
+    </div>
+    
+    <!-- Edi Ventura -->
+    <div class="rapper-column" id="rapper-EdiVentura">
+      <img src="https://via.placeholder.com/150" alt="Imagem do Edi Ventura">
+      <h2><a href="https://www.youtube.com/results?search_query=Edi+Ventura" target="_blank">Edi Ventura</a></h2>
+      <h3>Avaliação do rapper</h3>
+      <div class="input-group">
+        <label for="nota-material-EdiVentura">Material (0-10):</label>
+        <input type="number" id="nota-material-EdiVentura" name="nota-material-EdiVentura" min="0" max="10">
+      </div>
+      <div class="input-group">
+        <label for="nota-confronto-EdiVentura">Confronto Direto (0-10):</label>
+        <input type="number" id="nota-confronto-EdiVentura" name="nota-confronto-EdiVentura" min="0" max="10">
+      </div>
+      <div class="input-group">
+        <label for="nota-adversarios-EdiVentura">Adversários (0-10):</label>
+        <input type="number" id="nota-adversarios-EdiVentura" name="nota-adversarios-EdiVentura" min="0" max="10">
+      </div>
+      <div class="input-group">
+        <label for="nota-consistencia-EdiVentura">Consistência (0-10):</label>
+        <input type="number" id="nota-consistencia-EdiVentura" name="nota-consistencia-EdiVentura" min="0" max="10">
+      </div>
+      <div class="input-group">
+        <label for="nota-performance-EdiVentura">Performance (0-10):</label>
+        <input type="number" id="nota-performance-EdiVentura" name="nota-performance-EdiVentura" min="0" max="10">
+      </div>
+      <div class="input-group">
+        <label for="nota-impacto-EdiVentura">Impacto (0-10):</label>
+        <input type="number" id="nota-impacto-EdiVentura" name="nota-impacto-EdiVentura" min="0" max="10">
+      </div>
+      <h3>Batalhas</h3>
+      <!-- Batalha: Edi Ventura vs RealPunch -->
+      <div class="input-group">
+        <label for="resultado-EdiVentura-RealPunch">Resultado Edi Ventura VS RealPunch:</label>
+        <select id="resultado-EdiVentura-RealPunch">
+          <option value="Venceu">Venceu</option>
+          <option value="Perdeu">Perdeu</option>
+          <option value="Empatou">Empatou</option>
+        </select>
+        <label for="favorito-EdiVentura-RealPunch">Favorito ou Underdog:</label>
+        <select id="favorito-EdiVentura-RealPunch">
+          <option value="Favorito">Favorito</option>
+          <option value="Underdog">Underdog</option>
+        </select>
+        <a class="assistir-link" href="https://www.youtube.com/results?search_query=Edi+Ventura+VS+RealPunch" target="_blank">Assistir</a>
+      </div>
+      <!-- Batalha: Edi Ventura vs WilsonG -->
+      <div class="input-group">
+        <label for="resultado-EdiVentura-WilsonG">Resultado Edi Ventura VS WilsonG:</label>
+        <select id="resultado-EdiVentura-WilsonG">
+          <option value="Venceu">Venceu</option>
+          <option value="Perdeu">Perdeu</option>
+          <option value="Empatou">Empatou</option>
+        </select>
+        <label for="favorito-EdiVentura-WilsonG">Favorito ou Underdog:</label>
+        <select id="favorito-EdiVentura-WilsonG">
+          <option value="Favorito">Favorito</option>
+          <option value="Underdog">Underdog</option>
+        </select>
+        <a class="assistir-link" href="https://www.youtube.com/results?search_query=Edi+Ventura+VS+WilsonG" target="_blank">Assistir</a>
+      </div>
+      <!-- Batalha: Edi Ventura vs ZA -->
+      <div class="input-group">
+        <label for="resultado-EdiVentura-Za">Resultado Edi Ventura VS ZA:</label>
+        <select id="resultado-EdiVentura-Za">
+          <option value="Venceu">Venceu</option>
+          <option value="Perdeu">Perdeu</option>
+          <option value="Empatou">Empatou</option>
+        </select>
+        <label for="favorito-EdiVentura-Za">Favorito ou Underdog:</label>
+        <select id="favorito-EdiVentura-Za">
+          <option value="Favorito">Favorito</option>
+          <option value="Underdog">Underdog</option>
+        </select>
+        <a class="assistir-link" href="https://www.youtube.com/results?search_query=Edi+Ventura+VS+ZA" target="_blank">Assistir</a>
+      </div>
+      <!-- Batalha: Edi Ventura vs Lc -->
+      <div class="input-group">
+        <label for="resultado-EdiVentura-Lc">Resultado Edi Ventura VS Lc:</label>
+        <select id="resultado-EdiVentura-Lc">
+          <option value="Venceu">Venceu</option>
+          <option value="Perdeu">Perdeu</option>
+          <option value="Empatou">Empatou</option>
+        </select>
+        <label for="favorito-EdiVentura-Lc">Favorito ou Underdog:</label>
+        <select id="favorito-EdiVentura-Lc">
+          <option value="Favorito">Favorito</option>
+          <option value="Underdog">Underdog</option>
+        </select>
+        <a class="assistir-link" href="https://www.youtube.com/results?search_query=Edi+Ventura+VS+Lc" target="_blank">Assistir</a>
+      </div>
+      <!-- Batalha: Edi Ventura vs MajesticTK -->
+      <div class="input-group">
+        <label for="resultado-EdiVentura-MajesticTK">Resultado Edi Ventura VS Majestic TK:</label>
+        <select id="resultado-EdiVentura-MajesticTK">
+          <option value="Venceu">Venceu</option>
+          <option value="Perdeu">Perdeu</option>
+          <option value="Empatou">Empatou</option>
+        </select>
+        <label for="favorito-EdiVentura-MajesticTK">Favorito ou Underdog:</label>
+        <select id="favorito-EdiVentura-MajesticTK">
+          <option value="Favorito">Favorito</option>
+          <option value="Underdog">Underdog</option>
+        </select>
+        <a class="assistir-link" href="https://www.youtube.com/results?search_query=Edi+Ventura+VS+Majestic+TK" target="_blank">Assistir</a>
+      </div>
+      <div class="input-group">
+        <button class="button" onclick="votar('EdiVentura')">Votar</button>
+      </div>
+    </div>
+    
+    <!-- EDC -->
+    <div class="rapper-column" id="rapper-EDC">
+      <img src="https://via.placeholder.com/150" alt="Imagem do EDC">
+      <h2><a href="https://www.youtube.com/results?search_query=EDC" target="_blank">EDC</a></h2>
+      <h3>Avaliação do rapper</h3>
+      <div class="input-group">
+        <label for="nota-material-EDC">Material (0-10):</label>
+        <input type="number" id="nota-material-EDC" name="nota-material-EDC" min="0" max="10">
+      </div>
+     
   </script>
 </body>
 </html>
