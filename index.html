@@ -104,12 +104,48 @@
 
   <!-- Rappers -->
   <div class="rapper-container">
+    <!-- 3ma -->
+    <div class="rapper-card">
+      <img src="3ma.jpg" alt="3ma" class="rapper-photo">
+      <div class="rapper-name">
+        <a href="https://www.youtube.com/results?search_query=3ma" target="_blank">3ma</a>
+      </div>
+      <div class="criteria">
+        <strong>Avalie o rapper:</strong><br>
+        Material: <input type="number" min="0" max="10" class="criteria-rating" id="3ma-material"><br>
+        Confronto Direto: <input type="number" min="0" max="10" class="criteria-rating" id="3ma-confronto"><br>
+        Adversários: <input type="number" min="0" max="10" class="criteria-rating" id="3ma-adversarios"><br>
+        Consistência: <input type="number" min="0" max="10" class="criteria-rating" id="3ma-consistencia"><br>
+        Performance: <input type="number" min="0" max="10" class="criteria-rating" id="3ma-performance"><br>
+        Impacto: <input type="number" min="0" max="10" class="criteria-rating" id="3ma-impacto">
+      </div>
+      <div class="battle-info">
+        <strong>Adversários:</strong><br>
+        <a href="https://www.youtube.com/results?search_query=3ma+vs+KM" target="_blank">3ma vs KM</a>, 
+        <a href="https://www.youtube.com/results?search_query=3ma+vs+Shap3" target="_blank">3ma vs Shap3</a>, 
+        <a href="https://www.youtube.com/results?search_query=3ma+vs+Lc" target="_blank">3ma vs Lc</a>
+        <br>
+        <label>Favorito/Underdog:</label>
+        <select id="3ma-underdog-favorito">
+          <option value="favorito">Favorito</option>
+          <option value="underdog">Underdog</option>
+        </select>
+        <br>
+        <label>Resultado:</label>
+        <select id="3ma-resultado">
+          <option value="ganhou">Ganhou</option>
+          <option value="perdeu">Perdeu</option>
+          <option value="empatou">Empatou</option>
+        </select>
+      </div>
+    </div>
+
+    <!-- Abismal -->
     <div class="rapper-card">
       <img src="abismal.jpg" alt="Abismal" class="rapper-photo">
       <div class="rapper-name">
         <a href="https://www.youtube.com/results?search_query=Abismal" target="_blank">Abismal</a>
       </div>
-      
       <div class="criteria">
         <strong>Avalie o rapper:</strong><br>
         Material: <input type="number" min="0" max="10" class="criteria-rating" id="abismal-material"><br>
@@ -119,10 +155,11 @@
         Performance: <input type="number" min="0" max="10" class="criteria-rating" id="abismal-performance"><br>
         Impacto: <input type="number" min="0" max="10" class="criteria-rating" id="abismal-impacto">
       </div>
-
       <div class="battle-info">
         <strong>Adversários:</strong><br>
-        <a href="https://www.youtube.com/results?search_query=Abismal+vs+Edi+Ventura" target="_blank">Abismal vs Edi Ventura</a>
+        <a href="https://www.youtube.com/results?search_query=Abismal+vs+Edi+Ventura" target="_blank">Abismal vs Edi Ventura</a>, 
+        <a href="https://www.youtube.com/results?search_query=Abismal+vs+Flajo" target="_blank">Abismal vs Flajo</a>, 
+        <a href="https://www.youtube.com/results?search_query=Abismal+vs+WilsonG" target="_blank">Abismal vs WilsonG</a>
         <br>
         <label>Favorito/Underdog:</label>
         <select id="abismal-underdog-favorito">
@@ -138,6 +175,8 @@
         </select>
       </div>
     </div>
+
+    <!-- Mais rappers podem ser adicionados aqui seguindo a mesma estrutura -->
   </div>
 
   <!-- Tabela de Resultados -->
@@ -152,10 +191,16 @@
     </thead>
     <tbody>
       <tr>
-        <td>Abismal</td>
+        <td>3ma</td>
         <td>1</td>
         <td>0</td>
         <td>85</td>
+      </tr>
+      <tr>
+        <td>Abismal</td>
+        <td>1</td>
+        <td>0</td>
+        <td>88</td>
       </tr>
     </tbody>
   </table>
