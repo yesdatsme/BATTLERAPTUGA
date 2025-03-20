@@ -21,13 +21,14 @@
             justify-content: space-between;
         }
         .rapper {
-            width: 48%;
+            width: 22%;
             margin: 10px 0;
             padding: 15px;
             background-color: #fff;
             box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
             border-radius: 8px;
             text-align: center;
+            position: relative;
         }
         .rapper img {
             width: 100%;
@@ -100,27 +101,28 @@
     <h1>Classificação de Rappers - Batalhas</h1>
 
     <div class="info-text">
-        <p><strong>Instruções de Avaliação:</strong></p>
-        <p>Este sistema de avaliação atribui pesos diferenciados aos critérios para determinar a pontuação de cada rapper. Os critérios Material, Confronto Direto e Adversários têm um peso maior, enquanto Consistência, Performance e Impacto têm menor peso. A pontuação é inicialmente calculada somando-se as notas de cada critério multiplicadas pelos seus respectivos pesos.</p>
-        
-        <p><strong>Critérios de Avaliação:</strong></p>
-        <ul>
-            <li><strong>Material</strong>: 25% (Mais importante)</li>
-            <li><strong>Confronto Direto</strong>: 25% (Mais importante)</li>
-            <li><strong>Adversários</strong>: 20% (Importante)</li>
-            <li><strong>Consistência</strong>: 10% (Menos importante)</li>
-            <li><strong>Performance</strong>: 10% (Menos importante)</li>
-            <li><strong>Impacto</strong>: 10% (Menos importante)</li>
-        </ul>
-        
-        <p>Após calcular a pontuação inicial, o status do rapper (favorito ou underdog) é levado em conta para ajustar a pontuação, dependendo do resultado da batalha:</p>
-        <ul>
-            <li><strong>Favorito que perde:</strong> Perde 20% da pontuação.</li>
-            <li><strong>Underdog que ganha:</strong> Ganha 20% de bônus.</li>
-            <li><strong>Favorito que ganha:</strong> Não há alteração na pontuação.</li>
-            <li><strong>Underdog que perde:</strong> Não há alteração na pontuação.</li>
-        </ul>
-        <p>Esse sistema garante que o status do rapper e seu desempenho durante a batalha influenciem a pontuação final, criando um equilíbrio entre técnica (critérios de avaliação) e contexto competitivo (favorito/underdog e resultado da batalha).</p>
+        <div class="yellow-box">
+            <p><strong>Instruções de Avaliação:</strong></p>
+            <p>Este sistema de avaliação atribui pesos diferenciados aos critérios para determinar a pontuação de cada rapper. Os critérios Material, Confronto Direto e Adversários têm um peso maior, enquanto Consistência, Performance e Impacto têm menor peso. A pontuação é inicialmente calculada somando-se as notas de cada critério multiplicadas pelos seus respectivos pesos.</p>
+            
+            <p><strong>Critérios de Avaliação:</strong></p>
+            <ul>
+                <li><strong>Material</strong>: 25% (Mais importante)</li>
+                <li><strong>Confronto Direto</strong>: 25% (Mais importante)</li>
+                <li><strong>Adversários</strong>: 20% (Importante)</li>
+                <li><strong>Consistência</strong>: 10% (Menos importante)</li>
+                <li><strong>Performance</strong>: 10% (Menos importante)</li>
+                <li><strong>Impacto</strong>: 10% (Menos importante)</li>
+            </ul>
+            <p>Após calcular a pontuação inicial, o status do rapper (favorito ou underdog) é levado em conta para ajustar a pontuação, dependendo do resultado da batalha:</p>
+            <ul>
+                <li><strong>Favorito que perde:</strong> Perde 20% da pontuação.</li>
+                <li><strong>Underdog que ganha:</strong> Ganha 20% de bônus.</li>
+                <li><strong>Favorito que ganha:</strong> Não há alteração na pontuação.</li>
+                <li><strong>Underdog que perde:</strong> Não há alteração na pontuação.</li>
+            </ul>
+            <p>Esse sistema garante que o status do rapper e seu desempenho durante a batalha influenciem a pontuação final, criando um equilíbrio entre técnica (critérios de avaliação) e contexto competitivo (favorito/underdog e resultado da batalha).</p>
+        </div>
     </div>
 
     <div class="container">
@@ -146,9 +148,19 @@
 
             <!-- Battle Info -->
             <div class="battle-info">
-                <div class="yellow-box">
-                    <p><strong>Contra Shap3</strong> - <a href="https://www.youtube.com/results?search_query=3ma+vs+Shap3" target="_blank">Assistir no YouTube</a></p>
-                </div>
+                <label>Adversários:</label>
+                <p>3ma vs Shap3 - <a href="https://www.youtube.com/results?search_query=3ma+vs+Shap3" target="_blank">Assistir no YouTube</a></p>
+                <label>Favorito/Underdog:</label>
+                <select id="favorito_underdog_3ma">
+                    <option value="favorito">Favorito</option>
+                    <option value="underdog">Underdog</option>
+                </select>
+                <label>Resultado:</label>
+                <select id="resultado_3ma">
+                    <option value="ganhou">Ganhou</option>
+                    <option value="perdeu">Perdeu</option>
+                    <option value="empatou">Empatou</option>
+                </select>
             </div>
         </div>
 
@@ -174,16 +186,102 @@
 
             <!-- Battle Info -->
             <div class="battle-info">
-                <div class="yellow-box">
-                    <p><strong>Contra Edi Ventura</strong> - <a href="https://www.youtube.com/results?search_query=Abismal+vs+Edi+Ventura" target="_blank">Assistir no YouTube</a></p>
-                </div>
+                <label>Adversários:</label>
+                <p>Abismal vs Edi Ventura - <a href="https://www.youtube.com/results?search_query=Abismal+vs+Edi+Ventura" target="_blank">Assistir no YouTube</a></p>
+                <label>Favorito/Underdog:</label>
+                <select id="favorito_underdog_abismal">
+                    <option value="favorito">Favorito</option>
+                    <option value="underdog">Underdog</option>
+                </select>
+                <label>Resultado:</label>
+                <select id="resultado_abismal">
+                    <option value="ganhou">Ganhou</option>
+                    <option value="perdeu">Perdeu</option>
+                    <option value="empatou">Empatou</option>
+                </select>
+            </div>
+        </div>
+
+        <!-- Rapper 3 -->
+        <div class="rapper">
+            <img src="AM.jpg" alt="AM">
+            <h3>AM</h3>
+            <div class="criteria">
+                <p><strong>Avalie AM:</strong></p>
+                <label for="material_AM">Material (1-10)</label>
+                <input type="number" id="material_AM" min="1" max="10">
+                <label for="confronto_AM">Confronto Direto (1-10)</label>
+                <input type="number" id="confronto_AM" min="1" max="10">
+                <label for="adversarios_AM">Adversários (1-10)</label>
+                <input type="number" id="adversarios_AM" min="1" max="10">
+                <label for="consistencia_AM">Consistência (1-10)</label>
+                <input type="number" id="consistencia_AM" min="1" max="10">
+                <label for="performance_AM">Performance (1-10)</label>
+                <input type="number" id="performance_AM" min="1" max="10">
+                <label for="impacto_AM">Impacto (1-10)</label>
+                <input type="number" id="impacto_AM" min="1" max="10">
+            </div>
+
+            <!-- Battle Info -->
+            <div class="battle-info">
+                <label>Adversários:</label>
+                <p>AM vs Slark - <a href="https://www.youtube.com/results?search_query=AM+vs+Slark" target="_blank">Assistir no YouTube</a></p>
+                <label>Favorito/Underdog:</label>
+                <select id="favorito_underdog_AM">
+                    <option value="favorito">Favorito</option>
+                    <option value="underdog">Underdog</option>
+                </select>
+                <label>Resultado:</label>
+                <select id="resultado_AM">
+                    <option value="ganhou">Ganhou</option>
+                    <option value="perdeu">Perdeu</option>
+                    <option value="empatou">Empatou</option>
+                </select>
+            </div>
+        </div>
+
+        <!-- Rapper 4 -->
+        <div class="rapper">
+            <img src="Caden.jpg" alt="Caden">
+            <h3>Caden</h3>
+            <div class="criteria">
+                <p><strong>Avalie Caden:</strong></p>
+                <label for="material_Caden">Material (1-10)</label>
+                <input type="number" id="material_Caden" min="1" max="10">
+                <label for="confronto_Caden">Confronto Direto (1-10)</label>
+                <input type="number" id="confronto_Caden" min="1" max="10">
+                <label for="adversarios_Caden">Adversários (1-10)</label>
+                <input type="number" id="adversarios_Caden" min="1" max="10">
+                <label for="consistencia_Caden">Consistência (1-10)</label>
+                <input type="number" id="consistencia_Caden" min="1" max="10">
+                <label for="performance_Caden">Performance (1-10)</label>
+                <input type="number" id="performance_Caden" min="1" max="10">
+                <label for="impacto_Caden">Impacto (1-10)</label>
+                <input type="number" id="impacto_Caden" min="1" max="10">
+            </div>
+
+            <!-- Battle Info -->
+            <div class="battle-info">
+                <label>Adversários:</label>
+                <p>Caden vs Jonec - <a href="https://www.youtube.com/results?search_query=Caden+vs+Jonec" target="_blank">Assistir no YouTube</a></p>
+                <label>Favorito/Underdog:</label>
+                <select id="favorito_underdog_Caden">
+                    <option value="favorito">Favorito</option>
+                    <option value="underdog">Underdog</option>
+                </select>
+                <label>Resultado:</label>
+                <select id="resultado_Caden">
+                    <option value="ganhou">Ganhou</option>
+                    <option value="perdeu">Perdeu</option>
+                    <option value="empatou">Empatou</option>
+                </select>
             </div>
         </div>
     </div>
 
-    <!-- Tabela de Resultados -->
-    <h2>Resultados das Batalhas</h2>
-    <table>
+    <button class="submit-btn" onclick="submitResults()">Submeter Resultados</button>
+
+    <table id="resultsTable">
         <thead>
             <tr>
                 <th>Rapper</th>
@@ -193,22 +291,32 @@
             </tr>
         </thead>
         <tbody>
-            <tr>
-                <td>3ma</td>
-                <td id="result_material_3ma"></td>
-                <td id="result_confronto_3ma"></td>
-                <td id="result_adversarios_3ma"></td>
-            </tr>
-            <tr>
-                <td>Abismal</td>
-                <td id="result_material_abismal"></td>
-                <td id="result_confronto_abismal"></td>
-                <td id="result_adversarios_abismal"></td>
-            </tr>
+            <!-- Tabela será preenchida com os resultados -->
         </tbody>
     </table>
 
-    <button class="submit-btn">Submeter Todos os Votos</button>
+    <script>
+        function submitResults() {
+            const rappers = [
+                '3ma', 'Abismal', 'AM', 'Caden' 
+            ];
+            let tableBody = document.querySelector('#resultsTable tbody');
+            tableBody.innerHTML = '';  // Clear any previous results
 
+            rappers.forEach(rapper => {
+                let material = document.getElementById('material_' + rapper).value;
+                let confronto = document.getElementById('confronto_' + rapper).value;
+                let adversarios = document.getElementById('adversarios_' + rapper).value;
+                let newRow = document.createElement('tr');
+                newRow.innerHTML = `
+                    <td>${rapper}</td>
+                    <td>${material}</td>
+                    <td>${confronto}</td>
+                    <td>${adversarios}</td>
+                `;
+                tableBody.appendChild(newRow);
+            });
+        }
+    </script>
 </body>
 </html>
