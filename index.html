@@ -3,9 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Votação de Rappers</title>
+    <title>Rappers</title>
     <style>
-        /* (Mantive o CSS que você enviou para preservar o estilo) */
         body {
             font-family: 'Arial', sans-serif;
             background: linear-gradient(135deg, #f5f7fa, #c3cfe2);
@@ -22,12 +21,17 @@
             font-size: 2.5em;
             margin-bottom: 20px;
         }
+        .container {
+            display: flex;
+            width: 100%;
+            max-width: 1400px;
+            gap: 20px;
+        }
         .rapper-container {
             display: grid;
             grid-template-columns: repeat(4, 1fr);
             gap: 20px;
-            max-width: 1200px;
-            margin: 0 auto;
+            flex: 3;
         }
         .rapper-card {
             background: #fff;
@@ -43,15 +47,6 @@
             object-fit: cover;
             border-radius: 10px;
             margin-bottom: 15px;
-        }
-        .rapper-card a {
-            text-decoration: none;
-            color: #2575fc;
-            font-weight: bold;
-            font-size: 1.2em;
-        }
-        .rapper-card a:hover {
-            text-decoration: underline;
         }
         .voting-options {
             background: #f9f9f9;
@@ -114,204 +109,224 @@
         button:hover {
             background: linear-gradient(135deg, #2575fc, #6a11cb);
         }
+        .scoreboard {
+            flex: 1;
+            background: #fff;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            max-height: 600px;
+            overflow-y: auto;
+        }
+        .scoreboard h2 {
+            text-align: center;
+            color: #333;
+            font-size: 1.8em;
+            margin-bottom: 20px;
+        }
+        .scoreboard table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        .scoreboard th, .scoreboard td {
+            padding: 10px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+        .scoreboard th {
+            background: #f9f9f9;
+            font-weight: bold;
+        }
     </style>
 </head>
 <body>
-    <h1>VOTAÇÃO</h1>
-    <form id="votacaoForm">
-        <!-- 3ma -->
-        <div class="rapper-card" id="3ma">
-            <h2>3ma</h2>
-            <div class="voting-options">
-                <label for="3ma_consistencia">Consistência (1-10):</label>
-                <input type="number" id="3ma_consistencia" min="1" max="10" required>
-                <label for="3ma_material">Material (1-10):</label>
-                <input type="number" id="3ma_material" min="1" max="10" required>
-                <label for="3ma_performance">Performance (1-10):</label>
-                <input type="number" id="3ma_performance" min="1" max="10" required>
-                <label for="3ma_adversarios">Adversários (1-10):</label>
-                <input type="number" id="3ma_adversarios" min="1" max="10" required>
-                <label for="3ma_impacto">Impacto (1-10):</label>
-                <input type="number" id="3ma_impacto" min="1" max="10" required>
-                <label for="3ma_confronto">Confronto Direto (1-10):</label>
-                <input type="number" id="3ma_confronto" min="1" max="10" required>
+    <h1>Rappers</h1>
+    <div class="container">
+        <!-- Lista de Rappers -->
+        <div class="rapper-container">
+            <!-- 3ma -->
+            <div class="rapper-card" id="3ma">
+                <h2>3ma</h2>
+                <div class="voting-options">
+                    <label for="3ma_consistencia">Consistência (1-10):</label>
+                    <input type="number" id="3ma_consistencia" min="1" max="10" required>
+                    <label for="3ma_material">Material (1-10):</label>
+                    <input type="number" id="3ma_material" min="1" max="10" required>
+                    <label for="3ma_performance">Performance (1-10):</label>
+                    <input type="number" id="3ma_performance" min="1" max="10" required>
+                    <label for="3ma_adversarios">Adversários (1-10):</label>
+                    <input type="number" id="3ma_adversarios" min="1" max="10" required>
+                    <label for="3ma_impacto">Impacto (1-10):</label>
+                    <input type="number" id="3ma_impacto" min="1" max="10" required>
+                    <label for="3ma_confronto">Confronto Direto (1-10):</label>
+                    <input type="number" id="3ma_confronto" min="1" max="10" required>
+                </div>
+                <div class="recent-battles">
+                    <h3>Batalhas Recentes</h3>
+                    <ul>
+                        <!-- Sem batalhas recentes -->
+                    </ul>
+                </div>
+                <button onclick="submitVote('3ma')">Votar</button>
             </div>
-            <div class="recent-battles">
-                <h3>Batalhas Recentes</h3>
-                <ul>
-                    <!-- Sem batalhas recentes -->
-                </ul>
+
+            <!-- Abismal -->
+            <div class="rapper-card" id="abismal">
+                <h2>Abismal</h2>
+                <div class="voting-options">
+                    <label for="abismal_consistencia">Consistência (1-10):</label>
+                    <input type="number" id="abismal_consistencia" min="1" max="10" required>
+                    <label for="abismal_material">Material (1-10):</label>
+                    <input type="number" id="abismal_material" min="1" max="10" required>
+                    <label for="abismal_performance">Performance (1-10):</label>
+                    <input type="number" id="abismal_performance" min="1" max="10" required>
+                    <label for="abismal_adversarios">Adversários (1-10):</label>
+                    <input type="number" id="abismal_adversarios" min="1" max="10" required>
+                    <label for="abismal_impacto">Impacto (1-10):</label>
+                    <input type="number" id="abismal_impacto" min="1" max="10" required>
+                    <label for="abismal_confronto">Confronto Direto (1-10):</label>
+                    <input type="number" id="abismal_confronto" min="1" max="10" required>
+                </div>
+                <div class="recent-battles">
+                    <h3>Batalhas Recentes</h3>
+                    <ul>
+                        <li>RealPunch
+                            <select name="abismal_realpunch_result">
+                                <option value="vitoria">Vitória</option>
+                                <option value="empate">Empate</option>
+                                <option value="derrota">Derrota</option>
+                            </select>
+                            <select name="abismal_realpunch_status">
+                                <option value="neutro">Neutro</option>
+                                <option value="underdog">Underdog</option>
+                                <option value="favorite">Favorite</option>
+                            </select>
+                        </li>
+                        <li>WilsonG
+                            <select name="abismal_wilsong_result">
+                                <option value="vitoria">Vitória</option>
+                                <option value="empate">Empate</option>
+                                <option value="derrota">Derrota</option>
+                            </select>
+                            <select name="abismal_wilsong_status">
+                                <option value="neutro">Neutro</option>
+                                <option value="underdog">Underdog</option>
+                                <option value="favorite">Favorite</option>
+                            </select>
+                        </li>
+                    </ul>
+                </div>
+                <button onclick="submitVote('abismal')">Votar</button>
             </div>
+
+            <!-- AM -->
+            <div class="rapper-card" id="am">
+                <h2>AM</h2>
+                <div class="voting-options">
+                    <label for="am_consistencia">Consistência (1-10):</label>
+                    <input type="number" id="am_consistencia" min="1" max="10" required>
+                    <label for="am_material">Material (1-10):</label>
+                    <input type="number" id="am_material" min="1" max="10" required>
+                    <label for="am_performance">Performance (1-10):</label>
+                    <input type="number" id="am_performance" min="1" max="10" required>
+                    <label for="am_adversarios">Adversários (1-10):</label>
+                    <input type="number" id="am_adversarios" min="1" max="10" required>
+                    <label for="am_impacto">Impacto (1-10):</label>
+                    <input type="number" id="am_impacto" min="1" max="10" required>
+                    <label for="am_confronto">Confronto Direto (1-10):</label>
+                    <input type="number" id="am_confronto" min="1" max="10" required>
+                </div>
+                <div class="recent-battles">
+                    <h3>Batalhas Recentes</h3>
+                    <ul>
+                        <li>Vazto
+                            <select name="am_vazto_result">
+                                <option value="vitoria">Vitória</option>
+                                <option value="empate">Empate</option>
+                                <option value="derrota">Derrota</option>
+                            </select>
+                            <select name="am_vazto_status">
+                                <option value="neutro">Neutro</option>
+                                <option value="underdog">Underdog</option>
+                                <option value="favorite">Favorite</option>
+                            </select>
+                        </li>
+                        <li>Za
+                            <select name="am_za_result">
+                                <option value="vitoria">Vitória</option>
+                                <option value="empate">Empate</option>
+                                <option value="derrota">Derrota</option>
+                            </select>
+                            <select name="am_za_status">
+                                <option value="neutro">Neutro</option>
+                                <option value="underdog">Underdog</option>
+                                <option value="favorite">Favorite</option>
+                            </select>
+                        </li>
+                    </ul>
+                </div>
+                <button onclick="submitVote('am')">Votar</button>
+            </div>
+
+            <!-- Adicione mais rappers aqui -->
         </div>
 
-        <!-- Abismal -->
-        <div class="rapper-card" id="abismal">
-            <h2>Abismal</h2>
-            <div class="voting-options">
-                <label for="abismal_consistencia">Consistência (1-10):</label>
-                <input type="number" id="abismal_consistencia" min="1" max="10" required>
-                <label for="abismal_material">Material (1-10):</label>
-                <input type="number" id="abismal_material" min="1" max="10" required>
-                <label for="abismal_performance">Performance (1-10):</label>
-                <input type="number" id="abismal_performance" min="1" max="10" required>
-                <label for="abismal_adversarios">Adversários (1-10):</label>
-                <input type="number" id="abismal_adversarios" min="1" max="10" required>
-                <label for="abismal_impacto">Impacto (1-10):</label>
-                <input type="number" id="abismal_impacto" min="1" max="10" required>
-                <label for="abismal_confronto">Confronto Direto (1-10):</label>
-                <input type="number" id="abismal_confronto" min="1" max="10" required>
-            </div>
-            <div class="recent-battles">
-                <h3>Batalhas Recentes</h3>
-                <ul>
-                    <li>RealPunch
-                        <select name="abismal_realpunch_result">
-                            <option value="vitoria">Vitória</option>
-                            <option value="empate">Empate</option>
-                            <option value="derrota">Derrota</option>
-                        </select>
-                        <select name="abismal_realpunch_status">
-                            <option value="neutro">Neutro</option>
-                            <option value="underdog">Underdog</option>
-                            <option value="favorite">Favorite</option>
-                        </select>
-                    </li>
-                    <li>WilsonG
-                        <select name="abismal_wilsong_result">
-                            <option value="vitoria">Vitória</option>
-                            <option value="empate">Empate</option>
-                            <option value="derrota">Derrota</option>
-                        </select>
-                        <select name="abismal_wilsong_status">
-                            <option value="neutro">Neutro</option>
-                            <option value="underdog">Underdog</option>
-                            <option value="favorite">Favorite</option>
-                        </select>
-                    </li>
-                </ul>
-            </div>
+        <!-- Tabela de Pontuação -->
+        <div class="scoreboard">
+            <h2>Pontuação</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Rapper</th>
+                        <th>Pontuação</th>
+                    </tr>
+                </thead>
+                <tbody id="scoreboard-body">
+                    <!-- As pontuações serão preenchidas dinamicamente via JavaScript -->
+                </tbody>
+            </table>
         </div>
-
-        <!-- AM -->
-        <div class="rapper-card" id="am">
-            <h2>AM</h2>
-            <div class="voting-options">
-                <label for="am_consistencia">Consistência (1-10):</label>
-                <input type="number" id="am_consistencia" min="1" max="10" required>
-                <label for="am_material">Material (1-10):</label>
-                <input type="number" id="am_material" min="1" max="10" required>
-                <label for="am_performance">Performance (1-10):</label>
-                <input type="number" id="am_performance" min="1" max="10" required>
-                <label for="am_adversarios">Adversários (1-10):</label>
-                <input type="number" id="am_adversarios" min="1" max="10" required>
-                <label for="am_impacto">Impacto (1-10):</label>
-                <input type="number" id="am_impacto" min="1" max="10" required>
-                <label for="am_confronto">Confronto Direto (1-10):</label>
-                <input type="number" id="am_confronto" min="1" max="10" required>
-            </div>
-            <div class="recent-battles">
-                <h3>Batalhas Recentes</h3>
-                <ul>
-                    <li>Vazto
-                        <select name="am_vazto_result">
-                            <option value="vitoria">Vitória</option>
-                            <option value="empate">Empate</option>
-                            <option value="derrota">Derrota</option>
-                        </select>
-                        <select name="am_vazto_status">
-                            <option value="neutro">Neutro</option>
-                            <option value="underdog">Underdog</option>
-                            <option value="favorite">Favorite</option>
-                        </select>
-                    </li>
-                    <li>Za
-                        <select name="am_za_result">
-                            <option value="vitoria">Vitória</option>
-                            <option value="empate">Empate</option>
-                            <option value="derrota">Derrota</option>
-                        </select>
-                        <select name="am_za_status">
-                            <option value="neutro">Neutro</option>
-                            <option value="underdog">Underdog</option>
-                            <option value="favorite">Favorite</option>
-                        </select>
-                    </li>
-                </ul>
-            </div>
-        </div>
-
-        <!-- Adicione mais rappers aqui -->
-
-        <button type="submit">Calcular Pontuação</button>
-    </form>
-
-    <div class="resultado">
-        <h2>Resultado</h2>
-        <p id="resultado"></p>
     </div>
 
     <script>
-        const pesos = {
-            consistencia: 0.30,
-            material: 0.25,
-            performance: 0.20,
-            adversarios: 0.15,
-            impacto: 0.05,
-            confronto: 0.05
-        };
+        // Função para salvar os votos no localStorage
+        function submitVote(rapperId) {
+            const consistencia = parseFloat(document.getElementById(`${rapperId}_consistencia`).value);
+            const material = parseFloat(document.getElementById(`${rapperId}_material`).value);
+            const performance = parseFloat(document.getElementById(`${rapperId}_performance`).value);
+            const adversarios = parseFloat(document.getElementById(`${rapperId}_adversarios`).value);
+            const impacto = parseFloat(document.getElementById(`${rapperId}_impacto`).value);
+            const confronto = parseFloat(document.getElementById(`${rapperId}_confronto`).value);
 
-        const statusBatalha = {
-            underdog: { vitoria: 2, derrota: -0.5, empate: 1 },
-            favorite: { vitoria: 1, derrota: -2, empate: 0.5 },
-            neutro: { vitoria: 1.5, derrota: -1.5, empate: 0.75 }
-        };
+            const totalScore = consistencia + material + performance + adversarios + impacto + confronto;
 
-        document.getElementById('votacaoForm').addEventListener('submit', function (e) {
-            e.preventDefault();
+            // Salva a pontuação no localStorage
+            localStorage.setItem(rapperId, totalScore);
 
-            const rappers = [
-                { name: "3ma", batalhas: [] },
-                { name: "abismal", batalhas: ["realpunch", "wilsong"] },
-                { name: "am", batalhas: ["vazto", "za"] }
-                // Adicione mais rappers aqui
-            ];
+            // Atualiza a tabela de pontuação
+            updateScoreboard();
+        }
 
-            let resultados = [];
+        // Função para atualizar a tabela de pontuação
+        function updateScoreboard() {
+            const scoreboardBody = document.getElementById('scoreboard-body');
+            scoreboardBody.innerHTML = '';
 
+            // Recupera todos os rappers e suas pontuações
+            const rappers = ['3ma', 'abismal', 'am']; // Adicione mais rappers aqui
             rappers.forEach(rapper => {
-                // Coleta as notas dos critérios
-                const notas = {
-                    consistencia: parseFloat(document.getElementById(`${rapper.name}_consistencia`).value),
-                    material: parseFloat(document.getElementById(`${rapper.name}_material`).value),
-                    performance: parseFloat(document.getElementById(`${rapper.name}_performance`).value),
-                    adversarios: parseFloat(document.getElementById(`${rapper.name}_adversarios`).value),
-                    impacto: parseFloat(document.getElementById(`${rapper.name}_impacto`).value),
-                    confronto: parseFloat(document.getElementById(`${rapper.name}_confronto`).value)
-                };
-
-                // Calcula a média ponderada
-                const mediaPonderada = Object.keys(notas).reduce((total, criterio) => {
-                    return total + (notas[criterio] * pesos[criterio]);
-                }, 0);
-
-                // Coleta os resultados das batalhas
-                let pontuacaoBatalhas = 0;
-                rapper.batalhas.forEach(batalha => {
-                    const resultado = document.querySelector(`select[name="${rapper.name}_${batalha}_result"]`).value;
-                    const status = document.querySelector(`select[name="${rapper.name}_${batalha}_status"]`).value;
-
-                    pontuacaoBatalhas += statusBatalha[status][resultado];
-                });
-
-                // Pontuação final
-                const pontuacaoFinal = mediaPonderada + pontuacaoBatalhas;
-                resultados.push({ name: rapper.name, pontuacao: pontuacaoFinal });
+                const score = parseFloat(localStorage.getItem(rapper)) || 0;
+                const row = document.createElement('tr');
+                row.innerHTML = `
+                    <td>${rapper}</td>
+                    <td>${score.toFixed(1)}</td>
+                `;
+                scoreboardBody.appendChild(row);
             });
+        }
 
-            // Exibe os resultados
-            let resultadoTexto = resultados.map(r => `${r.name}: ${r.pontuacao.toFixed(2)}`).join('<br>');
-            document.getElementById('resultado').innerHTML = resultadoTexto;
-        });
+        // Atualiza a tabela de pontuação ao carregar a página
+        window.onload = updateScoreboard;
     </script>
 </body>
 </html>
