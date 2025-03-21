@@ -4592,131 +4592,136 @@
     </table>
   </div>
 
-  <!-- Scripts do Firebase -->
-  <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-app.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-firestore.js"></script>
-  <script>
-    // Configuração do Firebase
-    const firebaseConfig = {
-      apiKey: "AIzaSyDJIo-2zIOeCRaXjQIo7OQAW3g-6aRdXeg",
-      authDomain: "battlerappt.firebaseapp.com",
-      projectId: "battlerappt",
-      storageBucket: "battlerappt.firebasestorage.app",
-      messagingSenderId: "291516729501",
-      appId: "1:291516729501:web:3d945fc3155d1695356c74"
-    };
+ <!-- Scripts do Firebase -->
+<script type="module">
+  // Importando os módulos necessários do Firebase
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/9.6.1/firebase-app.js";
+  import { getFirestore, collection, doc, setDoc, onSnapshot, serverTimestamp } from "https://www.gstatic.com/firebasejs/9.6.1/firebase-firestore.js";
 
-    // Inicializa o Firebase e o Firestore
-    const app = firebase.initializeApp(firebaseConfig);
-    const db = firebase.firestore();
+  // Configuração do Firebase
+  const firebaseConfig = {
+    apiKey: "AIzaSyDJIo-2zIOeCRaXjQIo7OQAW3g-6aRdXeg",
+    authDomain: "battlerappt.firebaseapp.com",
+    projectId: "battlerappt",
+    storageBucket: "battlerappt.firebasestorage.app",
+    messagingSenderId: "291516729501",
+    appId: "1:291516729501:web:3d945fc3155d1695356c74"
+  };
 
-    console.log("Firebase inicializado com sucesso!");
+  // Inicializa o Firebase
+  const app = initializeApp(firebaseConfig);
+  const db = getFirestore(app);
 
-    // Função para calcular a pontuação de um rapper com base nos votos
-    function calcularPontuacao(data) {
-      const material = data.material || 0;
-      const confronto = data.confronto || 0;
-      const adversarios = data.adversarios || 0;
-      const consistencia = data.consistencia || 0;
-      const performance = data.performance || 0;
-      const impacto = data.impacto || 0;
+  console.log("Firebase inicializado com sucesso!");
 
-      // Pesos definidos para cada critério
-      const pesoMaterial = 0.25;
-      const pesoConfronto = 0.25;
-      const pesoAdversarios = 0.20;
-      const pesoConsistencia = 0.10;
-      const pesoPerformance = 0.10;
-      const pesoImpacto = 0.10;
+  // Função para calcular a pontuação de um rapper com base nos votos
+  function calcularPontuacao(data) {
+    const material = data.material || 0;
+    const confronto = data.confronto || 0;
+    const adversarios = data.adversarios || 0;
+    const consistencia = data.consistencia || 0;
+    const performance = data.performance || 0;
+    const impacto = data.impacto || 0;
 
-      let pontuacao = (material * pesoMaterial) +
-                      (confronto * pesoConfronto) +
-                      (adversarios * pesoAdversarios) +
-                      (consistencia * pesoConsistencia) +
-                      (performance * pesoPerformance) +
-                      (impacto * pesoImpacto);
+    // Pesos definidos para cada critério
+    const pesoMaterial = 0.25;
+    const pesoConfronto = 0.25;
+    const pesoAdversarios = 0.20;
+    const pesoConsistencia = 0.10;
+    const pesoPerformance = 0.10;
+    const pesoImpacto = 0.10;
 
-      return pontuacao;
-    }
+    let pontuacao = (material * pesoMaterial) +
+                    (confronto * pesoConfronto) +
+                    (adversarios * pesoAdversarios) +
+                    (consistencia * pesoConsistencia) +
+                    (performance * pesoPerformance) +
+                    (impacto * pesoImpacto);
 
-    // Observa alterações na coleção "votos" e atualiza a tabela em tempo real
-    function observarVotos() {
-      db.collection('votos').onSnapshot((querySnapshot) => {
-        const resultados = [];
-        querySnapshot.forEach((doc) => {
-          const rapperId = doc.id;
-          const data = doc.data();
-          resultados.push({
-            nome: rapperId,
-            pontuacao: calcularPontuacao(data),
-            vitorias: (data.batalhas || []).filter(b => b.resultado === "Venceu").length,
-            derrotas: (data.batalhas || []).filter(b => b.resultado === "Perdeu").length,
-            criterioMaisForte: Object.keys(data).reduce((a, b) => (data[a] > data[b] ? a : b), '')
-          });
+    return pontuacao;
+  }
+
+  // Observa alterações na coleção "votos" e atualiza a tabela em tempo real
+  function observarVotos() {
+    const votosRef = collection(db, 'votos');
+    onSnapshot(votosRef, (querySnapshot) => {
+      const resultados = [];
+      querySnapshot.forEach((doc) => {
+        const rapperId = doc.id;
+        const data = doc.data();
+        resultados.push({
+          nome: rapperId,
+          pontuacao: calcularPontuacao(data),
+          vitorias: (data.batalhas || []).filter(b => b.resultado === "Venceu").length,
+          derrotas: (data.batalhas || []).filter(b => b.resultado === "Perdeu").length,
+          criterioMaisForte: Object.keys(data).reduce((a, b) => (data[a] > data[b] ? a : b), '')
         });
-        atualizarTabela(resultados);
       });
+      atualizarTabela(resultados);
+    });
+  }
+
+  // Atualiza a tabela de resultados
+  function atualizarTabela(resultados) {
+    const tbody = document.getElementById('tabela-corpo');
+
+    // Se não houver resultados, exibir uma mensagem na tabela
+    if (resultados.length === 0) {
+      tbody.innerHTML = `<tr><td colspan="6">Nenhum voto registrado ainda.</td></tr>`;
+      return;
     }
 
-    // Atualiza a tabela de resultados
-    function atualizarTabela(resultados) {
-      const tbody = document.getElementById('tabela-corpo');
+    // Preencher a tabela com os dados do Firebase
+    tbody.innerHTML = resultados.map((rapper, index) => `
+      <tr>
+        <td>${rapper.nome}</td>
+        <td>${rapper.pontuacao.toFixed(2)}</td>
+        <td>${rapper.vitorias}</td>
+        <td>${rapper.derrotas}</td>
+        <td>${rapper.criterioMaisForte}</td>
+        <td class="tier">${index < 5 ? 'S' : index < 15 ? 'A' : index < 30 ? 'B' : 'C'}</td>
+      </tr>
+    `).join('');
+  }
 
-      // Se não houver resultados, exibir uma mensagem na tabela
-      if (resultados.length === 0) {
-        tbody.innerHTML = `<tr><td colspan="6">Nenhum voto registrado ainda.</td></tr>`;
-        return;
-      }
+  // Função para votar
+  function votar(rapperId) {
+    console.log("Votando para:", rapperId);
 
-      // Preencher a tabela com os dados do Firebase
-      tbody.innerHTML = resultados.map((rapper, index) => `
-        <tr>
-          <td>${rapper.nome}</td>
-          <td>${rapper.pontuacao.toFixed(2)}</td>
-          <td>${rapper.vitorias}</td>
-          <td>${rapper.derrotas}</td>
-          <td>${rapper.criterioMaisForte}</td>
-          <td class="tier">${index < 5 ? 'S' : index < 15 ? 'A' : index < 30 ? 'B' : 'C'}</td>
-        </tr>
-      `).join('');
-    }
+    const material = parseFloat(document.getElementById(`nota-material-${rapperId}`).value) || 0;
+    const confronto = parseFloat(document.getElementById(`nota-confronto-${rapperId}`).value) || 0;
+    const adversarios = parseFloat(document.getElementById(`nota-adversarios-${rapperId}`).value) || 0;
+    const consistencia = parseFloat(document.getElementById(`nota-consistencia-${rapperId}`).value) || 0;
+    const performance = parseFloat(document.getElementById(`nota-performance-${rapperId}`).value) || 0;
+    const impacto = parseFloat(document.getElementById(`nota-impacto-${rapperId}`).value) || 0;
 
-    // Função para votar
-    function votar(rapperId) {
-      console.log("Votando para:", rapperId);
+    console.log("Notas coletadas:", { material, confronto, adversarios, consistencia, performance, impacto });
 
-      const material = parseFloat(document.getElementById(`nota-material-${rapperId}`).value) || 0;
-      const confronto = parseFloat(document.getElementById(`nota-confronto-${rapperId}`).value) || 0;
-      const adversarios = parseFloat(document.getElementById(`nota-adversarios-${rapperId}`).value) || 0;
-      const consistencia = parseFloat(document.getElementById(`nota-consistencia-${rapperId}`).value) || 0;
-      const performance = parseFloat(document.getElementById(`nota-performance-${rapperId}`).value) || 0;
-      const impacto = parseFloat(document.getElementById(`nota-impacto-${rapperId}`).value) || 0;
-
-      console.log("Notas coletadas:", { material, confronto, adversarios, consistencia, performance, impacto });
-
-      const votos = {
-        material,
-        confronto,
-        adversarios,
-        consistencia,
-        performance,
-        impacto,
-        timestamp: firebase.firestore.FieldValue.serverTimestamp()
-      };
-
-      db.collection("votos").doc(rapperId).set(votos, { merge: true })
-        .then(() => {
-          console.log("Voto salvo com sucesso!");
-        })
-        .catch(error => {
-          console.error("Erro ao salvar voto:", error);
-        });
-    }
-
-    // Inicializa a observação dos votos no carregamento da página
-    window.onload = function() {
-      observarVotos();
+    const votos = {
+      material,
+      confronto,
+      adversarios,
+      consistencia,
+      performance,
+      impacto,
+      timestamp: serverTimestamp()
     };
-  </script>
+
+    const votosRef = doc(db, "votos", rapperId);
+    setDoc(votosRef, votos, { merge: true })
+      .then(() => {
+        console.log("Voto salvo com sucesso!");
+      })
+      .catch(error => {
+        console.error("Erro ao salvar voto:", error);
+      });
+  }
+
+  // Inicializa a observação dos votos no carregamento da página
+  window.onload = function() {
+    observarVotos();
+  };
+</script>
 </body>
 </html>
+
