@@ -4571,26 +4571,26 @@
     </div>
   </div>
 
-  <!-- Tabela de resultados -->
-  <div class="table-container">
-    <table class="results-table">
-      <thead>
-        <tr>
-          <th>Rapper</th>
-          <th>Pontuação</th>
-          <th>Vitórias</th>
-          <th>Derrotas</th>
-          <th>Critério Mais Forte</th>
-          <th>Tier</th>
-        </tr>
-      </thead>
-      <tbody id="tabela-corpo">
-        <tr>
-          <td colspan="6">Aguardando votos...</td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
+ <!-- Tabela de resultados -->
+<div class="table-container">
+  <table class="results-table">
+    <thead>
+      <tr>
+        <th>Rapper</th>
+        <th>Pontuação</th>
+        <th>Vitórias</th>
+        <th>Derrotas</th>
+        <th>Critério Mais Forte</th>
+        <th>Tier</th>
+      </tr>
+    </thead>
+    <tbody id="tabela-corpo">
+      <tr>
+        <td colspan="6">Aguardando votos...</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
 
 <!-- Scripts do Firebase -->
 <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-app.js"></script>
@@ -4610,7 +4610,7 @@
   const app = firebase.initializeApp(firebaseConfig);
 
   // Agora, usando a nova sintaxe para Firestore (versão 9 modular)
-  import { getFirestore, collection, doc, getDoc, setDoc, getDocs, onSnapshot, query, where, orderBy } from "https://www.gstatic.com/firebasejs/9.6.1/firebase-firestore.js";
+  import { getFirestore, collection, doc, setDoc, onSnapshot } from "https://www.gstatic.com/firebasejs/9.6.1/firebase-firestore.js";
 
   // Obtém a instância do Firestore
   const db = getFirestore(app);
@@ -4741,4 +4741,3 @@
 </script>
 </body>
 </html>
-
