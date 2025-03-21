@@ -4506,194 +4506,217 @@
   </div>
 </div>
 
-<!-- Zolty -->
-<div class="rapper-column" id="rapper-Zolty">
-  <img src="https://via.placeholder.com/150" alt="Imagem do Zolty">
-  <h2><a href="https://www.youtube.com/results?search_query=Zolty" target="_blank">Zolty</a></h2>
-  <h3>Avaliação do rapper</h3>
-  <div class="input-group">
-    <label for="nota-material-Zolty">Material (0-10):</label>
-    <input type="number" id="nota-material-Zolty" name="nota-material-Zolty" min="0" max="10">
+  <!-- Zolty -->
+  <div class="rapper-column" id="rapper-Zolty">
+    <img src="https://via.placeholder.com/150" alt="Imagem do Zolty">
+    <h2><a href="https://www.youtube.com/results?search_query=Zolty" target="_blank">Zolty</a></h2>
+    <h3>Avaliação do rapper</h3>
+    <div class="input-group">
+      <label for="nota-material-Zolty">Material (0-10):</label>
+      <input type="number" id="nota-material-Zolty" name="nota-material-Zolty" min="0" max="10">
+    </div>
+    <div class="input-group">
+      <label for="nota-confronto-Zolty">Confronto Direto (0-10):</label>
+      <input type="number" id="nota-confronto-Zolty" name="nota-confronto-Zolty" min="0" max="10">
+    </div>
+    <div class="input-group">
+      <label for="nota-adversarios-Zolty">Adversários (0-10):</label>
+      <input type="number" id="nota-adversarios-Zolty" name="nota-adversarios-Zolty" min="0" max="10">
+    </div>
+    <div class="input-group">
+      <label for="nota-consistencia-Zolty">Consistência (0-10):</label>
+      <input type="number" id="nota-consistencia-Zolty" name="nota-consistencia-Zolty" min="0" max="10">
+    </div>
+    <div class="input-group">
+      <label for="nota-performance-Zolty">Performance (0-10):</label>
+      <input type="number" id="nota-performance-Zolty" name="nota-performance-Zolty" min="0" max="10">
+    </div>
+    <div class="input-group">
+      <label for="nota-impacto-Zolty">Impacto (0-10):</label>
+      <input type="number" id="nota-impacto-Zolty" name="nota-impacto-Zolty" min="0" max="10">
+    </div>
+    <h3>Batalhas</h3>
+    <!-- Batalha: Zolty vs MAX -->
+    <div class="input-group">
+      <label for="resultado-Zolty-MAX">Resultado Zolty VS MAX:</label>
+      <select id="resultado-Zolty-MAX">
+        <option value="Venceu">Venceu</option>
+        <option value="Perdeu">Perdeu</option>
+        <option value="Empatou">Empatou</option>
+      </select>
+      <label for="favorito-Zolty-MAX">Favorito ou Underdog:</label>
+      <select id="favorito-Zolty-MAX">
+        <option value="Favorito">Favorito</option>
+        <option value="Underdog">Underdog</option>
+      </select>
+      <a class="assistir-link" href="https://www.youtube.com/results?search_query=Zolty+VS+MAX" target="_blank">Assistir</a>
+    </div>
+    <!-- Batalha: Zolty vs JayIll -->
+    <div class="input-group">
+      <label for="resultado-Zolty-JayIll">Resultado Zolty VS JayIll:</label>
+      <select id="resultado-Zolty-JayIll">
+        <option value="Venceu">Venceu</option>
+        <option value="Perdeu">Perdeu</option>
+        <option value="Empatou">Empatou</option>
+      </select>
+      <label for="favorito-Zolty-JayIll">Favorito ou Underdog:</label>
+      <select id="favorito-Zolty-JayIll">
+        <option value="Favorito">Favorito</option>
+        <option value="Underdog">Underdog</option>
+      </select>
+      <a class="assistir-link" href="https://www.youtube.com/results?search_query=Zolty+VS+JayIll" target="_blank">Assistir</a>
+    </div>
+    <div class="input-group">
+      <button class="button" onclick="votar('Zolty')">Votar</button>
+    </div>
   </div>
-  <div class="input-group">
-    <label for="nota-confronto-Zolty">Confronto Direto (0-10):</label>
-    <input type="number" id="nota-confronto-Zolty" name="nota-confronto-Zolty" min="0" max="10">
-  </div>
-  <div class="input-group">
-    <label for="nota-adversarios-Zolty">Adversários (0-10):</label>
-    <input type="number" id="nota-adversarios-Zolty" name="nota-adversarios-Zolty" min="0" max="10">
-  </div>
-  <div class="input-group">
-    <label for="nota-consistencia-Zolty">Consistência (0-10):</label>
-    <input type="number" id="nota-consistencia-Zolty" name="nota-consistencia-Zolty" min="0" max="10">
-  </div>
-  <div class="input-group">
-    <label for="nota-performance-Zolty">Performance (0-10):</label>
-    <input type="number" id="nota-performance-Zolty" name="nota-performance-Zolty" min="0" max="10">
-  </div>
-  <div class="input-group">
-    <label for="nota-impacto-Zolty">Impacto (0-10):</label>
-    <input type="number" id="nota-impacto-Zolty" name="nota-impacto-Zolty" min="0" max="10">
-  </div>
-  <h3>Batalhas</h3>
-  <!-- Batalha: Zolty vs MAX -->
-  <div class="input-group">
-    <label for="resultado-Zolty-MAX">Resultado Zolty VS MAX:</label>
-    <select id="resultado-Zolty-MAX">
-      <option value="Venceu">Venceu</option>
-      <option value="Perdeu">Perdeu</option>
-      <option value="Empatou">Empatou</option>
-    </select>
-    <label for="favorito-Zolty-MAX">Favorito ou Underdog:</label>
-    <select id="favorito-Zolty-MAX">
-      <option value="Favorito">Favorito</option>
-      <option value="Underdog">Underdog</option>
-    </select>
-    <a class="assistir-link" href="https://www.youtube.com/results?search_query=Zolty+VS+MAX" target="_blank">Assistir</a>
-  </div>
-  <!-- Batalha: Zolty vs JayIll -->
-  <div class="input-group">
-    <label for="resultado-Zolty-JayIll">Resultado Zolty VS JayIll:</label>
-    <select id="resultado-Zolty-JayIll">
-      <option value="Venceu">Venceu</option>
-      <option value="Perdeu">Perdeu</option>
-      <option value="Empatou">Empatou</option>
-    </select>
-    <label for="favorito-Zolty-JayIll">Favorito ou Underdog:</label>
-    <select id="favorito-Zolty-JayIll">
-      <option value="Favorito">Favorito</option>
-      <option value="Underdog">Underdog</option>
-    </select>
-    <a class="assistir-link" href="https://www.youtube.com/results?search_query=Zolty+VS+JayIll" target="_blank">Assistir</a>
-  </div>
-  <div class="input-group">
-    <button class="button" onclick="votar('Zolty')">Votar</button>
+
+  <!-- Tabela de resultados -->
+  <div class="table-container">
+    <table class="results-table">
+      <thead>
+        <tr>
+          <th>Rapper</th>
+          <th>Pontuação</th>
+          <th>Vitórias</th>
+          <th>Derrotas</th>
+          <th>Critério Mais Forte</th>
+          <th>Tier</th>
+        </tr>
+      </thead>
+      <tbody id="tabela-corpo">
+        <tr>
+          <td colspan="6">Aguardando votos...</td>
+        </tr>
+      </tbody>
+    </table>
   </div>
 
-<!-- Tabela de resultados -->
-<div class="table-container">
-  <table class="results-table">
-    <thead>
-      <tr>
-        <th>Rapper</th>
-        <th>Pontuação</th>
-        <th>Vitórias</th>
-        <th>Derrotas</th>
-        <th>Critério Mais Forte</th>
-        <th>Tier</th>
-      </tr>
-    </thead>
-    <tbody id="tabela-corpo">
-      <tr>
-        <td colspan="6">Aguardando votos...</td>
-      </tr>
-    </tbody>
-  </table>
-</div>
-
-<!-- Scripts do Firebase -->
-<script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-app.js"></script>
-<script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-firestore.js"></script>
-<script>
-  // Configuração do Firebase
-  const firebaseConfig = {
-    apiKey: "AIzaSyDJIo-2zIOeCRaXjQIo7OQAW3g-6aRdXeg",
-    authDomain: "battlerappt.firebaseapp.com",
-    projectId: "battlerappt",
-    storageBucket: "battlerappt.firebasestorage.app",
-    messagingSenderId: "291516729501",
-    appId: "1:291516729501:web:3d945fc3155d1695356c74"
-  };
-
-  // Inicializa o Firebase e o Firestore
-  const app = firebase.initializeApp(firebaseConfig);
-  const db = firebase.firestore();
-
-  // Função para calcular a pontuação de um rapper com base nos votos
-  function calcularPontuacao(data) {
-    const material = data.material || 0;
-    const confronto = data.confronto || 0;
-    const adversarios = data.adversarios || 0;
-    const consistencia = data.consistencia || 0;
-    const performance = data.performance || 0;
-    const impacto = data.impacto || 0;
-
-    // Pesos definidos para cada critério
-    const pesoMaterial = 0.25;
-    const pesoConfronto = 0.25;
-    const pesoAdversarios = 0.20;
-    const pesoConsistencia = 0.10;
-    const pesoPerformance = 0.10;
-    const pesoImpacto = 0.10;
-
-    let pontuacao = (material * pesoMaterial) +
-                    (confronto * pesoConfronto) +
-                    (adversarios * pesoAdversarios) +
-                    (consistencia * pesoConsistencia) +
-                    (performance * pesoPerformance) +
-                    (impacto * pesoImpacto);
-
-    // Ajusta a pontuação com base nos resultados das batalhas
-    if (data.batalhas && Array.isArray(data.batalhas)) {
-      data.batalhas.forEach(batalha => {
-        if (batalha.resultado === "Venceu" && batalha.favorito === "Underdog") {
-          pontuacao *= 1.20;
-        } else if (batalha.resultado === "Perdeu" && batalha.favorito === "Favorito") {
-          pontuacao *= 0.80;
-        }
-      });
-    }
-    return pontuacao;
-  }
-
-  // Função para votar em um rapper e salvar os votos no Firebase
-  function votar(rapperId) {
-    console.log("Votando para:", rapperId);
-
-    // Coleta as notas para cada critério de avaliação
-    const material = parseFloat(document.getElementById(`nota-material-${rapperId}`).value) || 0;
-    const confronto = parseFloat(document.getElementById(`nota-confronto-${rapperId}`).value) || 0;
-    const adversarios = parseFloat(document.getElementById(`nota-adversarios-${rapperId}`).value) || 0;
-    const consistencia = parseFloat(document.getElementById(`nota-consistencia-${rapperId}`).value) || 0;
-    const performance = parseFloat(document.getElementById(`nota-performance-${rapperId}`).value) || 0;
-    const impacto = parseFloat(document.getElementById(`nota-impacto-${rapperId}`).value) || 0;
-
-    const votos = {
-      material,
-      confronto,
-      adversarios,
-      consistencia,
-      performance,
-      impacto,
-      timestamp: firebase.firestore.FieldValue.serverTimestamp()
+  <!-- Scripts do Firebase -->
+  <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-firestore.js"></script>
+  <script>
+    // Configuração do Firebase
+    const firebaseConfig = {
+      apiKey: "AIzaSyDJIo-2zIOeCRaXjQIo7OQAW3g-6aRdXeg",
+      authDomain: "battlerappt.firebaseapp.com",
+      projectId: "battlerappt",
+      storageBucket: "battlerappt.firebasestorage.app",
+      messagingSenderId: "291516729501",
+      appId: "1:291516729501:web:3d945fc3155d1695356c74"
     };
 
-    db.collection("votos").doc(rapperId).set(votos, { merge: true })
-      .then(() => console.log("Voto salvo com sucesso!"))
-      .catch(error => console.error("Erro ao salvar voto:", error));
-  }
+    // Inicializa o Firebase e o Firestore
+    const app = firebase.initializeApp(firebaseConfig);
+    const db = firebase.firestore();
 
-  // Observa alterações na coleção "votos" e atualiza a tabela em tempo real
-  function observarVotos() {
-    db.collection('votos').onSnapshot((querySnapshot) => {
-      const resultados = [];
-      querySnapshot.forEach((doc) => {
-        const rapperId = doc.id;
-        const data = doc.data();
-        resultados.push({
-          nome: rapperId,
-          pontuacao: calcularPontuacao(data),
-          vitorias: (data.batalhas || []).filter(b => b.resultado === "Venceu").length,
-          derrotas: (data.batalhas || []).filter(b => b.resultado === "Perdeu").length,
-          criterioMaisForte: Object.keys(data).reduce((a, b) => (data[a] > data[b] ? a : b), '')
+    console.log("Firebase inicializado com sucesso!");
+
+    // Função para calcular a pontuação de um rapper com base nos votos
+    function calcularPontuacao(data) {
+      const material = data.material || 0;
+      const confronto = data.confronto || 0;
+      const adversarios = data.adversarios || 0;
+      const consistencia = data.consistencia || 0;
+      const performance = data.performance || 0;
+      const impacto = data.impacto || 0;
+
+      // Pesos definidos para cada critério
+      const pesoMaterial = 0.25;
+      const pesoConfronto = 0.25;
+      const pesoAdversarios = 0.20;
+      const pesoConsistencia = 0.10;
+      const pesoPerformance = 0.10;
+      const pesoImpacto = 0.10;
+
+      let pontuacao = (material * pesoMaterial) +
+                      (confronto * pesoConfronto) +
+                      (adversarios * pesoAdversarios) +
+                      (consistencia * pesoConsistencia) +
+                      (performance * pesoPerformance) +
+                      (impacto * pesoImpacto);
+
+      return pontuacao;
+    }
+
+    // Observa alterações na coleção "votos" e atualiza a tabela em tempo real
+    function observarVotos() {
+      db.collection('votos').onSnapshot((querySnapshot) => {
+        const resultados = [];
+        querySnapshot.forEach((doc) => {
+          const rapperId = doc.id;
+          const data = doc.data();
+          resultados.push({
+            nome: rapperId,
+            pontuacao: calcularPontuacao(data),
+            vitorias: (data.batalhas || []).filter(b => b.resultado === "Venceu").length,
+            derrotas: (data.batalhas || []).filter(b => b.resultado === "Perdeu").length,
+            criterioMaisForte: Object.keys(data).reduce((a, b) => (data[a] > data[b] ? a : b), '')
+          });
         });
+        atualizarTabela(resultados);
       });
-      atualizarTabela(resultados);
-    });
-  }
+    }
 
-  // Inicializa a observação dos votos no carregamento da página
-  window.onload = function() {
-    observarVotos();
-  };
-</script>
+    // Atualiza a tabela de resultados
+    function atualizarTabela(resultados) {
+      const tbody = document.getElementById('tabela-corpo');
+
+      // Se não houver resultados, exibir uma mensagem na tabela
+      if (resultados.length === 0) {
+        tbody.innerHTML = `<tr><td colspan="6">Nenhum voto registrado ainda.</td></tr>`;
+        return;
+      }
+
+      // Preencher a tabela com os dados do Firebase
+      tbody.innerHTML = resultados.map((rapper, index) => `
+        <tr>
+          <td>${rapper.nome}</td>
+          <td>${rapper.pontuacao.toFixed(2)}</td>
+          <td>${rapper.vitorias}</td>
+          <td>${rapper.derrotas}</td>
+          <td>${rapper.criterioMaisForte}</td>
+          <td class="tier">${index < 5 ? 'S' : index < 15 ? 'A' : index < 30 ? 'B' : 'C'}</td>
+        </tr>
+      `).join('');
+    }
+
+    // Função para votar
+    function votar(rapperId) {
+      console.log("Votando para:", rapperId);
+
+      const material = parseFloat(document.getElementById(`nota-material-${rapperId}`).value) || 0;
+      const confronto = parseFloat(document.getElementById(`nota-confronto-${rapperId}`).value) || 0;
+      const adversarios = parseFloat(document.getElementById(`nota-adversarios-${rapperId}`).value) || 0;
+      const consistencia = parseFloat(document.getElementById(`nota-consistencia-${rapperId}`).value) || 0;
+      const performance = parseFloat(document.getElementById(`nota-performance-${rapperId}`).value) || 0;
+      const impacto = parseFloat(document.getElementById(`nota-impacto-${rapperId}`).value) || 0;
+
+      console.log("Notas coletadas:", { material, confronto, adversarios, consistencia, performance, impacto });
+
+      const votos = {
+        material,
+        confronto,
+        adversarios,
+        consistencia,
+        performance,
+        impacto,
+        timestamp: firebase.firestore.FieldValue.serverTimestamp()
+      };
+
+      db.collection("votos").doc(rapperId).set(votos, { merge: true })
+        .then(() => {
+          console.log("Voto salvo com sucesso!");
+        })
+        .catch(error => {
+          console.error("Erro ao salvar voto:", error);
+        });
+    }
+
+    // Inicializa a observação dos votos no carregamento da página
+    window.onload = function() {
+      observarVotos();
+    };
+  </script>
+</body>
+</html>
