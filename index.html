@@ -82,11 +82,30 @@
             </label>
         </div>
         
-        <!-- Repetir para Shap3 e Lc -->
-        
-        <button class="button" data-rapper-id="3ma">Votar</button>
-    </div>
-
+         <label>VS Shap3:
+                <select id="resultado-3ma-Shap3">
+                    <option value="Venceu">Venceu</option>
+                    <option value="Perdeu">Perdeu</option>
+                    <option value="Empatou">Empatou</option>
+                </select>
+                <select id="favorito-3ma-Shap3">
+                    <option value="Favorito">Favorito</option>
+                    <option value="Underdog">Underdog</option>
+                </select>
+            </label>
+        </div>
+       <label>VS Lc:
+                <select id="resultado-3ma-Lc">
+                    <option value="Venceu">Venceu</option>
+                    <option value="Perdeu">Perdeu</option>
+                    <option value="Empatou">Empatou</option>
+                </select>
+                <select id="favorito-3ma-Lc">
+                    <option value="Favorito">Favorito</option>
+                    <option value="Underdog">Underdog</option>
+                </select>
+            </label>
+        </div>
     <!-- 7AM -->
     <div class="rapper-column" id="rapper-7AM">
         <!-- Estrutura similar com adversário Riss -->
@@ -131,198 +150,53 @@
 
 
 <script type="module">
-  import { initializeApp } from "https://www.gstatic.com/firebasejs/9.6.1/firebase-app.js";
-  import { getFirestore, collection, doc, setDoc, onSnapshot } from "https://www.gstatic.com/firebasejs/9.6.1/firebase-firestore.js";
+    // Configuração Firebase
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
+    import { getDatabase, ref, set, get, child } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-database.js";
 
-  const firebaseConfig = {
-    apiKey: "AIzaSyDJIo-2zIOeCRaXjQIo7OQAW3g-6aRdXeg",
-    authDomain: "battlerappt.firebaseapp.com",
-    projectId: "battlerappt",
-    storageBucket: "battlerappt.firebasestorage.app",
-    messagingSenderId: "291516729501",
-    appId: "1:291516729501:web:3d945fc3155d1695356c74",
-    measurementId: "G-6KBBCB9RFB"
-  };
-
-  const app = initializeApp(firebaseConfig);
-  const db = getFirestore(app);
-
-  // Lista completa de rappers com adversários
-  const rappers = [
-    { id: '3ma', nome: '3ma', adversarios: ['KM', 'Shap3', 'Lc'] },
-    { id: '7AM', nome: '7AM', adversarios: ['Riss'] },
-    { id: 'MAX', nome: 'MAX', adversarios: ['Zolty', 'MK'] },
-    // Adicione todos os outros rappers seguindo o mesmo padrão...
-  ];
-
-  // Função para gerar dinamicamente as colunas dos rappers
-  function criarColunasRappers() {
-    const container = document.querySelector('.rapper-container');
-    
-    rappers.forEach(rapper => {
-      const column = document.createElement('div');
-      column.className = 'rapper-column';
-      column.id = `rapper-${rapper.id}`;
-      
-      column.innerHTML = `
-        <img src="https://via.placeholder.com/150" alt="${rapper.nome}">
-        <h2><a href="https://www.youtube.com/results?search_query=${rapper.nome}" target="_blank">${rapper.nome}</a></h2>
-        <h3>Avaliação do rapper</h3>
-        ${gerarInputsNotas(rapper.id)}
-        <h3>Batalhas</h3>
-        ${gerarBatalhas(rapper)}
-        <button class="button" onclick="votar('${rapper.id}')">Votar</button>
-      `;
-      
-      container.appendChild(column);
-    });
-  }
-
-  function gerarInputsNotas(rapperId) {
-    const criterios = [
-      { id: 'material', label: 'Material (0-10):' },
-      { id: 'confronto', label: 'Confronto Direto (0-10):' },
-      { id: 'adversarios', label: 'Adversários (0-10):' },
-      { id: 'consistencia', label: 'Consistência (0-10):' },
-      { id: 'performance', label: 'Performance (0-10):' },
-      { id: 'impacto', label: 'Impacto (0-10):' }
-    ];
-
-    return criterios.map(c => `
-      <div class="input-group">
-        <label for="nota-${c.id}-${rapperId}">${c.label}</label>
-        <input type="number" id="nota-${c.id}-${rapperId}" min="0" max="10">
-      </div>
-    `).join('');
-  }
-
-  function gerarBatalhas(rapper) {
-    return rapper.adversarios.map(adversario => `
-      <div class="input-group">
-        <label>${rapper.nome} VS ${adversario}</label>
-        <select id="resultado-${rapper.id}-${adversario}">
-          <option value="Venceu">Venceu</option>
-          <option value="Perdeu">Perdeu</option>
-          <option value="Empatou">Empatou</option>
-        </select>
-        <select id="favorito-${rapper.id}-${adversario}">
-          <option value="Favorito">Favorito</option>
-          <option value="Underdog">Underdog</option>
-        </select>
-        <a class="assistir-link" href="https://www.youtube.com/results?search_query=${rapper.nome}+VS+${adversario}" target="_blank">Assistir</a>
-      </div>
-    `).join('');
-  }
-
-  async function votar(rapperId) {
-    const rapper = rappers.find(r => r.id === rapperId);
-    
-    // Coletar notas
-    const notas = {
-      material: parseFloat(document.getElementById(`nota-material-${rapperId}`).value) || 0,
-      confronto: parseFloat(document.getElementById(`nota-confronto-${rapperId}`).value) || 0,
-      adversarios: parseFloat(document.getElementById(`nota-adversarios-${rapperId}`).value) || 0,
-      consistencia: parseFloat(document.getElementById(`nota-consistencia-${rapperId}`).value) || 0,
-      performance: parseFloat(document.getElementById(`nota-performance-${rapperId}`).value) || 0,
-      impacto: parseFloat(document.getElementById(`nota-impacto-${rapperId}`).value) || 0
+    const firebaseConfig = {
+        // Sua configuração Firebase aqui
     };
 
-    // Validar notas
-    if (Object.values(notas).some(nota => nota < 0 || nota > 10)) {
-      alert('Por favor, insira notas entre 0 e 10!');
-      return;
-    }
+    const app = initializeApp(firebaseConfig);
+    const db = getDatabase(app);
 
-    // Coletar batalhas e calcular resultados
-    const batalhas = {};
-    let vitorias = 0, derrotas = 0;
-    
-    rapper.adversarios.forEach(adversario => {
-      const resultado = document.getElementById(`resultado-${rapperId}-${adversario}`).value;
-      const status = document.getElementById(`favorito-${rapperId}-${adversario}`).value;
-      
-      batalhas[adversario] = { resultado, status };
-      
-      if (resultado === 'Venceu') vitorias++;
-      if (resultado === 'Perdeu') derrotas++;
-    });
+    // Função de votação
+    async function votar(rapperId) {
+        try {
+            const rapperElement = document.getElementById(`rapper-${rapperId}`);
+            
+            // Validar notas
+            const criterios = ['material', 'confronto', 'adversarios', 'consistencia', 'performance', 'impacto'];
+            const notas = criterios.map(crit => {
+                const valor = parseFloat(rapperElement.querySelector(`#nota-${crit}-${rapperId}`).value);
+                if (isNaN(valor) || valor < 0 || valor > 10) throw new Error(`Nota inválida para ${crit}`);
+                return valor;
+            });
 
-    // Calcular pontuação
-    const pesos = { material: 0.25, confronto: 0.25, adversarios: 0.20, consistencia: 0.10, performance: 0.10, impacto: 0.10 };
-    let pontuacao = Object.entries(notas).reduce((acc, [key, value]) => acc + (value * pesos[key]), 0);
+            // Calcular pontuação ponderada
+            const pesos = [0.25, 0.25, 0.20, 0.10, 0.10, 0.10];
+            const total = notas.reduce((acc, nota, index) => acc + (nota * pesos[index]), 0);
 
-    // Aplicar modificadores de batalha
-    Object.values(batalhas).forEach(({ resultado, status }) => {
-      if (resultado === 'Venceu' && status === 'Underdog') pontuacao *= 1.20;
-      if (resultado === 'Perdeu' && status === 'Favorito') pontuacao *= 0.80;
-    });
+            // Registrar voto no Firebase
+            await set(ref(db, `votos/${rapperId}/${Date.now()}`), {
+                notas,
+                total,
+                timestamp: Date.now()
+            });
 
-    // Salvar no Firestore
-    try {
-      await setDoc(doc(db, "votos", `${rapperId}_${Date.now()}`), {
-        rapperId,
-        pontuacao: parseFloat(pontuacao.toFixed(2)),
-        vitorias,
-        derrotas,
-        timestamp: new Date()
-      });
-      alert('Voto registrado com sucesso!');
-    } catch (error) {
-      console.error("Erro ao salvar voto:", error);
-      alert('Erro ao registrar voto!');
-    }
-  }
-
-  function observarVotos() {
-    onSnapshot(collection(db, "votos"), (snapshot) => {
-      const resultados = {};
-
-      snapshot.docs.forEach(doc => {
-        const data = doc.data();
-        if (!resultados[data.rapperId]) {
-          resultados[data.rapperId] = {
-            totalPontos: 0,
-            totalVotos: 0,
-            totalVitorias: 0,
-            totalDerrotas: 0
-          };
+            alert('Voto registrado com sucesso!');
+        } catch (error) {
+            console.error('Erro ao votar:', error);
+            alert(error.message);
         }
+    }
 
-        resultados[data.rapperId].totalPontos += data.pontuacao;
-        resultados[data.rapperId].totalVotos++;
-        resultados[data.rapperId].totalVitorias += data.vitorias;
-        resultados[data.rapperId].totalDerrotas += data.derrotas;
-      });
-
-      atualizarTabela(resultados);
+    // Adicionar event listeners aos botões
+    document.querySelectorAll('.button').forEach(button => {
+        button.addEventListener('click', () => {
+            const rapperId = button.dataset.rapperId;
+            votar(rapperId);
+        });
     });
-  }
-
-  function atualizarTabela(resultados) {
-    const tbody = document.getElementById('tabela-corpo');
-    tbody.innerHTML = '';
-
-    rappers.forEach(rapper => {
-      const dados = resultados[rapper.id] || { totalPontos: 0, totalVotos: 1 };
-      const media = dados.totalPontos / (dados.totalVotos || 1);
-      
-      const row = document.createElement('tr');
-      row.innerHTML = `
-        <td>${rapper.nome}</td>
-        <td>${media.toFixed(2)}</td>
-        <td>${dados.totalVitorias}</td>
-        <td>${dados.totalDerrotas}</td>
-        <td>Material</td>
-        <td>${media > 8 ? 'S' : media > 6 ? 'A' : 'B'}</td>
-      `;
-      tbody.appendChild(row);
-    });
-  }
-
-  window.onload = function() {
-    criarColunasRappers();
-    observarVotos();
-  };
 </script>
-</body>
-</html>
