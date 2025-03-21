@@ -4592,12 +4592,10 @@
     </table>
   </div>
 
- <!-- Scripts do Firebase -->
-<script type="module">
-  // Importando os módulos necessários do Firebase
-  import { initializeApp } from "https://www.gstatic.com/firebasejs/9.6.1/firebase-app.js";
-  import { getFirestore, collection, doc, setDoc, onSnapshot, serverTimestamp } from "https://www.gstatic.com/firebasejs/9.6.1/firebase-firestore.js";
-
+<!-- Scripts do Firebase -->
+<script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-firestore.js"></script>
+<script>
   // Configuração do Firebase
   const firebaseConfig = {
     apiKey: "AIzaSyDJIo-2zIOeCRaXjQIo7OQAW3g-6aRdXeg",
@@ -4608,11 +4606,9 @@
     appId: "1:291516729501:web:3d945fc3155d1695356c74"
   };
 
-  // Inicializa o Firebase
-  const app = initializeApp(firebaseConfig);
-  const db = getFirestore(app);
-
-  console.log("Firebase inicializado com sucesso!");
+  // Inicializa o Firebase e o Firestore
+  const app = firebase.initializeApp(firebaseConfig);
+  const db = firebase.firestore();
 
   // Função para calcular a pontuação de um rapper com base nos votos
   function calcularPontuacao(data) {
@@ -4643,18 +4639,31 @@
 
   // Observa alterações na coleção "votos" e atualiza a tabela em tempo real
   function observarVotos() {
-    const votosRef = collection(db, 'votos');
-    onSnapshot(votosRef, (querySnapshot) => {
+    db.collection('votos').onSnapshot((querySnapshot) => {
       const resultados = [];
       querySnapshot.forEach((doc) => {
         const rapperId = doc.id;
         const data = doc.data();
+        
+        // Calcula a pontuação
+        const pontuacao = calcularPontuacao(data);
+        
+        // Conta vitórias e derrotas
+        const vitorias = (data.batalhas || []).filter(b => b.resultado === "Venceu").length;
+        const derrotas = (data.batalhas || []).filter(b => b.resultado === "Perdeu").length;
+        
+        // Encontra o critério mais forte
+        const criterios = ['material', 'confronto', 'adversarios', 'consistencia', 'performance', 'impacto'];
+        const criterioMaisForte = criterios.reduce((max, criterio) => {
+          return data[criterio] > (data[max] || 0) ? criterio : max;
+        }, 'material'); // 'material' é o valor inicial
+        
         resultados.push({
           nome: rapperId,
-          pontuacao: calcularPontuacao(data),
-          vitorias: (data.batalhas || []).filter(b => b.resultado === "Venceu").length,
-          derrotas: (data.batalhas || []).filter(b => b.resultado === "Perdeu").length,
-          criterioMaisForte: Object.keys(data).reduce((a, b) => (data[a] > data[b] ? a : b), '')
+          pontuacao,
+          vitorias,
+          derrotas,
+          criterioMaisForte
         });
       });
       atualizarTabela(resultados);
@@ -4704,11 +4713,10 @@
       consistencia,
       performance,
       impacto,
-      timestamp: serverTimestamp()
+      timestamp: firebase.firestore.FieldValue.serverTimestamp()
     };
 
-    const votosRef = doc(db, "votos", rapperId);
-    setDoc(votosRef, votos, { merge: true })
+    db.collection("votos").doc(rapperId).set(votos, { merge: true })
       .then(() => {
         console.log("Voto salvo com sucesso!");
       })
