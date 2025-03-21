@@ -4592,152 +4592,48 @@
   </table>
 </div>
 
-<!-- Scripts do Firebase -->
-<script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-app.js"></script>
-<script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-firestore.js"></script>
-<script>
-  // Configuração do Firebase
-  const firebaseConfig = {
-    apiKey: "AIzaSyDJIo-2zIOeCRaXjQIo7OQAW3g-6aRdXeg",
-    authDomain: "battlerappt.firebaseapp.com",
-    projectId: "battlerappt",
-    storageBucket: "battlerappt.firebasestorage.app",
-    messagingSenderId: "291516729501",
-    appId: "1:291516729501:web:3d945fc3155d1695356c74"
-  };
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/9.6.1/firebase-app.js";
+        import { getFirestore, collection, doc, setDoc, onSnapshot } from "https://www.gstatic.com/firebasejs/9.6.1/firebase-firestore.js";
 
-  // Inicializa o Firebase
-  const app = firebase.initializeApp(firebaseConfig);
+        // Configuração do Firebase
+        const firebaseConfig = {
+            apiKey: "AIzaSyDJIo-2zIOeCRaXjQIo7OQAW3g-6aRdXeg", // Substitua SUA_CHAVE_AQUI pela sua chave de API real
+            authDomain: "battlerappt.firebaseapp.com",
+            projectId: "battlerappt",
+            storageBucket: "battlerappt.firebasestorage.app",
+            messagingSenderId: "291516729501",
+            appId: "1:291516729501:web:3d945fc3155d1695356c74",
+            measurementId: "G-6KBBCB9RFB" // Opcional
+        };
 
-  // Agora, usando a nova sintaxe para Firestore (versão 9 modular)
-  import { getFirestore, collection, doc, setDoc, onSnapshot } from "https://www.gstatic.com/firebasejs/9.6.1/firebase-firestore.js";
+        // Inicializa o Firebase
+        const app = initializeApp(firebaseConfig);
+        const db = getFirestore(app);
 
-  // Obtém a instância do Firestore
-  const db = getFirestore(app);
+        // Função para calcular a pontuação de um rapper com base nos votos
+        function calcularPontuacao(data) {
+            // ... (seu código para calcular a pontuação aqui) ...
+        }
 
-  // Função para calcular a pontuação de um rapper com base nos votos
-  function calcularPontuacao(data) {
-    const material = data.material || 0;
-    const confronto = data.confronto || 0;
-    const adversarios = data.adversarios || 0;
-    const consistencia = data.consistencia || 0;
-    const performance = data.performance || 0;
-    const impacto = data.impacto || 0;
+        // Observa alterações na coleção "votos" e atualiza a tabela em tempo real
+        function observarVotos() {
+            // ... (seu código para observar os votos aqui) ...
+        }
 
-    // Pesos definidos para cada critério
-    const pesoMaterial = 0.25;
-    const pesoConfronto = 0.25;
-    const pesoAdversarios = 0.20;
-    const pesoConsistencia = 0.10;
-    const pesoPerformance = 0.10;
-    const pesoImpacto = 0.10;
+        // Atualiza a tabela de resultados
+        function atualizarTabela(resultados) {
+            // ... (seu código para atualizar a tabela aqui) ...
+        }
 
-    let pontuacao = (material * pesoMaterial) +
-                    (confronto * pesoConfronto) +
-                    (adversarios * pesoAdversarios) +
-                    (consistencia * pesoConsistencia) +
-                    (performance * pesoPerformance) +
-                    (impacto * pesoImpacto);
+        // Função para votar
+        function votar(rapperId) {
+            // ... (seu código para coletar os dados das batalhas e salvar no Firestore aqui) ...
+        }
 
-    return pontuacao;
-  }
-
-  // Observa alterações na coleção "votos" e atualiza a tabela em tempo real
-  function observarVotos() {
-    // Usar onSnapshot com a nova API modular
-    const votosRef = collection(db, 'votos');
-    onSnapshot(votosRef, (querySnapshot) => {
-      const resultados = [];
-      querySnapshot.forEach((doc) => {
-        const rapperId = doc.id;
-        const data = doc.data();
-        
-        // Calcula a pontuação
-        const pontuacao = calcularPontuacao(data);
-        
-        // Conta vitórias e derrotas
-        const vitorias = (data.batalhas || []).filter(b => b.resultado === "Venceu").length;
-        const derrotas = (data.batalhas || []).filter(b => b.resultado === "Perdeu").length;
-        
-        // Encontra o critério mais forte
-        const criterios = ['material', 'confronto', 'adversarios', 'consistencia', 'performance', 'impacto'];
-        const criterioMaisForte = criterios.reduce((max, criterio) => {
-          return data[criterio] > (data[max] || 0) ? criterio : max;
-        }, 'material'); // 'material' é o valor inicial
-        
-        resultados.push({
-          nome: rapperId,
-          pontuacao,
-          vitorias,
-          derrotas,
-          criterioMaisForte
-        });
-      });
-      atualizarTabela(resultados);
-    });
-  }
-
-  // Atualiza a tabela de resultados
-  function atualizarTabela(resultados) {
-    const tbody = document.getElementById('tabela-corpo');
-
-    // Se não houver resultados, exibir uma mensagem na tabela
-    if (resultados.length === 0) {
-      tbody.innerHTML = `<tr><td colspan="6">Nenhum voto registrado ainda.</td></tr>`;
-      return;
-    }
-
-    // Preencher a tabela com os dados do Firebase
-    tbody.innerHTML = resultados.map((rapper, index) => `
-      <tr>
-        <td>${rapper.nome}</td>
-        <td>${rapper.pontuacao.toFixed(2)}</td>
-        <td>${rapper.vitorias}</td>
-        <td>${rapper.derrotas}</td>
-        <td>${rapper.criterioMaisForte}</td>
-        <td class="tier">${index < 5 ? 'S' : index < 15 ? 'A' : index < 30 ? 'B' : 'C'}</td>
-      </tr>
-    `).join('');
-  }
-
-  // Função para votar
-  function votar(rapperId) {
-    console.log("Votando para:", rapperId);
-
-    const material = parseFloat(document.getElementById(`nota-material-${rapperId}`).value) || 0;
-    const confronto = parseFloat(document.getElementById(`nota-confronto-${rapperId}`).value) || 0;
-    const adversarios = parseFloat(document.getElementById(`nota-adversarios-${rapperId}`).value) || 0;
-    const consistencia = parseFloat(document.getElementById(`nota-consistencia-${rapperId}`).value) || 0;
-    const performance = parseFloat(document.getElementById(`nota-performance-${rapperId}`).value) || 0;
-    const impacto = parseFloat(document.getElementById(`nota-impacto-${rapperId}`).value) || 0;
-
-    console.log("Notas coletadas:", { material, confronto, adversarios, consistencia, performance, impacto });
-
-    const votos = {
-      material,
-      confronto,
-      adversarios,
-      consistencia,
-      performance,
-      impacto,
-      timestamp: new Date()
-    };
-
-    // Atualizar o Firestore com o novo voto
-    const rapperRef = doc(db, "votos", rapperId);
-    setDoc(rapperRef, votos, { merge: true })
-      .then(() => {
-        console.log("Voto salvo com sucesso!");
-      })
-      .catch(error => {
-        console.error("Erro ao salvar voto:", error);
-      });
-  }
-
-  // Inicializa a observação dos votos no carregamento da página
-  window.onload = function() {
-    observarVotos();
-  };
-</script>
+        window.onload = function() {
+            observarVotos();
+        };
+    </script>
 </body>
 </html>
