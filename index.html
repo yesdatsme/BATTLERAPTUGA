@@ -4606,9 +4606,14 @@
     appId: "1:291516729501:web:3d945fc3155d1695356c74"
   };
 
-  // Inicializa o Firebase e o Firestore
+  // Inicializa o Firebase
   const app = firebase.initializeApp(firebaseConfig);
-  const db = firebase.firestore();
+
+  // Agora, usando a nova sintaxe para Firestore (versão 9 modular)
+  import { getFirestore, collection, doc, getDoc, setDoc, getDocs, onSnapshot, query, where, orderBy } from "https://www.gstatic.com/firebasejs/9.6.1/firebase-firestore.js";
+
+  // Obtém a instância do Firestore
+  const db = getFirestore(app);
 
   // Função para calcular a pontuação de um rapper com base nos votos
   function calcularPontuacao(data) {
@@ -4639,7 +4644,9 @@
 
   // Observa alterações na coleção "votos" e atualiza a tabela em tempo real
   function observarVotos() {
-    db.collection('votos').onSnapshot((querySnapshot) => {
+    // Usar onSnapshot com a nova API modular
+    const votosRef = collection(db, 'votos');
+    onSnapshot(votosRef, (querySnapshot) => {
       const resultados = [];
       querySnapshot.forEach((doc) => {
         const rapperId = doc.id;
@@ -4713,10 +4720,12 @@
       consistencia,
       performance,
       impacto,
-      timestamp: firebase.firestore.FieldValue.serverTimestamp()
+      timestamp: new Date()
     };
 
-    db.collection("votos").doc(rapperId).set(votos, { merge: true })
+    // Atualizar o Firestore com o novo voto
+    const rapperRef = doc(db, "votos", rapperId);
+    setDoc(rapperRef, votos, { merge: true })
       .then(() => {
         console.log("Voto salvo com sucesso!");
       })
