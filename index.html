@@ -165,6 +165,38 @@
     const app = initializeApp(firebaseConfig);
     const db = getDatabase(app);
 
+    // Função de votação atualizada
+  async function votar(rapperId) {
+    try {
+      const rapperRef = collection(db, "batalhas", rapperId, "votos");
+      
+      const dadosVoto = {
+        material: parseFloat(document.getElementById(`nota-material-${rapperId}`).value),
+        confronto: parseFloat(document.getElementById(`nota-confronto-${rapperId}`).value),
+        // ... outros campos
+        timestamp: new Date()
+      };
+
+      await addDoc(rapperRef, dadosVoto);
+      alert("Voto registrado!");
+    } catch (error) {
+      console.error("Erro:", error);
+      alert("Erro ao registrar voto");
+    }
+  }
+
+  // Atualizar rankings em tempo real
+  function monitorarRankings() {
+    const q = query(collection(db, "batalhas"), orderBy("total", "desc"));
+    
+    onSnapshot(q, (snapshot) => {
+      snapshot.docChanges().forEach((change) => {
+        // Atualizar UI com novos dados
+      });
+    });
+  }
+
+
     // Mapeamento de batalhas
     const todasBatalhas = {
         '3ma': ['KM', 'Shap3', 'Lc'],
@@ -213,3 +245,6 @@
         btn.addEventListener('click', () => votar(btn.dataset.rapperId));
     });
 </script>
+</body>
+</html>
+
