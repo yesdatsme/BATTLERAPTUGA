@@ -4688,6 +4688,33 @@
         </tr>
       `).join('');
     }
+    
+<script>
+  function votar(rapperId) {
+    console.log("Votando para:", rapperId);
+
+    const material = parseFloat(document.getElementById(`nota-material-${rapperId}`).value) || 0;
+    const confronto = parseFloat(document.getElementById(`nota-confronto-${rapperId}`).value) || 0;
+    const adversarios = parseFloat(document.getElementById(`nota-adversarios-${rapperId}`).value) || 0;
+    const consistencia = parseFloat(document.getElementById(`nota-consistencia-${rapperId}`).value) || 0;
+    const performance = parseFloat(document.getElementById(`nota-performance-${rapperId}`).value) || 0;
+    const impacto = parseFloat(document.getElementById(`nota-impacto-${rapperId}`).value) || 0;
+
+    const votos = {
+      material,
+      confronto,
+      adversarios,
+      consistencia,
+      performance,
+      impacto,
+      timestamp: firebase.firestore.FieldValue.serverTimestamp()
+    };
+
+    db.collection("Votos").doc(rapperId).set(votos, { merge: true })
+      .then(() => console.log("Voto salvo com sucesso!"))
+      .catch(error => console.error("Erro ao salvar voto:", error));
+  }
+</script>
 
     // Inicializa a observação dos votos no carregamento da página
     window.onload = function() {
