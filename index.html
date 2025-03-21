@@ -818,8 +818,8 @@
 </div>
 
     <script type="module">
-        import { initializeApp } from "https://www.gstatic.com/firebasejs/9.6.1/firebase-app.js";
-        import { getFirestore, collection, doc, setDoc, onSnapshot } from "https://www.gstatic.com/firebasejs/9.6.1/firebase-firestore.js";
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/9.6.1/firebase-app.js";
+    import { getFirestore, collection, doc, setDoc, onSnapshot } from "https://www.gstatic.com/firebasejs/9.6.1/firebase-firestore.js";
 
         // Configuração do Firebase
         const firebaseConfig = {
@@ -832,33 +832,143 @@
             measurementId: "G-6KBBCB9RFB" // Opcional
         };
 
-        // Inicializa o Firebase
-        const app = initializeApp(firebaseConfig);
-        const db = getFirestore(app);
+       // Pesos dos critérios
+    const pesos = {
+        material: 0.25,
+        confronto: 0.25,
+        adversarios: 0.20,
+        consistencia: 0.10,
+        performance: 0.10,
+        impacto: 0.10
+    };
 
-        // Função para calcular a pontuação de um rapper com base nos votos
-        function calcularPontuacao(data) {
-            // ... (seu código para calcular a pontuação aqui) ...
-        }
+    // Função de cálculo de pontuação
+    function calcularPontuacao(data) {
+        // Cálculo base
+        let pontuacao = (
+            (data.material * pesos.material) +
+            (data.confronto * pesos.confronto) +
+            (data.adversarios * pesos.adversarios) +
+            (data.consistencia * pesos.consistencia) +
+            (data.performance * pesos.performance) +
+            (data.impacto * pesos.impacto)
+        ) * 10; // Normalizar para 0-100
 
-        // Observa alterações na coleção "votos" e atualiza a tabela em tempo real
-        function observarVotos() {
-            // ... (seu código para observar os votos aqui) ...
-        }
+        // Aplicar ajustes das batalhas
+        data.batalhas.forEach(batalha => {
+            if (batalha.resultado === 'Venceu' && batalha.status === 'Underdog') {
+                pontuacao *= 1.20; // Bônus de 20%
+            } else if (batalha.resultado === 'Perdeu' && batalha.status === 'Favorito') {
+                pontuacao *= 0.80; // Penalidade de 20%
+            }
+        });
 
-        // Atualiza a tabela de resultados
-        function atualizarTabela(resultados) {
-            // ... (seu código para atualizar a tabela aqui) ...
-        }
+        return Math.min(pontuacao, 100); // Limitar a 100
+    }
 
-        // Função para votar
-        function votar(rapperId) {
-            // ... (seu código para coletar os dados das batalhas e salvar no Firestore aqui) ...
-        }
+    // Função para determinar o Tier
+    function determinarTier(pontuacao) {
+        if (pontuacao >= 90) return 'S';
+        if (pontuacao >= 70) return 'A';
+        return 'B';
+    }
 
-        window.onload = function() {
-            observarVotos();
+    // Função para encontrar o critério mais forte
+    function encontrarCritérioForte(data) {
+        const criterios = {
+            material: data.material,
+            confronto: data.confronto,
+            adversarios: data.adversarios,
+            consistencia: data.consistencia,
+            performance: data.performance,
+            impacto: data.impacto
         };
-    </script>
+        return Object.entries(criterios).sort((a, b) => b[1] - a[1])[0][0];
+    }
+
+    // Função de votação
+    async function votar(rapperId) {
+        // Coletar dados
+        const data = {
+            material: parseFloat(document.getElementById(`nota-material-${rapperId}`).value),
+            confronto: parseFloat(document.getElementById(`nota-confronto-${rapperId}`).value),
+            adversarios: parseFloat(document.getElementById(`nota-adversarios-${rapperId}`).value),
+            consistencia: parseFloat(document.getElementById(`nota-consistencia-${rapperId}`).value),
+            performance: parseFloat(document.getElementById(`nota-performance-${rapperId}`).value),
+            impacto: parseFloat(document.getElementById(`nota-impacto-${rapperId}`).value),
+            batalhas: []
+        };
+
+        // Coletar batalhas
+        const battleElements = document.querySelectorAll(`#rapper-${rapperId} [id^="resultado-${rapperId}"]`);
+        battleElements.forEach(element => {
+            const battleId = element.id.split('-')[2];
+            data.batalhas.push({
+                resultado: document.getElementById(`resultado-${rapperId}-${battleId}`).value,
+                status: document.getElementById(`favorito-${rapperId}-${battleId}`).value
+            });
+        });
+
+        // Validar inputs
+        if (Object.values(data).some(value => isNaN(value) || value < 0 || value > 10)) {
+            alert('Por favor, insira notas válidas (0-10)');
+            return;
+        }
+
+        // Calcular resultados
+        const resultado = {
+            nome: rapperId,
+            pontuacao: calcularPontuacao(data),
+            vitorias: data.batalhas.filter(b => b.resultado === 'Venceu').length,
+            derrotas: data.batalhas.filter(b => b.resultado === 'Perdeu').length,
+            criterioForte: encontrarCritérioForte(data),
+            tier: determinarTier(calcularPontuacao(data)),
+            timestamp: new Date()
+        };
+
+        // Salvar no Firestore
+        try {
+            await setDoc(doc(collection(db, "votos"), resultado);
+            alert('Voto registrado!');
+        } catch (error) {
+            console.error("Erro ao salvar:", error);
+        }
+    }
+
+    // Observar votos em tempo real
+    function observarVotos() {
+        onSnapshot(collection(db, "votos"), (snapshot) => {
+            const resultados = [];
+            snapshot.forEach(doc => {
+                resultados.push(doc.data());
+            });
+            atualizarTabela(resultados);
+        });
+    }
+
+    // Atualizar tabela de resultados
+    function atualizarTabela(resultados) {
+        const tbody = document.getElementById('tabela-corpo');
+        tbody.innerHTML = '';
+
+        resultados.sort((a, b) => b.pontuacao - a.pontuacao).forEach(resultado => {
+            const row = `
+                <tr>
+                    <td>${resultado.nome}</td>
+                    <td>${resultado.pontuacao.toFixed(1)}</td>
+                    <td>${resultado.vitorias}</td>
+                    <td>${resultado.derrotas}</td>
+                    <td>${resultado.criterioForte}</td>
+                    <td class="tier">${resultado.tier}</td>
+                </tr>`;
+            tbody.innerHTML += row;
+        });
+    }
+
+    window.onload = function() {
+        observarVotos();
+    };
+</script>
 </body>
 </html>
+
