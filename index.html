@@ -964,7 +964,9 @@
             tbody.innerHTML += row;
         });
     }
-
+// Adicione isto no final do seu módulo, antes de window.onload
+window.votar = votar;
+      
     window.onload = function() {
         observarVotos();
     };
