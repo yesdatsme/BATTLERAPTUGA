@@ -821,18 +821,35 @@
     import { initializeApp } from "https://www.gstatic.com/firebasejs/9.6.1/firebase-app.js";
     import { getFirestore, collection, doc, setDoc, onSnapshot } from "https://www.gstatic.com/firebasejs/9.6.1/firebase-firestore.js";
 
-        // Configuração do Firebase
-        const firebaseConfig = {
-            apiKey: "AIzaSyDJIo-2zIOeCRaXjQIo7OQAW3g-6aRdXeg", // Substitua SUA_CHAVE_AQUI pela sua chave de API real
-            authDomain: "battlerappt.firebaseapp.com",
-            projectId: "battlerappt",
-            storageBucket: "battlerappt.firebasestorage.app",
-            messagingSenderId: "291516729501",
-            appId: "1:291516729501:web:3d945fc3155d1695356c74",
-            measurementId: "G-6KBBCB9RFB" // Opcional
-        };
+    const firebaseConfig = {
+        apiKey: "AIzaSyDJIo-2zIOeCRaXjQIo7OQAW3g-6aRdXeg",
+        authDomain: "battlerappt.firebaseapp.com",
+        projectId: "battlerappt",
+        storageBucket: "battlerappt.firebasestorage.app",
+        messagingSenderId: "291516729501",
+        appId: "1:291516729501:web:3d945fc3155d1695356c74",
+        measurementId: "G-6KBBCB9RFB"
+    };
 
-       // Pesos dos critérios
+    const app = initializeApp(firebaseConfig);
+    const db = getFirestore(app);
+
+    // Inicialização após carregamento da página
+    document.addEventListener('DOMContentLoaded', () => {
+        setupVoteButtons();
+        observarVotos();
+    });
+
+    function setupVoteButtons() {
+        document.querySelectorAll('.button[data-rapper-id]').forEach(button => {
+            button.addEventListener('click', async () => {
+                const rapperId = button.dataset.rapperId;
+                await handleVote(rapperId);
+            });
+        });
+    }
+
+    // Funções de cálculo
     const pesos = {
         material: 0.25,
         confronto: 0.25,
@@ -842,38 +859,33 @@
         impacto: 0.10
     };
 
-    // Função de cálculo de pontuação
     function calcularPontuacao(data) {
-        // Cálculo base
-        let pontuacao = (
+        let pontuacaoBase = (
             (data.material * pesos.material) +
             (data.confronto * pesos.confronto) +
             (data.adversarios * pesos.adversarios) +
             (data.consistencia * pesos.consistencia) +
             (data.performance * pesos.performance) +
             (data.impacto * pesos.impacto)
-        ) * 10; // Normalizar para 0-100
+        ) * 10;
 
-        // Aplicar ajustes das batalhas
         data.batalhas.forEach(batalha => {
             if (batalha.resultado === 'Venceu' && batalha.status === 'Underdog') {
-                pontuacao *= 1.20; // Bônus de 20%
+                pontuacaoBase *= 1.20;
             } else if (batalha.resultado === 'Perdeu' && batalha.status === 'Favorito') {
-                pontuacao *= 0.80; // Penalidade de 20%
+                pontuacaoBase *= 0.80;
             }
         });
 
-        return Math.min(pontuacao, 100); // Limitar a 100
+        return Math.min(Math.round(pontuacaoBase * 10) / 10, 100);
     }
 
-    // Função para determinar o Tier
     function determinarTier(pontuacao) {
         if (pontuacao >= 90) return 'S';
         if (pontuacao >= 70) return 'A';
         return 'B';
     }
 
-    // Função para encontrar o critério mais forte
     function encontrarCritérioForte(data) {
         const criterios = {
             material: data.material,
@@ -883,93 +895,92 @@
             performance: data.performance,
             impacto: data.impacto
         };
-        return Object.entries(criterios).sort((a, b) => b[1] - a[1])[0][0];
+        const sorted = Object.entries(criterios).sort((a, b) => b[1] - a[1]);
+        return sorted[0][0].charAt(0).toUpperCase() + sorted[0][0].slice(1);
     }
 
-    // Função de votação
-    async function votar(rapperId) {
-        // Coletar dados
-        const data = {
-            material: parseFloat(document.getElementById(`nota-material-${rapperId}`).value),
-            confronto: parseFloat(document.getElementById(`nota-confronto-${rapperId}`).value),
-            adversarios: parseFloat(document.getElementById(`nota-adversarios-${rapperId}`).value),
-            consistencia: parseFloat(document.getElementById(`nota-consistencia-${rapperId}`).value),
-            performance: parseFloat(document.getElementById(`nota-performance-${rapperId}`).value),
-            impacto: parseFloat(document.getElementById(`nota-impacto-${rapperId}`).value),
-            batalhas: []
-        };
-
-        // Coletar batalhas
-        const battleElements = document.querySelectorAll(`#rapper-${rapperId} [id^="resultado-${rapperId}"]`);
-        battleElements.forEach(element => {
-            const battleId = element.id.split('-')[2];
-            data.batalhas.push({
-                resultado: document.getElementById(`resultado-${rapperId}-${battleId}`).value,
-                status: document.getElementById(`favorito-${rapperId}-${battleId}`).value
-            });
-        });
-
-        // Validar inputs
-        if (Object.values(data).some(value => isNaN(value) || value < 0 || value > 10)) {
-            alert('Por favor, insira notas válidas (0-10)');
-            return;
-        }
-
-        // Calcular resultados
-        const resultado = {
-            nome: rapperId,
-            pontuacao: calcularPontuacao(data),
-            vitorias: data.batalhas.filter(b => b.resultado === 'Venceu').length,
-            derrotas: data.batalhas.filter(b => b.resultado === 'Perdeu').length,
-            criterioForte: encontrarCritérioForte(data),
-            tier: determinarTier(calcularPontuacao(data)),
-            timestamp: new Date()
-        };
-
-        // Salvar no Firestore
+    // Função principal de votação
+    async function handleVote(rapperId) {
         try {
-            await setDoc(doc(collection(db, "votos"), resultado);
-            alert('Voto registrado!');
+            // Coletar dados básicos
+            const data = {
+                material: parseFloat(document.getElementById(`nota-material-${rapperId}`).value),
+                confronto: parseFloat(document.getElementById(`nota-confronto-${rapperId}`).value),
+                adversarios: parseFloat(document.getElementById(`nota-adversarios-${rapperId}`).value),
+                consistencia: parseFloat(document.getElementById(`nota-consistencia-${rapperId}`).value),
+                performance: parseFloat(document.getElementById(`nota-performance-${rapperId}`).value),
+                impacto: parseFloat(document.getElementById(`nota-impacto-${rapperId}`).value),
+                batalhas: []
+            };
+
+            // Coletar dados das batalhas
+            const battleSelects = document.querySelectorAll(`#rapper-${rapperId} select[id^="resultado-"]`);
+            battleSelects.forEach(select => {
+                const battleId = select.id.split('-')[2];
+                data.batalhas.push({
+                    resultado: document.getElementById(`resultado-${rapperId}-${battleId}`).value,
+                    status: document.getElementById(`favorito-${rapperId}-${battleId}`).value
+                });
+            });
+
+            // Validação
+            if (Object.values(data).some(value => isNaN(value)) {
+                alert('Por favor, preencha todos os campos numéricos!');
+                return;
+            }
+
+            // Processamento
+            const resultado = {
+                nome: rapperId,
+                pontuacao: calcularPontuacao(data),
+                vitorias: data.batalhas.filter(b => b.resultado === 'Venceu').length,
+                derrotas: data.batalhas.filter(b => b.resultado === 'Perdeu').length,
+                criterioForte: encontrarCritérioForte(data),
+                tier: determinarTier(calcularPontuacao(data)),
+                timestamp: new Date()
+            };
+
+            // Salvar no Firestore
+            const voteId = `${rapperId}_${Date.now()}`;
+            await setDoc(doc(db, "votos", voteId), resultado);
+            
+            console.log('Voto registrado:', voteId);
+            alert('Voto registrado com sucesso!');
+
         } catch (error) {
-            console.error("Erro ao salvar:", error);
+            console.error('Erro durante o voto:', error);
+            alert(`Erro: ${error.message}`);
         }
     }
 
-    // Observar votos em tempo real
+    // Observação de dados em tempo real
     function observarVotos() {
         onSnapshot(collection(db, "votos"), (snapshot) => {
-            const resultados = [];
-            snapshot.forEach(doc => {
-                resultados.push(doc.data());
-            });
+            const resultados = snapshot.docs.map(doc => doc.data());
             atualizarTabela(resultados);
         });
     }
 
-    // Atualizar tabela de resultados
+    // Atualização da tabela
     function atualizarTabela(resultados) {
         const tbody = document.getElementById('tabela-corpo');
         tbody.innerHTML = '';
 
-        resultados.sort((a, b) => b.pontuacao - a.pontuacao).forEach(resultado => {
-            const row = `
-                <tr>
-                    <td>${resultado.nome}</td>
-                    <td>${resultado.pontuacao.toFixed(1)}</td>
-                    <td>${resultado.vitorias}</td>
-                    <td>${resultado.derrotas}</td>
-                    <td>${resultado.criterioForte}</td>
-                    <td class="tier">${resultado.tier}</td>
-                </tr>`;
-            tbody.innerHTML += row;
-        });
+        resultados
+            .sort((a, b) => b.pontuacao - a.pontuacao)
+            .forEach(rapper => {
+                const row = `
+                    <tr>
+                        <td>${rapper.nome}</td>
+                        <td>${rapper.pontuacao.toFixed(1)}</td>
+                        <td>${rapper.vitorias}</td>
+                        <td>${rapper.derrotas}</td>
+                        <td>${rapper.criterioForte}</td>
+                        <td class="tier tier-${rapper.tier}">${rapper.tier}</td>
+                    </tr>`;
+                tbody.innerHTML += row;
+            });
     }
-// Adicione isto no final do seu módulo, antes de window.onload
-window.votar = votar;
-      
-    window.onload = function() {
-        observarVotos();
-    };
 </script>
 </body>
 </html>
